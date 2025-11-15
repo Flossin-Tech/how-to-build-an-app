@@ -1,0 +1,187 @@
+{
+  "phase": "03-development",
+  "phase_name": "Development",
+  "description": "Topic relationships within the Development phase",
+
+  "topic_clusters": {
+    "code_quality_cluster": {
+      "name": "Code Quality & Maintainability",
+      "description": "Topics focused on writing and maintaining high-quality code",
+      "topics": ["code-quality", "refactoring", "code-review-process"],
+      "learning_sequence": [
+        {
+          "topic": "code-quality",
+          "rationale": "Start with principles - what makes code good"
+        },
+        {
+          "topic": "refactoring",
+          "rationale": "Learn how to improve existing code"
+        },
+        {
+          "topic": "code-review-process",
+          "rationale": "Apply and enforce quality through reviews"
+        }
+      ]
+    },
+
+    "security_cluster": {
+      "name": "Development Security",
+      "description": "Security practices during code development",
+      "topics": ["secure-coding-practices", "secret-management", "supply-chain-security"],
+      "learning_sequence": [
+        {
+          "topic": "secure-coding-practices",
+          "rationale": "Core security principles in your own code"
+        },
+        {
+          "topic": "secret-management",
+          "rationale": "Specialized topic for credential handling"
+        },
+        {
+          "topic": "supply-chain-security",
+          "rationale": "Security beyond your own code"
+        }
+      ]
+    }
+  },
+
+  "strong_relationships": [
+    {
+      "from": "code-quality",
+      "to": "refactoring",
+      "relationship": "foundation",
+      "description": "Code quality principles define what to refactor toward"
+    },
+    {
+      "from": "refactoring",
+      "to": "code-review-process",
+      "relationship": "integration",
+      "description": "Code reviews often identify refactoring opportunities"
+    },
+    {
+      "from": "code-quality",
+      "to": "code-review-process",
+      "relationship": "enforcement",
+      "description": "Reviews enforce quality standards"
+    },
+    {
+      "from": "secure-coding-practices",
+      "to": "secret-management",
+      "relationship": "specialization",
+      "description": "Secret management is a specialized secure coding practice"
+    },
+    {
+      "from": "secure-coding-practices",
+      "to": "supply-chain-security",
+      "relationship": "expansion",
+      "description": "Security includes code you write and code you import"
+    },
+    {
+      "from": "code-review-process",
+      "to": "secure-coding-practices",
+      "relationship": "quality_gate",
+      "description": "Security review is part of code review"
+    }
+  ],
+
+  "cross_phase_relationships": [
+    {
+      "topic": "code-quality",
+      "related_phase": "02-design",
+      "related_topic": "architecture-design",
+      "relationship": "System-level architecture (design) vs code-level structure (development)"
+    },
+    {
+      "topic": "secure-coding-practices",
+      "related_phase": "02-design",
+      "related_topic": "threat-modeling",
+      "relationship": "Threat modeling identifies security requirements; secure coding implements them"
+    },
+    {
+      "topic": "supply-chain-security",
+      "related_phase": "02-design",
+      "related_topic": "dependency-review",
+      "relationship": "Design-time dependency decisions vs runtime security monitoring"
+    },
+    {
+      "topic": "code-review-process",
+      "related_phase": "04-testing",
+      "related_topic": "testing-strategy",
+      "relationship": "Reviews and tests both serve as quality gates"
+    },
+    {
+      "topic": "secret-management",
+      "related_phase": "05-deployment",
+      "related_topic": "deployment-strategy",
+      "relationship": "Secret injection during deployment"
+    },
+    {
+      "topic": "secret-management",
+      "related_phase": "06-operations",
+      "related_topic": "incident-response",
+      "relationship": "Secret exposure is a security incident"
+    }
+  ],
+
+  "persona_recommendations": {
+    "new-developer": {
+      "priority_order": [
+        "code-quality",
+        "secure-coding-practices",
+        "code-review-process",
+        "secret-management",
+        "refactoring",
+        "supply-chain-security"
+      ],
+      "depth_recommendation": "Start with surface level for all topics, then mid-depth for code-quality and secure-coding-practices"
+    },
+
+    "yolo-dev": {
+      "priority_order": [
+        "secure-coding-practices",
+        "secret-management",
+        "code-quality",
+        "supply-chain-security",
+        "refactoring",
+        "code-review-process"
+      ],
+      "depth_recommendation": "Surface level to fix critical security gaps immediately"
+    },
+
+    "generalist-leveling-up": {
+      "priority_order": [
+        "code-quality",
+        "refactoring",
+        "secure-coding-practices",
+        "code-review-process",
+        "supply-chain-security",
+        "secret-management"
+      ],
+      "depth_recommendation": "Mid-depth for all topics for systematic professional development"
+    },
+
+    "specialist-expanding": {
+      "priority_order": [
+        "code-quality",
+        "secure-coding-practices",
+        "refactoring",
+        "supply-chain-security",
+        "code-review-process",
+        "secret-management"
+      ],
+      "depth_recommendation": "Deep-water for areas adjacent to specialty, mid-depth for others"
+    },
+
+    "busy-developer": {
+      "priority_order": [
+        "secure-coding-practices",
+        "code-quality",
+        "secret-management",
+        "supply-chain-security",
+        "refactoring",
+        "code-review-process"
+      ],
+      "depth_recommendation": "Surface for immediate problems, mid-depth for systematic gaps"
+    }
+  }
+}

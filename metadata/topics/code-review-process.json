@@ -1,0 +1,159 @@
+{
+  "id": "code-review-process",
+  "slug": "code-review-process",
+  "title": "Code Review Process",
+  "phase": "03-development",
+  "phase_name": "Development",
+  "order_in_phase": 3,
+
+  "description": {
+    "short": "Catch bugs and share knowledge through effective code review",
+    "medium": "Establish review workflows, learn what to look for, give and receive constructive feedback, and build a review culture that improves code quality without killing velocity",
+    "full": "Code review is a quality gate where another developer examines code changes before they're merged. This covers pull request best practices, what to look for (correctness, design, security, performance, tests), giving and receiving effective feedback, automated checks, review metrics, and building psychological safety in code review culture. Good reviews catch bugs, share knowledge, and maintain standards."
+  },
+
+  "why_it_matters": [
+    "Catches bugs before they reach production",
+    "Shares knowledge across the team",
+    "Maintains code quality and consistency",
+    "Onboards new developers through observation",
+    "Creates opportunities for mentorship and learning"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand why code review matters",
+        "Learn the basics of giving respectful feedback",
+        "Know what makes a good vs bad pull request"
+      ],
+      "key_takeaways": [
+        "Everything gets reviewed before merging",
+        "Be specific and kind in feedback",
+        "Small PRs (200-400 lines) get better reviews",
+        "Explain the 'why' behind your suggestions"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Know what to look for in reviews (correctness, design, security, tests)",
+        "Give effective, constructive feedback",
+        "Write good PR descriptions and self-review",
+        "Set up automated checks to catch common issues"
+      ],
+      "key_takeaways": [
+        "Review for correctness, design, tests, security, performance, and style",
+        "Use questions ('Could we...?') instead of commands",
+        "Automated checks free reviewers for higher-level concerns",
+        "Fast reviews (< 24 hours) keep momentum"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Build review culture with psychological safety",
+        "Implement specialized reviews (security, performance, accessibility)",
+        "Use review metrics without gaming them",
+        "Scale code review across teams and time zones"
+      ],
+      "key_takeaways": [
+        "Psychological safety enables honest feedback",
+        "Review depth should match change risk",
+        "Tools (SonarQube, AI assistants) augment human review",
+        "Balance review rigor with team velocity"
+      ]
+    }
+  },
+
+  "prerequisites": [
+    "code-quality"
+  ],
+
+  "related_topics": [
+    "code-quality",
+    "refactoring",
+    "secure-coding-practices",
+    "testing-strategy"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+
+  "tools": [
+    "GitHub Pull Requests",
+    "GitLab Merge Requests",
+    "Gerrit",
+    "Phabricator",
+    "SonarQube",
+    "CodeClimate",
+    "DeepSource",
+    "GitHub Copilot",
+    "Amazon CodeGuru",
+    "Snyk",
+    "Dependabot"
+  ],
+
+  "frameworks_and_concepts": [
+    "Pull Request workflow",
+    "CODEOWNERS",
+    "Review checklists",
+    "Psychological safety",
+    "Review metrics (turnaround time, size, coverage)",
+    "Blocking vs non-blocking reviews",
+    "Pair programming as alternative"
+  ],
+
+  "compliance_relevance": [
+    "SOC 2 (change management controls)",
+    "ISO 27001 (secure development)",
+    "PCI-DSS (code review for payment systems)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "1-2 days to establish basic PR workflow",
+    "mid_depth": "2-4 weeks to build review culture and automated checks",
+    "deep_water": "3-6 months to mature review processes at scale"
+  },
+
+  "common_mistakes": [
+    "Rubber-stamp approvals without reading code",
+    "Nitpicking style over substance",
+    "Slow reviews that block progress",
+    "Personal criticism instead of code criticism",
+    "Reviewing 2000-line PRs (too large to review well)",
+    "Inconsistent standards across reviewers"
+  ],
+
+  "success_metrics": [
+    "Review turnaround time < 24 hours",
+    "Average PR size 200-400 lines",
+    "Defects caught in review vs production",
+    "Review coverage (% of PRs reviewed)",
+    "Developer satisfaction with review process"
+  ],
+
+  "when_to_prioritize": [
+    "Building production systems with multiple developers",
+    "Security-critical or compliance-regulated code",
+    "Onboarding new team members",
+    "Code quality issues affecting velocity",
+    "Distributed teams needing knowledge sharing"
+  ],
+
+  "when_to_deprioritize": [
+    "Solo developer with no team",
+    "Prototype or throwaway code",
+    "Emergency hotfixes (but review post-merge)",
+    "Documentation-only changes"
+  ]
+}

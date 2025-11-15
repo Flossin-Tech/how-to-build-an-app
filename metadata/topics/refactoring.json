@@ -1,0 +1,154 @@
+{
+  "id": "refactoring",
+  "slug": "refactoring",
+  "title": "Refactoring",
+  "phase": "03-development",
+  "phase_name": "Development",
+  "order_in_phase": 2,
+
+  "description": {
+    "short": "Improve code structure without changing behavior",
+    "medium": "Learn to detect code smells, apply refactoring techniques safely, and know when to refactor vs rewrite to keep your codebase maintainable",
+    "full": "Refactoring is restructuring existing code without changing its external behavior. This covers detecting the 5 categories of code smells, applying common refactoring techniques (Extract Method, Move Method, etc.), Kent Beck's Four Rules of Simple Design, safe refactoring processes with tests, and deciding when to refactor versus rewrite. The Boy Scout Rule: leave code cleaner than you found it."
+  },
+
+  "why_it_matters": [
+    "Code degrades over time without active maintenance",
+    "Small refactorings prevent large rewrites",
+    "Improves code readability and maintainability",
+    "Reduces bugs by simplifying complex code",
+    "Enables faster feature development long-term"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand what refactoring is and isn't",
+        "Learn the Big Three refactorings",
+        "Know when to refactor vs when to leave code alone"
+      ],
+      "key_takeaways": [
+        "Refactoring changes structure, not behavior",
+        "Extract Method is your most-used refactoring",
+        "Always have tests before refactoring",
+        "Leave code cleaner than you found it"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Detect all 5 categories of code smells",
+        "Apply the catalog of common refactorings",
+        "Follow safe refactoring process with tests",
+        "Apply Kent Beck's Four Rules of Simple Design"
+      ],
+      "key_takeaways": [
+        "Code smells indicate when and where to refactor",
+        "Small, incremental changes are safer than big rewrites",
+        "Tests must pass after each refactoring step",
+        "Refactor vs rewrite depends on code quality and test coverage"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Refactor legacy code without existing tests",
+        "Use advanced patterns (Strangler Fig, Branch by Abstraction)",
+        "Integrate automated refactoring tools into CI/CD",
+        "Measure refactoring success with metrics"
+      ],
+      "key_takeaways": [
+        "Characterization tests enable refactoring legacy systems",
+        "Metrics guide what to refactor (high complexity + high change frequency)",
+        "Team refactoring strategies balance quality with velocity",
+        "Sometimes rewriting is cheaper than refactoring"
+      ]
+    }
+  },
+
+  "prerequisites": [
+    "code-quality"
+  ],
+
+  "related_topics": [
+    "code-quality",
+    "code-review-process",
+    "testing-strategy",
+    "architecture-design"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+
+  "tools": [
+    "IDE refactoring tools (IntelliJ, VS Code, PyCharm)",
+    "SonarQube",
+    "PMD",
+    "ESLint",
+    "Pylint",
+    "Checkmarx",
+    "Semgrep"
+  ],
+
+  "frameworks_and_concepts": [
+    "Martin Fowler's Refactoring Catalog",
+    "Code Smells (Bloaters, OO Abusers, Change Preventers, Dispensables, Couplers)",
+    "Kent Beck's Four Rules of Simple Design",
+    "Boy Scout Rule",
+    "Working Effectively with Legacy Code (Michael Feathers)",
+    "Strangler Fig Pattern",
+    "Branch by Abstraction",
+    "Characterization Tests"
+  ],
+
+  "compliance_relevance": [
+    "SOC 2 (maintainable systems)",
+    "ISO 27001 (secure development)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "Immediate - start with Extract Method on your next PR",
+    "mid_depth": "2-4 weeks to learn the full catalog",
+    "deep_water": "3-12 months for large legacy system refactoring"
+  },
+
+  "common_mistakes": [
+    "Refactoring without tests (changing behavior unintentionally)",
+    "Making too many changes at once",
+    "Refactoring for aesthetics instead of maintainability",
+    "Not committing after each safe refactoring step",
+    "Rewriting when refactoring would work (and vice versa)"
+  ],
+
+  "success_metrics": [
+    "Reduced cyclomatic complexity",
+    "Fewer code smells detected by static analysis",
+    "Faster time to implement new features",
+    "Lower bug rates in refactored code",
+    "Improved code review velocity"
+  ],
+
+  "when_to_prioritize": [
+    "Before adding features to complex code",
+    "Code fails the 'can I understand this in 5 minutes' test",
+    "Bugs cluster in specific modules",
+    "Code review identifies consistent quality issues",
+    "Team velocity is slowing due to code complexity"
+  ],
+
+  "when_to_deprioritize": [
+    "Code will be deleted soon",
+    "No tests exist and creating them is impractical",
+    "Code works and is never modified",
+    "Time better spent on new features (business decision)"
+  ]
+}

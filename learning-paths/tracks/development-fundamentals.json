@@ -1,0 +1,140 @@
+{
+  "id": "development-fundamentals",
+  "name": "Development Fundamentals",
+  "category": "track",
+  "description": "Master the core practices of writing maintainable, secure code",
+  "target_personas": ["new-developer", "generalist-leveling-up"],
+  "estimated_total_time_minutes": 132,
+
+  "objectives": [
+    "Write clean, maintainable code that others can understand",
+    "Prevent common security vulnerabilities in your code",
+    "Participate effectively in code reviews",
+    "Manage dependencies and secrets safely"
+  ],
+
+  "milestones": [
+    {
+      "name": "Code Quality Foundations",
+      "description": "Learn what makes code maintainable",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "code-quality",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Understand the core principles of clean code"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-quality",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Apply SOLID principles and manage technical debt"
+        }
+      ]
+    },
+
+    {
+      "name": "Security Essentials",
+      "description": "Prevent the most critical vulnerabilities",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Avoid SQL injection, XSS, and other critical flaws"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secret-management",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Never commit credentials to version control"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Defend against OWASP Top 10 systematically"
+        }
+      ]
+    },
+
+    {
+      "name": "Collaborative Development",
+      "description": "Work effectively with a team",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "code-review-process",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Give and receive constructive code review feedback"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-review-process",
+          "depth": "mid-depth",
+          "required": false,
+          "estimated_minutes": 25,
+          "why": "Establish systematic review practices"
+        }
+      ]
+    },
+
+    {
+      "name": "Maintaining Code Over Time",
+      "description": "Keep code healthy as it evolves",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "refactoring",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Learn the Boy Scout Rule: leave code cleaner than you found it"
+        },
+        {
+          "phase": "03-development",
+          "topic": "supply-chain-security",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Understand dependency risks and scanning"
+        },
+        {
+          "phase": "03-development",
+          "topic": "refactoring",
+          "depth": "mid-depth",
+          "required": false,
+          "estimated_minutes": 25,
+          "why": "Apply the refactoring catalog systematically"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Can write code that follows clean code principles",
+    "Prevents OWASP Top 10 vulnerabilities",
+    "Participates in code reviews constructively",
+    "Uses environment variables and secret management",
+    "Scans dependencies for vulnerabilities",
+    "Applies basic refactoring techniques"
+  ],
+
+  "next_steps": [
+    "Deep dive into advanced refactoring for legacy systems",
+    "Build expertise in application security programs",
+    "Move to Testing phase to learn TDD and security testing"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "id": "supply-chain-security",
+  "slug": "supply-chain-security",
+  "title": "Supply Chain Security",
+  "phase": "03-development",
+  "phase_name": "Development",
+  "order_in_phase": 6,
+
+  "description": {
+    "short": "Secure dependencies, build tools, and CI/CD pipelines",
+    "medium": "Review dependencies before installing, scan for vulnerabilities with SCA tools, generate SBOMs, use lock files, verify signatures, and protect your build pipeline from compromise",
+    "full": "Supply chain security protects the dependencies, build tools, container images, CI/CD pipelines, and third-party components your application relies on. This covers dependency scanning (SCA), Software Bill of Materials (SBOM), lock files, license compliance, typosquatting defense, container security, code signing, SLSA framework, private registries, and responding to supply chain compromises like SolarWinds or Log4Shell."
+  },
+
+  "why_it_matters": [
+    "High-profile attacks target the supply chain (SolarWinds, Log4j, event-stream)",
+    "Dependencies can contain malware or vulnerabilities",
+    "Transitive dependencies create hidden risk",
+    "Compromised build pipelines affect all downstream users",
+    "Compliance increasingly requires SBOM and provenance"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand that dependencies are attack vectors",
+        "Use dependency scanning tools (Dependabot, Snyk, npm audit)",
+        "Review packages before installing them"
+      ],
+      "key_takeaways": [
+        "Don't blindly install packages - review them first",
+        "Use lock files (package-lock.json, Pipfile.lock, go.sum)",
+        "Enable automated vulnerability scanning",
+        "Keep dependencies updated regularly"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Generate and use Software Bill of Materials (SBOM)",
+        "Set up comprehensive dependency scanning in CI/CD",
+        "Defend against typosquatting and malicious packages",
+        "Scan container images for vulnerabilities"
+      ],
+      "key_takeaways": [
+        "SBOM provides visibility into all components",
+        "Direct and transitive dependencies both pose risk",
+        "Lock files ensure reproducible builds",
+        "Container base images need security just like dependencies"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Implement SLSA framework for build integrity",
+        "Use private registries with dependency firewall",
+        "Sign artifacts and verify provenance with Sigstore",
+        "Build incident response for supply chain compromises"
+      ],
+      "key_takeaways": [
+        "SLSA levels provide measurable supply chain security maturity",
+        "Code signing and provenance prevent tampering",
+        "Private registries with mirroring reduce external dependency risk",
+        "SBOM enables rapid impact analysis during incidents"
+      ]
+    }
+  },
+
+  "prerequisites": [],
+
+  "related_topics": [
+    "secure-coding-practices",
+    "secret-management",
+    "dependency-review",
+    "deployment-strategy"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+
+  "tools": [
+    "Dependabot",
+    "Snyk",
+    "npm audit / pip-audit",
+    "OWASP Dependency-Check",
+    "Syft (SBOM generation)",
+    "Trivy (container scanning)",
+    "Grype",
+    "Sigstore / Cosign",
+    "Artifactory",
+    "Nexus Repository",
+    "GitHub Advanced Security",
+    "GitLab Security Scanning"
+  ],
+
+  "frameworks_and_concepts": [
+    "Software Composition Analysis (SCA)",
+    "Software Bill of Materials (SBOM - CycloneDX, SPDX)",
+    "SLSA Framework (Supply-chain Levels for Software Artifacts)",
+    "Lock files and reproducible builds",
+    "Dependency pinning vs semantic versioning",
+    "Code signing and provenance",
+    "Private package registries",
+    "Typosquatting and combosquatting",
+    "Container image security"
+  ],
+
+  "compliance_relevance": [
+    "Executive Order 14028 (US Federal - requires SBOM)",
+    "NTIA minimum elements for SBOM",
+    "EU Cyber Resilience Act",
+    "PCI-DSS (secure software development)",
+    "SOC 2 (change management, vendor risk)",
+    "ISO 27001 (supply chain security)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "1-2 days to enable dependency scanning",
+    "mid_depth": "2-4 weeks to implement SBOM generation and comprehensive scanning",
+    "deep_water": "3-6 months for SLSA Level 2+, private registries, and signing"
+  },
+
+  "common_mistakes": [
+    "Installing packages without reviewing them",
+    "Ignoring Dependabot/Snyk alerts",
+    "Not using lock files",
+    "Blindly updating all dependencies without testing",
+    "Trusting all packages in public registries",
+    "Not scanning container base images",
+    "Storing CI/CD secrets insecurely",
+    "No SBOM or inventory of dependencies"
+  ],
+
+  "success_metrics": [
+    "Time to update vulnerable dependencies (< 7 days for critical)",
+    "Dependency freshness (% of deps within N versions of latest)",
+    "SBOM coverage (100% of production systems)",
+    "Vulnerability exposure window (time between CVE publish and patch)",
+    "Zero critical vulnerabilities from dependencies in production"
+  ],
+
+  "when_to_prioritize": [
+    "Building production systems with external dependencies",
+    "Government contracts requiring SBOM",
+    "Regulated industries (healthcare, finance)",
+    "After major supply chain incidents (Log4j, etc.)",
+    "Open source projects with many users"
+  ],
+
+  "when_to_deprioritize": [
+    "Proof-of-concept with no production deployment",
+    "Completely air-gapped systems with no external dependencies",
+    "Internal tools with no sensitive data and no internet access"
+  ]
+}

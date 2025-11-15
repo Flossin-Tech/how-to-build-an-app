@@ -1,0 +1,163 @@
+{
+  "id": "secure-coding-practices",
+  "slug": "secure-coding-practices",
+  "title": "Secure Coding Practices",
+  "phase": "03-development",
+  "phase_name": "Development",
+  "order_in_phase": 5,
+
+  "description": {
+    "short": "Prevent vulnerabilities through secure code",
+    "medium": "Master OWASP Top 10 defenses, input validation, output encoding, authentication/authorization, injection prevention, XSS/CSRF protection, and cryptography to build secure applications from the ground up",
+    "full": "Secure coding prevents vulnerabilities at the source code level. This covers the OWASP Top 10 (injection, broken access control, cryptographic failures, XSS, etc.), input validation and sanitization, output encoding, authentication and authorization patterns, parameterized queries, error handling that doesn't leak information, dependency security, and integrating security testing (SAST/DAST) into development workflows."
+  },
+
+  "why_it_matters": [
+    "Security vulnerabilities lead to data breaches and regulatory penalties",
+    "It's far cheaper to prevent vulnerabilities than fix them in production",
+    "User trust depends on protecting their data",
+    "Compliance requires secure coding (PCI-DSS, HIPAA, SOC 2)",
+    "Attackers actively scan for common vulnerabilities"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Avoid the most critical vulnerabilities (SQL injection, XSS, hardcoded secrets)",
+        "Validate all input and encode all output",
+        "Use parameterized queries instead of string concatenation"
+      ],
+      "key_takeaways": [
+        "Never trust user input - validate and sanitize everything",
+        "Use prepared statements for database queries",
+        "Encode output to prevent XSS",
+        "Let frameworks handle security (don't roll your own crypto)"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Prevent all OWASP Top 10 vulnerabilities",
+        "Implement proper authentication and authorization",
+        "Apply defense in depth with multiple security layers",
+        "Use security headers and Content Security Policy"
+      ],
+      "key_takeaways": [
+        "Every OWASP Top 10 item has code-level defenses",
+        "Allowlist validation is safer than blocklist",
+        "Context-aware output encoding (HTML, JS, URL, CSS)",
+        "Security testing (SAST) catches issues before code review"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Design application security programs and secure SDLC",
+        "Implement advanced authentication (WebAuthn, Zero Trust)",
+        "Integrate SAST/DAST/IAST into CI/CD pipelines",
+        "Map code-level controls to compliance requirements"
+      ],
+      "key_takeaways": [
+        "Security champions program scales secure coding across teams",
+        "Automated security testing in CI/CD prevents regressions",
+        "Post-quantum cryptography considerations are emerging",
+        "Threat modeling informs code-level security decisions"
+      ]
+    }
+  },
+
+  "prerequisites": [],
+
+  "related_topics": [
+    "secret-management",
+    "code-review-process",
+    "supply-chain-security",
+    "threat-modeling"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+
+  "tools": [
+    "SonarQube",
+    "Semgrep",
+    "Bandit (Python)",
+    "ESLint Security Plugin",
+    "OWASP ZAP",
+    "Burp Suite",
+    "Snyk",
+    "Checkmarx",
+    "Veracode",
+    "GitHub Advanced Security",
+    "GitLab SAST/DAST"
+  ],
+
+  "frameworks_and_concepts": [
+    "OWASP Top 10",
+    "Input validation (allowlist vs blocklist)",
+    "Output encoding (context-aware)",
+    "Parameterized queries",
+    "OAuth 2.0 / OIDC",
+    "JWT best practices",
+    "Content Security Policy (CSP)",
+    "Security headers (HSTS, X-Frame-Options, etc.)",
+    "Defense in depth",
+    "Principle of least privilege"
+  ],
+
+  "compliance_relevance": [
+    "PCI-DSS (secure coding for payment systems)",
+    "HIPAA (technical safeguards for PHI)",
+    "GDPR (data protection by design)",
+    "SOC 2 (secure development practices)",
+    "ISO 27001 (secure development lifecycle)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "Immediate - fix critical vulnerabilities today",
+    "mid_depth": "4-8 weeks to implement OWASP Top 10 defenses",
+    "deep_water": "6-12 months to build mature AppSec program"
+  },
+
+  "common_mistakes": [
+    "Trusting client-side validation for security",
+    "String concatenation for SQL queries",
+    "Not encoding output (leading to XSS)",
+    "Rolling your own cryptography",
+    "Leaking sensitive information in error messages",
+    "Missing authentication on API endpoints",
+    "Storing passwords in plaintext or with weak hashing",
+    "Not keeping dependencies updated"
+  ],
+
+  "success_metrics": [
+    "Vulnerability density (critical/high vulns per 1000 LOC)",
+    "Time to remediate vulnerabilities (< 30 days for critical)",
+    "Security test coverage",
+    "SAST/DAST findings trend (should decrease over time)",
+    "Zero critical vulnerabilities in production"
+  ],
+
+  "when_to_prioritize": [
+    "Building applications with user data",
+    "Compliance-regulated industries",
+    "Internet-facing applications",
+    "Payment processing or financial systems",
+    "Healthcare applications with PHI"
+  ],
+
+  "when_to_deprioritize": [
+    "Internal tools with no sensitive data",
+    "Offline applications with no network access",
+    "Completely sandboxed environments"
+  ]
+}

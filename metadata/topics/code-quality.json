@@ -1,0 +1,152 @@
+{
+  "id": "code-quality",
+  "slug": "code-quality",
+  "title": "Code Quality",
+  "phase": "03-development",
+  "phase_name": "Development",
+  "order_in_phase": 1,
+
+  "description": {
+    "short": "Write maintainable code through clean practices and sound principles",
+    "medium": "Master naming, SOLID principles, DRY/WET/AHA, cohesion/coupling, and technical debt management to create code that humans can understand and maintain",
+    "full": "Code quality determines whether your code is maintainable or becomes a liability. This covers clean code principles, meaningful naming, SOLID patterns with real trade-offs, when to abstract vs duplicate (DRY/WET/AHA), module sizing, cohesion and coupling, and managing technical debt. The goal is code that works today and can be changed tomorrow."
+  },
+
+  "why_it_matters": [
+    "Code is read far more often than it's written",
+    "Poor quality code slows down every future change",
+    "Technical debt compounds like financial debt",
+    "Quality code is easier to test and debug",
+    "Maintainability directly affects team velocity"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand the three core quality principles",
+        "Write intention-revealing names",
+        "Identify the most common code quality issues"
+      ],
+      "key_takeaways": [
+        "Good names reveal intent without comments",
+        "Each function/class should do one thing well",
+        "Don't repeat yourself (but don't abstract too early)"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Apply SOLID principles with appropriate trade-offs",
+        "Choose between DRY, WET, and AHA patterns",
+        "Size modules and functions for maintainability",
+        "Balance cohesion and coupling in your designs"
+      ],
+      "key_takeaways": [
+        "SOLID are guidelines, not laws - apply with judgment",
+        "Wait for the third occurrence before abstracting",
+        "High cohesion + low coupling = maintainable code",
+        "Function length matters less than responsibility clarity"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Quantify technical debt and build business cases for quality work",
+        "Implement automated quality tools and CI/CD integration",
+        "Establish team coding standards and quality culture",
+        "Navigate conflicting principles in large codebases"
+      ],
+      "key_takeaways": [
+        "Technical debt management can increase delivery speed by 50%",
+        "Automate quality checks to prevent new debt",
+        "Different code needs different rigor (library vs application)",
+        "Quality culture beats individual heroics"
+      ]
+    }
+  },
+
+  "prerequisites": [],
+
+  "related_topics": [
+    "refactoring",
+    "code-review-process",
+    "secure-coding-practices",
+    "architecture-design"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+
+  "tools": [
+    "SonarQube",
+    "ESLint",
+    "Pylint",
+    "Checkstyle",
+    "PMD",
+    "RuboCop",
+    "Prettier",
+    "Black"
+  ],
+
+  "frameworks_and_concepts": [
+    "SOLID principles",
+    "DRY (Don't Repeat Yourself)",
+    "WET (Write Everything Twice)",
+    "AHA (Avoid Hasty Abstractions)",
+    "Kent Beck's Four Rules of Simple Design",
+    "Clean Code (Robert C. Martin)",
+    "Cohesion and Coupling",
+    "Cyclomatic Complexity"
+  ],
+
+  "compliance_relevance": [
+    "SOC 2 (maintainable systems)",
+    "ISO 27001 (secure development practices)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "Immediate - start with better naming",
+    "mid_depth": "1-2 sprints to establish practices",
+    "deep_water": "3-6 months to build quality culture"
+  },
+
+  "common_mistakes": [
+    "Premature abstraction (wrong abstraction worse than duplication)",
+    "Over-applying SOLID (creating unnecessary complexity)",
+    "Writing perfect code instead of good-enough code",
+    "Ignoring technical debt until it's unmanageable",
+    "Focusing on style over substance"
+  ],
+
+  "success_metrics": [
+    "Reduced time to understand unfamiliar code",
+    "Fewer bugs in changed code",
+    "Faster code reviews",
+    "Lower cyclomatic complexity scores",
+    "Increased team velocity over time"
+  ],
+
+  "when_to_prioritize": [
+    "Code will be maintained by multiple people",
+    "Building reusable libraries or frameworks",
+    "Long-lived projects (multi-year)",
+    "Code is business-critical",
+    "Team is growing and onboarding new developers"
+  ],
+
+  "when_to_deprioritize": [
+    "Proof-of-concept or throwaway prototypes",
+    "Extremely time-sensitive competitive features",
+    "Code with very short lifespan",
+    "Personal scripts and one-off utilities"
+  ]
+}
