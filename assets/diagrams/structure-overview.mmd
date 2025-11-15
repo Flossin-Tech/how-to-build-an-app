@@ -1,0 +1,83 @@
+graph TB
+    Root[How to Build an App]
+
+    Root --> Content[Content<br/>28 Topics × 3 Depths]
+    Root --> Paths[Learning Paths<br/>14+ Curated Journeys]
+    Root --> Examples[Examples<br/>Shared + 10 Domains]
+    Root --> Assets[Assets<br/>Diagrams, Images, Videos]
+    Root --> Meta[Metadata<br/>Topic Properties & Relationships]
+    Root --> Config[App Config<br/>Navigation, Search, Progress]
+
+    Content --> P1[01 Discovery & Planning<br/>6 topics]
+    Content --> P2[02 Design<br/>4 topics]
+    Content --> P3[03 Development<br/>4 topics]
+    Content --> P4[04 Testing<br/>4 topics]
+    Content --> P5[05 Deployment<br/>4 topics]
+    Content --> P6[06 Operations<br/>4 topics]
+    Content --> P7[07 Iteration<br/>3 topics]
+
+    P1 --> T1[Threat Modeling]
+    T1 --> D1[Surface 5-10min]
+    T1 --> D2[Mid-Depth 15-30min]
+    T1 --> D3[Deep Water 30-60min]
+
+    Paths --> PP[Personas<br/>5 types]
+    Paths --> PT[Tracks<br/>5 goals]
+    Paths --> PJ[Journeys<br/>4 contexts]
+
+    PP --> PP1[New Developer]
+    PP --> PP2[YOLO Dev]
+    PP --> PP3[Specialist]
+    PP --> PP4[Generalist]
+    PP --> PP5[Busy Dev]
+
+    Examples --> ES[Shared Patterns]
+    Examples --> ED[Domain Specific]
+
+    ES --> ES1[Authentication]
+    ES --> ES2[Validation]
+    ES --> ES3[Error Handling]
+    ES --> ES4[API Design]
+
+    ED --> ED1[Web Apps]
+    ED --> ED2[Mobile Apps]
+    ED --> ED3[ML Systems]
+    ED --> ED4[Healthcare]
+    ED --> ED5[Fintech]
+
+    Assets --> AD[Diagrams]
+    Assets --> AI[Images]
+    Assets --> AV[Videos]
+
+    AD --> AD1[Architecture]
+    AD --> AD2[Data Flow]
+    AD --> AD3[Threats]
+    AD --> AD4[Deployment]
+
+    Meta --> MT[Topics JSON]
+    Meta --> MP[Prerequisites]
+    Meta --> MC[Cross References]
+
+    Config --> CN[Navigation]
+    Config --> CS[Search Index]
+    Config --> CU[User Progress]
+
+    style Root fill:#FFE66D
+    style Content fill:#4ECDC4
+    style Paths fill:#FF6B6B
+    style Examples fill:#95E1D3
+    style Assets fill:#F38181
+    style Meta fill:#AA96DA
+    style Config fill:#FCBAD3
+
+    style P1 fill:#E8F4F8
+    style P2 fill:#E8F4F8
+    style P3 fill:#E8F4F8
+    style P4 fill:#E8F4F8
+    style P5 fill:#E8F4F8
+    style P6 fill:#E8F4F8
+    style P7 fill:#E8F4F8
+
+    style D1 fill:#E3F2FD
+    style D2 fill:#90CAF9
+    style D3 fill:#1976D2
