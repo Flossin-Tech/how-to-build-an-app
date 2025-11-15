@@ -91,10 +91,12 @@ Plan the architecture and identify risks before implementation.
 
 ### Development
 Write code that works, is secure, and others can maintain.
-- Secure Coding Practices
-- Code Review Process
-- Secret Management
-- Supply Chain Security
+- Code Quality → [Surface](content/03-development/code-quality/surface/index.md) | [Mid-Depth](content/03-development/code-quality/mid-depth/index.md) | [Deep Water](content/03-development/code-quality/deep-water/index.md)
+- Refactoring → [Surface](content/03-development/refactoring/surface/index.md) | [Mid-Depth](content/03-development/refactoring/mid-depth/index.md) | [Deep Water](content/03-development/refactoring/deep-water/index.md)
+- Code Review Process → [Surface](content/03-development/code-review-process/surface/index.md) | [Mid-Depth](content/03-development/code-review-process/mid-depth/index.md) | [Deep Water](content/03-development/code-review-process/deep-water/index.md)
+- Secret Management → [Surface](content/03-development/secret-management/surface/index.md) | [Mid-Depth](content/03-development/secret-management/mid-depth/index.md) | [Deep Water](content/03-development/secret-management/deep-water/index.md)
+- Secure Coding Practices → [Surface](content/03-development/secure-coding-practices/surface/index.md) | [Mid-Depth](content/03-development/secure-coding-practices/mid-depth/index.md) | [Deep Water](content/03-development/secure-coding-practices/deep-water/index.md)
+- Supply Chain Security → [Surface](content/03-development/supply-chain-security/surface/index.md) | [Mid-Depth](content/03-development/supply-chain-security/mid-depth/index.md) | [Deep Water](content/03-development/supply-chain-security/deep-water/index.md)
 
 ### Testing
 Verify it works, is accessible, and won't break or get hacked.
