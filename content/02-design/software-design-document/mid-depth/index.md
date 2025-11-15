@@ -1258,3 +1258,19 @@ Good design docs prevent expensive mistakes. They're most valuable when they:
 The goal isn't comprehensive documentation. It's documentation that stays useful after the code ships. Write docs that answer the questions your future self will ask six months from now when debugging a production incident at 2am.
 
 Start with templates. Review them like code. Test them automatically. Delete them when they're obsolete. Documentation is code - treat it like code.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
+- [Dependency Review](../../dependency-review/mid-depth/index.md) - Related design considerations
+- [Data Flow Mapping](../../data-flow-mapping/mid-depth/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

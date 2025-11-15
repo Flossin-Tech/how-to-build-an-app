@@ -55,3 +55,20 @@ If you can't explain the struggle without saying "they need an app that...", you
 *"People don't want a quarter-inch drill, they want a quarter-inch hole."* - Theodore Levitt
 
 The drill is your solution. The hole is the job to be done. Always focus on the hole.
+
+---
+
+## Navigation
+
+### Want to Go Deeper?
+- **[Mid-Depth →](../mid-depth/index.md)** Learn practical interview techniques and how to identify switching moments
+- **[Deep Water →](../deep-water/index.md)** Master the Jobs-to-be-Done framework and outcome-driven innovation
+
+### Related Topics
+- [Concept of Operations](../../concept-of-operations/surface/index.md) - Define how your solution will work
+- [Requirements Gathering](../../requirements-gathering/surface/index.md) - Document what you need to build
+- [Scope Setting](../../scope-setting/surface/index.md) - Define boundaries for your project
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

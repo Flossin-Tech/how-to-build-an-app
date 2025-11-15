@@ -67,3 +67,20 @@ Every requirement should be testable. Ask: "How will I know when this is done?"
 - "Search returns results in <500ms for 90% of queries" - Can test this
 
 If you can't test it, you can't verify it. If you can't verify it, you can't commit to it.
+
+---
+
+## Navigation
+
+### Want to Go Deeper?
+- **[Mid-Depth →](../mid-depth/index.md)** User stories, API contracts, and prioritization frameworks
+- **[Deep Water →](../deep-water/index.md)** Enterprise requirements, compliance, SLAs, and disaster recovery
+
+### Related Topics
+- [Job to Be Done](../../job-to-be-done/surface/index.md) - Understand the real problem first
+- [Concept of Operations](../../concept-of-operations/surface/index.md) - Define how your solution will work
+- [Scope Setting](../../scope-setting/surface/index.md) - Define project boundaries
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

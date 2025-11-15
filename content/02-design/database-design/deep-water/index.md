@@ -1518,6 +1518,19 @@ The best database design is the simplest one that meets your requirements. Compl
 - *Database Internals* by Alex Petrov - How databases actually work under the hood
 - *High Performance MySQL* - Optimization techniques for MySQL/MariaDB
 - *The Art of PostgreSQL* by Dimitri Fontaine - Advanced PostgreSQL patterns
+---
 
-**Next Steps:**
-Practice on real datasets at scale. Set up a test database with 10 million rows and benchmark query patterns. Break things in safe environments. The best way to learn database design is seeing what fails under load.
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
+- [Data Flow Mapping](../../data-flow-mapping/deep-water/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

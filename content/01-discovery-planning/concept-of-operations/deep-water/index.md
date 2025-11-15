@@ -167,3 +167,22 @@ What happens in truly bad scenarios?
 - Who must approve emergency change?
 
 Document these scenarios. In a crisis, nobody can think clearly. Having a documented procedure means people follow the plan instead of making it up under pressure.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview and scenario writing basics
+- **[← Mid-Depth](../mid-depth/index.md)** User roles, integration points, and degraded operations
+
+### Related Topics
+- [Job to Be Done](../../job-to-be-done/deep-water/index.md) - Advanced Jobs-to-be-Done framework
+- [Requirements Gathering](../../requirements-gathering/deep-water/index.md) - Enterprise requirements management
+- [Threat Modeling](../../threat-modeling/deep-water/index.md) - Advanced threat modeling techniques
+- [Scope Setting](../../scope-setting/deep-water/index.md) - Complex scope management
+- [Resource Identification](../../resource-identification/deep-water/index.md) - Strategic resource planning
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

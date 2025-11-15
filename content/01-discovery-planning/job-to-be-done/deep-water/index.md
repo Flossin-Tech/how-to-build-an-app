@@ -114,3 +114,21 @@ User cares about: Personal reputation, ease of daily use, not looking incompeten
 **Measurable:** Can you articulate ROI for buyer AND demonstrate value for end user in first week?
 
 **Example conflict:** Owner wants detailed time tracking (to bill clients accurately). Users see it as micromanagement overhead. Solution must thread this needle.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview and the 5 Whys test
+- **[← Mid-Depth](../mid-depth/index.md)** Practical interview techniques and user research
+
+### Related Topics
+- [Concept of Operations](../../concept-of-operations/deep-water/index.md) - Advanced operational frameworks
+- [Requirements Gathering](../../requirements-gathering/deep-water/index.md) - Enterprise requirements management
+- [Scope Setting](../../scope-setting/deep-water/index.md) - Complex scope management strategies
+- [Resource Identification](../../resource-identification/deep-water/index.md) - Strategic resource planning
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -259,7 +259,19 @@ Everything else you can learn as you go. Start simple, stay consistent, and list
 - [Data Modeling](../../data-modeling/surface/) - Designing the resources your API exposes
 - [Error Handling](../../../03-development/error-handling/surface/) - Implementation patterns for robust error handling
 - [Versioning Strategy](../../versioning-strategy/surface/) - Deep dive on managing API evolution
+---
 
-**Next Steps:**
-- **Mid-Depth**: Advanced patterns like pagination, filtering, rate limiting, and webhook design
-- **Deep Water**: API governance, deprecation strategies, and multi-tenant API architecture
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
+- [Database Design](../../database-design/surface/index.md) - Related design considerations
+- [Error Handling & Resilience](../../error-handling-resilience/surface/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

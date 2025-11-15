@@ -115,3 +115,20 @@ Apply security controls proportional to classification:
 - Restricted: Encryption at rest + in transit, audit logging, strict access controls
 
 Don't waste effort encrypting public marketing content, but absolutely encrypt payment data.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview of common threats
+- **[Deep Water →](../deep-water/index.md)** Attack trees, privacy frameworks, and compliance threats
+
+### Related Topics
+- [Concept of Operations](../../concept-of-operations/mid-depth/index.md) - User workflows and integration points
+- [Requirements Gathering](../../requirements-gathering/mid-depth/index.md) - Security requirements documentation
+- [Resource Identification](../../resource-identification/mid-depth/index.md) - Security tool budgeting
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

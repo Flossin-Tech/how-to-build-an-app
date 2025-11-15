@@ -214,3 +214,20 @@ Will revisit after MVP ships.
 **Weekly review:** Look at all pending change requests. Accept ones that are truly critical. Defer the rest.
 
 Having a process prevents ad-hoc "sure, we can add that" that derails projects.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview of MVP and saying no
+- **[Deep Water →](../deep-water/index.md)** Risk prioritization, technical boundaries, and compliance scope
+
+### Related Topics
+- [Job to Be Done](../../job-to-be-done/mid-depth/index.md) - Understanding user needs
+- [Requirements Gathering](../../requirements-gathering/mid-depth/index.md)- User stories and prioritization
+- [Resource Identification](../../resource-identification/mid-depth/index.md) - Budget and capacity planning
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

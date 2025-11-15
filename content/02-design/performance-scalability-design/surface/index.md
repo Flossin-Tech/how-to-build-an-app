@@ -302,3 +302,19 @@ Then measure real usage and optimize what actually matters.
 Your first version doesn't need to scale to a million users. It needs to work reliably for the users you actually have. When you grow, measure where it slows down, then optimize those specific bottlenecks.
 
 Good enough today beats perfect someday. Ship it, measure it, improve it.
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
+- [Database Design](../../database-design/surface/index.md) - Related design considerations
+- [Error Handling & Resilience](../../error-handling-resilience/surface/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

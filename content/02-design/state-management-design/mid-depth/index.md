@@ -1651,3 +1651,19 @@ Always invalidate or update cache after mutations. Otherwise users see stale dat
 10. **Most state should be local** - Global state for sharing across components, local state for UI, server state in query libraries
 
 State management complexity grows with your application. Start simple, add layers as needed, and always have a strategy for when things go wrong - because they will.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
+- [Data Flow Mapping](../../data-flow-mapping/mid-depth/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

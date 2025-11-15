@@ -1129,3 +1129,19 @@ The database isn't just storage. It's your data's last line of defense against b
 These patterns matter when you're supporting real users who notice when queries take 5 seconds instead of 50ms. The surface-level stuff gets you started. This mid-depth content keeps you running when the database hits 100 million rows.
 
 For deeper topics like database replication, sharding, or advanced query optimization, see the deep-water content. For understanding how these database decisions connect to your overall system design, check out the related topics on API design and performance/scalability planning.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
+- [Data Flow Mapping](../../data-flow-mapping/mid-depth/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -384,3 +384,19 @@ State management is about controlling where information lives and how it moves. 
 5. **Handle the happy path and the "what if" path**: What if they refresh? What if they have two tabs open? What if their token expired? What if the network fails mid-update? You don't need perfect answers, but you need intentional answers.
 
 State management isn't glamorous. But it's the difference between an app that feels solid and one that feels brittle. The user doesn't think about state management. They just notice when their data vanishes or when the cart icon shows the wrong count. Get the basics right and they won't have to think about it either.
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
+- [Data Flow Mapping](../../data-flow-mapping/surface/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/surface/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

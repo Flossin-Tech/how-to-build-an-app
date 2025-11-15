@@ -1625,3 +1625,19 @@ Performance optimization is about measuring, finding the bottleneck, and fixing 
 10. **Fix the bottleneck**, not random things. Measure first.
 
 The difference between a system that handles 100 users and one that handles 100,000 isn't magic - it's these patterns applied consistently.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
+- [Database Design](../../database-design/mid-depth/index.md) - Related design considerations
+- [Error Handling & Resilience](../../error-handling-resilience/mid-depth/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

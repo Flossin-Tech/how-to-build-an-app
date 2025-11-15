@@ -1840,3 +1840,18 @@ The incidents that make headlines - Log4Shell, left-pad, SolarWinds - weren't ca
 Build those capabilities. Maintain your inventory. Practice your response. Make dependency review a discipline, not a checklist you ignore until something breaks.
 
 Your dependencies are your supply chain. Treat them with the same rigor you treat any other operational risk.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
+- [Software Design Document](../../software-design-document/deep-water/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

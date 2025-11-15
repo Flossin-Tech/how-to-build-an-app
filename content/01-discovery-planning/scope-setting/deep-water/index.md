@@ -479,3 +479,21 @@ Option 3: Build abstraction layer, stub integration
 - Update scope if dependencies slip
 
 Don't let external dependencies be the reason you discover scope problems at 90% complete.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview of MVP and saying no
+- **[← Mid-Depth](../mid-depth/index.md)** Phased roadmaps and change control
+
+### Related Topics
+- [Job to Be Done](../../job-to-be-done/deep-water/index.md) - Advanced user research frameworks
+- [Requirements Gathering](../../requirements-gathering/deep-water/index.md) - Enterprise requirements and SLAs
+- [Resource Identification](../../resource-identification/deep-water/index.md) - Capacity planning and DR budgets
+- [Concept of Operations](../../concept-of-operations/deep-water/index.md) - Operational scope definition
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

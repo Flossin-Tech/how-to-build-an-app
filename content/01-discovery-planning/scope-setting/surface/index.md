@@ -74,3 +74,20 @@ When someone requests a new feature:
 4. If not critical: "Let's add it to the phase 2 list"
 
 Having a defined scope gives you permission to say "not now" without saying "never."
+
+---
+
+## Navigation
+
+### Want to Go Deeper?
+- **[Mid-Depth →](../mid-depth/index.md)** Phased roadmaps, integration boundaries, and change control
+- **[Deep Water →](../deep-water/index.md)** Organizational scope, compliance boundaries, and sunset planning
+
+### Related Topics
+- [Job to Be Done](../../job-to-be-done/surface/index.md) - Understand the problem first
+- [Requirements Gathering](../../requirements-gathering/surface/index.md) - Document what you need to build
+- [Resource Identification](../../resource-identification/surface/index.md) - Know what you have to work with
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

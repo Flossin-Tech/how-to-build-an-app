@@ -313,3 +313,19 @@ The hard part isn't the mapping technique - it's remembering to do it before you
 - The goal is to see the whole path before building it, not to create perfect documentation
 
 If you can draw the path from user input to database to third-party service to email, you can start asking the right questions about encryption, validation, retention, and compliance. That's the point.
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
+- [Database Design](../../database-design/surface/index.md) - Related design considerations
+- [State Management Design](../../state-management-design/surface/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

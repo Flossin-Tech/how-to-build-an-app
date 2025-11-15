@@ -131,3 +131,19 @@ The architecture decision that matters most isn't monolith versus microservices.
 Before you write architectural code, understand what you're building and why (see the Job-to-be-Done topic in Discovery & Planning). After you've decided on your high-level architecture, you'll need to design the APIs between components (see API Design) and determine how to structure your data (see Database Design).
 
 For now: start with a monolith, organize it into components based on functional boundaries, and keep the interfaces between components simple. The rest will become clear as you build.
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [API Design](../../api-design/surface/index.md) - Related design considerations
+- [Database Design](../../database-design/surface/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/surface/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -49,3 +49,20 @@ Without ConOps, you end up building systems that technically work but don't fit 
 5. End with the outcome
 
 Keep it concrete. Avoid abstractions like "the user performs operations." Instead: "the nurse scans the patient wristband."
+
+---
+
+## Navigation
+
+### Want to Go Deeper?
+- **[Mid-Depth →](../mid-depth/index.md)** Map user roles, integration points, and degraded mode operations
+- **[Deep Water →](../deep-water/index.md)** Mission thread analysis, disaster recovery, and compliance workflows
+
+### Related Topics
+- [Job to Be Done](../../job-to-be-done/surface/index.md) - Understand the real problem first
+- [Requirements Gathering](../../requirements-gathering/surface/index.md) - Document what you need to build
+- [Threat Modeling](../../threat-modeling/surface/index.md) - Identify security risks early
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

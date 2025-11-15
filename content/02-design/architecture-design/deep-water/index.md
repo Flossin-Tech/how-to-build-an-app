@@ -1294,24 +1294,19 @@ None of these patterns is inherently better. They solve specific problems at spe
 The companies that succeed at scale (Netflix, Uber, Stripe, Airbnb) didn't start with these patterns. They evolved into them as they grew. They started with monoliths, learned their domain boundaries, then extracted services strategically. They added complexity only when it solved real problems.
 
 Start simple. Measure constantly. Add complexity only when you have specific evidence that it's needed. The best architecture is the simplest one that meets your actual requirements.
+---
 
-## Further Reading
+## Navigation
 
-**Architecture Patterns**:
-- Martin Fowler, "Patterns of Enterprise Application Architecture" - Still relevant for understanding foundational patterns
-- Sam Newman, "Building Microservices" (2nd ed) - Practical guidance on service decomposition
-- Chris Richardson, "Microservices Patterns" - Comprehensive pattern catalog with trade-offs
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
 
-**Distributed Systems**:
-- Martin Kleppmann, "Designing Data-Intensive Applications" - Best modern reference for distributed systems
-- Werner Vogels (Amazon CTO), "Eventually Consistent" - Amazon's perspective on choosing consistency models
+### Related Topics
+- [API Design](../../api-design/deep-water/index.md) - Related design considerations
+- [Database Design](../../database-design/deep-water/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
 
-**Event Sourcing and CQRS**:
-- Greg Young, "CQRS Documents" - Original CQRS patterns
-- Martin Fowler, "Event Sourcing" - Critical analysis with caveats
-
-**Real-World Examples**:
-- Netflix Tech Blog - Chaos engineering and resilience patterns
-- Uber Engineering Blog - Microservices migration journey
-- Stripe Engineering Blog - API design and reliability at scale
-- Martin Kleppmann's Blog - Distributed systems deep dives
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

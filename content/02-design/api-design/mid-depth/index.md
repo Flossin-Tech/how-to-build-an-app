@@ -1659,11 +1659,19 @@ The patterns here aren't theoretical. They're battle-tested approaches from high
 - **[Performance Optimization](/content/03-development/performance-optimization/)** - Query optimization and caching strategies
 - **[Error Handling](/content/03-development/error-handling/)** - Implementing robust error handling in your application
 - **[Monitoring & Observability](/content/06-operations/monitoring-observability/)** - Tracking API usage and debugging issues
+---
 
-## Further Reading
+## Navigation
 
-- [RESTful Web APIs](http://shop.oreilly.com/product/0636920028468.do) by Leonard Richardson & Mike Amundsen - Comprehensive REST design guide
-- [Building Microservices](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/) by Sam Newman - Chapter on API design for distributed systems
-- [Designing Data-Intensive Applications](https://dataintensive.net/) by Martin Kleppmann - Chapter on API evolution and compatibility
-- [Stripe API Design](https://stripe.com/docs/api) - Study one of the best-designed APIs in the industry
-- [Microsoft REST API Guidelines](https://github.com/microsoft/api-guidelines) - Comprehensive patterns from Microsoft's API experience
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
+- [Database Design](../../database-design/mid-depth/index.md) - Related design considerations
+- [Error Handling & Resilience](../../error-handling-resilience/mid-depth/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

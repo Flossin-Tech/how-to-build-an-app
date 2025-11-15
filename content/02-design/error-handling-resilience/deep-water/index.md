@@ -1758,3 +1758,19 @@ A realistic progression:
 The most important thing: design for failure from the start. The patterns get more sophisticated, but the mindset stays the same - everything will fail eventually, so build systems that fail gracefully.
 
 When you're debugging a 3am production outage, you'll be glad you designed error handling upfront instead of trying to add it while half-asleep and panicking. Ask me how I know.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [API Design](../../api-design/deep-water/index.md) - Related design considerations
+- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

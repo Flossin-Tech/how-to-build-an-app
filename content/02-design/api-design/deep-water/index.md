@@ -573,9 +573,19 @@ Your API never touches raw card data. Stripe is PCI-certified and handles the se
 - [Architecture Patterns - Deep Water](../../architecture-patterns/deep-water/) - Microservices, event-driven architecture
 - [Security Implementation - Deep Water](../../../03-development/security-implementation/deep-water/) - OAuth2, JWT, encryption
 - [Monitoring & Observability - Deep Water](../../../06-operations/monitoring-observability/deep-water/) - Distributed tracing, SLOs
+---
 
-**Next Steps:**
-- If you're building a multi-tenant SaaS: Focus on tenant isolation patterns and compliance requirements
-- If you're scaling to 10K+ req/sec: Study API gateway patterns and caching strategies
-- If you have 20+ microservices: Investigate service mesh for cross-cutting concerns
-- If handling sensitive data: Implement comprehensive audit logging and encryption patterns
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
+- [Database Design](../../database-design/deep-water/index.md) - Related design considerations
+- [Error Handling & Resilience](../../error-handling-resilience/deep-water/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

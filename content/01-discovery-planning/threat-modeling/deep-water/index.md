@@ -240,3 +240,21 @@ These tools don't replace thinking, but they:
 - Generate compliance documentation
 
 Use tools to augment human analysis, not replace it.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview of common threats
+- **[← Mid-Depth](../mid-depth/index.md)** STRIDE framework and data classification
+
+### Related Topics
+- [Concept of Operations](../../concept-of-operations/deep-water/index.md) - Operational security scenarios
+- [Requirements Gathering](../../requirements-gathering/deep-water/index.md) - Compliance and audit requirements
+- [Resource Identification](../../resource-identification/deep-water/index.md) - Security infrastructure costs
+- [Scope Setting](../../scope-setting/deep-water/index.md) - Compliance scope boundaries
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

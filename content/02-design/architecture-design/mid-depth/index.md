@@ -1212,11 +1212,19 @@ Most systems should be modular monoliths longer than you think. The teams that s
 When in doubt, make the change reversible. Feature flags and adapters let you try extraction without commitment. Measure whether it actually helped.
 
 Your architecture should serve your team and your customers. Not the other way around.
+---
 
-## Further Reading
+## Navigation
 
-- Eric Evans, "Domain-Driven Design" (2003) - Still the best guide to finding boundaries
-- Sam Newman, "Building Microservices" (2nd ed, 2021) - Practical patterns for service design
-- Martin Fowler, "Patterns of Enterprise Application Architecture" (2002) - Foundational patterns
-- Chris Richardson, "Microservices Patterns" (2018) - Comprehensive pattern catalog with trade-offs
-- Shopify Engineering Blog - Real examples of modular monolith at scale
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [API Design](../../api-design/mid-depth/index.md) - Related design considerations
+- [Database Design](../../database-design/mid-depth/index.md) - Related design considerations
+- [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

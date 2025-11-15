@@ -341,3 +341,21 @@ Team cost: $66K/year for on-call
 - Incident management (Incident.io): $15-50/user/month
 
 Budget for support from day one. Systems without on-call support respond slowly to outages, losing customer trust.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Quick overview of people, tools, and budget
+- **[← Mid-Depth](../mid-depth/index.md)** Infrastructure, third-party services, and security tools
+
+### Related Topics
+- [Scope Setting](../../scope-setting/deep-water/index.md) - Complex scope management
+- [Requirements Gathering](../../requirements-gathering/deep-water/index.md) - Enterprise requirements and SLAs
+- [Concept of Operations](../../concept-of-operations/deep-water/index.md) - Disaster recovery operations
+- [Threat Modeling](../../threat-modeling/deep-water/index.md) - Advanced security planning
+
+### Navigate
+- [← Back to Discovery & Planning](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)

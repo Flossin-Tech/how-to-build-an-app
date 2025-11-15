@@ -2047,3 +2047,19 @@ The worst documentation is:
 - Unenforced process docs (theater)
 
 Write docs that solve real problems. Delete docs that don't. Keep what remains ruthlessly current.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
+- [Dependency Review](../../dependency-review/deep-water/index.md) - Related design considerations
+- [Data Flow Mapping](../../data-flow-mapping/deep-water/index.md) - Related design considerations
+
+### Navigate
+- [← Back to Design Phase](../../README.md)
+- [↑ Back to Main Guide](../../../../README.md)
