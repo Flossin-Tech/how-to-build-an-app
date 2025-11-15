@@ -68,7 +68,7 @@ Most guides are all-or-nothing: either trivial "Hello World" tutorials or enterp
 
 Each topic below is available at three depth levels. Start with Surface, then dive deeper as needed:
 
-### Discovery & Planning
+### [Discovery & Planning](content/01-discovery-planning/index.md)
 Understand what you're building and why before writing code.
 - Spot the Job to Be Done → [Surface](content/01-discovery-planning/job-to-be-done/surface/index.md) | [Mid-Depth](content/01-discovery-planning/job-to-be-done/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/job-to-be-done/deep-water/index.md)
 - Concept of Operations → [Surface](content/01-discovery-planning/concept-of-operations/surface/index.md) | [Mid-Depth](content/01-discovery-planning/concept-of-operations/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/concept-of-operations/deep-water/index.md)
@@ -77,7 +77,7 @@ Understand what you're building and why before writing code.
 - Resource Identification → [Surface](content/01-discovery-planning/resource-identification/surface/index.md) | [Mid-Depth](content/01-discovery-planning/resource-identification/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/resource-identification/deep-water/index.md)
 - Scope Setting → [Surface](content/01-discovery-planning/scope-setting/surface/index.md) | [Mid-Depth](content/01-discovery-planning/scope-setting/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/scope-setting/deep-water/index.md)
 
-### Design
+### [Design](content/02-design/index.md)
 Plan the architecture and identify risks before implementation.
 - Architecture Design → [Surface](content/02-design/architecture-design/surface/index.md) | [Mid-Depth](content/02-design/architecture-design/mid-depth/index.md) | [Deep Water](content/02-design/architecture-design/deep-water/index.md)
 - Data Flow Mapping → [Surface](content/02-design/data-flow-mapping/surface/index.md) | [Mid-Depth](content/02-design/data-flow-mapping/mid-depth/index.md) | [Deep Water](content/02-design/data-flow-mapping/deep-water/index.md)
@@ -89,7 +89,7 @@ Plan the architecture and identify risks before implementation.
 - Error Handling & Resilience → [Surface](content/02-design/error-handling-resilience/surface/index.md) | [Mid-Depth](content/02-design/error-handling-resilience/mid-depth/index.md) | [Deep Water](content/02-design/error-handling-resilience/deep-water/index.md)
 - Performance & Scalability Design → [Surface](content/02-design/performance-scalability-design/surface/index.md) | [Mid-Depth](content/02-design/performance-scalability-design/mid-depth/index.md) | [Deep Water](content/02-design/performance-scalability-design/deep-water/index.md)
 
-### Development
+### [Development](content/03-development/index.md)
 Write code that works, is secure, and others can maintain.
 - Code Quality → [Surface](content/03-development/code-quality/surface/index.md) | [Mid-Depth](content/03-development/code-quality/mid-depth/index.md) | [Deep Water](content/03-development/code-quality/deep-water/index.md)
 - Refactoring → [Surface](content/03-development/refactoring/surface/index.md) | [Mid-Depth](content/03-development/refactoring/mid-depth/index.md) | [Deep Water](content/03-development/refactoring/deep-water/index.md)
@@ -98,28 +98,28 @@ Write code that works, is secure, and others can maintain.
 - Secure Coding Practices → [Surface](content/03-development/secure-coding-practices/surface/index.md) | [Mid-Depth](content/03-development/secure-coding-practices/mid-depth/index.md) | [Deep Water](content/03-development/secure-coding-practices/deep-water/index.md)
 - Supply Chain Security → [Surface](content/03-development/supply-chain-security/surface/index.md) | [Mid-Depth](content/03-development/supply-chain-security/mid-depth/index.md) | [Deep Water](content/03-development/supply-chain-security/deep-water/index.md)
 
-### Testing
+### [Testing](content/04-testing/index.md)
 Verify it works, is accessible, and won't break or get hacked.
 - Unit/Integration Testing
 - Security Testing
 - Accessibility Testing
 - Compliance Validation
 
-### Deployment
+### [Deployment](content/05-deployment/index.md)
 Get your code running reliably in production.
 - Infrastructure as Code
 - CI/CD Pipeline Security
 - Deployment Strategy
 - Access Control
 
-### Operations
+### [Operations](content/06-operations/index.md)
 Keep it running and handle when things go wrong.
 - Monitoring & Logging
 - Incident Response
 - Patch Management
 - Backup & Recovery
 
-### Iteration
+### [Iteration](content/07-iteration/index.md)
 Learn from what happened and improve.
 - Retrospectives
 - Security Posture Reviews
