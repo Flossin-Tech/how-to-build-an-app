@@ -22,6 +22,12 @@ Unlike traditional tutorials that force you through Chapter 1 before Chapter 2, 
 
 Each section is organized in layers, like ocean depth:
 
+<p align="center">
+  <img src="./assets/images/thermoclines.jpeg" alt="Thermocline Principle - Ocean depth layers representing content organization" width="100%" style="max-width: 800px;">
+  <br>
+  <em>Image generated with Google Gemini</em>
+</p>
+
 **Surface Layer** - Essential information everyone needs. If you only read this, you won't sink.
 - What this step is and why it matters
 - Minimum viable version (what you MUST do today)
