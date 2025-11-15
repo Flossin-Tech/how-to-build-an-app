@@ -66,21 +66,28 @@ Most guides are all-or-nothing: either trivial "Hello World" tutorials or enterp
 
 ## What's Covered
 
+Each topic below is available at three depth levels. Start with Surface, then dive deeper as needed:
+
 ### Discovery & Planning
 Understand what you're building and why before writing code.
-- Spot the Job to Be Done
-- Concept of Operations
-- Threat Modeling
-- Requirements Gathering
-- Resource Identification
-- Scope Setting
+- Spot the Job to Be Done → [Surface](content/01-discovery-planning/job-to-be-done/surface/index.md) | [Mid-Depth](content/01-discovery-planning/job-to-be-done/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/job-to-be-done/deep-water/index.md)
+- Concept of Operations → [Surface](content/01-discovery-planning/concept-of-operations/surface/index.md) | [Mid-Depth](content/01-discovery-planning/concept-of-operations/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/concept-of-operations/deep-water/index.md)
+- Threat Modeling → [Surface](content/01-discovery-planning/threat-modeling/surface/index.md) | [Mid-Depth](content/01-discovery-planning/threat-modeling/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/threat-modeling/deep-water/index.md)
+- Requirements Gathering → [Surface](content/01-discovery-planning/requirements-gathering/surface/index.md) | [Mid-Depth](content/01-discovery-planning/requirements-gathering/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/requirements-gathering/deep-water/index.md)
+- Resource Identification → [Surface](content/01-discovery-planning/resource-identification/surface/index.md) | [Mid-Depth](content/01-discovery-planning/resource-identification/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/resource-identification/deep-water/index.md)
+- Scope Setting → [Surface](content/01-discovery-planning/scope-setting/surface/index.md) | [Mid-Depth](content/01-discovery-planning/scope-setting/mid-depth/index.md) | [Deep Water](content/01-discovery-planning/scope-setting/deep-water/index.md)
 
 ### Design
 Plan the architecture and identify risks before implementation.
-- Architecture Design
-- Data Flow Mapping
-- Software Design Document
-- Dependency Review
+- Architecture Design → [Surface](content/02-design/architecture-design/surface/index.md) | [Mid-Depth](content/02-design/architecture-design/mid-depth/index.md) | [Deep Water](content/02-design/architecture-design/deep-water/index.md)
+- Data Flow Mapping → [Surface](content/02-design/data-flow-mapping/surface/index.md) | [Mid-Depth](content/02-design/data-flow-mapping/mid-depth/index.md) | [Deep Water](content/02-design/data-flow-mapping/deep-water/index.md)
+- Software Design Document → [Surface](content/02-design/software-design-document/surface/index.md) | [Mid-Depth](content/02-design/software-design-document/mid-depth/index.md) | [Deep Water](content/02-design/software-design-document/deep-water/index.md)
+- Dependency Review → [Surface](content/02-design/dependency-review/surface/index.md) | [Mid-Depth](content/02-design/dependency-review/mid-depth/index.md) | [Deep Water](content/02-design/dependency-review/deep-water/index.md)
+- API Design → [Surface](content/02-design/api-design/surface/index.md) | [Mid-Depth](content/02-design/api-design/mid-depth/index.md) | [Deep Water](content/02-design/api-design/deep-water/index.md)
+- Database Design → [Surface](content/02-design/database-design/surface/index.md) | [Mid-Depth](content/02-design/database-design/mid-depth/index.md) | [Deep Water](content/02-design/database-design/deep-water/index.md)
+- State Management Design → [Surface](content/02-design/state-management-design/surface/index.md) | [Mid-Depth](content/02-design/state-management-design/mid-depth/index.md) | [Deep Water](content/02-design/state-management-design/deep-water/index.md)
+- Error Handling & Resilience → [Surface](content/02-design/error-handling-resilience/surface/index.md) | [Mid-Depth](content/02-design/error-handling-resilience/mid-depth/index.md) | [Deep Water](content/02-design/error-handling-resilience/deep-water/index.md)
+- Performance & Scalability Design → [Surface](content/02-design/performance-scalability-design/surface/index.md) | [Mid-Depth](content/02-design/performance-scalability-design/mid-depth/index.md) | [Deep Water](content/02-design/performance-scalability-design/deep-water/index.md)
 
 ### Development
 Write code that works, is secure, and others can maintain.
