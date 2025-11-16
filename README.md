@@ -179,11 +179,11 @@ We're especially interested in:
 
 Not sure where to begin? Ask yourself:
 
-- **Do I have a clear problem statement?** → Start with "Spot the Job to Be Done"
-- **Do I know what I'm building but not how?** → Jump to "Design"
-- **Do I have code but it's a mess?** → Visit "Development" practices
-- **Does it work but keeps breaking?** → Head to "Testing" or "Operations"
-- **Am I repeating the same mistakes?** → Check "Iteration"
+- **Do I have a clear problem statement?** → Start with [Spot the Job to Be Done](content/01-discovery-planning/job-to-be-done/surface/index.md)
+- **Do I know what I'm building but not how?** → Jump to [Design](content/02-design/index.md)
+- **Do I have code but it's a mess?** → Visit [Development](content/03-development/index.md) practices
+- **Does it work but keeps breaking?** → Head to [Testing](content/04-testing/index.md) or [Operations](content/06-operations/index.md)
+- **Am I repeating the same mistakes?** → Check [Iteration](content/07-iteration/index.md)
 
 **Remember:** You don't need to read everything. Read what you need, when you need it. The rest will be here when you're ready.
 
