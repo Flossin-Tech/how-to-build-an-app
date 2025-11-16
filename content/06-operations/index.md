@@ -20,10 +20,10 @@ This phase is about observability (knowing what's happening), resilience (handli
 
 | Topic | Surface (5-10 min) | Mid-Depth (15-30 min) | Deep Water (30-60+ min) |
 |-------|-------------------|---------------------|---------------------|
-| Monitoring & Logging | Coming Soon | Coming Soon | Coming Soon |
-| Incident Response | Coming Soon | Coming Soon | Coming Soon |
-| Patch Management | Coming Soon | Coming Soon | Coming Soon |
-| Backup & Recovery | Coming Soon | Coming Soon | Coming Soon |
+| Monitoring & Logging | [Surface](monitoring-logging/surface/index.md) | [Mid-Depth](monitoring-logging/mid-depth/index.md) | [Deep Water](monitoring-logging/deep-water/index.md) |
+| Incident Response | [Surface](incident-response/surface/index.md) | [Mid-Depth](incident-response/mid-depth/index.md) | [Deep Water](incident-response/deep-water/index.md) |
+| Patch Management | [Surface](patch-management/surface/index.md) | [Mid-Depth](patch-management/mid-depth/index.md) | [Deep Water](patch-management/deep-water/index.md) |
+| Backup & Recovery | [Surface](backup-recovery/surface/index.md) | [Mid-Depth](backup-recovery/mid-depth/index.md) | [Deep Water](backup-recovery/deep-water/index.md) |
 
 ## What Comes Next
 

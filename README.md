@@ -4,6 +4,8 @@
 
 A practical reference for building software that actually works—not just technically, but for the humans who use it and maintain it.
 
+Mortimer J. Adler wrote about reading at different levels in *How to Read a Book*—elementary, inspectional, analytical, syntopical. Same idea here. You can skim the surface of every topic or go deep on the ones that matter to your project. The difference is we're explicit about the layers instead of making you figure it out.
+
 Unlike traditional tutorials that force you through Chapter 1 before Chapter 2, this guide is built for how developers actually work: jumping in wherever you are, getting what you need, and moving forward.
 
 ## Who This Is For
