@@ -28,6 +28,10 @@ There are dozens of architecture patterns, but two dominate every conversation: 
 
 **Microservices** split functionality into separate applications that communicate over a network. Your user service is separate from your payment service, which is separate from your notification service. Each can be deployed independently. Netflix runs hundreds of microservices. So does Amazon.
 
+![Side-by-side comparison of monolithic architecture (single deployable unit with shared database) versus microservices architecture (multiple independent services with API gateway and separate databases)](../../../assets/diagrams/monolith-vs-microservices.svg)
+
+**Figure 1**: Monolith vs Microservices - understanding the fundamental architectural difference
+
 The architecture debate usually sounds like this: "Monoliths don't scale! Microservices are too complex!" Both statements are sometimes true and often wrong.
 
 Here's what actually matters: monoliths are easier to build and reason about, but can become tangled if you're not careful. Microservices can scale teams and systems independently, but add operational complexity that will absolutely sink you if you're not ready for it.
@@ -82,6 +86,10 @@ src/
 
 Each component has its own folder. Shared utilities live in `shared/`. The rule: components can use shared utilities, but they shouldn't directly import from other components. If `cart` needs product information, it goes through a defined interface, not by directly importing `catalog.products`.
 
+![Modular monolith directory structure showing components (catalog, cart, checkout, orders) with clear separation, shared utilities layer, and defined interfaces between components](../../../assets/diagrams/modular-monolith-structure.svg)
+
+**Figure 2**: Modular monolith structure with clear component boundaries and shared utilities
+
 ## The Modular Monolith
 
 A modular monolith is the sweet spot for most applications. It's one deployable application with strong internal boundaries. You get the simplicity of a monolith with the organizational benefits of separated concerns.
@@ -107,6 +115,10 @@ How do you know if your architecture is causing problems? These three signs show
 **Sign 1: Every feature touches everything**. You want to add a discount code field to checkout. Somehow you're modifying files in the product catalog, the cart, the order history, and the email system. This means your boundaries are wrong - concepts that should be separated are tangled together.
 
 This happens in both monoliths and microservices. In a monolith, you have too much coupling between components. In microservices, you have services that are sliced wrong, forcing every change to coordinate across multiple services.
+
+![Comparison of good versus bad component boundaries - left side shows isolated components with clear interfaces, right side shows tangled dependencies where every component depends on every other component](../../../assets/diagrams/component-boundary-patterns.svg)
+
+**Figure 3**: Good boundaries (isolated components) vs bad boundaries (tangled dependencies)
 
 **Sign 2: You can't reason about one part in isolation**. You're trying to understand how shopping cart works, but you can't trace the logic without jumping into checkout, inventory, pricing, and user profiles. The component boundaries aren't matching the mental model of what the system does.
 

@@ -1,0 +1,227 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #2c3e50; }
+      .label { font-family: Arial, sans-serif; font-size: 13px; fill: #34495e; }
+      .small-label { font-family: Arial, sans-serif; font-size: 11px; fill: #555; }
+      .module { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .submodule { fill: #5dade2; stroke: #3498db; stroke-width: 1.5; }
+      .interface { fill: #f39c12; stroke: #e67e22; stroke-width: 1.5; }
+      .shared { fill: #95a5a6; stroke: #7f8c8d; stroke-width: 2; }
+      .database { fill: #1abc9c; stroke: #16a085; stroke-width: 1.5; }
+      .boundary { stroke: #e74c3c; stroke-width: 2; stroke-dasharray: 5,5; fill: none; }
+      .arrow { stroke: #34495e; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .interface-arrow { stroke: #e67e22; stroke-width: 2; fill: none; marker-end: url(#interface-arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34495e" />
+    </marker>
+    <marker id="interface-arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e67e22" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="500" y="35" text-anchor="middle" class="title">Modular Monolith Structure</text>
+  
+  <!-- Application Boundary -->
+  <rect x="40" y="60" width="920" height="700" rx="10" fill="#ecf0f1" stroke="#34495e" stroke-width="3"/>
+  <text x="500" y="85" text-anchor="middle" class="subtitle">Application Boundary</text>
+  
+  <!-- Shared Kernel -->
+  <rect x="360" y="110" width="280" height="80" rx="6" class="shared"/>
+  <text x="500" y="135" text-anchor="middle" class="label" fill="white" font-weight="bold">Shared Kernel</text>
+  <text x="500" y="155" text-anchor="middle" class="small-label" fill="white">Common types, utilities, auth</text>
+  <text x="500" y="175" text-anchor="middle" class="small-label" fill="white">No business logic, no data access</text>
+  
+  <!-- Module 1: User Management -->
+  <g id="user-module">
+    <rect x="70" y="230" width="260" height="240" rx="6" class="module"/>
+    <text x="200" y="255" text-anchor="middle" class="label" fill="white" font-weight="bold">User Management Module</text>
+    
+    <!-- Public Interface -->
+    <rect x="90" y="270" width="220" height="50" rx="4" class="interface"/>
+    <text x="200" y="290" text-anchor="middle" class="small-label" font-weight="bold">Public Interface</text>
+    <text x="200" y="308" text-anchor="middle" class="small-label">IUserService, UserDTO</text>
+    
+    <!-- Internal Components -->
+    <rect x="90" y="335" width="100" height="45" rx="3" class="submodule"/>
+    <text x="140" y="355" text-anchor="middle" class="small-label" fill="white">Domain</text>
+    <text x="140" y="370" text-anchor="middle" class="small-label" fill="white" font-size="9">Logic</text>
+    
+    <rect x="210" y="335" width="100" height="45" rx="3" class="submodule"/>
+    <text x="260" y="355" text-anchor="middle" class="small-label" fill="white">Use Cases</text>
+    <text x="260" y="370" text-anchor="middle" class="small-label" fill="white" font-size="9">Commands</text>
+    
+    <!-- Data Store -->
+    <rect x="90" y="395" width="220" height="60" rx="4" class="database"/>
+    <text x="200" y="415" text-anchor="middle" class="small-label" fill="white" font-weight="bold">User Data Store</text>
+    <text x="200" y="435" text-anchor="middle" class="small-label" fill="white" font-size="9">Owned by this module only</text>
+    
+    <!-- Module boundary -->
+    <rect x="70" y="230" width="260" height="240" rx="6" class="boundary"/>
+  </g>
+  
+  <!-- Module 2: Order Processing -->
+  <g id="order-module">
+    <rect x="370" y="230" width="260" height="240" rx="6" class="module"/>
+    <text x="500" y="255" text-anchor="middle" class="label" fill="white" font-weight="bold">Order Processing Module</text>
+    
+    <!-- Public Interface -->
+    <rect x="390" y="270" width="220" height="50" rx="4" class="interface"/>
+    <text x="500" y="290" text-anchor="middle" class="small-label" font-weight="bold">Public Interface</text>
+    <text x="500" y="308" text-anchor="middle" class="small-label">IOrderService, OrderDTO</text>
+    
+    <!-- Internal Components -->
+    <rect x="390" y="335" width="100" height="45" rx="3" class="submodule"/>
+    <text x="440" y="355" text-anchor="middle" class="small-label" fill="white">Domain</text>
+    <text x="440" y="370" text-anchor="middle" class="small-label" fill="white" font-size="9">Logic</text>
+    
+    <rect x="510" y="335" width="100" height="45" rx="3" class="submodule"/>
+    <text x="560" y="355" text-anchor="middle" class="small-label" fill="white">Use Cases</text>
+    <text x="560" y="370" text-anchor="middle" class="small-label" fill="white" font-size="9">Commands</text>
+    
+    <!-- Data Store -->
+    <rect x="390" y="395" width="220" height="60" rx="4" class="database"/>
+    <text x="500" y="415" text-anchor="middle" class="small-label" fill="white" font-weight="bold">Order Data Store</text>
+    <text x="500" y="435" text-anchor="middle" class="small-label" fill="white" font-size="9">Owned by this module only</text>
+    
+    <!-- Module boundary -->
+    <rect x="370" y="230" width="260" height="240" rx="6" class="boundary"/>
+  </g>
+  
+  <!-- Module 3: Inventory -->
+  <g id="inventory-module">
+    <rect x="670" y="230" width="260" height="240" rx="6" class="module"/>
+    <text x="800" y="255" text-anchor="middle" class="label" fill="white" font-weight="bold">Inventory Module</text>
+    
+    <!-- Public Interface -->
+    <rect x="690" y="270" width="220" height="50" rx="4" class="interface"/>
+    <text x="800" y="290" text-anchor="middle" class="small-label" font-weight="bold">Public Interface</text>
+    <text x="800" y="308" text-anchor="middle" class="small-label">IInventoryService, ItemDTO</text>
+    
+    <!-- Internal Components -->
+    <rect x="690" y="335" width="100" height="45" rx="3" class="submodule"/>
+    <text x="740" y="355" text-anchor="middle" class="small-label" fill="white">Domain</text>
+    <text x="740" y="370" text-anchor="middle" class="small-label" fill="white" font-size="9">Logic</text>
+    
+    <rect x="810" y="335" width="100" height="45" rx="3" class="submodule"/>
+    <text x="860" y="355" text-anchor="middle" class="small-label" fill="white">Use Cases</text>
+    <text x="860" y="370" text-anchor="middle" class="small-label" fill="white" font-size="9">Commands</text>
+    
+    <!-- Data Store -->
+    <rect x="690" y="395" width="220" height="60" rx="4" class="database"/>
+    <text x="800" y="415" text-anchor="middle" class="small-label" fill="white" font-weight="bold">Inventory Data Store</text>
+    <text x="800" y="435" text-anchor="middle" class="small-label" fill="white" font-size="9">Owned by this module only</text>
+    
+    <!-- Module boundary -->
+    <rect x="670" y="230" width="260" height="240" rx="6" class="boundary"/>
+  </g>
+  
+  <!-- Module 4: Notification (smaller, supporting) -->
+  <g id="notification-module">
+    <rect x="70" y="510" width="260" height="210" rx="6" class="module"/>
+    <text x="200" y="535" text-anchor="middle" class="label" fill="white" font-weight="bold">Notification Module</text>
+    
+    <!-- Public Interface -->
+    <rect x="90" y="550" width="220" height="50" rx="4" class="interface"/>
+    <text x="200" y="570" text-anchor="middle" class="small-label" font-weight="bold">Public Interface</text>
+    <text x="200" y="588" text-anchor="middle" class="small-label">INotificationService</text>
+    
+    <!-- Internal Components -->
+    <rect x="90" y="615" width="100" height="45" rx="3" class="submodule"/>
+    <text x="140" y="635" text-anchor="middle" class="small-label" fill="white">Email</text>
+    <text x="140" y="650" text-anchor="middle" class="small-label" fill="white" font-size="9">Provider</text>
+    
+    <rect x="210" y="615" width="100" height="45" rx="3" class="submodule"/>
+    <text x="260" y="635" text-anchor="middle" class="small-label" fill="white">SMS</text>
+    <text x="260" y="650" text-anchor="middle" class="small-label" fill="white" font-size="9">Provider</text>
+    
+    <!-- Data Store -->
+    <rect x="90" y="675" width="220" height="30" rx="4" class="database"/>
+    <text x="200" y="695" text-anchor="middle" class="small-label" fill="white" font-size="9">Notification Queue</text>
+    
+    <!-- Module boundary -->
+    <rect x="70" y="510" width="260" height="210" rx="6" class="boundary"/>
+  </g>
+  
+  <!-- Module 5: Reporting (read-only) -->
+  <g id="reporting-module">
+    <rect x="370" y="510" width="260" height="210" rx="6" class="module"/>
+    <text x="500" y="535" text-anchor="middle" class="label" fill="white" font-weight="bold">Reporting Module</text>
+    
+    <!-- Public Interface -->
+    <rect x="390" y="550" width="220" height="50" rx="4" class="interface"/>
+    <text x="500" y="570" text-anchor="middle" class="small-label" font-weight="bold">Public Interface</text>
+    <text x="500" y="588" text-anchor="middle" class="small-label">IReportService</text>
+    
+    <!-- Internal Components -->
+    <rect x="390" y="615" width="220" height="45" rx="3" class="submodule"/>
+    <text x="500" y="635" text-anchor="middle" class="small-label" fill="white">Report Generator</text>
+    <text x="500" y="650" text-anchor="middle" class="small-label" fill="white" font-size="9">Aggregates data via interfaces</text>
+    
+    <!-- Data Store -->
+    <rect x="390" y="675" width="220" height="30" rx="4" class="database"/>
+    <text x="500" y="695" text-anchor="middle" class="small-label" fill="white" font-size="9">Report Cache (optional)</text>
+    
+    <!-- Module boundary -->
+    <rect x="370" y="510" width="260" height="210" rx="6" class="boundary"/>
+  </g>
+  
+  <!-- API/Presentation Layer -->
+  <g id="api-layer">
+    <rect x="670" y="510" width="260" height="210" rx="6" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+    <text x="800" y="535" text-anchor="middle" class="label" fill="white" font-weight="bold">API / Presentation Layer</text>
+    
+    <rect x="690" y="550" width="220" height="50" rx="3" fill="#c0392b"/>
+    <text x="800" y="575" text-anchor="middle" class="small-label" fill="white">Controllers / Endpoints</text>
+    
+    <rect x="690" y="615" width="100" height="45" rx="3" fill="#c0392b"/>
+    <text x="740" y="640" text-anchor="middle" class="small-label" fill="white" font-size="10">REST API</text>
+    
+    <rect x="810" y="615" width="100" height="45" rx="3" fill="#c0392b"/>
+    <text x="860" y="640" text-anchor="middle" class="small-label" fill="white" font-size="10">GraphQL</text>
+    
+    <rect x="690" y="675" width="220" height="30" rx="3" fill="#c0392b"/>
+    <text x="800" y="695" text-anchor="middle" class="small-label" fill="white" font-size="9">Auth Middleware</text>
+  </g>
+  
+  <!-- Interface arrows (module communication) -->
+  <path d="M 330 295 L 370 295" class="interface-arrow"/>
+  <text x="350" y="290" text-anchor="middle" class="small-label" font-size="9">via interface</text>
+  
+  <path d="M 630 295 L 670 295" class="interface-arrow"/>
+  <text x="650" y="290" text-anchor="middle" class="small-label" font-size="9">via interface</text>
+  
+  <path d="M 200 470 L 200 510" class="interface-arrow"/>
+  <text x="220" y="495" text-anchor="middle" class="small-label" font-size="9">calls</text>
+  
+  <path d="M 500 470 L 500 510" class="interface-arrow"/>
+  <text x="520" y="495" text-anchor="middle" class="small-label" font-size="9">calls</text>
+  
+  <!-- API layer to modules -->
+  <path d="M 670 575 L 330 360" class="interface-arrow" opacity="0.6"/>
+  <path d="M 730 575 L 560 360" class="interface-arrow" opacity="0.6"/>
+  <path d="M 800 575 L 800 360" class="interface-arrow" opacity="0.6"/>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(70, 740)">
+    <rect x="0" y="0" width="15" height="15" class="interface"/>
+    <text x="20" y="12" class="small-label">Public Interface (stable API)</text>
+    
+    <rect x="200" y="0" width="15" height="15" class="boundary"/>
+    <text x="220" y="12" class="small-label">Module Boundary</text>
+    
+    <rect x="380" y="0" width="15" height="15" class="database"/>
+    <text x="400" y="12" class="small-label">Private Data Store</text>
+  </g>
+  
+  <!-- Key Principles -->
+  <g id="principles">
+    <text x="75" y="205" class="small-label" font-weight="bold">Key Principles:</text>
+    <text x="75" y="220" class="small-label">• Modules communicate only through public interfaces</text>
+    <text x="375" y="220" class="small-label">• Each module owns its data exclusively</text>
+    <text x="700" y="220" class="small-label">• No direct database access across modules</text>
+  </g>
+</svg>
