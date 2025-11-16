@@ -1,0 +1,114 @@
+{
+  "title": "Security Testing",
+  "phase": "04-testing",
+  "slug": "security-testing",
+  "description": "Find and fix vulnerabilities before attackers do—from SQL injection to broken authentication",
+  "reading_time_by_depth": {
+    "surface": 8,
+    "mid-depth": 25,
+    "deep-water": 50
+  },
+  "difficulty": {
+    "surface": "beginner",
+    "mid-depth": "intermediate",
+    "deep-water": "advanced"
+  },
+  "prerequisites": ["unit-integration-testing"],
+  "related_topics": [
+    "secure-coding-practices",
+    "threat-modeling",
+    "compliance-validation",
+    "authentication-authorization"
+  ],
+  "builds_on": ["secure-coding-practices", "threat-modeling"],
+  "enables": [
+    "production-deployment",
+    "compliance-validation",
+    "penetration-testing"
+  ],
+  "personas": {
+    "new-developer": "surface",
+    "yolo-dev": "surface",
+    "specialist-expanding": "mid-depth",
+    "generalist-leveling-up": "mid-depth",
+    "busy-developer": "surface"
+  },
+  "common_questions": [
+    "What security tests do I absolutely need before launch?",
+    "How do I test for SQL injection and XSS?",
+    "What's the difference between SAST and DAST?",
+    "Should I use automated scanners or manual testing?",
+    "How do I integrate security testing into CI/CD?"
+  ],
+  "red_flags": [
+    "Never tested with malicious inputs",
+    "User input directly in SQL queries",
+    "Passwords or API keys in source code",
+    "No session timeouts",
+    "Error messages show stack traces in production",
+    "HTTP instead of HTTPS",
+    "No dependency vulnerability scanning"
+  ],
+  "objectives": {
+    "surface": [
+      "Test for OWASP Top 5 vulnerabilities (SQL injection, XSS, broken auth/authz, data exposure)",
+      "Run automated security scan (OWASP ZAP)",
+      "Implement basic security testing checklist",
+      "Scan dependencies for vulnerabilities",
+      "Add security headers to prevent common attacks"
+    ],
+    "mid-depth": [
+      "Implement SAST in CI/CD pipeline",
+      "Run DAST against staging environment",
+      "Conduct threat modeling exercises",
+      "Test all OWASP Top 10 vulnerabilities",
+      "Implement security regression tests",
+      "Configure security monitoring and alerting"
+    ],
+    "deep-water": [
+      "Conduct comprehensive penetration testing",
+      "Implement IAST for runtime security analysis",
+      "Design security test strategy for microservices",
+      "Perform red team exercises",
+      "Implement continuous security testing",
+      "Prepare for security audits and certifications"
+    ]
+  },
+  "tools": {
+    "surface": [
+      "OWASP ZAP (automated scanner)",
+      "npm audit / pip-audit (dependency scanning)",
+      "git-secrets (prevent committed secrets)",
+      "Browser DevTools (inspect requests)"
+    ],
+    "mid-depth": [
+      "SonarQube, Semgrep (SAST)",
+      "Burp Suite (manual testing)",
+      "Snyk, Dependabot (dependency management)",
+      "GitHub/GitLab security scanning"
+    ],
+    "deep-water": [
+      "Checkmarx, Veracode (enterprise SAST)",
+      "Contrast Security (IAST)",
+      "Metasploit (penetration testing)",
+      "HackerOne, Bugcrowd (bug bounty platforms)"
+    ]
+  },
+  "examples": [
+    "examples/shared/security/sql-injection-tests",
+    "examples/shared/security/xss-prevention",
+    "examples/shared/security/auth-security-tests",
+    "examples/domain-specific/e-commerce/security-testing"
+  ],
+  "compliance_relevance": {
+    "SOC2": "Security testing required for all controls",
+    "PCI-DSS": "Quarterly vulnerability scans and annual penetration tests required",
+    "HIPAA": "Security testing validates PHI protection",
+    "ISO27001": "Security testing demonstrates risk management"
+  },
+  "effort_estimates": {
+    "surface": "30 minutes for basic security checklist and automated scan",
+    "mid-depth": "3-5 days to implement comprehensive security testing",
+    "deep-water": "2-4 weeks for enterprise security testing program"
+  }
+}

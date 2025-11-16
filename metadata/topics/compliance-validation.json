@@ -1,0 +1,126 @@
+{
+  "title": "Compliance Validation",
+  "phase": "04-testing",
+  "slug": "compliance-validation",
+  "description": "Test that your system meets legal and regulatory requirements for your industry and region",
+  "reading_time_by_depth": {
+    "surface": 8,
+    "mid-depth": 30,
+    "deep-water": 60
+  },
+  "difficulty": {
+    "surface": "intermediate",
+    "mid-depth": "advanced",
+    "deep-water": "expert"
+  },
+  "prerequisites": ["security-testing", "accessibility-testing"],
+  "related_topics": [
+    "data-privacy",
+    "secure-coding-practices",
+    "audit-logging",
+    "encryption"
+  ],
+  "builds_on": [
+    "data-privacy",
+    "security-testing",
+    "accessibility-testing"
+  ],
+  "enables": [
+    "enterprise-sales",
+    "government-contracts",
+    "regulatory-approval",
+    "soc2-certification"
+  ],
+  "personas": {
+    "new-developer": "surface",
+    "yolo-dev": "surface",
+    "specialist-expanding": "mid-depth",
+    "generalist-leveling-up": "mid-depth",
+    "busy-developer": "surface"
+  },
+  "common_questions": [
+    "Which compliance frameworks apply to my app?",
+    "What's the difference between GDPR, HIPAA, and PCI-DSS?",
+    "Can I test with production data?",
+    "What is SOC 2 and do I need it?",
+    "How do I prove compliance to auditors?"
+  ],
+  "red_flags": [
+    "Testing with production PII/PHI data",
+    "Storing credit card numbers in database",
+    "No privacy policy",
+    "Can't export user data on request",
+    "Can't delete user data on request",
+    "No audit logs for data access",
+    "HTTP instead of HTTPS",
+    "Sharing data with third parties without consent"
+  ],
+  "objectives": {
+    "surface": [
+      "Identify which compliance frameworks apply",
+      "Understand GDPR, HIPAA, PCI-DSS, SOC 2 basics",
+      "Test data export and deletion (GDPR)",
+      "Use synthetic data for testing (not production data)",
+      "Implement basic compliance checklist"
+    ],
+    "mid-depth": [
+      "Implement comprehensive GDPR compliance testing",
+      "Conduct HIPAA compliance validation (if applicable)",
+      "Prepare for PCI-DSS scans and audits",
+      "Build automated compliance tests in CI/CD",
+      "Implement audit logging and monitoring",
+      "Prepare for SOC 2 Type I audit"
+    ],
+    "deep-water": [
+      "Achieve SOC 2 Type II certification",
+      "Pass FedRAMP authorization (government)",
+      "Implement continuous compliance monitoring",
+      "Conduct compliance testing across multiple jurisdictions",
+      "Prepare for regulatory audits",
+      "Implement compliance as code"
+    ]
+  },
+  "tools": {
+    "surface": [
+      "@faker-js/faker (synthetic data generation)",
+      "Stripe/Square test cards (PCI-DSS testing)",
+      "Cookie consent tools",
+      "Privacy policy generators"
+    ],
+    "mid-depth": [
+      "Vanta, Drata (SOC 2 automation)",
+      "AWS/Azure/GCP compliance tools",
+      "Data masking tools",
+      "Audit log analysis tools",
+      "Compliance testing frameworks"
+    ],
+    "deep-water": [
+      "Delphix, Tonic.ai (test data management)",
+      "OneTrust (privacy management)",
+      "Compliance automation platforms",
+      "Third-party audit firms",
+      "Legal compliance consultants"
+    ]
+  },
+  "examples": [
+    "examples/shared/compliance/gdpr-testing",
+    "examples/shared/compliance/synthetic-data-generation",
+    "examples/shared/compliance/audit-logging",
+    "examples/domain-specific/healthcare/hipaa-testing",
+    "examples/domain-specific/fintech/pci-dss-testing"
+  ],
+  "compliance_relevance": {
+    "GDPR": "Data subject rights testing (export, deletion, rectification)",
+    "HIPAA": "PHI protection, access controls, audit logging",
+    "PCI-DSS": "Cardholder data protection, quarterly scans, annual pen tests",
+    "SOC2": "Security, availability, confidentiality testing",
+    "CCPA": "California privacy rights testing",
+    "FERPA": "Education records protection",
+    "GLBA": "Financial data privacy"
+  },
+  "effort_estimates": {
+    "surface": "4-8 hours to identify requirements and basic testing",
+    "mid-depth": "2-4 weeks for comprehensive compliance testing",
+    "deep-water": "2-6 months for certification (SOC 2, FedRAMP)"
+  }
+}

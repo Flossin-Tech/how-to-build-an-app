@@ -14,6 +14,12 @@ updated: "2025-11-15"
 
 Your API is a promise to other developers. It's how your system talks to the world - whether that's a mobile app, another service, or a third-party integration. A well-designed API feels obvious to use. A poorly designed one generates support tickets and angry Slack messages.
 
+<p align="center">
+  <img src="../../../../assets/images/API-Graphic-3.png" alt="The Vending Machine API Analogy - Understanding how software components communicate through APIs" width="100%" style="max-width: 600px;">
+  <br>
+  <em>Image generated with Google Gemini</em>
+</p>
+
 This guide covers the fundamental decisions that determine whether your API helps or hurts. You don't need to be a REST purist or memorize the HTTP specification. You need to make consistent, predictable choices that won't embarrass you six months from now.
 
 ## What Makes an API Actually Good
@@ -31,6 +37,12 @@ Everything else is refinement.
 ## Choosing Your API Style
 
 You have three practical choices: REST-ish, GraphQL, or RPC. Each solves different problems.
+
+<p align="center">
+  <img src="../../../../assets/images/API-Graphic-2.png" alt="Why APIs Are Awesome: The Swappable Backend - How APIs enable backend changes without breaking the frontend" width="100%" style="max-width: 600px;">
+  <br>
+  <em>Image generated with Google Gemini</em>
+</p>
 
 **REST-ish APIs** use HTTP methods and URLs to represent resources. `GET /orders/123` fetches an order. `POST /orders` creates one. `PATCH /orders/123` updates it. This is the default choice for public APIs and simple CRUD operations. It's well-understood, works with standard HTTP tools, and doesn't require special libraries.
 
@@ -177,6 +189,12 @@ Stripe's error format is solid: `type`, `code`, `message`, `param` (which field 
 ## Versioning From Day One
 
 Your API will change. Requirements change, you learn better patterns, third parties request new features. The question isn't whether to version - it's how.
+
+<p align="center">
+  <img src="../../../../assets/images/API-Graphic-1.png" alt="API Versioning: Non-Breaking Changes - How to add new features while maintaining backward compatibility" width="100%" style="max-width: 600px;">
+  <br>
+  <em>Image generated with Google Gemini</em>
+</p>
 
 **Version from the start, even if it feels silly.** Having `v1` in your first release means `v2` isn't a breaking architectural change. It's just the next version.
 

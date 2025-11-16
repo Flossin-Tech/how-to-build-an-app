@@ -1,15 +1,17 @@
-# Claude Code Instructions
-CLAUDE.md
 
 # Research & Planning Files (Internal Use Only)
 RESEARCH_*.md
 DESIGN_*.md
 02-DESIGN_*.md
+04-TESTING_*.md
 
 # Internal Documentation & Templates
 CONTENT_MODULE_TEMPLATES.md
 DIRECTORY_STRUCTURE.md
 outline.md
+
+# Claude
+CLAUDE.md
 
 # System Files
 .DS_Store

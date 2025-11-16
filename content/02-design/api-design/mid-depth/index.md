@@ -20,6 +20,12 @@ This guide covers the patterns that prevent those incidents. Not theoretical bes
 
 You need to change your API. Maybe you named something poorly, maybe the business requirements shifted, maybe you learned something about the domain. Your existing clients are working fine and you don't want to break them. This is the versioning problem.
 
+<p align="center">
+  <img src="../../../../assets/images/API-Graphic-1.png" alt="API Versioning: Non-Breaking Changes - How to add new features while maintaining backward compatibility" width="100%" style="max-width: 600px;">
+  <br>
+  <em>Image generated with Google Gemini</em>
+</p>
+
 I've seen teams avoid making necessary improvements because they were paralyzed by versioning. I've also seen teams break client integrations because they thought their changes were "backwards compatible" when they weren't.
 
 ### What Actually Breaks Compatibility

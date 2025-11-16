@@ -106,10 +106,10 @@ Write code that works, is secure, and others can maintain.
 
 ### [Testing](content/04-testing/index.md)
 Verify it works, is accessible, and won't break or get hacked.
-- Unit/Integration Testing
-- Security Testing
-- Accessibility Testing
-- Compliance Validation
+- Unit & Integration Testing → [Surface](content/04-testing/unit-integration-testing/surface/index.md) | [Mid-Depth](content/04-testing/unit-integration-testing/mid-depth/index.md) | [Deep Water](content/04-testing/unit-integration-testing/deep-water/index.md)
+- Security Testing → [Surface](content/04-testing/security-testing/surface/index.md) | [Mid-Depth](content/04-testing/security-testing/mid-depth/index.md) | [Deep Water](content/04-testing/security-testing/deep-water/index.md)
+- Accessibility Testing → [Surface](content/04-testing/accessibility-testing/surface/index.md) | [Mid-Depth](content/04-testing/accessibility-testing/mid-depth/index.md) | [Deep Water](content/04-testing/accessibility-testing/deep-water/index.md)
+- Compliance Validation → [Surface](content/04-testing/compliance-validation/surface/index.md) | [Mid-Depth](content/04-testing/compliance-validation/mid-depth/index.md) | [Deep Water](content/04-testing/compliance-validation/deep-water/index.md)
 
 ### [Deployment](content/05-deployment/index.md)
 Get your code running reliably in production.

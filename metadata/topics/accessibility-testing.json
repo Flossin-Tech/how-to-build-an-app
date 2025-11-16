@@ -1,0 +1,118 @@
+{
+  "title": "Accessibility Testing",
+  "phase": "04-testing",
+  "slug": "accessibility-testing",
+  "description": "Ensure your app is usable by people with disabilities and meets WCAG compliance standards",
+  "reading_time_by_depth": {
+    "surface": 8,
+    "mid-depth": 25,
+    "deep-water": 45
+  },
+  "difficulty": {
+    "surface": "beginner",
+    "mid-depth": "intermediate",
+    "deep-water": "advanced"
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "ui-ux-design",
+    "compliance-validation",
+    "semantic-html",
+    "aria-patterns"
+  ],
+  "builds_on": ["ui-ux-design"],
+  "enables": [
+    "wcag-compliance",
+    "inclusive-design",
+    "government-contracts"
+  ],
+  "personas": {
+    "new-developer": "surface",
+    "yolo-dev": "surface",
+    "specialist-expanding": "mid-depth",
+    "generalist-leveling-up": "mid-depth",
+    "busy-developer": "surface"
+  },
+  "common_questions": [
+    "What's the difference between WCAG Level A, AA, and AAA?",
+    "How much can automated tools actually test?",
+    "Do I really need to test with a screen reader?",
+    "What's the minimum accessibility before launch?",
+    "How do I test keyboard navigation?"
+  ],
+  "red_flags": [
+    "Never tested with keyboard only",
+    "Never tested with screen reader",
+    "Lighthouse accessibility score below 90",
+    "All buttons are div elements",
+    "No alt text on images",
+    "Forms use placeholder-only labels",
+    "Can't see where focus is",
+    "Color contrast violations"
+  ],
+  "objectives": {
+    "surface": [
+      "Conduct 15-minute accessibility audit (keyboard, automated scan, screen reader)",
+      "Fix Big 5 issues (alt text, labels, contrast, keyboard access, headings)",
+      "Achieve WCAG Level A compliance minimum",
+      "Run automated accessibility tests in CI/CD",
+      "Understand when manual testing is required"
+    ],
+    "mid-depth": [
+      "Achieve WCAG Level AA compliance",
+      "Implement comprehensive screen reader testing",
+      "Test with multiple assistive technologies",
+      "Implement ARIA patterns correctly",
+      "Build accessibility regression test suite",
+      "Conduct user testing with people with disabilities"
+    ],
+    "deep-water": [
+      "Achieve WCAG Level AAA for critical paths",
+      "Test specialized accessibility needs (cognitive, motor, visual, auditory)",
+      "Conduct comprehensive accessibility audits",
+      "Implement accessibility monitoring and analytics",
+      "Train team on accessibility best practices",
+      "Prepare for Section 508 or ADA compliance audits"
+    ]
+  },
+  "tools": {
+    "surface": [
+      "Lighthouse (Chrome DevTools)",
+      "axe DevTools (browser extension)",
+      "WAVE (browser extension)",
+      "NVDA (Windows screen reader)",
+      "VoiceOver (Mac screen reader)"
+    ],
+    "mid-depth": [
+      "jest-axe (automated testing)",
+      "Pa11y (CI/CD accessibility testing)",
+      "JAWS (enterprise screen reader)",
+      "Color contrast analyzers",
+      "Accessibility Insights"
+    ],
+    "deep-water": [
+      "Deque axe Pro (enterprise testing)",
+      "Dragon (voice control)",
+      "Switch access devices",
+      "Eye tracking software",
+      "Accessibility consulting services"
+    ]
+  },
+  "examples": [
+    "examples/shared/accessibility/wcag-patterns",
+    "examples/shared/accessibility/aria-examples",
+    "examples/shared/accessibility/accessible-forms",
+    "examples/domain-specific/saas/accessibility-testing"
+  ],
+  "compliance_relevance": {
+    "ADA": "WCAG AA recommended for legal compliance",
+    "Section508": "WCAG AA required for US government",
+    "EUWebAccessibility": "WCAG AA required for public sector EU",
+    "AODA": "WCAG AA required for Ontario, Canada"
+  },
+  "effort_estimates": {
+    "surface": "15 minutes for basic audit, 2-4 hours to fix common issues",
+    "mid-depth": "1-2 weeks for comprehensive WCAG AA compliance",
+    "deep-water": "4-8 weeks for WCAG AAA and specialized accessibility"
+  }
+}

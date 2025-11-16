@@ -1,0 +1,108 @@
+{
+  "title": "Unit & Integration Testing",
+  "phase": "04-testing",
+  "slug": "unit-integration-testing",
+  "description": "Write tests that verify your code works, catch bugs early, and enable confident refactoring",
+  "reading_time_by_depth": {
+    "surface": 8,
+    "mid-depth": 25,
+    "deep-water": 45
+  },
+  "difficulty": {
+    "surface": "beginner",
+    "mid-depth": "intermediate",
+    "deep-water": "advanced"
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "security-testing",
+    "tdd",
+    "ci-cd-pipelines",
+    "error-handling-resilience"
+  ],
+  "builds_on": [],
+  "enables": [
+    "ci-cd-pipelines",
+    "refactoring",
+    "deployment-confidence"
+  ],
+  "personas": {
+    "new-developer": "surface",
+    "yolo-dev": "surface",
+    "specialist-expanding": "mid-depth",
+    "generalist-leveling-up": "mid-depth",
+    "busy-developer": "surface"
+  },
+  "common_questions": [
+    "What's the difference between unit and integration tests?",
+    "How much test coverage do I need?",
+    "Should I write tests first (TDD) or after?",
+    "When should I mock dependencies vs use real ones?",
+    "How do I test async code and promises?"
+  ],
+  "red_flags": [
+    "No tests before production deployment",
+    "Tests take 30+ minutes to run",
+    "Tests fail randomly (flaky tests)",
+    "Changing code breaks unrelated tests",
+    "100% coverage but bugs still slip through",
+    "Testing implementation details instead of behavior"
+  ],
+  "objectives": {
+    "surface": [
+      "Write first unit test for critical functionality",
+      "Understand unit vs integration vs E2E testing",
+      "Test critical user paths before shipping",
+      "Avoid common testing mistakes (testing implementation)",
+      "Set up basic test running in CI/CD"
+    ],
+    "mid-depth": [
+      "Apply test doubles (mocks, stubs, fakes) appropriately",
+      "Implement TDD workflow (red-green-refactor)",
+      "Organize test suites for maintainability",
+      "Write property-based tests for complex logic",
+      "Achieve meaningful test coverage (not just high %)"
+    ],
+    "deep-water": [
+      "Implement mutation testing for test effectiveness",
+      "Design contract tests for microservices",
+      "Build comprehensive integration test strategy",
+      "Handle complex async and concurrent testing",
+      "Optimize test suite performance and parallelization"
+    ]
+  },
+  "tools": {
+    "surface": [
+      "Jest (JavaScript)",
+      "pytest (Python)",
+      "JUnit (Java)",
+      "React Testing Library"
+    ],
+    "mid-depth": [
+      "Test doubles (Jest mocks, Sinon)",
+      "Property-based testing (fast-check, Hypothesis)",
+      "Coverage tools (Istanbul, Coverage.py)",
+      "Test organization frameworks"
+    ],
+    "deep-water": [
+      "Mutation testing (Stryker, PITest)",
+      "Contract testing (Pact)",
+      "Advanced mocking (WireMock)",
+      "Test parallelization tools"
+    ]
+  },
+  "examples": [
+    "examples/shared/testing/unit-test-patterns",
+    "examples/shared/testing/integration-test-db",
+    "examples/domain-specific/e-commerce/testing"
+  ],
+  "compliance_relevance": {
+    "SOC2": "Testing demonstrates security controls work as designed",
+    "ISO27001": "Testing validates security measures effectiveness"
+  },
+  "effort_estimates": {
+    "surface": "2-4 hours to write first tests for critical paths",
+    "mid-depth": "1-2 weeks to build comprehensive test suite",
+    "deep-water": "2-4 weeks for enterprise testing strategy"
+  }
+}
