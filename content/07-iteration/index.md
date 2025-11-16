@@ -20,9 +20,9 @@ The teams that succeed long-term aren't the ones that got everything right the f
 
 | Topic | Surface (5-10 min) | Mid-Depth (15-30 min) | Deep Water (30-60+ min) |
 |-------|-------------------|---------------------|---------------------|
-| Retrospectives | Coming Soon | Coming Soon | Coming Soon |
-| Security Posture Reviews | Coming Soon | Coming Soon | Coming Soon |
-| Feature Planning | Coming Soon | Coming Soon | Coming Soon |
+| **Retrospectives** | [Surface](retrospectives/surface/index.md) | [Mid-Depth](retrospectives/mid-depth/index.md) | [Deep Water](retrospectives/deep-water/index.md) |
+| **Security Posture Reviews** | [Surface](security-posture-reviews/surface/index.md) | [Mid-Depth](security-posture-reviews/mid-depth/index.md) | [Deep Water](security-posture-reviews/deep-water/index.md) |
+| **Feature Planning** | [Surface](feature-planning/surface/index.md) | [Mid-Depth](feature-planning/mid-depth/index.md) | [Deep Water](feature-planning/deep-water/index.md) |
 
 ## What Comes Next
 

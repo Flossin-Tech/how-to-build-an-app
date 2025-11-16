@@ -129,9 +129,9 @@ Keep it running and handle when things go wrong.
 
 ### [Iteration](content/07-iteration/index.md)
 Learn from what happened and improve.
-- Retrospectives
-- Security Posture Reviews
-- Feature Planning
+- Retrospectives → [Surface](content/07-iteration/retrospectives/surface/index.md) | [Mid-Depth](content/07-iteration/retrospectives/mid-depth/index.md) | [Deep Water](content/07-iteration/retrospectives/deep-water/index.md)
+- Security Posture Reviews → [Surface](content/07-iteration/security-posture-reviews/surface/index.md) | [Mid-Depth](content/07-iteration/security-posture-reviews/mid-depth/index.md) | [Deep Water](content/07-iteration/security-posture-reviews/deep-water/index.md)
+- Feature Planning → [Surface](content/07-iteration/feature-planning/surface/index.md) | [Mid-Depth](content/07-iteration/feature-planning/mid-depth/index.md) | [Deep Water](content/07-iteration/feature-planning/deep-water/index.md)
 
 ## DevSecOps Integrated Throughout
 
