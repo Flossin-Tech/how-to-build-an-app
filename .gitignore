@@ -1,15 +1,6 @@
 
 # Research & Planning Files (Internal Use Only)
-RESEARCH_*.md
-DESIGN_*.md
-02-DESIGN_*.md
-04-TESTING_*.md
-DEPLOYMENT_*.md
-ACCESS_CONTROL_*.md
-INCIDENT_RESPONSE_*.md
-OPERATIONS_*.md
-PATCH_*.md
-*_ANALYSIS.md
+research/
 
 # Internal Documentation & Templates
 CONTENT_MODULE_TEMPLATES.md

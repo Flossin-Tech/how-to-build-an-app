@@ -165,6 +165,10 @@ As your project grows—more users, more revenue, more risk—you'll naturally n
 
 **That's fine.** Build for where you are now, not where you might be someday. Come back when the pain points emerge.
 
+## Additional Resources
+
+**[References](references.md)** - Complete bibliography of all books, research papers, industry case studies, standards, and tools referenced throughout this guide. Organized by category for easy lookup.
+
 ## Contributing
 
 This guide is open-source and evolves based on real-world feedback. If you found a section unclear, a strategy that backfired, or a gap we missed—contribute.
