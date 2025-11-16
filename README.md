@@ -60,9 +60,9 @@ The solution might be a different app, a spreadsheet, a process change, or doing
 
 ### 3. Non-Linear by Design
 You don't need to read this cover-to-cover. Each section is self-contained enough to be useful on its own:
-- Have an idea but don't know where to start? → Begin at "Spot the Job to Be Done"
-- Already building but getting security warnings? → Jump to "Threat Modeling" or "Security Testing"
-- Code works but keeps breaking in production? → Go to "Monitoring & Logging"
+- Have an idea but don't know where to start? → Begin at [Spot the Job to Be Done](content/01-discovery-planning/job-to-be-done/surface/index.md)
+- Already building but getting security warnings? → Jump to [Threat Modeling](content/01-discovery-planning/threat-modeling/surface/index.md) or [Security Testing](content/04-testing/security-testing/surface/index.md)
+- Code works but keeps breaking in production? → Go to [Monitoring & Logging](content/06-operations/monitoring-logging/surface/index.md)
 - Familiar with web apps but new to ML? → Use the same workflow, different examples
 
 ### 4. Thermoclines Prevent Drowning
