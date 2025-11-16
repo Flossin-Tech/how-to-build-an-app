@@ -20,10 +20,10 @@ The difference between a good deployment and a disaster is usually planning. Can
 
 | Topic | Surface (5-10 min) | Mid-Depth (15-30 min) | Deep Water (30-60+ min) |
 |-------|-------------------|---------------------|---------------------|
-| Infrastructure as Code | Coming Soon | Coming Soon | Coming Soon |
-| CI/CD Pipeline Security | Coming Soon | Coming Soon | Coming Soon |
-| Deployment Strategy | Coming Soon | Coming Soon | Coming Soon |
-| Access Control | Coming Soon | Coming Soon | Coming Soon |
+| Infrastructure as Code | [Surface](infrastructure-as-code/surface/index.md) | [Mid-Depth](infrastructure-as-code/mid-depth/index.md) | [Deep Water](infrastructure-as-code/deep-water/index.md) |
+| CI/CD Pipeline Security | [Surface](cicd-pipeline-security/surface/index.md) | [Mid-Depth](cicd-pipeline-security/mid-depth/index.md) | [Deep Water](cicd-pipeline-security/deep-water/index.md) |
+| Deployment Strategy | [Surface](deployment-strategy/surface/index.md) | [Mid-Depth](deployment-strategy/mid-depth/index.md) | [Deep Water](deployment-strategy/deep-water/index.md) |
+| Access Control | [Surface](access-control/surface/index.md) | [Mid-Depth](access-control/mid-depth/index.md) | [Deep Water](access-control/deep-water/index.md) |
 
 ## What Comes Next
 

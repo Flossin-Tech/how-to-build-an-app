@@ -113,10 +113,10 @@ Verify it works, is accessible, and won't break or get hacked.
 
 ### [Deployment](content/05-deployment/index.md)
 Get your code running reliably in production.
-- Infrastructure as Code
-- CI/CD Pipeline Security
-- Deployment Strategy
-- Access Control
+- Infrastructure as Code → [Surface](content/05-deployment/infrastructure-as-code/surface/index.md) | [Mid-Depth](content/05-deployment/infrastructure-as-code/mid-depth/index.md) | [Deep Water](content/05-deployment/infrastructure-as-code/deep-water/index.md)
+- CI/CD Pipeline Security → [Surface](content/05-deployment/cicd-pipeline-security/surface/index.md) | [Mid-Depth](content/05-deployment/cicd-pipeline-security/mid-depth/index.md) | [Deep Water](content/05-deployment/cicd-pipeline-security/deep-water/index.md)
+- Deployment Strategy → [Surface](content/05-deployment/deployment-strategy/surface/index.md) | [Mid-Depth](content/05-deployment/deployment-strategy/mid-depth/index.md) | [Deep Water](content/05-deployment/deployment-strategy/deep-water/index.md)
+- Access Control → [Surface](content/05-deployment/access-control/surface/index.md) | [Mid-Depth](content/05-deployment/access-control/mid-depth/index.md) | [Deep Water](content/05-deployment/access-control/deep-water/index.md)
 
 ### [Operations](content/06-operations/index.md)
 Keep it running and handle when things go wrong.

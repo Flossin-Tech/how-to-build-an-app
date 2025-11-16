@@ -4,6 +4,8 @@ RESEARCH_*.md
 DESIGN_*.md
 02-DESIGN_*.md
 04-TESTING_*.md
+DEPLOYMENT_*.md
+ACCESS_CONTROL_*.md
 
 # Internal Documentation & Templates
 CONTENT_MODULE_TEMPLATES.md
