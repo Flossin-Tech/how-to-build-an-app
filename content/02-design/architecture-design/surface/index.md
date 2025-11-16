@@ -28,7 +28,7 @@ There are dozens of architecture patterns, but two dominate every conversation: 
 
 **Microservices** split functionality into separate applications that communicate over a network. Your user service is separate from your payment service, which is separate from your notification service. Each can be deployed independently. Netflix runs hundreds of microservices. So does Amazon.
 
-![Side-by-side comparison of monolithic architecture (single deployable unit with shared database) versus microservices architecture (multiple independent services with API gateway and separate databases)](../../../assets/diagrams/monolith-vs-microservices.svg)
+![Side-by-side comparison of monolithic architecture (single deployable unit with shared database) versus microservices architecture (multiple independent services with API gateway and separate databases)](../../../assets/images/monolith-vs-microservices.png)
 
 **Figure 1**: Monolith vs Microservices - understanding the fundamental architectural difference
 
@@ -86,7 +86,7 @@ src/
 
 Each component has its own folder. Shared utilities live in `shared/`. The rule: components can use shared utilities, but they shouldn't directly import from other components. If `cart` needs product information, it goes through a defined interface, not by directly importing `catalog.products`.
 
-![Modular monolith directory structure showing components (catalog, cart, checkout, orders) with clear separation, shared utilities layer, and defined interfaces between components](../../../assets/diagrams/modular-monolith-structure.svg)
+![Modular monolith directory structure showing components (catalog, cart, checkout, orders) with clear separation, shared utilities layer, and defined interfaces between components](../../../assets/images/modular-monolith-structure.png)
 
 **Figure 2**: Modular monolith structure with clear component boundaries and shared utilities
 
@@ -116,7 +116,7 @@ How do you know if your architecture is causing problems? These three signs show
 
 This happens in both monoliths and microservices. In a monolith, you have too much coupling between components. In microservices, you have services that are sliced wrong, forcing every change to coordinate across multiple services.
 
-![Comparison of good versus bad component boundaries - left side shows isolated components with clear interfaces, right side shows tangled dependencies where every component depends on every other component](../../../assets/diagrams/component-boundary-patterns.svg)
+![Comparison of good versus bad component boundaries - left side shows isolated components with clear interfaces, right side shows tangled dependencies where every component depends on every other component](../../../assets/images/component-boundary-patterns.png)
 
 **Figure 3**: Good boundaries (isolated components) vs bad boundaries (tangled dependencies)
 
