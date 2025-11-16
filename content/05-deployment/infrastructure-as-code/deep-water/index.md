@@ -1277,8 +1277,17 @@ The goal isn't using every advanced pattern. It's using the right patterns for y
 
 ---
 
-## Related Topics
+## Navigation
 
-- [Deployment Strategy](../../deployment-strategy/deep-water/index.md) - Immutable infrastructure and GitOps at scale
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/deep-water/index.md) - Securing IaC in automated pipelines
-- [Access Control](../../access-control/deep-water/index.md) - Fine-grained infrastructure permissions
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Deployment Strategy](../../deployment-strategy/deep-water/index.md) - Related deployment considerations
+- [CI/CD Pipeline Security](../../cicd-pipeline-security/deep-water/index.md) - Related deployment considerations
+- [Access Control](../../access-control/deep-water/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

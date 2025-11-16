@@ -630,3 +630,20 @@ If you're implementing this from scratch:
 6. **Quarter 3**: Session recording for sensitive operations
 
 For deeper implementation details on zero-trust architecture, certificate-based authentication, and compliance automation, see the deep-water content.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Infrastructure as Code](../../infrastructure-as-code/mid-depth/index.md) - Related deployment considerations
+- [CI/CD Pipeline Security](../../cicd-pipeline-security/mid-depth/index.md) - Related deployment considerations
+- [Deployment Strategy](../../deployment-strategy/mid-depth/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

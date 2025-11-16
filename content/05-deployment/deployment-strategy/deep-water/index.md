@@ -1107,3 +1107,20 @@ Both organizations deploy hundreds of times per day with high reliability. Both 
 - **Flagger Documentation:** https://docs.flagger.app
 - **Spinnaker:** https://spinnaker.io/
 - **Martin Fowler - Feature Toggles:** https://martinfowler.com/articles/feature-toggles.html
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Infrastructure as Code](../../infrastructure-as-code/deep-water/index.md) - Related deployment considerations
+- [CI/CD Pipeline Security](../../cicd-pipeline-security/deep-water/index.md) - Related deployment considerations
+- [Access Control](../../access-control/deep-water/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

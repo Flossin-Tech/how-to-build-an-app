@@ -252,3 +252,20 @@ Pick the strategy that matches your tolerance for things going wrong and your in
 4. **Practice rollback:** Test your rollback procedure in staging before you need it in production.
 
 The goal isn't perfection. The goal is knowing what will happen when deployment fails, and having a plan to recover quickly.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Infrastructure as Code](../../infrastructure-as-code/surface/index.md) - Related deployment considerations
+- [CI/CD Pipeline Security](../../cicd-pipeline-security/surface/index.md) - Related deployment considerations
+- [Access Control](../../access-control/surface/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

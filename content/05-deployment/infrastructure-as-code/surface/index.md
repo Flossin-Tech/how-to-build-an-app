@@ -191,8 +191,17 @@ Start small. Automate one piece. Learn the tool. Expand gradually. Don't try to 
 
 ---
 
-## Related Topics
+## Navigation
 
-- [Deployment Strategy](../../deployment-strategy/surface/index.md) - How IaC enables safe deployment patterns
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/surface/index.md) - Securing your IaC automation
-- [Access Control](../../access-control/surface/index.md) - Who can change infrastructure
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Deployment Strategy](../../deployment-strategy/surface/index.md) - Related deployment considerations
+- [CI/CD Pipeline Security](../../cicd-pipeline-security/surface/index.md) - Related deployment considerations
+- [Access Control](../../access-control/surface/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

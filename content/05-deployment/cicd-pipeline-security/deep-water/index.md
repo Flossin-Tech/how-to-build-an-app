@@ -1215,3 +1215,20 @@ CI/CD security is infrastructure security. The right level depends on your threa
 The CircleCI breach showed that even major CI/CD platforms can be compromised. Defense in depth - combining technical controls with operational processes - provides the best protection.
 
 Perfect security is impossible. Good-enough security prevents real-world attacks and limits damage when breaches occur. Start with basic controls, measure what matters, and invest in harder problems as your security maturity grows.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
+
+### Related Topics
+- [Infrastructure as Code](../../infrastructure-as-code/deep-water/index.md) - Related deployment considerations
+- [Deployment Strategy](../../deployment-strategy/deep-water/index.md) - Related deployment considerations
+- [Access Control](../../access-control/deep-water/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

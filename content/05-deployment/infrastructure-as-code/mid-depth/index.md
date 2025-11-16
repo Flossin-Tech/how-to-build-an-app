@@ -736,8 +736,17 @@ Infrastructure as Code is about reliability and repeatability, not perfection. S
 
 ---
 
-## Related Topics
+## Navigation
 
-- [Deployment Strategy](../../deployment-strategy/mid-depth/index.md) - Immutable infrastructure and GitOps
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/mid-depth/index.md) - Securing your IaC automation
-- [Access Control](../../access-control/mid-depth/index.md) - RBAC for infrastructure changes
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Deployment Strategy](../../deployment-strategy/mid-depth/index.md) - Related deployment considerations
+- [CI/CD Pipeline Security](../../cicd-pipeline-security/mid-depth/index.md) - Related deployment considerations
+- [Access Control](../../access-control/mid-depth/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

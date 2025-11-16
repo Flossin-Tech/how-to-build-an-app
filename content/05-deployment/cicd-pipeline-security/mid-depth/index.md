@@ -690,3 +690,20 @@ This mid-depth coverage gives you production-ready CI/CD security for most organ
 3. Actually doing the checklist items above
 
 Perfect security is expensive. Good-enough security prevents real-world attacks.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick start
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Infrastructure as Code](../../infrastructure-as-code/mid-depth/index.md) - Related deployment considerations
+- [Deployment Strategy](../../deployment-strategy/mid-depth/index.md) - Related deployment considerations
+- [Access Control](../../access-control/mid-depth/index.md) - Related deployment considerations
+
+### Navigate
+- [← Back to Deployment Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)
