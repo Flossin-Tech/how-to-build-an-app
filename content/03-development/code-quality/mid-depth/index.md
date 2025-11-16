@@ -1115,10 +1115,20 @@ For advanced topics including technical debt quantification, code quality framew
 
 To apply these principles to existing code, see [Refactoring](/content/03-development/refactoring/). To ensure quality through team processes, see [Code Review Process](/content/03-development/code-review-process/).
 
+
 ---
 
-**Navigation:**
-- **Phase:** [03-development](/content/03-development/)
-- **Related Topics:** [Refactoring](/content/03-development/refactoring/), [Code Review Process](/content/03-development/code-review-process/), [Secure Coding Practices](/content/03-development/secure-coding-practices/)
-- **Previous Depth:** [Surface: Code Quality Essentials](/content/03-development/code-quality/surface/)
-- **Next Depth:** [Deep Water: Enterprise Code Quality](/content/03-development/code-quality/deep-water/)
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [refactoring](../../refactoring/mid-depth/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/mid-depth/index.md) - Related development considerations
+- [secure-coding-practices](../../secure-coding-practices/mid-depth/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

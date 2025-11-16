@@ -219,11 +219,20 @@ If not, it might be overly clever or solving problems that don't exist.
 
 You don't have to fix everything. You can't fix everything. But every small improvement compounds. Six months of small improvements transforms a codebase.
 
+
 ---
 
 ## Navigation
 
-**Current**: Surface Level
-**Next Depth**: [Mid-Depth - Code Smells & Refactoring Catalog](../mid-depth/index.md)
-**Related Topics**: [Code Quality](../../code-quality/surface/index.md) | [Testing Strategy](../../testing-strategy/surface/index.md) | [Code Review Process](../../code-review-process/surface/index.md)
-**Phase**: [03 - Development](../../README.md)
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [code-quality](../../code-quality/surface/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/surface/index.md) - Related development considerations
+- [secret-management](../../secret-management/surface/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

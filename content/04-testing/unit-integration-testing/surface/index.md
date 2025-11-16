@@ -499,3 +499,20 @@ You don't need perfect tests. You need enough tests that you can ship with confi
 Start with one test for your critical path. Add tests when you fix bugs. Test security boundaries and edge cases. Run tests before deploying.
 
 That's enough to prevent most of the pain.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Security Testing](../../security-testing/surface/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/surface/index.md) - Related testing considerations
+- [Compliance Validation](../../compliance-validation/surface/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

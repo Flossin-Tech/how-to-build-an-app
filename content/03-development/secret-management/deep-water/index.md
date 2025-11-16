@@ -3055,14 +3055,20 @@ Patterns that fail at enterprise scale.
 | **GitOps workflow** | Sealed Secrets or SOPS | Encrypted secrets in git |
 | **High-security, zero-trust** | Vault with dynamic secrets + short-lived tokens | Minimal credential lifetime |
 
+
 ---
 
 ## Navigation
 
-**Current**: Deep Water Level - Enterprise secret management architecture
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
 
-**Related Topics**:
-- [Secure Coding Practices](../../secure-coding-practices/deep-water/index.md) - Security principles for writing code
-- [Deployment Strategy](../../../05-deployment/deployment-strategy/deep-water/index.md) - Injecting secrets during deployment
-- [Incident Response](../../../06-operations/incident-response/deep-water/index.md) - Responding to security incidents
-- [Supply Chain Security](../../supply-chain-security/deep-water/index.md) - Managing secrets in dependencies and CI/CD
+### Related Topics
+- [secure-coding-practices](../../secure-coding-practices/deep-water/index.md) - Related development considerations
+- [supply-chain-security](../../supply-chain-security/deep-water/index.md) - Related development considerations
+- [refactoring](../../refactoring/deep-water/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

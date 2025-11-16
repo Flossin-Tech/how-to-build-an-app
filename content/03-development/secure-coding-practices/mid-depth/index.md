@@ -1467,20 +1467,20 @@ Before merging code, verify:
 - **OWASP Cheat Sheet Series** - Quick reference for secure coding patterns
 - **PortSwigger Web Security Academy** - Free, hands-on security training
 
+
 ---
 
 ## Navigation
 
-**Current Location:** Phase 03 - Development → Secure Coding Practices → Mid-Depth
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
 
-**Related Topics:**
-- [Secret Management](../../secret-management/mid-depth/) - Secure handling of credentials and keys
-- [Code Review Process](../../code-review-process/mid-depth/) - Security-focused code review
-- [Supply Chain Security](../../supply-chain-security/mid-depth/) - Dependency and build pipeline security
-- [Threat Modeling](../../../02-design/threat-modeling/mid-depth/) - Understanding attack vectors
+### Related Topics
+- [code-quality](../../code-quality/mid-depth/index.md) - Related development considerations
+- [secret-management](../../secret-management/mid-depth/index.md) - Related development considerations
+- [supply-chain-security](../../supply-chain-security/mid-depth/index.md) - Related development considerations
 
-**Next Steps:**
-- Go deeper: [Deep Water Secure Coding](../deep-water/) - Advanced AppSec and security programs
-- Go lighter: [Surface Secure Coding](../surface/) - Essential security quick reference
-- Apply it: Implement SAST scanning in your CI/CD pipeline
-- Practice: Run OWASP ZAP against your application
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

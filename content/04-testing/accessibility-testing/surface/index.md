@@ -578,3 +578,20 @@ When you're ready to go deeper:
 - **Compliance Validation**: Legal and regulatory requirements for accessibility
 
 The best time to add accessibility was when you started building. The second best time is now.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Unit & Integration Testing](../../unit-integration-testing/surface/index.md) - Related testing considerations
+- [Security Testing](../../security-testing/surface/index.md) - Related testing considerations
+- [Compliance Validation](../../compliance-validation/surface/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -185,10 +185,20 @@ This gives you enough to start doing code review without creating more problems 
 
 For systematic review practices and what specifically to look for, see the mid-depth content. For building review culture at scale and advanced techniques, see deep-water content.
 
+
 ---
 
-**Related Topics:**
-- [Code Quality](../../code-quality/surface/index.md) - What makes code "good"
-- [Testing Strategy](../../testing-strategy/surface/index.md) - Verification before and after review
-- [Secure Coding Practices](../../secure-coding-practices/surface/index.md) - Security review checklist
-- [Refactoring](../../refactoring/surface/index.md) - Improving code found in review
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [code-quality](../../code-quality/surface/index.md) - Related development considerations
+- [refactoring](../../refactoring/surface/index.md) - Related development considerations
+- [secure-coding-practices](../../secure-coding-practices/surface/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

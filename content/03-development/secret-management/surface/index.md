@@ -224,17 +224,20 @@ Don't let perfect be the enemy of good. Environment variables are infinitely bet
 
 **If it's a secret, it doesn't belong in git.**
 
+
 ---
 
 ## Navigation
 
-**Current**: Surface Level - Essential rules for safe secret handling
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
 
-**Next Steps**:
-- **Mid-Depth**: Secret management services, rotation strategies, and development workflows
-- **Deep Water**: Enterprise secret architecture, encryption key management, and zero-trust access
+### Related Topics
+- [secure-coding-practices](../../secure-coding-practices/surface/index.md) - Related development considerations
+- [supply-chain-security](../../supply-chain-security/surface/index.md) - Related development considerations
+- [refactoring](../../refactoring/surface/index.md) - Related development considerations
 
-**Related Topics**:
-- [Secure Coding Practices](../../secure-coding-practices/surface/index.md) - Security principles for writing code
-- [Deployment Strategy](../../../05-deployment/deployment-strategy/surface/index.md) - Injecting secrets during deployment
-- [Incident Response](../../../06-operations/incident-response/surface/index.md) - Responding when secrets are exposed
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -2680,26 +2680,20 @@ Bringing it all together.
 - Continuous improvement
 - Industry engagement
 
+
 ---
 
 ## Navigation
 
-**You are here**: 03-development → supply-chain-security → deep-water
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
 
-**Related topics**:
-- [Secure Coding Practices](../../secure-coding-practices/deep-water/) - Securing code you write
-- [Secret Management](../../secret-management/deep-water/) - Protecting credentials in supply chain
-- [Deployment Strategy](../../../05-deployment/deployment-strategy/deep-water/) - Secure deployment pipelines
-- [Incident Response](../../../06-operations/incident-response/deep-water/) - Responding to supply chain incidents
+### Related Topics
+- [secure-coding-practices](../../secure-coding-practices/deep-water/index.md) - Related development considerations
+- [secret-management](../../secret-management/deep-water/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/deep-water/index.md) - Related development considerations
 
-**Other depths**:
-- [Surface](../surface/) - Quick overview and essential practices
-- [Mid-Depth](../mid-depth/) - Dependency scanning, SBOM, systematic management
-
-**Next steps**:
-- Assess your current maturity level
-- Generate SBOMs for all applications
-- Implement SLSA Level 2+ builds
-- Create supply chain incident response playbook
-- Establish metrics and dashboards
-- Consider contributing to open source security efforts
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

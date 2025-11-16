@@ -332,9 +332,20 @@ This is the bare minimum. If you want to ship code that doesn't embarrass you th
 
 For deeper understanding of how to apply these principles systematically, see **Mid-Depth: Code Quality in Practice**. For advanced considerations in large codebases and team environments, see **Deep Water: Enterprise Code Quality**.
 
+
 ---
 
-**Navigation:**
-- **Phase:** [03-development](/content/03-development/)
-- **Related Topics:** [Refactoring](/content/03-development/refactoring/), [Code Review Process](/content/03-development/code-review-process/), [Secure Coding Practices](/content/03-development/secure-coding-practices/)
-- **Next Depth:** [Mid-Depth: Code Quality in Practice](/content/03-development/code-quality/mid-depth/)
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Refactoring](../../refactoring/surface/index.md) - Related development considerations
+- [Code Review Process](../../code-review-process/surface/index.md) - Related development considerations
+- [Secure Coding Practices](../../secure-coding-practices/surface/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

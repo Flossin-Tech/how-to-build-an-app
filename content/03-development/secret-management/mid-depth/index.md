@@ -1186,17 +1186,20 @@ Signs it's time for a real secret management service:
 
 Environment variables are fine for startups and small projects. Production systems handling sensitive data need more.
 
+
 ---
 
 ## Navigation
 
-**Current**: Mid-Depth Level - Production secret management implementation
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
 
-**Next Steps**:
-- **Deep Water**: Enterprise secret architecture, encryption key management, Kubernetes integration, and zero-trust access
+### Related Topics
+- [secure-coding-practices](../../secure-coding-practices/mid-depth/index.md) - Related development considerations
+- [supply-chain-security](../../supply-chain-security/mid-depth/index.md) - Related development considerations
+- [refactoring](../../refactoring/mid-depth/index.md) - Related development considerations
 
-**Related Topics**:
-- [Secure Coding Practices](../../secure-coding-practices/mid-depth/index.md) - Security principles for writing code
-- [Deployment Strategy](../../../05-deployment/deployment-strategy/mid-depth/index.md) - Injecting secrets during deployment
-- [Incident Response](../../../06-operations/incident-response/mid-depth/index.md) - Responding to security incidents
-- [Supply Chain Security](../../supply-chain-security/mid-depth/index.md) - Managing secrets in dependencies and CI/CD
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

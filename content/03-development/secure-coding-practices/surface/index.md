@@ -246,18 +246,20 @@ If you can check all ten boxes, you've covered the basics.
 
 Security isn't paranoia when the threats are real. Write code that assumes bad input and handles it gracefully.
 
+
 ---
 
 ## Navigation
 
-**Current Location:** Phase 03 - Development → Secure Coding Practices → Surface
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
 
-**Related Topics:**
-- [Secret Management](../../secret-management/surface/) - Handling credentials and cryptographic keys
-- [Code Review Process](../../code-review-process/surface/) - Catching security issues in review
-- [Threat Modeling](../../../02-design/threat-modeling/surface/) - Understanding what attackers might do
+### Related Topics
+- [code-quality](../../code-quality/surface/index.md) - Related development considerations
+- [secret-management](../../secret-management/surface/index.md) - Related development considerations
+- [supply-chain-security](../../supply-chain-security/surface/index.md) - Related development considerations
 
-**Next Steps:**
-- Go deeper: [Mid-Depth Secure Coding](../mid-depth/) - OWASP Top 10 and defensive programming
-- Apply it: Run a security scanner on your codebase (OWASP ZAP, SonarQube free tier)
-- Practice: Fix one hardcoded secret or one SQL concatenation today
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

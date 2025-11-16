@@ -2260,27 +2260,20 @@ Secure coding is not a destination - it's a continuous journey. The threat lands
 
 The difference between a secure application and a breached one often comes down to consistent application of fundamental principles. Master the basics, apply them relentlessly, and build security into your development culture.
 
+
 ---
 
 ## Navigation
 
-**Current Location:** Phase 03 - Development → Secure Coding Practices → Deep Water
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
 
-**Related Topics:**
-- [Secret Management](../../secret-management/deep-water/) - Advanced cryptographic key management
-- [Supply Chain Security](../../supply-chain-security/deep-water/) - Securing the entire software supply chain
-- [Code Review Process](../../code-review-process/deep-water/) - Security-focused code review at scale
-- [Threat Modeling](../../../02-design/threat-modeling/deep-water/) - Advanced threat analysis techniques
+### Related Topics
+- [code-quality](../../code-quality/deep-water/index.md) - Related development considerations
+- [secret-management](../../secret-management/deep-water/index.md) - Related development considerations
+- [supply-chain-security](../../supply-chain-security/deep-water/index.md) - Related development considerations
 
-**Next Steps:**
-- Go lighter: [Mid-Depth Secure Coding](../mid-depth/) - OWASP Top 10 practical guide
-- Apply it: Implement security champions program in your organization
-- Practice: Conduct security tabletop exercise with your team
-- Learn: Participate in CTF (Capture The Flag) competitions to understand attacker mindset
-
-**Resources:**
-- OWASP Top 10: https://owasp.org/Top10/
-- OWASP ASVS (Application Security Verification Standard): https://owasp.org/asvs/
-- CWE Top 25: https://cwe.mitre.org/top25/
-- NIST Secure Software Development Framework: https://csrc.nist.gov/publications/detail/sp/800-218/final
-- PortSwigger Web Security Academy: https://portswigger.net/web-security
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

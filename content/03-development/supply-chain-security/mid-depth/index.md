@@ -757,24 +757,20 @@ Codecov breach (2021): Bash Uploader script was compromised, stealing environmen
 - [ ] Build artifacts signed or attested
 - [ ] CI environment isolated from production
 
+
 ---
 
 ## Navigation
 
-**You are here**: 03-development → supply-chain-security → mid-depth
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
 
-**Related topics**:
-- [Secure Coding Practices](../../secure-coding-practices/mid-depth/) - Writing secure code
-- [Secret Management](../../secret-management/mid-depth/) - Protecting credentials and keys
-- [Deployment Strategy](../../../05-deployment/deployment-strategy/mid-depth/) - Deployment security
+### Related Topics
+- [secure-coding-practices](../../secure-coding-practices/mid-depth/index.md) - Related development considerations
+- [secret-management](../../secret-management/mid-depth/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/mid-depth/index.md) - Related development considerations
 
-**Other depths**:
-- [Surface](../surface/) - Quick overview and essential practices
-- [Deep Water](../deep-water/) - Enterprise supply chain programs, SLSA, zero-trust dependencies
-
-**Next steps**:
-- Set up automated dependency scanning in your CI pipeline
-- Generate an SBOM for your application
-- Enable Dependabot or Renovate
-- Review and document your license compliance policy
-- Implement container image scanning before registry push
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

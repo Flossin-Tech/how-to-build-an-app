@@ -1656,3 +1656,20 @@ Mock at architectural boundaries. Test behavior, not implementation. Use propert
 Focus on test effectiveness (do they catch bugs?) not test coverage (what lines ran?).
 
 Tests are production code. Treat them with the same care.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Security Testing](../../security-testing/mid-depth/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/mid-depth/index.md) - Related testing considerations
+- [Compliance Validation](../../compliance-validation/mid-depth/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

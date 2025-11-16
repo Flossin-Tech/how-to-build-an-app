@@ -1599,3 +1599,20 @@ Security at this level isn't about tools or checklists. It's about systematic th
 The techniques here are for teams where security is existential - breaches mean business failure. If that's not you, the mid-depth layer probably serves you better.
 
 But when security determines whether your business survives, these patterns provide the rigor and depth needed to defend against serious adversaries.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
+
+### Related Topics
+- [Unit & Integration Testing](../../unit-integration-testing/deep-water/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/deep-water/index.md) - Related testing considerations
+- [Compliance Validation](../../compliance-validation/deep-water/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

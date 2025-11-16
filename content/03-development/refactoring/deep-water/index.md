@@ -920,12 +920,20 @@ The code will never be perfect. That's not the goal. The goal is continuous impr
 
 Six months of that transforms a codebase. Two years of that transforms an organization.
 
+
 ---
 
 ## Navigation
 
-**Current**: Deep Water Level
-**Previous**: [Mid-Depth - Code Smells & Refactoring Catalog](../mid-depth/index.md)
-**Back to Surface**: [Surface - Refactoring Basics](../surface/index.md)
-**Related Topics**: [Code Quality](../../code-quality/deep-water/index.md) | [Testing Strategy](../../testing-strategy/deep-water/index.md) | [Code Review Process](../../code-review-process/deep-water/index.md)
-**Phase**: [03 - Development](../../README.md)
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
+
+### Related Topics
+- [code-quality](../../code-quality/deep-water/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/deep-water/index.md) - Related development considerations
+- [secret-management](../../secret-management/deep-water/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

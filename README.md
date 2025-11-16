@@ -120,10 +120,10 @@ Get your code running reliably in production.
 
 ### [Operations](content/06-operations/index.md)
 Keep it running and handle when things go wrong.
-- Monitoring & Logging
-- Incident Response
-- Patch Management
-- Backup & Recovery
+- Monitoring & Logging → [Surface](content/06-operations/monitoring-logging/surface/index.md) | [Mid-Depth](content/06-operations/monitoring-logging/mid-depth/index.md) | [Deep Water](content/06-operations/monitoring-logging/deep-water/index.md)
+- Incident Response → [Surface](content/06-operations/incident-response/surface/index.md) | [Mid-Depth](content/06-operations/incident-response/mid-depth/index.md) | [Deep Water](content/06-operations/incident-response/deep-water/index.md)
+- Patch Management → [Surface](content/06-operations/patch-management/surface/index.md) | [Mid-Depth](content/06-operations/patch-management/mid-depth/index.md) | [Deep Water](content/06-operations/patch-management/deep-water/index.md)
+- Backup & Recovery → [Surface](content/06-operations/backup-recovery/surface/index.md) | [Mid-Depth](content/06-operations/backup-recovery/mid-depth/index.md) | [Deep Water](content/06-operations/backup-recovery/deep-water/index.md)
 
 ### [Iteration](content/07-iteration/index.md)
 Learn from what happened and improve.

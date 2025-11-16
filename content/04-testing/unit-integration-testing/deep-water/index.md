@@ -1824,3 +1824,20 @@ Testing at this scale isn't about more tests. It's about strategic testing: high
 The techniques here work for teams building systems where testing complexity rivals application complexity. If you're not there yet, that's fine - the mid-depth layer probably serves you better.
 
 But when your test suite becomes the bottleneck, when flaky tests destroy productivity, when integration testing costs more than the features it validates - these patterns solve those problems.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
+
+### Related Topics
+- [Security Testing](../../security-testing/deep-water/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/deep-water/index.md) - Related testing considerations
+- [Compliance Validation](../../compliance-validation/deep-water/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

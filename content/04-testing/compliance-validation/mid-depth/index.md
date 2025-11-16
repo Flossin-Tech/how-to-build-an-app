@@ -1847,3 +1847,19 @@ The goal isn't perfect compliance on day one. The goal is building systems that 
 Start with the frameworks that matter for your users and industry. Add automated tests for critical requirements. Monitor continuously. Expand coverage over time.
 
 Compliance isn't a checkbox. It's a continuous process that you can make testable, automated, and sustainable.
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Unit & Integration Testing](../../unit-integration-testing/mid-depth/index.md) - Related testing considerations
+- [Security Testing](../../security-testing/mid-depth/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/mid-depth/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

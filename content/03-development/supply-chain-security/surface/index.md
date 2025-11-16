@@ -201,17 +201,20 @@ If you checked fewer than 5, you have supply chain exposure.
 
 The defense is visibility, automation, and healthy skepticism.
 
+
 ---
 
 ## Navigation
 
-**You are here**: 03-development → supply-chain-security → surface
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
 
-**Related topics**:
-- [Secure Coding Practices](../../secure-coding-practices/surface/) - Code you write
-- [Secret Management](../../secret-management/surface/) - Protecting credentials in CI/CD
-- [Dependency Review](../../../02-design/dependency-review/surface/) - Design-time dependency decisions
+### Related Topics
+- [secure-coding-practices](../../secure-coding-practices/surface/index.md) - Related development considerations
+- [secret-management](../../secret-management/surface/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/surface/index.md) - Related development considerations
 
-**Go deeper**:
-- [Mid-Depth](../mid-depth/) - Dependency scanning tools, SBOM generation, systematic management
-- [Deep Water](../deep-water/) - Enterprise supply chain programs, SLSA framework, zero-trust dependencies
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -6,6 +6,10 @@ DESIGN_*.md
 04-TESTING_*.md
 DEPLOYMENT_*.md
 ACCESS_CONTROL_*.md
+INCIDENT_RESPONSE_*.md
+OPERATIONS_*.md
+PATCH_*.md
+*_ANALYSIS.md
 
 # Internal Documentation & Templates
 CONTENT_MODULE_TEMPLATES.md
@@ -14,6 +18,7 @@ outline.md
 
 # Claude
 CLAUDE.md
+.claude/
 
 # System Files
 .DS_Store

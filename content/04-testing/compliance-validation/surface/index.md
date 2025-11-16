@@ -593,3 +593,20 @@ This surface layer helps you identify which compliance frameworks apply to you a
 - [Audit Logging](../../../06-operations/audit-logging/surface/index.md) - Required for SOC 2, HIPAA, PCI-DSS
 
 **Reality check**: Compliance isn't fun, but it's not optional. The good news is that most compliance requirements are testable. Treat compliance features like any other feature - write tests, automate what you can, and verify they work before you need them for an audit.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [Unit & Integration Testing](../../unit-integration-testing/surface/index.md) - Related testing considerations
+- [Security Testing](../../security-testing/surface/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/surface/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

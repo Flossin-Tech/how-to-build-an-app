@@ -1616,10 +1616,20 @@ Code review is a tool, not a goal. The goal is shipping quality software while b
 
 Code review done well makes the team smarter, the code better, and the process more collaborative. Code review done poorly wastes time and creates resentment. The difference is in how you build the culture and process around it.
 
+
 ---
 
-**Related Topics:**
-- [Code Quality](../../code-quality/deep-water/index.md) - What quality means at scale
-- [Testing Strategy](../../testing-strategy/deep-water/index.md) - Verification at scale
-- [Secure Coding Practices](../../secure-coding-practices/deep-water/index.md) - Security review in depth
-- [Refactoring](../../refactoring/deep-water/index.md) - Systematic improvement found in review
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
+
+### Related Topics
+- [code-quality](../../code-quality/deep-water/index.md) - Related development considerations
+- [refactoring](../../refactoring/deep-water/index.md) - Related development considerations
+- [secure-coding-practices](../../secure-coding-practices/deep-water/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

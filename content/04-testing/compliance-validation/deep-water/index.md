@@ -1836,3 +1836,20 @@ Compliance at this level isn't about passing audits. It's about building systems
 The techniques here are for organizations where compliance is existential - regulated industries, government contractors, global enterprises where compliance failures end the business.
 
 If you're just starting compliance work, the surface and mid-depth layers serve you better. But when compliance is continuous, multi-framework, and critical to survival, these patterns provide the rigor needed.
+
+---
+
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
+
+### Related Topics
+- [Unit & Integration Testing](../../unit-integration-testing/deep-water/index.md) - Related testing considerations
+- [Security Testing](../../security-testing/deep-water/index.md) - Related testing considerations
+- [Accessibility Testing](../../accessibility-testing/deep-water/index.md) - Related testing considerations
+
+### Navigate
+- [← Back to Testing Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

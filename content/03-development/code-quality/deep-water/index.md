@@ -1544,9 +1544,20 @@ Quality isn't about writing perfect code. It's about writing code that serves th
 
 The best code quality strategy is the one your team actually follows. Start with automation, measure what matters, and improve incrementally.
 
+
 ---
 
-**Navigation:**
-- **Phase:** [03-development](/content/03-development/)
-- **Related Topics:** [Refactoring](/content/03-development/refactoring/), [Code Review Process](/content/03-development/code-review-process/), [Secure Coding Practices](/content/03-development/secure-coding-practices/)
-- **Previous Depth:** [Mid-Depth: Code Quality in Practice](/content/03-development/code-quality/mid-depth/)
+## Navigation
+
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
+
+### Related Topics
+- [refactoring](../../refactoring/deep-water/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/deep-water/index.md) - Related development considerations
+- [secure-coding-practices](../../secure-coding-practices/deep-water/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)

@@ -760,12 +760,20 @@ When you're about to start work in a file:
 
 Every improvement compounds. Six months of small refactorings transforms a codebase. Six months of ignoring smells creates a swamp.
 
+
 ---
 
 ## Navigation
 
-**Current**: Mid-Depth Level
-**Previous**: [Surface - Refactoring Basics](../surface/index.md)
-**Next Depth**: [Deep Water - Enterprise Refactoring Strategies](../deep-water/index.md)
-**Related Topics**: [Code Quality](../../code-quality/mid-depth/index.md) | [Testing Strategy](../../testing-strategy/mid-depth/index.md) | [Code Review Process](../../code-review-process/mid-depth/index.md)
-**Phase**: [03 - Development](../../README.md)
+### Depth Levels
+- **[← Surface](../surface/index.md)** Essential concepts and quick wins
+- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
+
+### Related Topics
+- [code-quality](../../code-quality/mid-depth/index.md) - Related development considerations
+- [code-review-process](../../code-review-process/mid-depth/index.md) - Related development considerations
+- [secret-management](../../secret-management/mid-depth/index.md) - Related development considerations
+
+### Navigate
+- [← Back to Development Phase](../../index.md)
+- [↑ Back to Main Guide](../../../../README.md)
