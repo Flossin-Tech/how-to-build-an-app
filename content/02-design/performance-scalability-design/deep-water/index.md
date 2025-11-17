@@ -1262,17 +1262,15 @@ Build for today's scale. Plan for tomorrow's. Don't build for a future that migh
 
 ## Trade-offs at Every Layer
 
-Every optimization has costs.
+Every optimization has costs. Here's what you're signing up for:
 
-**Caching** - Complexity. Stale data. Cache invalidation bugs. Worth it when you're database-bound.
-
-**Read replicas** - Eventual consistency. Replication lag. Operational overhead. Worth it when primary database is CPU-bound.
-
-**Auto-scaling** - Cost if tuned wrong. Complexity. Slower than over-provisioning. Worth it for unpredictable traffic.
-
-**Edge computing** - Debugging is harder. Limited environment. Cold start latency. Worth it for global low-latency requirements.
-
-**Async processing** - Complexity. Eventual consistency. Harder to debug. Worth it for slow operations.
+| Optimization Technique | Costs & Drawbacks | When It's Worth It |
+|------------------------|-------------------|-------------------|
+| **Caching** | Added complexity, stale data risks, cache invalidation bugs | Database-bound workloads where reads far outnumber writes |
+| **Read replicas** | Eventual consistency issues, replication lag, operational overhead | Primary database is CPU-bound from read queries |
+| **Auto-scaling** | Can get expensive if tuned poorly, adds complexity, slower than over-provisioning | Traffic patterns are unpredictable or highly variable |
+| **Edge computing** | Harder to debug, limited runtime environment, cold start latency | Global user base with low-latency requirements |
+| **Async processing** | Increased complexity, eventual consistency model, harder to debug failures | Operations take >200ms or involve external services |
 
 The unifying theme: complexity is a cost. Only pay it when the benefit exceeds the cost.
 
