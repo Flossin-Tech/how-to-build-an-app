@@ -130,5 +130,5 @@ User cares about: Personal reputation, ease of daily use, not looking incompeten
 - [Resource Identification](../../resource-identification/deep-water/index.md) - Strategic resource planning
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

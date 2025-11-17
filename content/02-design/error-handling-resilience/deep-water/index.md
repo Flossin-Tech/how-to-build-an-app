@@ -1772,5 +1772,5 @@ When you're debugging a 3am production outage, you'll be glad you designed error
 - [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

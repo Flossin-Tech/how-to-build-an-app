@@ -84,5 +84,5 @@ Don't need perfect numbers. Need ballpark figures so you know if you're building
 - [Requirements Gathering](../../requirements-gathering/surface/index.md) - What you need to build
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

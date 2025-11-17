@@ -82,5 +82,5 @@ If you can't test it, you can't verify it. If you can't verify it, you can't com
 - [Scope Setting](../../scope-setting/surface/index.md) - Define project boundaries
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

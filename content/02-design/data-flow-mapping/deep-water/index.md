@@ -1753,5 +1753,5 @@ When you can demonstrate complete data lineage, cryptographic audit trails, and 
 - [State Management Design](../../state-management-design/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

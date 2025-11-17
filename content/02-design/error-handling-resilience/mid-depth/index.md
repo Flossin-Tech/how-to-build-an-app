@@ -2143,5 +2143,5 @@ The difference between a system that falls over at the first sign of trouble and
 - [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

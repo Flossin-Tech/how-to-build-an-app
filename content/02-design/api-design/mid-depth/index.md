@@ -1679,5 +1679,5 @@ The patterns here aren't theoretical. They're battle-tested approaches from high
 - [Error Handling & Resilience](../../error-handling-resilience/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

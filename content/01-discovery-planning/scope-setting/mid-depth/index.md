@@ -229,5 +229,5 @@ Having a process prevents ad-hoc "sure, we can add that" that derails projects.
 - [Resource Identification](../../resource-identification/mid-depth/index.md) - Budget and capacity planning
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

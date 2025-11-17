@@ -70,5 +70,5 @@ The drill is your solution. The hole is the job to be done. Always focus on the 
 - [Scope Setting](../../scope-setting/surface/index.md) - Define boundaries for your project
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

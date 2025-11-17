@@ -1308,5 +1308,5 @@ Start simple. Measure constantly. Add complexity only when you have specific evi
 - [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

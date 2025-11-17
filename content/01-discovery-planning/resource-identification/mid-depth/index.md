@@ -198,5 +198,5 @@ Even small projects should budget $100-500/month for basic security tools.
 - [Threat Modeling](../../threat-modeling/mid-depth/index.md) - Security resource planning
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

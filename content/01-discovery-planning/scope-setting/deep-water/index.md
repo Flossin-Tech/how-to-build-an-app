@@ -495,5 +495,5 @@ Don't let external dependencies be the reason you discover scope problems at 90%
 - [Concept of Operations](../../concept-of-operations/deep-water/index.md) - Operational scope definition
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

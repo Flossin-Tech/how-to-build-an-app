@@ -1226,5 +1226,5 @@ Your architecture should serve your team and your customers. Not the other way a
 - [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

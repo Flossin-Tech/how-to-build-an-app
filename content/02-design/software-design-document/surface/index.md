@@ -270,5 +270,5 @@ Start simple. Write down your thinking. Ship the thing. Come back and write more
 - [Data Flow Mapping](../../data-flow-mapping/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

@@ -71,5 +71,5 @@ You don't need to be a security expert. Just think through "what could go wrong"
 - [Requirements Gathering](../../requirements-gathering/surface/index.md) - Security requirements
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

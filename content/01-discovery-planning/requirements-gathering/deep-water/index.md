@@ -289,5 +289,5 @@ Document what won't be backward compatible and why:
 - [Scope Setting](../../scope-setting/deep-water/index.md) - Complex scope management
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

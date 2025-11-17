@@ -286,5 +286,5 @@ Most dependency problems are preventable with basic due diligence. Do the due di
 - [Software Design Document](../../software-design-document/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

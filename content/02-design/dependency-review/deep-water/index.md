@@ -1853,5 +1853,5 @@ Your dependencies are your supply chain. Treat them with the same rigor you trea
 - [Software Design Document](../../software-design-document/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

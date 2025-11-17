@@ -398,5 +398,5 @@ State management isn't glamorous. But it's the difference between an app that fe
 - [Performance & Scalability Design](../../performance-scalability-design/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

@@ -291,5 +291,5 @@ Everything else you can learn as you go. Start simple, stay consistent, and list
 - [Error Handling & Resilience](../../error-handling-resilience/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

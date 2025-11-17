@@ -1639,5 +1639,5 @@ The difference between a system that handles 100 users and one that handles 100,
 - [Error Handling & Resilience](../../error-handling-resilience/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

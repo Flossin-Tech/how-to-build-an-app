@@ -1665,5 +1665,5 @@ State management complexity grows with your application. Start simple, add layer
 - [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

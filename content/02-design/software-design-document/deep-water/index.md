@@ -2061,5 +2061,5 @@ Write docs that solve real problems. Delete docs that don't. Keep what remains r
 - [Data Flow Mapping](../../data-flow-mapping/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

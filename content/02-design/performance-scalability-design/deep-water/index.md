@@ -1291,5 +1291,5 @@ A 200ms response time that's simple to maintain beats a 100ms response time that
 - [Error Handling & Resilience](../../error-handling-resilience/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

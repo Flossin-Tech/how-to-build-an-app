@@ -357,5 +357,5 @@ Budget for support from day one. Systems without on-call support respond slowly 
 - [Threat Modeling](../../threat-modeling/deep-water/index.md) - Advanced security planning
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

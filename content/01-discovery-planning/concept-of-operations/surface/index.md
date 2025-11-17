@@ -64,5 +64,5 @@ Keep it concrete. Avoid abstractions like "the user performs operations." Instea
 - [Threat Modeling](../../threat-modeling/surface/index.md) - Identify security risks early
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

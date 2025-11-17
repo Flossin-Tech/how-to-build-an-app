@@ -587,5 +587,5 @@ Your API never touches raw card data. Stripe is PCI-certified and handles the se
 - [Error Handling & Resilience](../../error-handling-resilience/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

@@ -1532,5 +1532,5 @@ The best database design is the simplest one that meets your requirements. Compl
 - [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

@@ -89,5 +89,5 @@ Having a defined scope gives you permission to say "not now" without saying "nev
 - [Resource Identification](../../resource-identification/surface/index.md) - Know what you have to work with
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

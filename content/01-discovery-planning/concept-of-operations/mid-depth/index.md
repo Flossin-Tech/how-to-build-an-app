@@ -100,5 +100,5 @@ When assumptions are explicit, you can validate them early instead of discoverin
 - [Scope Setting](../../scope-setting/mid-depth/index.md) - Managing project boundaries
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

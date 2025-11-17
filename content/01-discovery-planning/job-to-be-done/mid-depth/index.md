@@ -85,5 +85,5 @@ Why it fails: Cost of double-booking exceeds hassle of tracking
 - [Scope Setting](../../scope-setting/mid-depth/index.md) - Managing project boundaries
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

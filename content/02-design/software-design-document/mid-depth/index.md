@@ -1272,5 +1272,5 @@ Start with templates. Review them like code. Test them automatically. Delete the
 - [Data Flow Mapping](../../data-flow-mapping/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

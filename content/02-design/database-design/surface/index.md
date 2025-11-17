@@ -470,5 +470,5 @@ The goal isn't perfect database design. It's a schema that accurately represents
 - [Performance & Scalability Design](../../performance-scalability-design/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

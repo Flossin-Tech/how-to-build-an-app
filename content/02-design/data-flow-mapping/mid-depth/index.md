@@ -1843,5 +1843,5 @@ Next level: Deep-water covers event sourcing, CQRS, distributed tracing, complex
 - [State Management Design](../../state-management-design/mid-depth/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

@@ -316,5 +316,5 @@ Good enough today beats perfect someday. Ship it, measure it, improve it.
 - [Error Handling & Resilience](../../error-handling-resilience/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

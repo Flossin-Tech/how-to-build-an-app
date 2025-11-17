@@ -130,5 +130,5 @@ Don't waste effort encrypting public marketing content, but absolutely encrypt p
 - [Resource Identification](../../resource-identification/mid-depth/index.md) - Security tool budgeting
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

@@ -256,5 +256,5 @@ Use tools to augment human analysis, not replace it.
 - [Scope Setting](../../scope-setting/deep-water/index.md) - Compliance scope boundaries
 
 ### Navigate
-- [← Back to Discovery & Planning](../../README.md)
+- [← Back to Discovery & Planning](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)

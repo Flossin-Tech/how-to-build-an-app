@@ -327,5 +327,5 @@ If you can draw the path from user input to database to third-party service to e
 - [State Management Design](../../state-management-design/surface/index.md) - Related design considerations
 
 ### Navigate
-- [← Back to Design Phase](../../README.md)
+- [← Back to Design Phase](../../index.md)
 - [↑ Back to Main Guide](../../../../README.md)
