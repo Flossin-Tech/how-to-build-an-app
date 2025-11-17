@@ -1,0 +1,104 @@
+%% Persona Phase Priority Heatmap
+%% Shows criticality of each phase for each persona
+%% Red = Critical, Orange = High, Yellow = Medium, White = Low/Skip
+
+graph TB
+    subgraph "Phase Priority Matrix"
+        P1[01-Discovery & Planning]
+        P2[02-Design]
+        P3[03-Development]
+        P4[04-Testing]
+        P5[05-Deployment]
+        P6[06-Operations]
+        P7[07-Iteration]
+    end
+
+    subgraph "New Developer"
+        ND_P1[CRITICAL Surface]
+        ND_P2[CRITICAL Surface]
+        ND_P3[CRITICAL Surface]
+        ND_P4[HIGH Surface]
+        ND_P5[HIGH Surface]
+        ND_P6[MEDIUM Surface]
+        ND_P7[MEDIUM Surface]
+    end
+
+    subgraph "YOLO Dev"
+        YD_P1[SKIP except Threat]
+        YD_P2[LOW reactive]
+        YD_P3[CRITICAL Security]
+        YD_P4[CRITICAL Surface]
+        YD_P5[CRITICAL Surface]
+        YD_P6[CRITICAL Surface]
+        YD_P7[SKIP initially]
+    end
+
+    subgraph "Specialist Expanding"
+        SP_P1[SKIP skim]
+        SP_P2[VARIES Mid-depth]
+        SP_P3[VARIES Mid-depth]
+        SP_P4[VARIES domain]
+        SP_P5[HIGH Mid-Deep]
+        SP_P6[HIGH Mid-Deep]
+        SP_P7[SKIP]
+    end
+
+    subgraph "Generalist Leveling Up"
+        GL_P1[HIGH Mid-depth]
+        GL_P2[CRITICAL Mid-depth ALL]
+        GL_P3[MEDIUM fill gaps]
+        GL_P4[HIGH Mid-depth ALL]
+        GL_P5[HIGH Mid-depth ALL]
+        GL_P6[HIGH Mid-depth ALL]
+        GL_P7[MEDIUM Mid-depth]
+    end
+
+    subgraph "Busy Developer"
+        BD_P1[RARE stakeholder]
+        BD_P2[RARE architecture]
+        BD_P3[MEDIUM security]
+        BD_P4[MEDIUM tests]
+        BD_P5[HIGH deploy fail]
+        BD_P6[HIGHEST prod down]
+        BD_P7[LOW post-incident]
+    end
+
+    style ND_P1 fill:#ff5252
+    style ND_P2 fill:#ff5252
+    style ND_P3 fill:#ff5252
+    style ND_P4 fill:#ff9800
+    style ND_P5 fill:#ff9800
+    style ND_P6 fill:#ffc107
+    style ND_P7 fill:#ffc107
+
+    style YD_P1 fill:#fff
+    style YD_P2 fill:#ffc107
+    style YD_P3 fill:#ff5252
+    style YD_P4 fill:#ff5252
+    style YD_P5 fill:#ff5252
+    style YD_P6 fill:#ff5252
+    style YD_P7 fill:#fff
+
+    style SP_P1 fill:#fff
+    style SP_P2 fill:#ffc107
+    style SP_P3 fill:#ffc107
+    style SP_P4 fill:#ffc107
+    style SP_P5 fill:#ff9800
+    style SP_P6 fill:#ff9800
+    style SP_P7 fill:#fff
+
+    style GL_P1 fill:#ff9800
+    style GL_P2 fill:#ff5252
+    style GL_P3 fill:#ffc107
+    style GL_P4 fill:#ff9800
+    style GL_P5 fill:#ff9800
+    style GL_P6 fill:#ff9800
+    style GL_P7 fill:#ffc107
+
+    style BD_P1 fill:#fff
+    style BD_P2 fill:#fff
+    style BD_P3 fill:#ffc107
+    style BD_P4 fill:#ffc107
+    style BD_P5 fill:#ff9800
+    style BD_P6 fill:#ff5252
+    style BD_P7 fill:#ffc107

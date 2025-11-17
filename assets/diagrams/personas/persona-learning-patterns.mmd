@@ -1,0 +1,68 @@
+%% Persona Learning Pattern Comparison
+%% Shows how each persona moves through the 7 phases at different depths
+
+graph TD
+    subgraph "New Developer - Systematic Breadth-First"
+        ND1[Discovery Surface]-->ND2[Design Surface]
+        ND2-->ND3[Development Surface]
+        ND3-->ND4[Testing Surface]
+        ND4-->ND5[Deployment Surface]
+        ND5-->ND6[Operations Surface]
+        ND6-->ND7[Iteration Surface]
+        ND7-.Week 1-2 Complete.->NDM1[Mid-depth Blockers]
+        NDM1-.Month 2.->NDM2[Mid-depth Work Area]
+        NDM2-.Month 6+.->NDD[Deep-water Specialty]
+    end
+
+    subgraph "YOLO Dev - Triage Critical Gaps"
+        YD1[Threat Modeling Surface]-->YD2[Secret Mgmt Surface]
+        YD2-->YD3[Security Testing Surface]
+        YD3-->YD4[Testing Surface]
+        YD4-->YD5[Deployment Surface]
+        YD5-->YD6[Monitoring Surface]
+        YD6-->YD7[Incident Response Surface]
+        YD7-.Hour 1-3 Triage.->YDM[Security/Ops Mid-depth]
+        YDM-.Week 2-4 Hardening.->YDL[Discovery/Design Later]
+    end
+
+    subgraph "Specialist Expanding - Domain Focus"
+        SE1[Skim Discovery]-.skip.->SE2[Design Mid-depth Domain]
+        SE2-->SE3[Development Mid-depth Domain]
+        SE3-->SE4[Testing Domain-specific]
+        SE4-->SE5[Deployment Mid-Deep]
+        SE5-->SE6[Operations Mid-Deep]
+        SE6-.Week 1-4 Domain Learning.->SED[Deep Integration Points]
+        SED-.Month 2+ Cross-domain.->SEEX[Bridge Builder Expert]
+    end
+
+    subgraph "Generalist Leveling Up - Systematic Coverage"
+        GL1[Self-Assessment All Phases]-->GL2[Discovery Mid-depth Gaps]
+        GL2-->GL3[Design Mid-depth ALL]
+        GL3-->GL4[Development Mid-depth Gaps]
+        GL4-->GL5[Testing Mid-depth ALL]
+        GL5-->GL6[Deployment Mid-depth ALL]
+        GL6-->GL7[Operations Mid-depth ALL]
+        GL7-->GL8[Iteration Mid-depth ALL]
+        GL8-.Week 1-12 Systematic.->GLD[Deep Strategic Specialty]
+        GLD-.Month 4-6 Expertise.->GLPR[Promotion Ready]
+    end
+
+    subgraph "Busy Developer - Just-in-Time Reactive"
+        BD1{Problem Type}
+        BD1-->|Prod Down|BDO[Operations Surface]
+        BD1-->|Security Alert|BDS[Security Surface]
+        BD1-->|Deploy Fail|BDD[Deployment Surface]
+        BD1-->|Code Review|BDC[Development Surface]
+        BDO-.10 min.->BDE[Exit]
+        BDS-.10 min.->BDE
+        BDD-.10 min.->BDE
+        BDC-.10 min.->BDE
+        BDE-.Recurring?.->BDM[Mid-depth if 3+ visits]
+        BDM-.Rare.->BDGL[Convert to Generalist]
+    end
+
+    style ND1 fill:#e1f5ff
+    style YD1 fill:#fff3e0
+    style SE1 fill:#f3e5f5
+    style GL1 fill:#e8f5e9
+    style BD1 fill:#ffebee
