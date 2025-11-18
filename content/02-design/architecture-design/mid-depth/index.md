@@ -1212,6 +1212,17 @@ Most systems should be modular monoliths longer than you think. The teams that s
 When in doubt, make the change reversible. Feature flags and adapters let you try extraction without commitment. Measure whether it actually helped.
 
 Your architecture should serve your team and your customers. Not the other way around.
+
+---
+
+## Real-World Case Study
+
+**[Microfrontend vs. Monolith Decision](case-studies/microfrontend-vs-monolith.md)**
+
+See a complete quantitative framework for architecture decisions in action. This case study demonstrates how to use documented scale thresholds, team capability assessment, and financial modeling to make evidence-based choices. **Framework focus: 35-45 minutes** to understand the methodology.
+
+[Browse all architecture case studies →](case-studies/)
+
 ---
 
 ## Navigation

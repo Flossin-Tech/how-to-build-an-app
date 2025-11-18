@@ -149,6 +149,17 @@ The architecture decision that matters most isn't monolith versus microservices.
 Before you write architectural code, understand what you're building and why (see the Job-to-be-Done topic in Discovery & Planning). After you've decided on your high-level architecture, you'll need to design the APIs between components (see API Design) and determine how to structure your data (see Database Design).
 
 For now: start with a monolith, organize it into components based on functional boundaries, and keep the interfaces between components simple. The rest will become clear as you build.
+
+---
+
+## Real-World Case Study
+
+**[Microfrontend vs. Monolith Decision](case-studies/microfrontend-vs-monolith.md)**
+
+See how a finance sector team used a quantitative framework to decide between microfrontends and an extended monolith. Shows the complete decision process with scale analysis, team capability assessment, and financial modeling. **Quick read: 7 minutes** for Abstract + Conclusion.
+
+[Browse all architecture case studies →](case-studies/)
+
 ---
 
 ## Navigation

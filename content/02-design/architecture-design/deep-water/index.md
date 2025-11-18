@@ -1294,6 +1294,17 @@ None of these patterns is inherently better. They solve specific problems at spe
 The companies that succeed at scale (Netflix, Uber, Stripe, Airbnb) didn't start with these patterns. They evolved into them as they grew. They started with monoliths, learned their domain boundaries, then extracted services strategically. They added complexity only when it solved real problems.
 
 Start simple. Measure constantly. Add complexity only when you have specific evidence that it's needed. The best architecture is the simplest one that meets your actual requirements.
+
+---
+
+## Real-World Case Study
+
+**[Microfrontend vs. Monolith Decision](case-studies/microfrontend-vs-monolith.md)**
+
+Deep dive into a comprehensive architecture decision methodology with full academic rigor. Includes literature review of documented industry thresholds, quantitative scoring framework, risk assessment matrices, and honest discussion of trade-offs and limitations. **Full analysis: 60-90 minutes** for complete understanding.
+
+[Browse all architecture case studies →](case-studies/)
+
 ---
 
 ## Navigation
