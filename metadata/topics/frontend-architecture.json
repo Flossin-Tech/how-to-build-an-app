@@ -1,0 +1,163 @@
+{
+  "id": "frontend-architecture",
+  "slug": "frontend-architecture",
+  "title": "Frontend Architecture Patterns",
+  "phase": "02-design",
+  "phase_name": "Design",
+  "order_in_phase": 3,
+
+  "description": {
+    "short": "Choosing frontend architecture patterns (SPA, MPA, microfrontends)",
+    "medium": "Covers frontend architecture decisions including monolithic SPAs, micro-frontends, module federation, and when to use each pattern based on team size, user scale, and technical constraints",
+    "full": "Frontend architecture determines how your UI is structured, deployed, and maintained. This covers patterns from monolithic SPAs to micro-frontends, module federation approaches, and the critical decision factors of team capabilities, user scale, deployment complexity, and maintenance burden. Learn when sophisticated patterns help and when they over-engineer solutions for small-scale problems."
+  },
+
+  "why_it_matters": [
+    "Architecture mismatch wastes significant development time",
+    "Over-engineering adds complexity without benefits at small scale",
+    "Team capabilities limit what architectures are sustainable",
+    "Frontend architecture impacts deployment, testing, and maintenance",
+    "Wrong choice compounds pain over entire project lifecycle"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 10,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand basic frontend architecture patterns",
+        "Identify when to use monolithic vs. distributed approaches",
+        "Recognize scale thresholds for architecture decisions"
+      ],
+      "key_takeaways": [
+        "Start simple: monolithic SPA is the default for most projects",
+        "Microfrontends solve team coordination problems, not technical problems",
+        "Scale matters: <500 users rarely justifies complex architecture"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Evaluate architecture options using decision frameworks",
+        "Assess team capability gaps for different patterns",
+        "Calculate total cost of ownership for architecture choices",
+        "Apply scale-appropriate architecture selection"
+      ],
+      "key_takeaways": [
+        "Team skills gaps can be 10x more costly than technology differences",
+        "Module federation vs. traditional microfrontends have different trade-offs",
+        "Decision frameworks prevent over-engineering",
+        "Architecture decisions should be reversible when possible"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Design microfrontend systems with runtime composition",
+        "Implement module federation with Webpack or Vite",
+        "Build migration paths between architecture patterns",
+        "Establish governance for distributed frontend teams"
+      ],
+      "key_takeaways": [
+        "Runtime composition requires sophisticated infrastructure",
+        "Shared dependencies need careful versioning strategy",
+        "Microfrontends create distributed system complexity in browser",
+        "Organizational structure drives architecture requirements (Conway's Law)"
+      ]
+    }
+  },
+
+  "prerequisites": ["architecture-design"],
+
+  "related_topics": [
+    "architecture-design",
+    "performance-scalability-design",
+    "state-management-design",
+    "deployment-strategy"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding"
+  ],
+
+  "tools": [
+    "React",
+    "Vite",
+    "Webpack",
+    "Module Federation",
+    "Single-SPA",
+    "Nx",
+    "Turborepo"
+  ],
+
+  "frameworks_and_concepts": [
+    "Microfrontends",
+    "Module Federation",
+    "Single Page Applications (SPA)",
+    "Multi-Page Applications (MPA)",
+    "Lazy Loading",
+    "Code Splitting",
+    "Shell Architecture",
+    "Conway's Law"
+  ],
+
+  "compliance_relevance": [
+    "Security review for cross-origin loading",
+    "Change management for architecture decisions"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "1-2 weeks for basic SPA setup",
+    "mid_depth": "4-8 weeks for module federation",
+    "deep_water": "3-6 months for full microfrontend system"
+  },
+
+  "common_mistakes": [
+    "Choosing microfrontends for team of 3-5 developers",
+    "Implementing sophisticated architecture for <500 users",
+    "Ignoring team capability gaps when selecting patterns",
+    "Following trends instead of solving actual problems",
+    "Building irreversible architecture decisions too early"
+  ],
+
+  "success_metrics": [
+    "Team can maintain architecture without external help",
+    "Build and deployment times remain acceptable",
+    "New features ship without architecture friction",
+    "Architecture supports actual user scale",
+    "Technical debt remains manageable"
+  ],
+
+  "when_to_prioritize": [
+    "Multiple independent teams working on same UI",
+    "Different parts of UI need different release cycles",
+    "User scale >5,000 concurrent or >50,000 total",
+    "Regulatory requirements force bounded contexts",
+    "Existing monolith has become unmaintainable"
+  ],
+
+  "when_to_deprioritize": [
+    "Small team (<10 developers)",
+    "User scale <500 total or <50 concurrent",
+    "Team lacks microfrontend experience",
+    "Tight time-to-market requirements",
+    "Simple coordination already works well"
+  ],
+
+  "examples": [
+    {
+      "path": "/examples/domain-specific/web-apps/architecture-decisions/microfrontend-vs-monolith/",
+      "title": "Microfrontend vs. Monolith Decision Case Study",
+      "description": "Real-world architecture decision for finance sector app with 500 users",
+      "depth_relevance": ["mid-depth", "deep-water"],
+      "personas": ["generalist-leveling-up", "specialist-expanding", "yolo-dev"]
+    }
+  ],
+
+  "updated": "2025-11-18"
+}

@@ -1,0 +1,109 @@
+{
+  "id": "microfrontend-vs-monolith-case-study",
+  "title": "Microfrontend vs. Monolith Architecture Decision",
+  "type": "case-study",
+  "domain": "web-apps",
+  "category": "architecture-decisions",
+  "difficulty": "intermediate",
+  "reading_time": {
+    "quick_take": 5,
+    "decision_framework": 25,
+    "technical_deep_dive": 50,
+    "full_case_study": 35
+  },
+  "personas": ["yolo-dev", "generalist-leveling-up", "specialist-expanding"],
+  "topics_covered": [
+    "frontend-architecture",
+    "architecture-decision-making",
+    "microfrontends",
+    "monolithic-architecture",
+    "lazy-loading",
+    "module-federation"
+  ],
+  "prerequisites": [
+    "basic-react-knowledge",
+    "understanding-spa-architecture",
+    "build-tools-basics"
+  ],
+  "learning_outcomes": [
+    "Evaluate when microfrontends are appropriate vs. over-engineering",
+    "Use quantitative thresholds for architecture decisions",
+    "Assess team capability gaps before choosing architecture",
+    "Calculate learning investment and timeline for different options"
+  ],
+  "files": {
+    "main_case_study": "case-study.md",
+    "quick_take": "quick-take-yolo-dev.md",
+    "framework_guide": "decision-framework-generalist.md",
+    "technical_deep_dive": "options-analysis.md",
+    "research": [
+      "option-1-microfrontend-research.md",
+      "option-2-vite-module-federation-research.md",
+      "option-3-extended-monolith-research.md"
+    ],
+    "templates": [
+      "scale-appropriateness-assessment-matrix.md",
+      "team-capability-assessment-matrix.md"
+    ]
+  },
+  "related_examples": [],
+  "tags": ["architecture", "frontend", "microfrontends", "decision-framework", "case-study"],
+  "topics": [
+    {
+      "phase": "02-design",
+      "topic": "architecture-design",
+      "depths": ["deep-water"]
+    },
+    {
+      "phase": "02-design",
+      "topic": "frontend-architecture",
+      "depths": ["mid-depth", "deep-water"]
+    },
+    {
+      "phase": "02-design",
+      "topic": "performance-scalability-design",
+      "depths": ["mid-depth", "deep-water"]
+    }
+  ],
+  "personas_detailed": {
+    "yolo-dev": {
+      "recommended_file": "quick-take-yolo-dev.md",
+      "reading_time": 5
+    },
+    "generalist-leveling-up": {
+      "recommended_file": "decision-framework-generalist.md",
+      "reading_time": 25
+    },
+    "specialist-expanding": {
+      "recommended_file": "options-analysis.md",
+      "reading_time": 50
+    },
+    "busy-developer": {
+      "recommended_file": "quick-take-yolo-dev.md",
+      "reading_time": 5
+    }
+  },
+  "decision_factors": [
+    "Team capabilities and learning curve",
+    "User scale (<500 total, <50 concurrent)",
+    "Maintenance burden vs. architectural sophistication",
+    "Time-to-market considerations",
+    "Finance sector compliance requirements"
+  ],
+  "key_findings": {
+    "scale_gap": "10x below microfrontend threshold",
+    "skills_gap_mfe": "68-78%",
+    "skills_gap_monolith": "10%",
+    "cost_comparison": "$27k vs $115k-163k",
+    "recommendation": "Option 3: Extended Monolith with Dynamic Loading"
+  },
+  "diagrams": [
+    "/assets/diagrams/architecture/microfrontend-case-study/current-architecture.mmd",
+    "/assets/diagrams/architecture/microfrontend-case-study/microfrontend-shell.mmd",
+    "/assets/diagrams/architecture/microfrontend-case-study/vite-module-federation.mmd",
+    "/assets/diagrams/architecture/microfrontend-case-study/extended-monolith-lazy.mmd",
+    "/assets/diagrams/architecture/microfrontend-case-study/decision-flowchart.mmd",
+    "/assets/diagrams/architecture/microfrontend-case-study/scale-thresholds.mmd"
+  ],
+  "updated": "2025-11-18"
+}

@@ -1,0 +1,89 @@
+{
+  "id": "choosing-architecture",
+  "name": "Choosing the Right Architecture",
+  "category": "suggested-journey",
+  "description": "Systematic approach to making architecture decisions based on actual requirements, not hype",
+  "trigger_phrases": [
+    "What architecture should I use?",
+    "Should I use microservices?",
+    "How do I choose between architectures?",
+    "Is my app big enough for [complex pattern]?",
+    "Monolith vs microservices",
+    "Frontend architecture decision"
+  ],
+  "estimated_total_time_minutes": 75,
+
+  "context": "You're facing an architecture decision and want to choose based on evidence, not trends. This journey teaches you to evaluate options systematically using quantitative criteria.",
+
+  "steps": [
+    {
+      "phase": "02-design",
+      "topic": "architecture-design",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 15,
+      "why": "Understand fundamental architecture patterns and their trade-offs"
+    },
+    {
+      "phase": "examples",
+      "topic": "microfrontend-vs-monolith-case-study",
+      "depth": "mid-depth",
+      "file": "decision-framework-generalist.md",
+      "required": true,
+      "estimated_minutes": 20,
+      "why": "Learn a systematic framework for evaluating architecture options with real-world example",
+      "checkpoint": {
+        "question": "Can you identify quantitative thresholds for your architecture decision?",
+        "required_for_progress": true,
+        "reflection": [
+          "What's your actual user scale vs. the pattern's designed scale?",
+          "What's your team's capability gap for each option?",
+          "What's the cost difference in time and complexity?"
+        ]
+      }
+    },
+    {
+      "phase": "01-discovery-planning",
+      "topic": "requirements-gathering",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 15,
+      "why": "Gather actual requirements before choosing architecture"
+    },
+    {
+      "phase": "02-design",
+      "topic": "performance-scalability-design",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 15,
+      "why": "Design for your actual scale needs, not imagined future scale"
+    },
+    {
+      "phase": "02-design",
+      "topic": "architecture-design",
+      "depth": "mid-depth",
+      "required": false,
+      "estimated_minutes": 25,
+      "why": "Deep dive into architecture patterns for complex scenarios"
+    }
+  ],
+
+  "completion_criteria": [
+    "Can articulate quantitative criteria for architecture decisions",
+    "Understands when simple solutions beat complex ones",
+    "Can assess team capability gaps for different options",
+    "Knows how to defer decisions until you have more data"
+  ],
+
+  "next_steps": [
+    "Apply the decision framework to your specific architecture choice",
+    "Review generalist-leveling-up path for comprehensive architecture coverage",
+    "If building MVP, consider mvp-launch track to avoid over-engineering"
+  ],
+
+  "related_paths": [
+    "generalist-leveling-up",
+    "mvp-launch",
+    "production-ready"
+  ]
+}

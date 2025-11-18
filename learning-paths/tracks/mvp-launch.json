@@ -1,0 +1,220 @@
+{
+  "id": "mvp-launch",
+  "name": "MVP Launch Track",
+  "category": "track",
+  "description": "Ship a minimum viable product quickly and safely without over-engineering",
+  "target_personas": ["new-developer", "yolo-dev", "busy-developer"],
+  "estimated_total_time_minutes": 145,
+
+  "objectives": [
+    "Validate product-market fit before over-investing",
+    "Ship working code to production quickly",
+    "Implement essential security and monitoring",
+    "Avoid premature optimization and complex architectures"
+  ],
+
+  "prerequisites": [],
+
+  "milestones": [
+    {
+      "name": "Validate the Problem",
+      "description": "Ensure you're building something people need",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "job-to-be-done",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Validate you're solving a real problem before writing code",
+          "checkpoint": {
+            "question": "Can you describe the problem without mentioning your solution?",
+            "required_for_progress": true
+          }
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "concept-of-operations",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Sketch how users will accomplish their goals"
+        }
+      ]
+    },
+
+    {
+      "name": "Plan Simply",
+      "description": "Design for MVP scale, not future complexity",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 15,
+          "why": "Identify the 3 most critical security risks to address now",
+          "checkpoint": {
+            "question": "Have you identified at least 3 potential threats and mitigation strategies?",
+            "required_for_progress": true
+          }
+        },
+        {
+          "phase": "02-design",
+          "topic": "architecture-design",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 15,
+          "why": "Choose the simplest architecture that could work for your MVP"
+        },
+        {
+          "phase": "examples",
+          "topic": "microfrontend-vs-monolith-case-study",
+          "depth": "surface",
+          "file": "quick-take-yolo-dev.md",
+          "required": true,
+          "estimated_minutes": 5,
+          "why": "Learn when NOT to use complex architectures - avoid over-engineering",
+          "checkpoint": {
+            "question": "Do you understand the quantitative thresholds for architecture decisions?",
+            "required_for_progress": true,
+            "reflection": [
+              "Does your current scale justify architectural complexity?",
+              "What's the simplest solution that meets your actual needs?",
+              "Can you defer this decision until you have more data?"
+            ]
+          }
+        },
+        {
+          "phase": "02-design",
+          "topic": "data-flow-mapping",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "Understand where data flows to spot security and compliance issues"
+        }
+      ]
+    },
+
+    {
+      "name": "Build Securely",
+      "description": "Write code that works and is safe enough",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Prevent SQL injection, XSS, and other critical vulnerabilities"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secret-management",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Never commit credentials to version control"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-quality",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "Write code that's readable enough to debug later"
+        }
+      ]
+    },
+
+    {
+      "name": "Test What Matters",
+      "description": "Test critical paths, skip perfection",
+      "steps": [
+        {
+          "phase": "04-testing",
+          "topic": "unit-testing",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Test critical business logic and security boundaries"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Run basic security scans before shipping"
+        }
+      ]
+    },
+
+    {
+      "name": "Ship Safely",
+      "description": "Deploy with ability to rollback and monitor",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 12,
+          "why": "Ship with a rollback plan - because things will break"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "infrastructure-as-code",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "Make deployments repeatable and recoverable"
+        }
+      ]
+    },
+
+    {
+      "name": "Know When It Breaks",
+      "description": "Basic monitoring to catch critical failures",
+      "steps": [
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Get alerted when things break so you can fix them"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "backup-recovery",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Have a way to recover from data loss"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Validated problem with potential users",
+    "Identified and mitigated top 3 security threats",
+    "Chose simple, appropriate architecture for current scale",
+    "Implemented basic security practices (no secrets in code, input validation)",
+    "Can deploy with rollback capability",
+    "Have basic monitoring to know if system is up/down"
+  ],
+
+  "next_steps": [
+    "After shipping MVP and validating product-market fit, consider production-ready track",
+    "If handling sensitive data or need compliance, review security-hardening track",
+    "Once you have real users and usage data, revisit architecture decisions with actual metrics"
+  ],
+
+  "related_paths": [
+    "production-ready",
+    "security-hardening",
+    "development-fundamentals"
+  ]
+}

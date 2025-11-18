@@ -1,0 +1,114 @@
+graph TB
+    subgraph browser["Browser (User Session)"]
+        app["React SPA (Vite)"]
+    end
+
+    subgraph app_internals["Application Structure"]
+        router["React Router"]
+        layout["Shared Layout"]
+        
+        subgraph features["Feature Modules"]
+            f1["Pipeline Items<br/>components/ hooks/ api/"]
+            f2["Config Editor<br/>components/ hooks/ api/"]
+            f3["User Management<br/>components/ hooks/ api/"]
+        end
+        
+        subgraph shared["Shared Infrastructure"]
+            rbac["RBAC Service"]
+            state["Redux Toolkit<br/>Feature Slices"]
+            ui["Shared Components<br/>Form, Table, Button"]
+        end
+    end
+
+    subgraph bundling["Code Splitting Strategy"]
+        main["Main Bundle<br/>~300KB"]
+        route1["Route Bundle: /pipeline-items<br/>~150KB lazy"]
+        route2["Route Bundle: /config-editor<br/>~120KB lazy"]
+        route3["Route Bundle: /admin/users<br/>~100KB lazy"]
+        vendor["Vendor Bundle<br/>~250KB shared"]
+    end
+
+    subgraph network["Network Layer"]
+        nginx["NGINX"]
+    end
+
+    subgraph backend["Backend Services"]
+        api["Flask API"]
+        db["Database"]
+    end
+
+    app -->|Routes| router
+    router -->|Lazy load| f1
+    router -->|Lazy load| f2
+    router -->|Lazy load| f3
+
+    f1 -->|Uses| rbac
+    f2 -->|Uses| rbac
+    f3 -->|Uses| rbac
+
+    f1 -->|Dispatch| state
+    f2 -->|Dispatch| state
+    f3 -->|Dispatch| state
+
+    f1 -->|Components| ui
+    f2 -->|Components| ui
+    f3 -->|Components| ui
+
+    layout -->|Container| app
+
+    app -->|HTTP Request| nginx
+
+    f1 -->|Fetch| api
+    f2 -->|Fetch| api
+    f3 -->|Fetch| api
+
+    api -->|Query/Write| db
+
+    app -->|Compiles to| main
+    app -->|Compiles to| vendor
+    f1 -->|Compiles to| route1
+    f2 -->|Compiles to| route2
+    f3 -->|Compiles to| route3
+
+    main -->|Served by| nginx
+    vendor -->|Served by| nginx
+    route1 -->|Served on demand| nginx
+    route2 -->|Served on demand| nginx
+    route3 -->|Served on demand| nginx
+
+    style app fill:#61dafb,stroke:#333,stroke-width:2px,color:#000
+    style router fill:#8dd3c7,stroke:#333,stroke-width:1px,color:#000
+    style layout fill:#8dd3c7,stroke:#333,stroke-width:1px,color:#000
+    
+    style f1 fill:#ffffb3,stroke:#333,stroke-width:1px,color:#000
+    style f2 fill:#ffffb3,stroke:#333,stroke-width:1px,color:#000
+    style f3 fill:#ffffb3,stroke:#333,stroke-width:1px,color:#000
+    
+    style rbac fill:#bebada,stroke:#333,stroke-width:1px,color:#000
+    style state fill:#bebada,stroke:#333,stroke-width:1px,color:#000
+    style ui fill:#bebada,stroke:#333,stroke-width:1px,color:#000
+    
+    style main fill:#fb8072,stroke:#333,stroke-width:1px,color:#000
+    style route1 fill:#b3de69,stroke:#333,stroke-width:1px,color:#000
+    style route2 fill:#b3de69,stroke:#333,stroke-width:1px,color:#000
+    style route3 fill:#b3de69,stroke:#333,stroke-width:1px,color:#000
+    style vendor fill:#fccde5,stroke:#333,stroke-width:1px,color:#000
+    
+    style nginx fill:#009639,stroke:#333,stroke-width:2px,color:#fff
+    style api fill:#0766d6,stroke:#333,stroke-width:2px,color:#fff
+    style db fill:#336791,stroke:#333,stroke-width:2px,color:#fff
+
+    classDef browserGroup fill:#f0f8ff,stroke:#333,stroke-width:1px
+    classDef appGroup fill:#fff8f8,stroke:#333,stroke-width:1px
+    classDef bundlingGroup fill:#f0fff0,stroke:#333,stroke-width:1px
+    classDef networkGroup fill:#f5f5f5,stroke:#333,stroke-width:1px
+    classDef backendGroup fill:#f0f0f0,stroke:#333,stroke-width:1px
+
+    class browser browserGroup
+    class app_internals appGroup
+    class bundling bundlingGroup
+    class network networkGroup
+    class backend backendGroup
+
+    note1["Recommended for case study:<br/>- Single deployment pipeline<br/>- 2-3 weeks to features<br/>- Standard React patterns<br/>- Finance-friendly simplicity"]
+    style note1 fill:#e6ffe6,stroke:#00aa00,stroke-width:2px

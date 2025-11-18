@@ -1,0 +1,41 @@
+graph LR
+    Start["Architecture Selection by Scale"] --> Empty1[" "]
+
+    subgraph SceneA["Monolith Zone<br/>Best For Small Scale"]
+        direction TB
+        Zone1A["0-5,000 Users<br/>1-2 Teams<br/>Single Release Cycle"]
+        Zone1B["Simple Deployment<br/>Easy to Test<br/>Fast Development"]
+        Zone1C["Single Codebase<br/>Shared Dependencies<br/>Low Complexity"]
+    end
+
+    subgraph SceneB["Your Scenario"]
+        direction TB
+        Your["Current State<br/>~500 Users<br/>1 Small Team<br/>Single Codebase"]
+        Recommendation["Extended Monolith<br/>with Code Splitting<br/>RECOMMENDED"]
+    end
+
+    subgraph SceneC["Transition Zone<br/>Evaluate & Plan"]
+        direction TB
+        Zone2A["5,000-10,000 Users<br/>2-3 Teams<br/>Overlapping Concerns"]
+        Zone2B["Consider<br/>Module Federation<br/>or Refactoring"]
+    end
+
+    subgraph SceneD["Microfrontend Zone<br/>Justified for Scale"]
+        direction TB
+        Zone3A["10,000+ Users<br/>3+ Teams<br/>Independent Cycles"]
+        Zone3B["Shell Architecture<br/>or Module Federation<br/>Multiple Deployments"]
+        Zone3C["Team Autonomy<br/>Flexible Scaling<br/>Tech Diversity"]
+    end
+
+    Empty1 --> SceneA
+    Empty1 --> SceneB
+    Empty1 --> SceneC
+    Empty1 --> SceneD
+
+    style Start fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style SceneA fill:#c8e6c9,stroke:#2e7d32,stroke-width:3px
+    style SceneB fill:#a5d6a7,stroke:#1b5e20,stroke-width:4px,color:#000
+    style SceneC fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    style SceneD fill:#f8bbd0,stroke:#c2185b,stroke-width:3px
+    style Your fill:#81c784,stroke:#1b5e20,stroke-width:3px
+    style Recommendation fill:#66bb6a,stroke:#1b5e20,stroke-width:3px,color:#000

@@ -1,0 +1,71 @@
+graph TB
+    subgraph browser["Browser (User Session)"]
+        shell["Shell App<br/>(Host/Container)"]
+        mfe1["MFE: Pipeline Items<br/>(Remote 1)"]
+        mfe2["MFE: Config Editor<br/>(Remote 2)"]
+        mfe3["MFE: User Management<br/>(Remote 3)"]
+    end
+
+    subgraph shared["Shared Layer"]
+        fed["Module Federation<br/>(Webpack 5)"]
+        deps["Shared Dependencies<br/>React, Redux, UI Lib"]
+    end
+
+    subgraph network["Network Layer"]
+        nginx["NGINX"]
+    end
+
+    subgraph backend["Backend Services"]
+        api["Flask API"]
+        db["Database"]
+    end
+
+    shell -->|Dynamic Load| mfe1
+    shell -->|Dynamic Load| mfe2
+    shell -->|Dynamic Load| mfe3
+
+    mfe1 -->|Uses| fed
+    mfe2 -->|Uses| fed
+    mfe3 -->|Uses| fed
+    shell -->|Uses| fed
+
+    fed -->|Singleton| deps
+
+    shell -->|HTTP Request| nginx
+    mfe1 -->|HTTP Request| nginx
+    mfe2 -->|HTTP Request| nginx
+    mfe3 -->|HTTP Request| nginx
+
+    nginx -->|Route /api| api
+    nginx -->|Serve MFE| mfe1
+    nginx -->|Serve MFE| mfe2
+    nginx -->|Serve MFE| mfe3
+
+    mfe1 -->|Fetch| api
+    mfe2 -->|Fetch| api
+    mfe3 -->|Fetch| api
+
+    api -->|Query/Write| db
+
+    style shell fill:#ff9900,stroke:#333,stroke-width:2px,color:#000
+    style mfe1 fill:#ffcc99,stroke:#333,stroke-width:1px,color:#000
+    style mfe2 fill:#ffcc99,stroke:#333,stroke-width:1px,color:#000
+    style mfe3 fill:#ffcc99,stroke:#333,stroke-width:1px,color:#000
+    style fed fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+    style deps fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
+    style nginx fill:#009639,stroke:#333,stroke-width:2px,color:#fff
+    style api fill:#0766d6,stroke:#333,stroke-width:2px,color:#fff
+    style db fill:#336791,stroke:#333,stroke-width:2px,color:#fff
+
+    classDef browserGroup fill:#fff8f0,stroke:#333,stroke-width:1px
+    classDef sharedGroup fill:#f0f0ff,stroke:#333,stroke-width:1px
+    classDef networkGroup fill:#f5f5f5,stroke:#333,stroke-width:1px
+    classDef backendGroup fill:#f0f0f0,stroke:#333,stroke-width:1px
+
+    class browser browserGroup
+    class shared sharedGroup
+    class network networkGroup
+    class backend backendGroup
+
+    note1["Note: Each MFE deployed independently<br/>with separate CI/CD pipeline"]
+    style note1 fill:#fff9e6,stroke:#ff9900,stroke-width:2px

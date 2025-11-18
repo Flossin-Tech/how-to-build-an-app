@@ -1,0 +1,167 @@
+{
+  "id": "architecture-design",
+  "slug": "architecture-design",
+  "title": "Architecture Design",
+  "phase": "02-design",
+  "phase_name": "Design",
+  "order_in_phase": 1,
+
+  "description": {
+    "short": "Design system architecture that balances current needs with future flexibility",
+    "medium": "Covers architectural patterns (monolith, microservices, serverless), decision frameworks for choosing approaches, and how to match architecture to team size, user scale, and business constraints",
+    "full": "Architecture design determines how your system is structured, deployed, and evolves. This covers fundamental patterns from monoliths to microservices, decision frameworks that prevent over-engineering, scale-appropriate choices, and the critical interplay between organizational structure (Conway's Law) and technical architecture. Learn when to start simple and when complexity pays off."
+  },
+
+  "why_it_matters": [
+    "Architecture decisions are expensive to reverse",
+    "Over-engineering wastes time and increases maintenance burden",
+    "Under-engineering creates scalability bottlenecks",
+    "Team structure and architecture must align (Conway's Law)",
+    "Wrong architecture compounds problems over project lifetime"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 10,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand fundamental architecture patterns",
+        "Recognize when to start simple vs. complex",
+        "Identify scale thresholds for architecture decisions"
+      ],
+      "key_takeaways": [
+        "Start with monolith unless you have specific reason not to",
+        "Architecture should match current scale, not imagined future scale",
+        "Complexity should be justified by actual requirements"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 30,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Apply decision frameworks to architecture choices",
+        "Evaluate trade-offs between patterns",
+        "Assess team capability for different architectures",
+        "Design for reversibility and incremental evolution"
+      ],
+      "key_takeaways": [
+        "Decision frameworks prevent premature optimization",
+        "Team capabilities limit sustainable architecture choices",
+        "Good architecture enables change, not prevents it",
+        "Most successful systems started as monoliths"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 50,
+      "difficulty": "advanced",
+      "objectives": [
+        "Design distributed systems with proper boundaries",
+        "Plan migration paths between architecture patterns",
+        "Establish architecture governance and decision records",
+        "Balance technical ideals with organizational reality"
+      ],
+      "key_takeaways": [
+        "Conway's Law is a feature, not a bug - design accordingly",
+        "Architecture Decision Records (ADRs) prevent repeating mistakes",
+        "Migration paths matter more than end-state architecture",
+        "Organizational change often requires architectural change"
+      ]
+    }
+  },
+
+  "prerequisites": [],
+
+  "related_topics": [
+    "frontend-architecture",
+    "performance-scalability-design",
+    "deployment-strategy",
+    "monitoring-observability"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+
+  "tools": [
+    "C4 Model",
+    "ADR Tools",
+    "Mermaid (diagrams)",
+    "Draw.io",
+    "Lucidchart"
+  ],
+
+  "frameworks_and_concepts": [
+    "Monolithic Architecture",
+    "Microservices",
+    "Serverless",
+    "Event-Driven Architecture",
+    "CQRS",
+    "Conway's Law",
+    "Architecture Decision Records (ADRs)",
+    "Domain-Driven Design (DDD)",
+    "Bounded Contexts"
+  ],
+
+  "compliance_relevance": [
+    "SOC 2 (system architecture documentation)",
+    "ISO 27001 (secure architecture practices)",
+    "HIPAA (data isolation and security boundaries)",
+    "PCI DSS (cardholder data environment isolation)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "1-2 weeks to document initial architecture",
+    "mid_depth": "2-4 weeks for comprehensive architecture design",
+    "deep_water": "2-6 months for complex distributed systems"
+  },
+
+  "common_mistakes": [
+    "Premature microservices for small teams",
+    "Architecture astronauting (over-engineering)",
+    "Ignoring Conway's Law when designing systems",
+    "Building for imagined scale instead of actual scale",
+    "Not documenting architecture decisions and rationale",
+    "Copying successful company architectures without their context"
+  ],
+
+  "success_metrics": [
+    "Time to add new features remains stable",
+    "Architecture supports actual user scale",
+    "Team can understand and modify architecture",
+    "Deployment and rollback are reliable",
+    "Technical debt remains manageable"
+  ],
+
+  "when_to_prioritize": [
+    "Starting new projects or major rewrites",
+    "Existing architecture cannot support growth",
+    "Team structure is changing significantly",
+    "Regulatory requirements demand new boundaries",
+    "System reliability problems trace to architecture"
+  ],
+
+  "when_to_deprioritize": [
+    "Proof of concepts and prototypes",
+    "Very small user base (<100 users)",
+    "Single developer or very small team",
+    "Extremely tight time constraints",
+    "Current architecture works well for needs"
+  ],
+
+  "examples": [
+    {
+      "path": "/examples/domain-specific/web-apps/architecture-decisions/microfrontend-vs-monolith/",
+      "title": "Real-world microfrontend decision with scale analysis",
+      "description": "Case study of architecture decision for finance sector app showing scale-appropriate choice",
+      "depth_relevance": ["deep-water"],
+      "personas": ["generalist-leveling-up", "specialist-expanding"],
+      "key_concept": "Scale-appropriate architecture decisions"
+    }
+  ],
+
+  "updated": "2025-11-18"
+}

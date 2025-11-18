@@ -1,0 +1,65 @@
+graph TB
+    subgraph browser["Browser (User Session)"]
+        host["Host Application<br/>(Vite + React)"]
+        remote1["Remote: Pipeline Items<br/>(Built remoteEntry.js)"]
+        remote2["Remote: Config Editor<br/>(Built remoteEntry.js)"]
+        remote3["Remote: User Management<br/>(Built remoteEntry.js)"]
+    end
+
+    subgraph bundling["Build & Module Federation"]
+        plugin["@module-federation/vite<br/>or originjs plugin"]
+        hostEntry["Host remoteEntry.js"]
+        rEntry1["Remote 1 remoteEntry.js"]
+        rEntry2["Remote 2 remoteEntry.js"]
+        rEntry3["Remote 3 remoteEntry.js"]
+    end
+
+    subgraph network["Network Layer"]
+        nginx["NGINX"]
+    end
+
+    subgraph backend["Backend Services"]
+        api["Flask API"]
+        db["Database"]
+    end
+
+    host -->|Load at runtime| rEntry1
+    host -->|Load at runtime| rEntry2
+    host -->|Load at runtime| rEntry3
+
+    hostEntry -->|Served by| nginx
+    rEntry1 -->|Served by| nginx
+    rEntry2 -->|Served by| nginx
+    rEntry3 -->|Served by| nginx
+
+    plugin -->|Config| host
+    plugin -->|Config| remote1
+    plugin -->|Config| remote2
+    plugin -->|Config| remote3
+
+    host -->|HTTP Request| nginx
+    host -->|Fetch| api
+
+    api -->|Query/Write| db
+
+    style host fill:#646cff,stroke:#333,stroke-width:2px,color:#fff
+    style remote1 fill:#98beff,stroke:#333,stroke-width:1px,color:#000
+    style remote2 fill:#98beff,stroke:#333,stroke-width:1px,color:#000
+    style remote3 fill:#98beff,stroke:#333,stroke-width:1px,color:#000
+    style plugin fill:#ffa500,stroke:#333,stroke-width:2px,color:#000
+    style nginx fill:#009639,stroke:#333,stroke-width:2px,color:#fff
+    style api fill:#0766d6,stroke:#333,stroke-width:2px,color:#fff
+    style db fill:#336791,stroke:#333,stroke-width:2px,color:#fff
+
+    classDef browserGroup fill:#f0f4ff,stroke:#333,stroke-width:1px
+    classDef bundlingGroup fill:#fff8e6,stroke:#333,stroke-width:1px
+    classDef networkGroup fill:#f5f5f5,stroke:#333,stroke-width:1px
+    classDef backendGroup fill:#f0f0f0,stroke:#333,stroke-width:1px
+
+    class browser browserGroup
+    class bundling bundlingGroup
+    class network networkGroup
+    class backend backendGroup
+
+    note1["Known Issues:<br/>- Caching bugs (stale remoteEntry.js)<br/>- CSS loading race conditions<br/>- Remotes require build step<br/>- Plugin maintenance concerns"]
+    style note1 fill:#ffe6e6,stroke:#ff4444,stroke-width:2px

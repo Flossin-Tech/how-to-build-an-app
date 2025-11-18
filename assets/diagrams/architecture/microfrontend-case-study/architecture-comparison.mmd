@@ -1,0 +1,69 @@
+graph TB
+    subgraph Comparison["Architecture Comparison Matrix"]
+        direction TB
+
+        subgraph Current["Current: React SPA"]
+            C1["Complexity: Low"]
+            C2["Deployment: Single"]
+            C3["Teams: 1"]
+            C4["Bundle Size: ~200KB"]
+            C5["Dev Speed: Fast"]
+        end
+
+        subgraph Option1["Option 1: Microfrontend Shell"]
+            O1["Complexity: Very High"]
+            O2["Deployment: 4 independent"]
+            O3["Teams: 3+"]
+            O4["Bundle Size: Distributed"]
+            O5["Dev Speed: Slower setup"]
+        end
+
+        subgraph Option2["Option 2: Vite Module Federation"]
+            O2A["Complexity: High"]
+            O2B["Deployment: Dynamic loading"]
+            O2C["Teams: 2-3"]
+            O2D["Bundle Size: ~150-180KB"]
+            O2E["Dev Speed: Medium"]
+        end
+
+        subgraph Option3["Option 3: Extended Monolith + Lazy Loading"]
+            O3A["Complexity: Low"]
+            O3B["Deployment: Single"]
+            O3C["Teams: 1-2"]
+            O3D["Bundle Size: ~180-220KB"]
+            O3E["Dev Speed: Fast"]
+        end
+    end
+
+    subgraph ScoreLegend["Scoring: Fit for Current Scenario"]
+        direction TB
+        Legend["Green = Good Fit<br/>Yellow = Evaluate<br/>Red = Overhead"]
+    end
+
+    Comparison --> ScoreLegend
+
+    style Current fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style Option1 fill:#f8bbd0,stroke:#c2185b,stroke-width:2px
+    style Option2 fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    style Option3 fill:#a5d6a7,stroke:#1b5e20,stroke-width:3px
+    style C1 fill:#c8e6c9,stroke:#2e7d32
+    style C2 fill:#c8e6c9,stroke:#2e7d32
+    style C3 fill:#c8e6c9,stroke:#2e7d32
+    style C4 fill:#c8e6c9,stroke:#2e7d32
+    style C5 fill:#c8e6c9,stroke:#2e7d32
+    style O1 fill:#f8bbd0,stroke:#c2185b
+    style O2 fill:#f8bbd0,stroke:#c2185b
+    style O3 fill:#f8bbd0,stroke:#c2185b
+    style O4 fill:#f8bbd0,stroke:#c2185b
+    style O5 fill:#f8bbd0,stroke:#c2185b
+    style O2A fill:#fff9c4,stroke:#f57f17
+    style O2B fill:#fff9c4,stroke:#f57f17
+    style O2C fill:#fff9c4,stroke:#f57f17
+    style O2D fill:#fff9c4,stroke:#f57f17
+    style O2E fill:#fff9c4,stroke:#f57f17
+    style O3A fill:#a5d6a7,stroke:#1b5e20,stroke-width:2px
+    style O3B fill:#a5d6a7,stroke:#1b5e20,stroke-width:2px
+    style O3C fill:#a5d6a7,stroke:#1b5e20,stroke-width:2px
+    style O3D fill:#a5d6a7,stroke:#1b5e20,stroke-width:2px
+    style O3E fill:#a5d6a7,stroke:#1b5e20,stroke-width:2px
+    style ScoreLegend fill:#e3f2fd,stroke:#1976d2,stroke-width:2px

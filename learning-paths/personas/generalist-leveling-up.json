@@ -1,0 +1,230 @@
+{
+  "id": "generalist-leveling-up",
+  "name": "Generalist Leveling Up",
+  "category": "persona",
+  "description": "Systematic mid-depth coverage to fill gaps across the full stack",
+  "target_personas": ["generalist-leveling-up"],
+  "estimated_total_time_minutes": 320,
+
+  "objectives": [
+    "Fill knowledge gaps systematically across all development phases",
+    "Build comprehensive understanding of architecture decision-making",
+    "Develop expertise in critical areas like security and operations",
+    "Learn when to apply different patterns and when to avoid over-engineering"
+  ],
+
+  "milestones": [
+    {
+      "name": "Discovery & Planning Fundamentals",
+      "description": "Master the foundation of building the right thing",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "job-to-be-done",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Learn systematic problem validation before building solutions"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "requirements-gathering",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Capture what users actually need, not what they ask for"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Identify security risks early when they're cheap to fix"
+        }
+      ]
+    },
+
+    {
+      "name": "Architecture Decision-Making",
+      "description": "Learn to make and justify architecture choices",
+      "steps": [
+        {
+          "phase": "02-design",
+          "topic": "architecture-design",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Understand fundamental architecture patterns and trade-offs"
+        },
+        {
+          "phase": "02-design",
+          "topic": "frontend-architecture",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Learn how to structure client-side applications for maintainability",
+          "checkpoint": {
+            "question": "Do you understand the trade-offs between different frontend architectures?",
+            "required_for_progress": false
+          }
+        },
+        {
+          "phase": "examples",
+          "topic": "microfrontend-vs-monolith-case-study",
+          "depth": "mid-depth",
+          "file": "decision-framework-generalist.md",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Learn systematic decision-making for architecture choices using real-world case study",
+          "checkpoint": {
+            "question": "Can you apply the decision framework to evaluate architecture options?",
+            "required_for_progress": true,
+            "reflection": [
+              "What quantitative thresholds help you decide between architectures?",
+              "How do you assess team capability gaps?",
+              "When should you choose simplicity over sophistication?"
+            ]
+          }
+        },
+        {
+          "phase": "02-design",
+          "topic": "performance-scalability-design",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Design for appropriate scale, avoiding both under and over-engineering"
+        }
+      ]
+    },
+
+    {
+      "name": "Development Excellence",
+      "description": "Write maintainable, secure code",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "code-quality",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Apply SOLID principles and manage technical debt systematically"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Prevent OWASP Top 10 vulnerabilities in your code"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-review-process",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Establish systematic review practices for team quality"
+        }
+      ]
+    },
+
+    {
+      "name": "Testing & Verification",
+      "description": "Build confidence in your code",
+      "steps": [
+        {
+          "phase": "04-testing",
+          "topic": "unit-testing",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Write effective tests that catch bugs without slowing development"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "integration-testing",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Test how components work together in realistic scenarios"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Automate security checks in your development workflow"
+        }
+      ]
+    },
+
+    {
+      "name": "Deployment & Operations",
+      "description": "Ship and maintain production systems",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Deploy safely with rollback capabilities and progressive rollouts"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Understand system health and debug production issues"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Handle outages and security incidents effectively"
+        }
+      ]
+    },
+
+    {
+      "name": "Continuous Improvement",
+      "description": "Learn from outcomes and iterate",
+      "steps": [
+        {
+          "phase": "07-iteration",
+          "topic": "retrospectives",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Extract lessons from successes and failures"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Can systematically evaluate architecture options with quantitative criteria",
+    "Understands when to use complex patterns and when simplicity wins",
+    "Writes secure, maintainable code following industry best practices",
+    "Implements effective testing at appropriate levels",
+    "Deploys safely with monitoring and incident response capabilities",
+    "Applies continuous improvement through retrospectives"
+  ],
+
+  "next_steps": [
+    "Deep dive into specific areas of interest or career specialization",
+    "Apply learnings to a real project and iterate based on outcomes",
+    "Consider specialist-expanding persona for new domain expertise"
+  ],
+
+  "related_paths": [
+    "production-ready",
+    "security-hardening",
+    "development-fundamentals"
+  ]
+}

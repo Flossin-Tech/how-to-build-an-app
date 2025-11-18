@@ -1,0 +1,78 @@
+flowchart TD
+    Start["Architecture Decision:<br/>Microfrontend vs Monolith"] --> Q1{"Total Users:<br/>How many?"} 
+
+    Q1 -->|< 500| Low["<b>Below MFE Threshold</b><br/>Need 5,000+"]
+    Q1 -->|500-5,000| Medium["<b>Approaching Threshold</b><br/>Getting closer"]
+    Q1 -->|> 5,000| High["<b>MFE Threshold Met</b><br/>Scale supports MFE"]
+
+    Low --> Q2{"Teams:<br/>How many?"} 
+    Medium --> Q2
+    High --> Q2
+
+    Q2 -->|1 Team| SmallTeam["<b>Single Team</b><br/>No autonomy benefit"]
+    Q2 -->|2 Teams| MedTeam["<b>Small Team</b><br/>Low coordination pain"]
+    Q2 -->|3+ Teams| LargeTeam["<b>Multiple Teams</b><br/>Autonomy valuable"]
+
+    SmallTeam --> Q3{"Deployment<br/>Bottleneck?"} 
+    MedTeam --> Q3
+    LargeTeam --> Q3
+
+    Q3 -->|No| Q4{"Risk<br/>Tolerance?"} 
+    Q3 -->|Yes| Q4
+
+    Q4 -->|Low<br/>Finance/Healthcare| RiskLow["Conservative Industry<br/>Proven patterns preferred"]
+    Q4 -->|Medium| RiskMed["Standard Risk<br/>Accept new patterns"]
+    Q4 -->|High<br/>Startup| RiskHigh["High Risk<br/>Experimental OK"]
+
+    RiskLow --> Q5A{"Tooling<br/>Maturity?"}
+    RiskMed --> Q5B{"Tooling<br/>Maturity?"}
+    RiskHigh --> Q5C{"Team<br/>Expertise?"}
+
+    Q5A -->|Experimental| NoExp["Option 2<br/>❌ Unacceptable<br/>Vite MF too new"]
+    Q5A -->|Production-proven| YesExp1["Option 1 or 3?<br/>Evaluate complexity"]
+    
+    Q5B -->|Experimental| NoExp2["Option 2<br/>⚠️ High Risk<br/>Known production bugs"]
+    Q5B -->|Production-proven| YesExp2["Option 1 or 3?<br/>Evaluate complexity"]
+
+    Q5C -->|Limited| NoExp3["Option 2<br/>⚠️ Risk<br/>Steep learning"]
+    Q5C -->|Strong| YesExp3["Option 1 or 2?<br/>Evaluate capability"]
+
+    YesExp1 --> EvalMonolith["Evaluate Extended Monolith"]
+    YesExp2 --> EvalMonolith
+    YesExp3 --> EvalMFE["Evaluate Microfrontends"]
+
+    EvalMonolith --> Mono1{"Team Skills:<br/>React Expertise?"}
+    Mono1 -->|Yes| MonoLearn["Learning Gap:<br/>~2-3 weeks<br/>React.lazy, Redux Toolkit"]
+    Mono1 -->|No| MonoNotReady["❌ Not Ready<br/>Learn React first"]
+    
+    MonoLearn --> MonoResult["✅ RECOMMENDATION:<br/>Option 3<br/>Extended Monolith<br/>with Lazy Loading"]
+
+    EvalMFE --> MFE1{"Webpack Knowledge?"}
+    MFE1 -->|Yes| MFE2{"Multiple Teams?<br/>Autonomous Deployment?"}
+    MFE1 -->|No| MFELearn["Learning Gap:<br/>10-25 weeks<br/>Module Federation, distributed systems"]
+
+    MFE2 -->|Yes| MFEResult["⚠️ OPTION 1:<br/>Microfrontend<br/>Shell Pattern<br/>If scale & team aligned"]
+    MFE2 -->|No| MonoResult
+
+    MFELearn --> CostAnalysis["High Learning Cost<br/>$115k-163k for team<br/>10-18 weeks to productivity"]
+    CostAnalysis --> MonoResult
+
+    NoExp -.->|Avoid| BadChoice["❌ NEVER CHOOSE:<br/>Option 2<br/>Vite Module Federation<br/>in production"]
+
+    style Start fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+    style MonoResult fill:#00aa00,stroke:#333,stroke-width:3px,color:#fff
+    style MFEResult fill:#ffa500,stroke:#333,stroke-width:2px,color:#000
+    style BadChoice fill:#ff4444,stroke:#333,stroke-width:2px,color:#fff
+    style MonoNotReady fill:#ff8844,stroke:#333,stroke-width:2px,color:#fff
+    
+    style Low fill:#ffe6e6,stroke:#333,stroke-width:1px
+    style Medium fill:#fff4e6,stroke:#333,stroke-width:1px
+    style High fill:#e6ffe6,stroke:#333,stroke-width:1px
+    
+    style SmallTeam fill:#ffe6e6,stroke:#333,stroke-width:1px
+    style MedTeam fill:#fff4e6,stroke:#333,stroke-width:1px
+    style LargeTeam fill:#e6ffe6,stroke:#333,stroke-width:1px
+
+    style RiskLow fill:#ffe6e6,stroke:#333,stroke-width:1px
+    style RiskMed fill:#fff4e6,stroke:#333,stroke-width:1px
+    style RiskHigh fill:#e6ffe6,stroke:#333,stroke-width:1px
