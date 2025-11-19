@@ -1,0 +1,85 @@
+{
+  "id": "retrospectives",
+  "slug": "retrospectives",
+  "title": "Retrospectives",
+  "phase": "07-iteration",
+  "phase_name": "Iteration",
+  "order_in_phase": 1,
+  "description": {
+    "short": "Learn from successes and failures to improve",
+    "medium": "Learn from successes and failures to improve - detailed coverage coming soon",
+    "full": "Comprehensive guide to retrospectives. This topic covers essential concepts, practical implementation, and best practices."
+  },
+  "why_it_matters": [
+    "Essential for Iteration phase",
+    "Widely used across all personas",
+    "Covered in multiple learning paths"
+  ],
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 10,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand what retrospectives is",
+        "Know when and why to use it",
+        "Get started with basics"
+      ],
+      "key_takeaways": [
+        "Core concepts explained",
+        "Practical first steps",
+        "Common pitfalls to avoid"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Implement retrospectives effectively",
+        "Integrate with existing workflow",
+        "Handle common scenarios"
+      ],
+      "key_takeaways": [
+        "Best practices and patterns",
+        "Tools and frameworks",
+        "Real-world examples"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Master advanced retrospectives techniques",
+        "Handle complex scenarios",
+        "Optimize for scale"
+      ],
+      "key_takeaways": [
+        "Advanced patterns",
+        "Enterprise considerations",
+        "Performance optimization"
+      ]
+    }
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "incident-response",
+    "feature-planning"
+  ],
+  "personas": [
+    "new-developer",
+    "generalist-leveling-up"
+  ],
+  "tools": [],
+  "frameworks_and_concepts": [],
+  "compliance_relevance": [],
+  "estimated_time_to_implement": {
+    "surface": "1-2 hours",
+    "mid_depth": "4-8 hours",
+    "deep_water": "2-5 days"
+  },
+  "common_mistakes": [],
+  "success_metrics": [],
+  "when_to_prioritize": [],
+  "when_to_deprioritize": [],
+  "examples": [],
+  "updated": "2025-11-19"
+}

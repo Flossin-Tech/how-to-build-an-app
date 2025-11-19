@@ -1,0 +1,190 @@
+{
+  "id": "specialist-expanding",
+  "name": "Specialist Expanding",
+  "category": "persona",
+  "description": "Apply your existing expertise to a new domain - skip basics, focus on domain-specific differences",
+  "target_personas": ["specialist-expanding"],
+  "estimated_total_time_minutes": 180,
+
+  "objectives": [
+    "Transfer existing process knowledge to new domain",
+    "Learn domain-specific patterns and anti-patterns",
+    "Understand unique security and compliance requirements",
+    "Build on existing expertise rather than starting from scratch"
+  ],
+
+  "prerequisites": [
+    "Strong expertise in at least one development domain",
+    "Understanding of software development lifecycle",
+    "Familiarity with modern development practices"
+  ],
+
+  "domain_customization": {
+    "note": "This path is customized based on source and target domains",
+    "common_transitions": [
+      "Backend → Frontend",
+      "Web → Mobile",
+      "Traditional Software → ML Systems",
+      "Monolith → Microservices",
+      "Solo Dev → Team Lead"
+    ]
+  },
+
+  "milestones": [
+    {
+      "name": "Domain Context",
+      "description": "Understand unique aspects of new domain",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "concept-of-operations",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Understand how users interact with systems in this domain"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Learn domain-specific security threats (e.g., mobile: device security, ML: model poisoning)"
+        }
+      ]
+    },
+
+    {
+      "name": "Architecture Patterns",
+      "description": "Learn domain-specific architectural approaches",
+      "steps": [
+        {
+          "phase": "02-design",
+          "topic": "architecture-design",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Understand which patterns work in this domain and why"
+        },
+        {
+          "phase": "02-design",
+          "topic": "frontend-architecture",
+          "depth": "mid-depth",
+          "required": false,
+          "estimated_minutes": 25,
+          "why": "If moving to frontend: SPA vs MPA, state management, component patterns"
+        },
+        {
+          "phase": "02-design",
+          "topic": "performance-scalability-design",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Each domain has different performance characteristics and constraints"
+        }
+      ]
+    },
+
+    {
+      "name": "Domain-Specific Development",
+      "description": "Learn coding patterns and tools for new domain",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "OWASP Top 10 differs by domain (web vs mobile vs API vs ML)"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-quality",
+          "depth": "mid-depth",
+          "required": false,
+          "estimated_minutes": 25,
+          "why": "Idiomatic code patterns vary by domain and language ecosystem"
+        }
+      ]
+    },
+
+    {
+      "name": "Testing Strategies",
+      "description": "Domain-specific testing approaches",
+      "steps": [
+        {
+          "phase": "04-testing",
+          "topic": "unit-integration-testing",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Testing strategies differ: UI testing vs API testing vs ML model testing"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "accessibility-testing",
+          "depth": "mid-depth",
+          "required": false,
+          "estimated_minutes": 20,
+          "why": "If moving to frontend/mobile: WCAG compliance and screen reader support"
+        }
+      ]
+    },
+
+    {
+      "name": "Deployment & Operations",
+      "description": "Domain-specific deployment patterns",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Mobile: app store submission, Web: CDN strategies, ML: model serving"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "What to monitor varies: API latency vs UI performance vs model drift"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Can identify domain-specific patterns vs universal principles",
+    "Understands unique security and compliance requirements",
+    "Knows which existing knowledge transfers and what's domain-specific",
+    "Can work effectively in new domain with appropriate patterns"
+  ],
+
+  "next_steps": [
+    "Deep dive into domain-specific examples in /examples/domain-specific/",
+    "Build a small project in new domain applying learned patterns",
+    "Consider Generalist Leveling Up for systematic coverage of gaps"
+  ],
+
+  "related_paths": [
+    "generalist-leveling-up",
+    "production-ready"
+  ],
+
+  "domain_specific_notes": {
+    "backend_to_frontend": [
+      "Focus on: Frontend architecture, state management, accessibility",
+      "Skip: Most testing fundamentals (you know them), basic security (apply to frontend context)"
+    ],
+    "web_to_mobile": [
+      "Focus on: Platform security models, offline-first, native vs cross-platform",
+      "Skip: Most architecture patterns (similar), deployment concepts (adapt to app stores)"
+    ],
+    "traditional_to_ml": [
+      "Focus on: Data pipelines, model training/deployment, ML-specific testing",
+      "Skip: Basic software engineering (you know it), apply to data context"
+    ]
+  }
+}

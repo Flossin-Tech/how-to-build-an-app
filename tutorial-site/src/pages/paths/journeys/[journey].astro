@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+export async function getStaticPaths() {
+  const journeysDir = join(process.cwd(), '../learning-paths/suggested-journeys');
+  const files = await readdir(journeysDir);
+
+  const journeys = files
+    .filter(f => f.endsWith('.json'))
+    .map(f => f.replace('.json', ''));
+
+  return journeys.map(journey => ({
+    params: { journey },
+  }));
+}
+
+const { journey } = Astro.params;
+
+import { joinPath } from '../../../utils/paths';
+
+// Import the journey data
+const journeyData = await import(`../../../data/learning-paths/suggested-journeys/${journey}.json`);
+const pathData = journeyData.default || journeyData;
+---
+
+<BaseLayout title={pathData.name} description={pathData.description}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="mb-8">
+        <a href={joinPath('/paths/')} class="text-primary-400 hover:text-primary-300 text-sm mb-4 inline-block">
+          ← Back to Learning Paths
+        </a>
+
+        <div class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-sm mb-4">
+          Quick Journey
+        </div>
+
+        <h1 class="text-4xl font-bold mb-4">{pathData.name}</h1>
+        <p class="text-xl text-slate-400 mb-6">{pathData.description}</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 mb-12">
+        <div class="card text-center">
+          <div class="text-2xl font-bold text-primary-400">
+            {pathData.estimated_total_time_minutes}
+          </div>
+          <div class="text-sm text-slate-400">Minutes</div>
+        </div>
+        <div class="card text-center">
+          <div class="text-2xl font-bold text-primary-400">
+            {(pathData.journey_steps || pathData.steps || []).length}
+          </div>
+          <div class="text-sm text-slate-400">Steps</div>
+        </div>
+        <div class="card text-center">
+          <div class="text-2xl font-bold text-emerald-400">
+            Quick Win
+          </div>
+          <div class="text-sm text-slate-400">Focus</div>
+        </div>
+      </div>
+
+      <!-- Situation -->
+      {(pathData.user_situation || pathData.situation) && (
+        <div class="mb-8 p-6 bg-amber-900/20 border border-amber-500/30 rounded-lg">
+          <h2 class="text-xl font-semibold mb-2 text-amber-400">Your Situation</h2>
+          <p class="text-slate-300">{pathData.user_situation || pathData.situation}</p>
+        </div>
+      )}
+
+      <!-- Steps -->
+      <div class="space-y-4 mb-12">
+        <h2 class="text-2xl font-semibold mb-6">Quick Path Forward</h2>
+        {(pathData.journey_steps || pathData.steps || []).map((step: any, idx: number) => (
+          <a
+            href={`/${step.phase}/${step.topic}/${step.depth}`}
+            class="block p-5 bg-slate-800 rounded-lg border border-slate-700 hover:border-primary-500 transition group"
+          >
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                {idx + 1}
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-3 mb-2">
+                  <h3 class="font-semibold text-lg group-hover:text-primary-400 transition">
+                    {step.topic ? step.topic.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Step'}
+                  </h3>
+                  <span class={`badge-${step.depth === 'surface' ? 'surface' : step.depth === 'mid-depth' ? 'mid' : 'deep'}`}>
+                    {step.depth}
+                  </span>
+                  <span class="text-sm text-slate-400">{step.estimated_minutes} min</span>
+                </div>
+                <p class="text-slate-400">{step.why}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Related Tracks -->
+      {pathData.related_tracks && pathData.related_tracks.length > 0 && (
+        <div class="p-6 bg-primary-900/20 border border-primary-500/30 rounded-lg mb-8">
+          <h3 class="text-xl font-semibold mb-4">Want to Go Deeper?</h3>
+          <p class="text-slate-400 mb-4">After this quick journey, consider these full tracks:</p>
+          <div class="space-y-2">
+            {pathData.related_tracks.map((track: string) => (
+              <a
+                href={`/paths/tracks/${track}`}
+                class="block p-3 bg-slate-800 rounded hover:bg-slate-700 transition"
+              >
+                <span class="text-primary-400">→</span> {track ? track.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Track'}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Next Steps -->
+      {pathData.next_steps && pathData.next_steps.length > 0 && (
+        <div class="p-6 bg-slate-800 rounded-lg border border-slate-700">
+          <h3 class="text-xl font-semibold mb-4">After Completing This Journey</h3>
+          <ul class="space-y-2">
+            {pathData.next_steps.map((step: string) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary-400 mt-1">�</span>
+                <span class="text-slate-300">{step}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

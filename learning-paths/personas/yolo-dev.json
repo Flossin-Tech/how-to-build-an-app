@@ -1,0 +1,146 @@
+{
+  "id": "yolo-dev",
+  "name": "YOLO Dev (Built at 2am)",
+  "category": "persona",
+  "description": "Tactical fixes for critical gaps - shore up what you skipped when shipping fast",
+  "target_personas": ["yolo-dev"],
+  "estimated_total_time_minutes": 95,
+
+  "objectives": [
+    "Identify and fix critical security vulnerabilities",
+    "Add basic monitoring and incident response",
+    "Implement safe deployment practices",
+    "Build foundation for production reliability"
+  ],
+
+  "milestones": [
+    {
+      "name": "Critical Security Fixes",
+      "description": "Address security gaps that could bite you",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "List 3 things an attacker could do - takes 15 minutes, could save your app",
+          "checkpoint": {
+            "question": "Have you identified at least 3 potential threats to your system?",
+            "required_for_progress": true
+          }
+        },
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Fix SQL injection, XSS, and other critical vulnerabilities"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secret-management",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Get credentials out of your code before someone finds them",
+          "checkpoint": {
+            "question": "Are all secrets removed from version control?",
+            "required_for_progress": true
+          }
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Run basic security scans to find obvious issues"
+        }
+      ]
+    },
+
+    {
+      "name": "Production Survival Kit",
+      "description": "Essential operations to keep things running",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 12,
+          "why": "Ship with a rollback plan - because things WILL break"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Get alerted when things break so you can fix them at 9am, not 2am"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "backup-recovery",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Have a way to recover from data loss or catastrophic failures"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Know what to do when things go wrong (they will)"
+        }
+      ]
+    },
+
+    {
+      "name": "Quality Baseline",
+      "description": "Minimum testing to catch obvious bugs",
+      "steps": [
+        {
+          "phase": "04-testing",
+          "topic": "unit-integration-testing",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Test critical paths so users don't find your bugs first"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-review-process",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 7,
+          "why": "Even solo devs benefit from a second look at code"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Critical security vulnerabilities identified and mitigated",
+    "Secrets removed from version control",
+    "Basic monitoring and alerting in place",
+    "Rollback capability for deployments",
+    "Essential backups configured"
+  ],
+
+  "next_steps": [
+    "Once immediate fires are out, consider Production Ready track",
+    "For deeper security work, review Security Hardening track",
+    "Set up regular retrospectives to prevent future 2am coding sessions"
+  ],
+
+  "related_paths": [
+    "production-ready",
+    "security-hardening",
+    "incident-recovery"
+  ]
+}

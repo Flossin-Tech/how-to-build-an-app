@@ -1,0 +1,213 @@
+{
+  "id": "new-developer",
+  "name": "New Developer",
+  "category": "persona",
+  "description": "Complete lifecycle overview at surface level - understand the full development map without drowning in details",
+  "target_personas": ["new-developer"],
+  "estimated_total_time_minutes": 140,
+
+  "objectives": [
+    "Understand the complete software development lifecycle",
+    "Know what happens in each phase without implementation details",
+    "Identify which areas need deeper learning for your situation",
+    "Build mental model of how everything connects"
+  ],
+
+  "milestones": [
+    {
+      "name": "Understanding the Problem Space",
+      "description": "Learn to validate problems before building solutions",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "job-to-be-done",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Understand why validating the problem matters more than the solution"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "concept-of-operations",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Learn how to sketch user workflows before coding"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Identify security risks early when they're cheap to fix"
+        }
+      ]
+    },
+
+    {
+      "name": "Designing for Success",
+      "description": "Learn architecture and design fundamentals",
+      "steps": [
+        {
+          "phase": "02-design",
+          "topic": "architecture-design",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 15,
+          "why": "Understand common architecture patterns and when to use them"
+        },
+        {
+          "phase": "02-design",
+          "topic": "data-flow-mapping",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 12,
+          "why": "Visualize how data moves through your system"
+        },
+        {
+          "phase": "02-design",
+          "topic": "database-design",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 15,
+          "why": "Learn database fundamentals that apply everywhere"
+        }
+      ]
+    },
+
+    {
+      "name": "Writing Quality Code",
+      "description": "Development fundamentals everyone needs",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Prevent common security vulnerabilities from day one"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-quality",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Write maintainable code that others can understand"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secret-management",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 8,
+          "why": "Never commit credentials - learn the right way from the start"
+        }
+      ]
+    },
+
+    {
+      "name": "Verifying It Works",
+      "description": "Essential testing knowledge",
+      "steps": [
+        {
+          "phase": "04-testing",
+          "topic": "unit-integration-testing",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Catch bugs before users find them"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Basic security checks before deploying"
+        }
+      ]
+    },
+
+    {
+      "name": "Shipping to Production",
+      "description": "Get your code running reliably",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 12,
+          "why": "Deploy safely with rollback capability"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "infrastructure-as-code",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "Make infrastructure repeatable and documented"
+        }
+      ]
+    },
+
+    {
+      "name": "Keeping It Running",
+      "description": "Operations fundamentals",
+      "steps": [
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Know when things break so you can fix them"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Handle outages effectively when they happen"
+        }
+      ]
+    },
+
+    {
+      "name": "Learning and Improving",
+      "description": "Continuous improvement practices",
+      "steps": [
+        {
+          "phase": "07-iteration",
+          "topic": "retrospectives",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Learn from both successes and failures"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Can describe all 7 development lifecycle phases",
+    "Understands the purpose of each major activity",
+    "Knows which topics to dive deeper on for their specific needs",
+    "Has mental model of how development phases connect"
+  ],
+
+  "next_steps": [
+    "Choose specific areas to dive deeper based on your role and project",
+    "Consider MVP Launch track if building something new",
+    "Consider Generalist Leveling Up path for systematic mid-depth coverage"
+  ],
+
+  "related_paths": [
+    "mvp-launch",
+    "generalist-leveling-up",
+    "development-fundamentals"
+  ]
+}

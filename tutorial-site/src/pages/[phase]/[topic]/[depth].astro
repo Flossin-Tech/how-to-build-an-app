@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
+import DepthSwitcher from '../../../components/content/DepthSwitcher.astro';
+
+export async function getStaticPaths() {
+  const allDocs = await getCollection('docs');
+
+  // Filter to only include entries with depth
+  return allDocs
+    .filter(entry => entry.data.depth)
+    .map(entry => ({
+      params: {
+        phase: entry.data.phase,
+        topic: entry.data.topic,
+        depth: entry.data.depth,
+      },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<ContentLayout title={entry.data.title} description={`${entry.data.title} - ${entry.data.depth} level`}>
+  <Breadcrumbs
+    phase={entry.data.phase}
+    topic={entry.data.topic}
+    depth={entry.data.depth}
+  />
+
+  <DepthSwitcher
+    topic={entry.data.topic}
+    currentDepth={entry.data.depth}
+    phase={entry.data.phase}
+  />
+
+  <article class="prose prose-invert prose-lg max-w-none">
+    <Content />
+  </article>
+
+  {entry.data.related_topics && entry.data.related_topics.length > 0 && (
+    <div class="mt-12 p-6 bg-slate-800 rounded-lg border border-slate-700">
+      <h3 class="text-lg font-semibold mb-4">Related Topics</h3>
+      <ul class="space-y-2">
+        {entry.data.related_topics.map((topic: string) => (
+          <li>
+            <span class="text-slate-400">{topic}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</ContentLayout>

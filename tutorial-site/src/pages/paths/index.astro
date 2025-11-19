@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { joinPath } from '../../utils/paths';
+
+const personas = [
+  { id: 'new-developer', name: 'New Developer', desc: 'Comprehensive overview of the lifecycle' },
+  { id: 'yolo-dev', name: 'YOLO Dev (Built at 2am)', desc: 'Shore up critical gaps quickly' },
+  { id: 'specialist-expanding', name: 'Specialist Expanding', desc: 'Apply expertise to new domain' },
+  { id: 'generalist-leveling-up', name: 'Generalist Leveling Up', desc: 'Systematic skill development' },
+  { id: 'busy-developer', name: 'Busy Developer', desc: 'Just-in-time learning' },
+];
+
+const tracks = [
+  { id: 'mvp-launch', name: 'MVP Launch', desc: 'Ship your first version' },
+  { id: 'production-ready', name: 'Production Ready', desc: 'Make your app production-grade' },
+  { id: 'security-hardening', name: 'Security Hardening', desc: 'Build secure systems' },
+  { id: 'compliance-prep', name: 'Compliance Prep', desc: 'Meet regulatory requirements' },
+  { id: 'incident-recovery', name: 'Incident Recovery', desc: 'Handle and recover from incidents' },
+];
+
+const journeys = [
+  { id: 'have-idea', name: 'I Have an Idea', desc: 'Turn your idea into reality' },
+  { id: 'code-works-breaks', name: 'Code Works But Breaks', desc: 'Fix production issues' },
+  { id: 'security-warnings', name: 'Getting Security Warnings', desc: 'Address security concerns' },
+  { id: 'choosing-architecture', name: 'Choosing Architecture', desc: 'Pick the right approach' },
+  { id: 'switching-domains', name: 'Switching Domains', desc: 'Apply skills to new context' },
+];
+---
+
+<BaseLayout title="Learning Paths" description="Guided journeys for different personas and goals">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-4">Learning Paths</h1>
+    <p class="text-xl text-slate-400 mb-12">
+      Choose a path that matches your goals and experience level
+    </p>
+
+    <div class="space-y-12">
+      <!-- Personas -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">👤 Persona-Based Paths</h2>
+        <p class="text-slate-400 mb-6">Learning paths designed for different developer profiles</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {personas.map(persona => (
+            <a href={joinPath(`/paths/personas/${persona.id}/`)} class="card hover:border-primary-500 transition group">
+              <div class="font-semibold mb-2 group-hover:text-primary-400 transition">{persona.name}</div>
+              <div class="text-sm text-slate-400">{persona.desc}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tracks -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">🎯 Goal-Based Tracks</h2>
+        <p class="text-slate-400 mb-6">Comprehensive paths focused on specific outcomes</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {tracks.map(track => (
+            <a href={joinPath(`/paths/tracks/${track.id}/`)} class="card hover:border-primary-500 transition group">
+              <div class="font-semibold mb-2 group-hover:text-primary-400 transition">{track.name}</div>
+              <div class="text-sm text-slate-400">{track.desc}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Journeys -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">⚡ Quick Journeys</h2>
+        <p class="text-slate-400 mb-6">Targeted solutions for immediate problems</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {journeys.map(journey => (
+            <a href={joinPath(`/paths/journeys/${journey.id}/`)} class="card hover:border-primary-500 transition group">
+              <div class="font-semibold mb-2 group-hover:text-primary-400 transition">{journey.name}</div>
+              <div class="text-sm text-slate-400">{journey.desc}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

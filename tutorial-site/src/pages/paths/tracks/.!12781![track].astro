@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+export async function getStaticPaths() {
+  const tracksDir = join(process.cwd(), '../learning-paths/tracks');
+  const files = await readdir(tracksDir);
+
+  const tracks = files
+    .filter(f => f.endsWith('.json'))
+    .map(f => f.replace('.json', ''));
+
+  return tracks.map(track => ({
+    params: { track },
+  }));
+}
+
+const { track } = Astro.params;
+
+// Import the track data
+const trackData = await import(`../../../data/learning-paths/tracks/${track}.json`);
+const pathData = trackData.default || trackData;
+---
+
+<BaseLayout title={pathData.name} description={pathData.description}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="mb-8">
+        <a href="/paths" class="text-primary-400 hover:text-primary-300 text-sm mb-4 inline-block">

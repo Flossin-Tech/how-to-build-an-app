@@ -1,0 +1,257 @@
+{
+  "id": "compliance-prep",
+  "name": "Compliance Preparation Track",
+  "category": "track",
+  "description": "Prepare for compliance audit (SOC2, HIPAA, PCI-DSS, ISO27001, GDPR)",
+  "target_personas": ["generalist-leveling-up", "specialist-expanding"],
+  "estimated_total_time_minutes": 320,
+
+  "objectives": [
+    "Understand compliance requirements for your domain",
+    "Implement required security controls and documentation",
+    "Establish audit-ready processes and evidence collection",
+    "Prepare for successful compliance audit"
+  ],
+
+  "prerequisites": [
+    "Application in production or near production",
+    "Understanding of your compliance requirements (SOC2, HIPAA, etc.)"
+  ],
+
+  "compliance_frameworks": [
+    "SOC2 Type II",
+    "HIPAA (Healthcare)",
+    "PCI-DSS (Payment Card Industry)",
+    "ISO27001",
+    "GDPR (EU Data Protection)"
+  ],
+
+  "milestones": [
+    {
+      "name": "Requirements Analysis",
+      "description": "Understand what compliance requires",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "requirements-gathering",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 45,
+          "why": "Document all regulatory and compliance requirements systematically"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 45,
+          "why": "Compliance frameworks require documented threat models and risk assessments"
+        }
+      ]
+    },
+
+    {
+      "name": "Data Protection",
+      "description": "Secure and track sensitive data",
+      "steps": [
+        {
+          "phase": "02-design",
+          "topic": "data-flow-mapping",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 40,
+          "why": "Map all data flows with classification (PII, PHI, PCI, etc.)"
+        },
+        {
+          "phase": "02-design",
+          "topic": "database-design",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 30,
+          "why": "Implement encryption at rest and data retention policies"
+        }
+      ]
+    },
+
+    {
+      "name": "Secure Development",
+      "description": "Implement required security controls",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 40,
+          "why": "Comprehensive secure coding aligned with compliance requirements"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secret-management",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Proper credential management is required by all frameworks"
+        },
+        {
+          "phase": "03-development",
+          "topic": "code-review-process",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Documented code review processes required for SOC2, ISO27001"
+        }
+      ]
+    },
+
+    {
+      "name": "Validation & Testing",
+      "description": "Prove security controls work",
+      "steps": [
+        {
+          "phase": "04-testing",
+          "topic": "compliance-validation",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 45,
+          "why": "Systematic validation of compliance controls"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Automated security testing for continuous compliance"
+        }
+      ]
+    },
+
+    {
+      "name": "Access & Deployment Controls",
+      "description": "Control who can access what",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "access-control",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 40,
+          "why": "Implement RBAC, MFA, principle of least privilege"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "cicd-pipeline-security",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Secure deployment pipeline with approvals and audit trails"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "infrastructure-as-code",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Document infrastructure configurations for audit"
+        }
+      ]
+    },
+
+    {
+      "name": "Audit Trail & Recovery",
+      "description": "Evidence collection and disaster recovery",
+      "steps": [
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 45,
+          "why": "Comprehensive audit logging required by all frameworks"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "backup-recovery",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 40,
+          "why": "Disaster recovery plans and tested backups required"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Documented incident response procedures required"
+        }
+      ]
+    },
+
+    {
+      "name": "Continuous Compliance",
+      "description": "Maintain compliance over time",
+      "steps": [
+        {
+          "phase": "07-iteration",
+          "topic": "security-posture-reviews",
+          "depth": "deep-water",
+          "required": true,
+          "estimated_minutes": 40,
+          "why": "Regular security reviews required to maintain compliance"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "patch-management",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Timely patching required by all frameworks"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "All regulatory requirements documented and mapped to controls",
+    "Comprehensive threat model and risk assessment completed",
+    "Data flows mapped with classification and protection measures",
+    "Security controls implemented and tested",
+    "Access controls with MFA and least privilege",
+    "Comprehensive audit logging in place",
+    "Disaster recovery plan documented and tested",
+    "Incident response procedures documented",
+    "Regular security reviews scheduled",
+    "Evidence collection automated where possible"
+  ],
+
+  "audit_preparation": [
+    "Collect evidence of all controls implementation",
+    "Document all processes and procedures",
+    "Schedule pre-audit assessment with auditor",
+    "Train team on audit process and expectations",
+    "Establish evidence retention policies"
+  ],
+
+  "next_steps": [
+    "Schedule compliance audit with certified auditor",
+    "Implement continuous compliance monitoring",
+    "Consider compliance automation tools",
+    "Establish compliance committee or working group",
+    "Plan for re-certification timeline"
+  ],
+
+  "related_paths": [
+    "security-hardening",
+    "production-ready"
+  ],
+
+  "framework_specific_notes": {
+    "SOC2": "Focus on Trust Services Criteria (security, availability, confidentiality, processing integrity, privacy)",
+    "HIPAA": "Emphasize PHI protection, encryption, access controls, audit trails",
+    "PCI-DSS": "Cardholder data environment security, network segmentation, quarterly scans",
+    "ISO27001": "Information Security Management System (ISMS), risk management framework",
+    "GDPR": "Data protection by design, privacy impact assessments, data subject rights"
+  }
+}

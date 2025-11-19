@@ -1,0 +1,127 @@
+{
+  "id": "have-idea",
+  "name": "I Have an Idea",
+  "category": "journey",
+  "description": "Starting point for validating a new idea and planning MVP",
+  "target_personas": ["new-developer", "busy-developer"],
+  "estimated_total_time_minutes": 50,
+
+  "user_situation": "I have an idea for an app but don't know where to start",
+
+  "objectives": [
+    "Validate the problem is worth solving",
+    "Sketch solution approach without coding",
+    "Identify critical risks early",
+    "Create actionable plan to MVP"
+  ],
+
+  "journey_steps": [
+    {
+      "order": 1,
+      "phase": "01-discovery-planning",
+      "topic": "job-to-be-done",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Validate the problem before falling in love with your solution",
+      "key_questions": [
+        "Can you describe the problem without mentioning your app?",
+        "Who has this problem and how badly do they need it solved?",
+        "How do they solve it today and what's wrong with that?"
+      ],
+      "checkpoint": {
+        "question": "Can you articulate the job to be done without mentioning your solution?",
+        "required_for_progress": true
+      }
+    },
+    {
+      "order": 2,
+      "phase": "01-discovery-planning",
+      "topic": "concept-of-operations",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Sketch how users will accomplish their goals",
+      "deliverable": "Simple workflow diagram or written scenario"
+    },
+    {
+      "order": 3,
+      "phase": "01-discovery-planning",
+      "topic": "scope-setting",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Define MVP scope - what's in, what's out, what's later",
+      "key_questions": [
+        "What's the absolute minimum to prove the concept?",
+        "What can you cut and still solve the core problem?",
+        "What feels critical but is actually nice-to-have?"
+      ]
+    },
+    {
+      "order": 4,
+      "phase": "01-discovery-planning",
+      "topic": "threat-modeling",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 8,
+      "why": "Identify 3 things that could go really wrong",
+      "deliverable": "List of 3 critical threats and simple mitigations"
+    },
+    {
+      "order": 5,
+      "phase": "02-design",
+      "topic": "architecture-design",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 12,
+      "why": "Choose simplest architecture that could work for MVP",
+      "key_questions": [
+        "What's the simplest technical approach?",
+        "Can you use existing services instead of building?",
+        "Are you over-engineering for future scale?"
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Can explain the problem without mentioning your solution",
+    "Have basic user workflow sketched",
+    "MVP scope is clear and minimal",
+    "Identified 3 critical threats",
+    "Chosen simple, appropriate architecture"
+  ],
+
+  "decision_points": {
+    "after_step_1": {
+      "question": "Is this problem worth solving?",
+      "if_yes": "Continue to step 2",
+      "if_no": "Consider pivoting or exploring different problem space",
+      "if_unsure": "Talk to 5 potential users before continuing"
+    },
+    "after_step_3": {
+      "question": "Can you build MVP in 2-4 weeks?",
+      "if_yes": "Continue to step 4",
+      "if_no": "Revisit scope - cut more features",
+      "if_unsure": "Break down into smaller milestones"
+    }
+  },
+
+  "next_steps_after_journey": [
+    "Follow MVP Launch track to build and ship",
+    "Validate assumptions with real users before building",
+    "Consider New Developer path for full lifecycle overview"
+  ],
+
+  "common_mistakes_to_avoid": [
+    "Skipping problem validation and jumping to solution",
+    "Defining MVP that takes 6+ months to build",
+    "Ignoring security until after launch",
+    "Choosing complex architecture before proving concept"
+  ],
+
+  "related_paths": [
+    "mvp-launch",
+    "new-developer"
+  ]
+}

@@ -1,0 +1,36 @@
+---
+interface Props {
+  topic: string;
+  currentDepth: string;
+  phase: string;
+}
+
+const { topic, currentDepth, phase } = Astro.props;
+
+import { joinPath } from '../../utils/paths';
+
+const depths = [
+  { name: 'surface', label: 'Surface', time: '8 min' },
+  { name: 'mid-depth', label: 'Mid-Depth', time: '25 min' },
+  { name: 'deep-water', label: 'Deep Water', time: '45 min' },
+];
+---
+
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 mb-8 p-4 bg-slate-800 rounded-lg">
+  {depths.map((depth) => {
+    const isCurrent = depth.name === currentDepth;
+    const url = joinPath(`/${phase}/${topic}/${depth.name}/`);
+    const currentStyle = 'bg-primary-600 text-white font-semibold';
+    const normalStyle = 'bg-slate-700 text-slate-300 hover:bg-slate-600';
+
+    return (
+      <a
+        href={url}
+        class={`flex-1 px-4 py-3 rounded-lg text-center transition ${isCurrent ? currentStyle : normalStyle}`}
+      >
+        <div class="text-sm">{depth.label}</div>
+        <div class="text-xs text-slate-400 mt-1">{depth.time}</div>
+      </a>
+    );
+  })}
+</div>

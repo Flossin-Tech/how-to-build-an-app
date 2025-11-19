@@ -1,0 +1,68 @@
+---
+interface Props {
+  phase?: string;
+  topic?: string;
+  depth?: string;
+}
+
+const { phase, topic, depth} = Astro.props;
+
+import { joinPath, getBase } from '../../utils/paths';
+
+const base = getBase();
+
+const phaseNames: Record<string, string> = {
+  '01-discovery-planning': 'Discovery & Planning',
+  '02-design': 'Design',
+  '03-development': 'Development',
+  '04-testing': 'Testing',
+  '05-deployment': 'Deployment',
+  '06-operations': 'Operations',
+  '07-iteration': 'Iteration',
+};
+
+const depthNames: Record<string, string> = {
+  'surface': 'Surface',
+  'mid-depth': 'Mid-Depth',
+  'deep-water': 'Deep Water',
+};
+
+const topicTitle = topic ? topic.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : '';
+---
+
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex items-center gap-2 text-sm text-slate-400">
+    <li>
+      <a href={base} class="hover:text-primary-400 transition">Home</a>
+    </li>
+
+    {phase && (
+      <>
+        <li><span class="text-slate-600">/</span></li>
+        <li>
+          <a href={joinPath(`/phases/${phase}/`)} class="hover:text-primary-400 transition">
+            {phaseNames[phase]}
+          </a>
+        </li>
+      </>
+    )}
+
+    {topic && (
+      <>
+        <li><span class="text-slate-600">/</span></li>
+        <li>
+          <span class="text-slate-300">{topicTitle}</span>
+        </li>
+      </>
+    )}
+
+    {depth && (
+      <>
+        <li><span class="text-slate-600">/</span></li>
+        <li>
+          <span class="text-primary-400">{depthNames[depth]}</span>
+        </li>
+      </>
+    )}
+  </ol>
+</nav>

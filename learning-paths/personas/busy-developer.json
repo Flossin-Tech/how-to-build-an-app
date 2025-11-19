@@ -1,0 +1,212 @@
+{
+  "id": "busy-developer",
+  "name": "Busy Developer",
+  "category": "persona",
+  "description": "Just-in-time learning for immediate problems - get answers fast and get back to work",
+  "target_personas": ["busy-developer"],
+  "estimated_total_time_minutes": 0,
+
+  "note": "This is a dynamic path based on user's current needs. Estimated time varies by problem.",
+
+  "objectives": [
+    "Solve immediate blocking problem",
+    "Learn just enough to unblock current work",
+    "Bookmark deeper content for later learning",
+    "Build knowledge incrementally as needs arise"
+  ],
+
+  "usage_pattern": {
+    "primary_access": "search",
+    "depth_preference": "surface",
+    "completion_behavior": "read and apply immediately",
+    "follow_up": "bookmark related topics for later"
+  },
+
+  "common_scenarios": [
+    {
+      "problem": "How do I secure API endpoints?",
+      "suggested_topics": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "Quick overview of API security basics"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "access-control",
+          "depth": "surface",
+          "estimated_minutes": 12,
+          "why": "Authentication and authorization patterns"
+        }
+      ],
+      "bookmark_for_later": [
+        "security-testing (mid-depth)",
+        "api-design (mid-depth)"
+      ]
+    },
+    {
+      "problem": "Deployment keeps failing",
+      "suggested_topics": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "surface",
+          "estimated_minutes": 12,
+          "why": "Common deployment patterns and rollback strategies"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "infrastructure-as-code",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "Make deployments repeatable"
+        }
+      ],
+      "bookmark_for_later": [
+        "cicd-pipeline-security (mid-depth)",
+        "monitoring-logging (surface)"
+      ]
+    },
+    {
+      "problem": "Getting security warnings from scanner",
+      "suggested_topics": [
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "Understand what scanners are telling you"
+        },
+        {
+          "phase": "03-development",
+          "topic": "supply-chain-security",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "If warnings are about dependencies"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "If warnings are about code vulnerabilities"
+        }
+      ],
+      "bookmark_for_later": [
+        "threat-modeling (surface)",
+        "security-hardening track"
+      ]
+    },
+    {
+      "problem": "Database is slow",
+      "suggested_topics": [
+        {
+          "phase": "02-design",
+          "topic": "database-design",
+          "depth": "surface",
+          "estimated_minutes": 15,
+          "why": "Quick wins for database performance"
+        },
+        {
+          "phase": "02-design",
+          "topic": "performance-scalability-design",
+          "depth": "surface",
+          "estimated_minutes": 15,
+          "why": "Understand performance bottlenecks"
+        }
+      ],
+      "bookmark_for_later": [
+        "database-design (mid-depth)",
+        "monitoring-logging (surface)"
+      ]
+    },
+    {
+      "problem": "Need to pass compliance audit",
+      "suggested_topics": [
+        {
+          "phase": "04-testing",
+          "topic": "compliance-validation",
+          "depth": "surface",
+          "estimated_minutes": 12,
+          "why": "Understand what compliance requires"
+        },
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "mid-depth",
+          "estimated_minutes": 25,
+          "why": "Most compliance frameworks require documented threat models"
+        }
+      ],
+      "bookmark_for_later": [
+        "compliance-prep track",
+        "security-posture-reviews (mid-depth)"
+      ]
+    },
+    {
+      "problem": "Production outage happening now",
+      "suggested_topics": [
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "Immediate actions for handling outages"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "backup-recovery",
+          "depth": "surface",
+          "estimated_minutes": 10,
+          "why": "If you need to restore from backup"
+        }
+      ],
+      "bookmark_for_later": [
+        "incident-recovery track",
+        "monitoring-logging (mid-depth)",
+        "retrospectives (surface)"
+      ]
+    }
+  ],
+
+  "recommended_workflow": [
+    "1. Search for your specific problem",
+    "2. Read surface-level topic (8-15 min)",
+    "3. Apply what you learned immediately",
+    "4. Bookmark deeper content for later",
+    "5. Come back when you have time to level up"
+  ],
+
+  "milestones": [
+    {
+      "name": "Problem Solved",
+      "description": "Immediate blocker resolved",
+      "steps": [
+        {
+          "note": "Dynamic based on search query and problem type",
+          "why": "This path is generated on-the-fly based on user's search and current context"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Immediate problem is solved",
+    "Understands enough to apply solution correctly",
+    "Has bookmarked related topics for deeper learning later"
+  ],
+
+  "next_steps": [
+    "When you have more time, revisit bookmarked topics at mid-depth",
+    "Consider New Developer path for systematic lifecycle overview",
+    "Consider Generalist Leveling Up for comprehensive coverage"
+  ],
+
+  "related_paths": [
+    "new-developer",
+    "generalist-leveling-up",
+    "yolo-dev"
+  ]
+}

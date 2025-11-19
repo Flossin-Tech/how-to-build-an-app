@@ -1,0 +1,187 @@
+{
+  "id": "security-warnings",
+  "name": "Getting Security Warnings",
+  "category": "journey",
+  "description": "Security scanner is reporting vulnerabilities - here's how to understand and fix them",
+  "target_personas": ["yolo-dev", "busy-developer"],
+  "estimated_total_time_minutes": 60,
+
+  "user_situation": "I'm getting security warnings and don't know what to do",
+
+  "objectives": [
+    "Understand what security scanners are telling you",
+    "Prioritize vulnerabilities by actual risk",
+    "Fix critical security issues quickly",
+    "Prevent similar issues in the future"
+  ],
+
+  "journey_steps": [
+    {
+      "order": 1,
+      "phase": "04-testing",
+      "topic": "security-testing",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Understand what different security warnings mean",
+      "key_questions": [
+        "What type of vulnerability is being reported?",
+        "What's the severity (critical/high/medium/low)?",
+        "Is this in your code or a dependency?"
+      ],
+      "common_warning_types": {
+        "dependency_vulnerabilities": "Outdated packages with known CVEs",
+        "code_vulnerabilities": "SQL injection, XSS, insecure configs",
+        "secret_exposure": "API keys or credentials in code",
+        "insecure_configs": "Weak TLS, debug mode in prod, etc."
+      }
+    },
+    {
+      "order": 2,
+      "phase": "01-discovery-planning",
+      "topic": "threat-modeling",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 8,
+      "why": "Assess actual risk - not all warnings are equally critical",
+      "triage_framework": {
+        "critical": "Fix immediately - actively exploitable, severe impact",
+        "high": "Fix this sprint - exploitable with effort, significant impact",
+        "medium": "Fix soon - defense in depth, limited impact",
+        "low": "Backlog - best practices, minimal real risk"
+      }
+    },
+    {
+      "order": 3,
+      "phase": "03-development",
+      "topic": "secure-coding-practices",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Fix code-level vulnerabilities (SQL injection, XSS, etc.)",
+      "immediate_fixes": [
+        "Use parameterized queries (SQL injection)",
+        "Sanitize user inputs (XSS)",
+        "Validate and escape all external data",
+        "Remove debug flags from production"
+      ],
+      "checkpoint": {
+        "question": "Have you fixed all critical code vulnerabilities?",
+        "required_for_progress": true
+      }
+    },
+    {
+      "order": 4,
+      "phase": "03-development",
+      "topic": "supply-chain-security",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Fix dependency vulnerabilities safely",
+      "immediate_actions": [
+        "Update vulnerable dependencies to patched versions",
+        "Check if updates break anything (run tests)",
+        "If no patch available, assess workarounds or alternatives"
+      ]
+    },
+    {
+      "order": 5,
+      "phase": "03-development",
+      "topic": "secret-management",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 8,
+      "why": "Remove exposed secrets immediately",
+      "immediate_actions": [
+        "Rotate any exposed credentials immediately",
+        "Remove secrets from code and git history",
+        "Use environment variables or secret management service",
+        "Add pre-commit hooks to prevent future commits"
+      ],
+      "urgency": "CRITICAL - exposed secrets can be exploited immediately"
+    },
+    {
+      "order": 6,
+      "phase": "04-testing",
+      "topic": "security-testing",
+      "depth": "mid-depth",
+      "required": true,
+      "estimated_minutes": 25,
+      "why": "Automate security scanning to catch issues early",
+      "implementation": [
+        "Add security scanning to CI/CD pipeline",
+        "Configure scanner to block critical/high vulnerabilities",
+        "Set up alerts for new vulnerabilities",
+        "Schedule regular scans (weekly or on every PR)"
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Understand all current security warnings",
+    "Critical vulnerabilities fixed",
+    "High-severity issues have fix plan",
+    "Exposed secrets rotated and removed",
+    "Security scanning automated in CI/CD",
+    "Team knows how to triage future warnings"
+  ],
+
+  "vulnerability_types": {
+    "sql_injection": {
+      "severity": "critical",
+      "description": "Attacker can execute arbitrary database queries",
+      "fix": "Use parameterized queries or ORM",
+      "example": "Instead of: query = 'SELECT * FROM users WHERE id = ' + userId\nUse: query = 'SELECT * FROM users WHERE id = ?', [userId]",
+      "related_topic": "secure-coding-practices"
+    },
+    "xss": {
+      "severity": "high",
+      "description": "Attacker can inject malicious scripts",
+      "fix": "Sanitize and escape all user inputs before rendering",
+      "example": "Use framework's built-in escaping (React, Vue auto-escape by default)",
+      "related_topic": "secure-coding-practices"
+    },
+    "dependency_vulnerability": {
+      "severity": "varies",
+      "description": "Third-party package has known vulnerability",
+      "fix": "Update to patched version or find alternative",
+      "example": "npm audit fix or yarn upgrade",
+      "related_topic": "supply-chain-security"
+    },
+    "exposed_secret": {
+      "severity": "critical",
+      "description": "API key, password, or token committed to code",
+      "fix": "Rotate credential immediately, use secret management",
+      "urgency": "Fix within hours - may already be compromised",
+      "related_topic": "secret-management"
+    },
+    "insecure_crypto": {
+      "severity": "high",
+      "description": "Weak encryption or hashing algorithm",
+      "fix": "Use modern algorithms (AES-256, bcrypt, Argon2)",
+      "example": "Replace MD5/SHA1 with SHA-256 or better",
+      "related_topic": "secure-coding-practices"
+    }
+  },
+
+  "next_steps_after_journey": [
+    "Follow Security Hardening track for comprehensive security",
+    "Implement security testing in all environments",
+    "Schedule quarterly security reviews",
+    "Consider security training for team"
+  ],
+
+  "when_to_get_help": [
+    "Critical vulnerabilities you don't understand",
+    "Suspected active exploitation",
+    "Compliance requirements (HIPAA, PCI, SOC2)",
+    "Multiple high-severity issues",
+    "No internal security expertise"
+  ],
+
+  "related_paths": [
+    "security-hardening",
+    "yolo-dev",
+    "compliance-prep"
+  ]
+}

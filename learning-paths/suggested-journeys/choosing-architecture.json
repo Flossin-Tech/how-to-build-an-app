@@ -29,12 +29,13 @@
       "topic": "microfrontend-vs-monolith-case-study",
       "depth": "mid-depth",
       "file": "decision-framework-generalist.md",
-      "required": true,
+      "required": false,
       "estimated_minutes": 20,
       "why": "Learn a systematic framework for evaluating architecture options with real-world example",
+      "note": "Example content coming soon - decision framework principles are covered in architecture-design",
       "checkpoint": {
         "question": "Can you identify quantitative thresholds for your architecture decision?",
-        "required_for_progress": true,
+        "required_for_progress": false,
         "reflection": [
           "What's your actual user scale vs. the pattern's designed scale?",
           "What's your team's capability gap for each option?",

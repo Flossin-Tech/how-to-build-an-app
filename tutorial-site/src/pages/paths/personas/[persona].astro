@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+
+export async function getStaticPaths() {
+  const personasDir = join(process.cwd(), '../learning-paths/personas');
+  const files = await readdir(personasDir);
+
+  const personas = files
+    .filter(f => f.endsWith('.json'))
+    .map(f => f.replace('.json', ''));
+
+  return personas.map(persona => ({
+    params: { persona },
+  }));
+}
+
+const { persona } = Astro.params;
+
+import { joinPath } from '../../../utils/paths';
+
+// Import the persona data
+const personaData = await import(`../../../data/learning-paths/personas/${persona}.json`);
+const pathData = personaData.default || personaData;
+---
+
+<BaseLayout title={pathData.name} description={pathData.description}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="mb-8">
+        <a href={joinPath('/paths/')} class="text-primary-400 hover:text-primary-300 text-sm mb-4 inline-block">
+          ← Back to Learning Paths
+        </a>
+        <h1 class="text-4xl font-bold mb-4">{pathData.name}</h1>
+        <p class="text-xl text-slate-400 mb-6">{pathData.description}</p>
+      </div>
+
+      <!-- Stats -->
+      {pathData.milestones && (
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div class="card text-center">
+            <div class="text-2xl font-bold text-primary-400">
+              {pathData.estimated_total_time_minutes}
+            </div>
+            <div class="text-sm text-slate-400">Minutes</div>
+          </div>
+          <div class="card text-center">
+            <div class="text-2xl font-bold text-primary-400">
+              {pathData.milestones.length}
+            </div>
+            <div class="text-sm text-slate-400">Milestones</div>
+          </div>
+          <div class="card text-center">
+            <div class="text-2xl font-bold text-primary-400">
+              {pathData.milestones.reduce((sum, m) => sum + m.steps.length, 0)}
+            </div>
+            <div class="text-sm text-slate-400">Steps</div>
+          </div>
+          <div class="card text-center">
+            <div class="text-2xl font-bold text-emerald-400">
+              Surface
+            </div>
+            <div class="text-sm text-slate-400">Depth Focus</div>
+          </div>
+        </div>
+      )}
+
+      <!-- Objectives -->
+      {pathData.objectives && pathData.objectives.length > 0 && (
+        <div class="mb-12 p-6 bg-primary-900/20 border border-primary-500/30 rounded-lg">
+          <h2 class="text-2xl font-semibold mb-4">What You'll Accomplish</h2>
+          <ul class="space-y-2">
+            {pathData.objectives.map((objective: string) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary-400 mt-1"></span>
+                <span>{objective}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Milestones -->
+      {pathData.milestones && (
+        <div class="space-y-8">
+          {pathData.milestones.map((milestone: any, idx: number) => (
+          <div class="border-l-4 border-primary-500 pl-6">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="flex-shrink-0 w-10 h-10 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold">
+                {idx + 1}
+              </div>
+              <div>
+                <h3 class="text-2xl font-semibold mb-2">{milestone.name}</h3>
+                <p class="text-slate-400">{milestone.description}</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 ml-14">
+              {milestone.steps.map((step: any, stepIdx: number) => (
+                <a
+                  href={joinPath(`/${step.phase}/${step.topic}/${step.depth}/`)}
+                  class="block p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-primary-500 transition group"
+                >
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <span class="text-slate-500 text-sm">Step {stepIdx + 1}</span>
+                        {step.required && (
+                          <span class="badge bg-red-500/20 text-red-400 border border-red-500/30">
+                            Required
+                          </span>
+                        )}
+                        <span class={`badge-${step.depth === 'surface' ? 'surface' : step.depth === 'mid-depth' ? 'mid' : 'deep'}`}>
+                          {step.depth}
+                        </span>
+                      </div>
+                      <h4 class="font-semibold mb-1 group-hover:text-primary-400 transition">
+                        {step.topic ? step.topic.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Step'}
+                      </h4>
+                      <p class="text-sm text-slate-400 mb-2">{step.why}</p>
+                      {step.checkpoint && (
+                        <div class="text-sm text-amber-400 flex items-start gap-2 mt-2">
+                          <span>�</span>
+                          <span>Checkpoint: {step.checkpoint.question}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div class="flex-shrink-0 text-right">
+                      <div class="text-sm text-slate-400">{step.estimated_minutes} min</div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+        </div>
+      )}
+
+      <!-- Common Scenarios (for busy-developer) -->
+      {pathData.common_scenarios && (
+        <div class="space-y-6">
+          <h2 class="text-2xl font-semibold mb-6">Common Scenarios</h2>
+          {pathData.common_scenarios.map((scenario: any, idx: number) => (
+            <div class="card">
+              <h3 class="text-xl font-semibold mb-4 text-amber-400">{scenario.problem}</h3>
+              {scenario.suggested_topics && (
+                <div class="space-y-2 mb-4">
+                  {scenario.suggested_topics.map((topic: any) => (
+                    <a
+                      href={joinPath(`/${topic.phase}/${topic.topic}/${topic.depth}/`)}
+                      class="block p-3 bg-slate-700 rounded hover:bg-slate-600 transition"
+                    >
+                      <div class="flex items-center justify-between">
+                        <div>
+                          <span class="font-semibold">
+                            {topic.topic ? topic.topic.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : 'Topic'}
+                          </span>
+                          <p class="text-sm text-slate-400 mt-1">{topic.why}</p>
+                        </div>
+                        <span class="text-sm text-slate-400">{topic.estimated_minutes} min</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+              {scenario.bookmark_for_later && scenario.bookmark_for_later.length > 0 && (
+                <div class="text-sm text-slate-500">
+                  Bookmark for later: {scenario.bookmark_for_later.join(', ')}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Next Steps -->
+      {pathData.next_steps && pathData.next_steps.length > 0 && (
+        <div class="mt-12 p-6 bg-slate-800 rounded-lg border border-slate-700">
+          <h3 class="text-xl font-semibold mb-4">After Completing This Path</h3>
+          <ul class="space-y-2">
+            {pathData.next_steps.map((step: string) => (
+              <li class="flex items-start gap-3">
+                <span class="text-primary-400 mt-1">�</span>
+                <span class="text-slate-300">{step}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>

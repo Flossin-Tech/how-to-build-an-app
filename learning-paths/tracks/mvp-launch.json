@@ -72,12 +72,13 @@
           "topic": "microfrontend-vs-monolith-case-study",
           "depth": "surface",
           "file": "quick-take-yolo-dev.md",
-          "required": true,
+          "required": false,
           "estimated_minutes": 5,
           "why": "Learn when NOT to use complex architectures - avoid over-engineering",
+          "note": "Example content coming soon - key principle: choose simplest architecture that could work",
           "checkpoint": {
             "question": "Do you understand the quantitative thresholds for architecture decisions?",
-            "required_for_progress": true,
+            "required_for_progress": false,
             "reflection": [
               "Does your current scale justify architectural complexity?",
               "What's the simplest solution that meets your actual needs?",
@@ -133,7 +134,7 @@
       "steps": [
         {
           "phase": "04-testing",
-          "topic": "unit-testing",
+          "topic": "unit-integration-testing",
           "depth": "surface",
           "required": true,
           "estimated_minutes": 10,

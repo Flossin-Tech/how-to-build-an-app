@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { joinPath } from '../../utils/paths';
+
+const allDocs = await getCollection('docs');
+
+const phases = [
+  { id: '01-discovery-planning', name: 'Discovery & Planning', description: 'Understanding what to build and why' },
+  { id: '02-design', name: 'Design', description: 'Architecture and planning before implementation' },
+  { id: '03-development', name: 'Development', description: 'Writing code that works and is maintainable' },
+  { id: '04-testing', name: 'Testing', description: 'Verification, security, accessibility, compliance' },
+  { id: '05-deployment', name: 'Deployment', description: 'Getting code running reliably in production' },
+  { id: '06-operations', name: 'Operations', description: 'Keeping systems running and handling incidents' },
+  { id: '07-iteration', name: 'Iteration', description: 'Learning from outcomes and improving' },
+];
+
+// Group docs by phase and topic
+const phaseData = phases.map(phase => {
+  const phaseDocs = allDocs.filter(doc => doc.data.phase === phase.id);
+  const topics = new Map();
+
+  phaseDocs.forEach(doc => {
+    if (!topics.has(doc.data.topic)) {
+      topics.set(doc.data.topic, []);
+    }
+    topics.get(doc.data.topic).push(doc);
+  });
+
+  return { ...phase, topics };
+});
+---
+
+<BaseLayout title="Browse by Phase" description="Explore the 7 phases of software development lifecycle">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-4">Browse by Phase</h1>
+    <p class="text-xl text-slate-400 mb-12">
+      Explore the complete development lifecycle, from discovery to iteration
+    </p>
+
+    <div class="space-y-12">
+      {phaseData.map((phase, idx) => (
+        <div class="border-l-4 border-primary-500 pl-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl font-bold text-slate-600">{idx + 1}</span>
+            <h2 class="text-2xl font-semibold">{phase.name}</h2>
+          </div>
+          <p class="text-slate-400 mb-6">{phase.description}</p>
+
+          {phase.topics.size > 0 ? (
+            <div class="grid md:grid-cols-2 gap-4">
+              {Array.from(phase.topics.entries()).map(([topicSlug, docs]) => {
+                const surfaceDoc = docs.find(d => d.data.depth === 'surface');
+                if (!surfaceDoc) return null;
+
+                return (
+                  <a
+                    href={joinPath(`/${phase.id}/${topicSlug}/surface/`)}
+                    class="card hover:border-primary-500 transition group"
+                  >
+                    <h3 class="font-semibold mb-2 group-hover:text-primary-400 transition">
+                      {surfaceDoc.data.title}
+                    </h3>
+                    <div class="flex gap-2 text-xs">
+                      <span class="badge-surface">Surface � {surfaceDoc.data.reading_time} min</span>
+                      {docs.find(d => d.data.depth === 'mid-depth') && (
+                        <span class="badge-mid">Mid-Depth</span>
+                      )}
+                      {docs.find(d => d.data.depth === 'deep-water') && (
+                        <span class="badge-deep">Deep Water</span>
+                      )}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          ) : (
+            <p class="text-slate-500 italic">Content coming soon...</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

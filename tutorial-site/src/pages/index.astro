@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { joinPath } from '../utils/paths';
+---
+
+<BaseLayout title="Home" description="Non-linear guide to software development - Learn what you need, when you need it">
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <!-- Hero Section with Logo -->
+      <div class="text-center mb-16">
+        <img
+          src={joinPath('/assets/images/flossin-tech.png')}
+          alt="Flossin Tech Logo"
+          class="w-32 h-32 rounded-full object-cover mx-auto mb-8 shadow-xl border-4 border-primary-500"
+        />
+        <h1 class="text-5xl font-bold mb-6 text-balance">
+          How to Build an App
+        </h1>
+        <p class="text-xl text-slate-400 mb-4 text-balance">
+          A Non-Linear Guide to Software Development
+        </p>
+        <p class="text-lg text-slate-300 max-w-3xl mx-auto text-balance">
+          A practical reference for building software that actually works—not just technically, but for the humans who use it and maintain it.
+        </p>
+      </div>
+
+      <!-- The Thermocline Principle -->
+      <div class="bg-slate-800 rounded-lg p-8 border border-slate-700 mb-12">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <h2 class="text-3xl font-semibold text-center">The Thermocline Principle</h2>
+          <button
+            id="thermocline-info"
+            class="text-primary-400 hover:text-primary-300 transition"
+            aria-label="Learn more about the thermocline principle"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+        <p class="text-slate-300 mb-6 text-center">
+          Each section is organized in layers, like ocean depth:
+        </p>
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div class="bg-slate-900 rounded-lg p-6 border border-slate-600">
+            <div class="text-3xl mb-3 text-center">🏊</div>
+            <h3 class="font-semibold mb-2 text-primary-400 text-center">Surface Layer</h3>
+            <p class="text-sm text-slate-400">
+              Essential information everyone needs. What this step is and why it matters. If you only read this, you won't sink.
+            </p>
+          </div>
+          <div class="bg-slate-900 rounded-lg p-6 border border-slate-600">
+            <div class="text-3xl mb-3 text-center">🤿</div>
+            <h3 class="font-semibold mb-2 text-primary-400 text-center">Mid-Depth</h3>
+            <p class="text-sm text-slate-400">
+              Practical guidance for competent practitioners. Common pitfalls, tool recommendations, and real-world trade-offs.
+            </p>
+          </div>
+          <div class="bg-slate-900 rounded-lg p-6 border border-slate-600">
+            <div class="text-3xl mb-3 text-center">🐋</div>
+            <h3 class="font-semibold mb-2 text-primary-400 text-center">Deep Water</h3>
+            <p class="text-sm text-slate-400">
+              Advanced topics for specialists. Edge cases, compliance, regulatory considerations, and enterprise patterns.
+            </p>
+          </div>
+        </div>
+        <p class="text-center text-primary-400 font-medium">
+          Read as deep as you need, then surface. Don't force yourself into deep water when you just need to stay afloat.
+        </p>
+      </div>
+
+      <!-- Who This Is For -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-semibold mb-6 text-center">Who This Is For</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+            <h3 class="font-semibold text-primary-400 mb-2">New Developers</h3>
+            <p class="text-sm text-slate-400">A map of the entire software development lifecycle without drowning in theory</p>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+            <h3 class="font-semibold text-primary-400 mb-2">Busy Developers</h3>
+            <p class="text-sm text-slate-400">Quick answers right now—not a 300-page book you'll never finish</p>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+            <h3 class="font-semibold text-primary-400 mb-2">Specialists Expanding</h3>
+            <p class="text-sm text-slate-400">Backend devs learning deployment, web devs learning ML—domain-specific guidance</p>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+            <h3 class="font-semibold text-primary-400 mb-2">Generalists Leveling Up</h3>
+            <p class="text-sm text-slate-400">Fill gaps across the full stack of disciplines systematically</p>
+          </div>
+          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700 md:col-span-2">
+            <h3 class="font-semibold text-primary-400 mb-2">YOLO Devs at 2am</h3>
+            <p class="text-sm text-slate-400">Built something that works? Now figure out testing, security, or deployment without starting over</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <a href={joinPath('/phases/')} class="card hover:border-primary-500 transition group">
+          <div class="text-4xl mb-4">📚</div>
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-primary-400 transition">
+            Browse by Phase
+          </h2>
+          <p class="text-slate-400 text-sm">
+            Explore the 7 phases of development lifecycle
+          </p>
+        </a>
+
+        <a href={joinPath('/paths/')} class="card hover:border-primary-500 transition group">
+          <div class="text-4xl mb-4">🎯</div>
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-primary-400 transition">
+            Learning Paths
+          </h2>
+          <p class="text-slate-400 text-sm">
+            Guided journeys for different personas and goals
+          </p>
+        </a>
+
+        <a href={joinPath('/about/')} class="card hover:border-primary-500 transition group">
+          <div class="text-4xl mb-4">💡</div>
+          <h2 class="text-xl font-semibold mb-2 group-hover:text-primary-400 transition">
+            About
+          </h2>
+          <p class="text-slate-400 text-sm">
+            Learn how to use this guide effectively
+          </p>
+        </a>
+      </div>
+
+      <div class="bg-slate-800 rounded-lg p-8 border border-slate-700">
+        <h2 class="text-2xl font-semibold mb-6">Quick Start</h2>
+        <div class="space-y-4 text-left">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">👋</span>
+            <div>
+              <h3 class="font-semibold mb-1">New to Development?</h3>
+              <p class="text-slate-400 text-sm mb-2">Start with our New Developer path for a comprehensive overview</p>
+              <a href={joinPath('/paths/personas/new-developer/')} class="text-primary-400 hover:text-primary-300 text-sm">
+                Start Learning →
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">🚀</span>
+            <div>
+              <h3 class="font-semibold mb-1">Built Something at 2am?</h3>
+              <p class="text-slate-400 text-sm mb-2">Focus on critical gaps with our YOLO Dev path</p>
+              <a href={joinPath('/paths/personas/yolo-dev/')} class="text-primary-400 hover:text-primary-300 text-sm">
+                Shore Up Gaps →
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <span class="text-2xl">🔍</span>
+            <div>
+              <h3 class="font-semibold mb-1">Need Something Specific?</h3>
+              <p class="text-slate-400 text-sm mb-2">Jump directly to any topic you need</p>
+              <a href={joinPath('/phases/')} class="text-primary-400 hover:text-primary-300 text-sm">
+                Browse All Topics →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thermocline Modal -->
+  <div id="thermocline-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+    <div class="bg-slate-800 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto border border-slate-700">
+      <div class="sticky top-0 bg-slate-800 border-b border-slate-700 p-4 flex items-center justify-between">
+        <h3 class="text-xl font-semibold">The Thermocline Principle</h3>
+        <button id="close-modal" class="text-slate-400 hover:text-white transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-6">
+        <img
+          src={joinPath('/assets/images/thermoclines.jpeg')}
+          alt="Thermocline Principle - Ocean depth layers representing content organization"
+          class="w-full rounded-lg mb-4"
+        />
+        <p class="text-slate-300 text-center italic">
+          Each section is organized in layers, like ocean depth. Image generated with Google Gemini.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Thermocline modal functionality
+    const modal = document.getElementById('thermocline-modal');
+    const infoBtn = document.getElementById('thermocline-info');
+    const closeBtn = document.getElementById('close-modal');
+
+    infoBtn?.addEventListener('click', () => {
+      modal?.classList.remove('hidden');
+      modal?.classList.add('flex');
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      modal?.classList.add('hidden');
+      modal?.classList.remove('flex');
+    });
+
+    // Close modal when clicking outside
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal?.classList.add('hidden');
+        modal?.classList.remove('flex');
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+  </script>
+</BaseLayout>

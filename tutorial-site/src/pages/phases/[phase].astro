@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { joinPath } from '../../utils/paths';
+
+export async function getStaticPaths() {
+  const phases = [
+    { id: '01-discovery-planning', name: 'Discovery & Planning', description: 'Understanding what to build and why' },
+    { id: '02-design', name: 'Design', description: 'Architecture and planning before implementation' },
+    { id: '03-development', name: 'Development', description: 'Writing code that works and is maintainable' },
+    { id: '04-testing', name: 'Testing', description: 'Verification, security, accessibility, compliance' },
+    { id: '05-deployment', name: 'Deployment', description: 'Getting code running reliably in production' },
+    { id: '06-operations', name: 'Operations', description: 'Keeping systems running and handling incidents' },
+    { id: '07-iteration', name: 'Iteration', description: 'Learning from outcomes and improving' },
+  ];
+
+  return phases.map(phase => ({
+    params: { phase: phase.id },
+    props: { phaseInfo: phase },
+  }));
+}
+
+const { phase } = Astro.params;
+const { phaseInfo } = Astro.props;
+
+const allDocs = await getCollection('docs');
+const phaseDocs = allDocs.filter(doc => doc.data.phase === phase);
+
+// Group by topic
+const topics = new Map();
+phaseDocs.forEach(doc => {
+  if (!topics.has(doc.data.topic)) {
+    topics.set(doc.data.topic, []);
+  }
+  topics.get(doc.data.topic).push(doc);
+});
+---
+
+<BaseLayout title={phaseInfo.name} description={phaseInfo.description}>
+  <div class="container mx-auto px-4 py-12">
+    <div class="mb-8">
+      <a href={joinPath('/phases/')} class="text-primary-400 hover:text-primary-300 text-sm mb-4 inline-block">
+        ← Back to All Phases
+      </a>
+      <h1 class="text-4xl font-bold mb-4">{phaseInfo.name}</h1>
+      <p class="text-xl text-slate-400">
+        {phaseInfo.description}
+      </p>
+    </div>
+
+    {topics.size > 0 ? (
+      <div class="grid md:grid-cols-2 gap-4">
+        {Array.from(topics.entries()).map(([topicSlug, docs]) => {
+          const surfaceDoc = docs.find(d => d.data.depth === 'surface');
+          if (!surfaceDoc) return null;
+
+          return (
+            <a
+              href={joinPath(`/${phase}/${topicSlug}/surface/`)}
+              class="card hover:border-primary-500 transition group"
+            >
+              <h3 class="font-semibold mb-2 group-hover:text-primary-400 transition">
+                {surfaceDoc.data.title}
+              </h3>
+              <div class="flex gap-2 text-xs">
+                <span class="badge-surface">Surface • {surfaceDoc.data.reading_time} min</span>
+                {docs.find(d => d.data.depth === 'mid-depth') && (
+                  <span class="badge-mid">Mid-Depth</span>
+                )}
+                {docs.find(d => d.data.depth === 'deep-water') && (
+                  <span class="badge-deep">Deep Water</span>
+                )}
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    ) : (
+      <p class="text-slate-500 italic">Content coming soon...</p>
+    )}
+  </div>
+</BaseLayout>

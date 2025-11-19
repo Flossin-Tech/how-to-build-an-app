@@ -1,0 +1,164 @@
+{
+  "id": "security-hardening",
+  "name": "Security Hardening Track",
+  "category": "track",
+  "description": "Systematically improve security posture of existing applications",
+  "target_personas": ["yolo-dev", "generalist-leveling-up", "specialist-expanding"],
+  "estimated_total_time_minutes": 210,
+
+  "objectives": [
+    "Identify and mitigate security vulnerabilities systematically",
+    "Implement security testing in development workflow",
+    "Establish secure development practices across team",
+    "Build defense-in-depth with multiple security layers"
+  ],
+
+  "prerequisites": [
+    "Existing application in production or near production"
+  ],
+
+  "milestones": [
+    {
+      "name": "Security Assessment",
+      "description": "Understand current security posture",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Systematically identify threats using STRIDE framework",
+          "checkpoint": {
+            "question": "Have you documented threats for all major system components?",
+            "required_for_progress": true
+          }
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Run comprehensive security scans to find existing vulnerabilities"
+        }
+      ]
+    },
+
+    {
+      "name": "Code-Level Security",
+      "description": "Secure the application code",
+      "steps": [
+        {
+          "phase": "03-development",
+          "topic": "secure-coding-practices",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Prevent OWASP Top 10 vulnerabilities systematically"
+        },
+        {
+          "phase": "03-development",
+          "topic": "secret-management",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Properly manage credentials, API keys, and sensitive configuration"
+        },
+        {
+          "phase": "03-development",
+          "topic": "supply-chain-security",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Secure your dependencies and build pipeline"
+        }
+      ]
+    },
+
+    {
+      "name": "Infrastructure Security",
+      "description": "Secure deployment and infrastructure",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "access-control",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Implement proper authentication and authorization"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "cicd-pipeline-security",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Secure the deployment pipeline itself"
+        },
+        {
+          "phase": "05-deployment",
+          "topic": "infrastructure-as-code",
+          "depth": "mid-depth",
+          "required": false,
+          "estimated_minutes": 20,
+          "why": "Make security configurations repeatable and reviewable"
+        }
+      ]
+    },
+
+    {
+      "name": "Continuous Security",
+      "description": "Maintain security over time",
+      "steps": [
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Detect security incidents through monitoring and logging"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "patch-management",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Keep dependencies and systems updated against known vulnerabilities"
+        },
+        {
+          "phase": "07-iteration",
+          "topic": "security-posture-reviews",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Regularly review and improve security practices"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Documented threat model covering major system components",
+    "Security testing integrated into CI/CD pipeline",
+    "OWASP Top 10 vulnerabilities addressed",
+    "Secrets properly managed (not in code)",
+    "Access control implemented with principle of least privilege",
+    "Security monitoring and incident response in place",
+    "Regular security reviews scheduled"
+  ],
+
+  "next_steps": [
+    "Consider compliance-prep track if audit is coming",
+    "Implement security champions program across team",
+    "Schedule quarterly security posture reviews",
+    "Consider penetration testing for critical systems"
+  ],
+
+  "related_paths": [
+    "compliance-prep",
+    "production-ready",
+    "incident-recovery"
+  ]
+}

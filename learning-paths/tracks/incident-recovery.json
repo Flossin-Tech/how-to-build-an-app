@@ -1,0 +1,212 @@
+{
+  "id": "incident-recovery",
+  "name": "Incident Recovery Track",
+  "category": "track",
+  "description": "Recover from incidents and prevent future occurrences - for when things go wrong",
+  "target_personas": ["yolo-dev", "busy-developer"],
+  "estimated_total_time_minutes": 120,
+
+  "objectives": [
+    "Resolve immediate incident and restore service",
+    "Understand root cause of incident",
+    "Implement preventive measures",
+    "Learn from incident to prevent recurrence"
+  ],
+
+  "prerequisites": [
+    "Active or recent production incident"
+  ],
+
+  "urgency": "immediate",
+
+  "milestones": [
+    {
+      "name": "Immediate Response",
+      "description": "Stop the bleeding and restore service",
+      "urgency": "critical",
+      "steps": [
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Immediate actions: contain, assess impact, communicate",
+          "checkpoint": {
+            "question": "Have you contained the incident and communicated status to stakeholders?",
+            "required_for_progress": true
+          }
+        },
+        {
+          "phase": "06-operations",
+          "topic": "backup-recovery",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "If data loss or corruption: restore from backup"
+        }
+      ]
+    },
+
+    {
+      "name": "Stabilize",
+      "description": "Get to a working state",
+      "steps": [
+        {
+          "phase": "05-deployment",
+          "topic": "deployment-strategy",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 12,
+          "why": "Rollback to last known good state if needed"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Use logs and metrics to understand what happened"
+        }
+      ]
+    },
+
+    {
+      "name": "Root Cause Analysis",
+      "description": "Understand why it happened",
+      "steps": [
+        {
+          "phase": "06-operations",
+          "topic": "incident-response",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Structured root cause analysis and timeline reconstruction"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 25,
+          "why": "Analyze logs, metrics, and traces to identify root cause"
+        }
+      ]
+    },
+
+    {
+      "name": "Prevent Recurrence",
+      "description": "Fix the underlying issues",
+      "steps": [
+        {
+          "phase": "01-discovery-planning",
+          "topic": "threat-modeling",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 15,
+          "why": "If security incident: identify threat category and broader implications"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "security-testing",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "If security incident: add tests to catch similar issues"
+        },
+        {
+          "phase": "04-testing",
+          "topic": "unit-integration-testing",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 10,
+          "why": "Add regression tests to prevent this specific issue"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "patch-management",
+          "depth": "surface",
+          "required": false,
+          "estimated_minutes": 12,
+          "why": "If caused by outdated dependencies: establish patching process"
+        }
+      ]
+    },
+
+    {
+      "name": "Learn and Improve",
+      "description": "Extract lessons and improve processes",
+      "steps": [
+        {
+          "phase": "07-iteration",
+          "topic": "retrospectives",
+          "depth": "mid-depth",
+          "required": true,
+          "estimated_minutes": 20,
+          "why": "Blameless post-mortem to learn from incident"
+        },
+        {
+          "phase": "06-operations",
+          "topic": "monitoring-logging",
+          "depth": "surface",
+          "required": true,
+          "estimated_minutes": 10,
+          "why": "Add monitoring to detect similar issues earlier"
+        }
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Service restored to normal operation",
+    "Root cause identified and documented",
+    "Preventive measures implemented",
+    "Monitoring added to detect similar issues",
+    "Blameless post-mortem conducted",
+    "Action items from post-mortem tracked to completion"
+  ],
+
+  "incident_types": {
+    "outage": {
+      "focus": ["deployment-strategy", "monitoring-logging", "backup-recovery"],
+      "why": "Restore service, understand failure, prevent recurrence"
+    },
+    "security_breach": {
+      "focus": ["incident-response", "threat-modeling", "security-testing"],
+      "why": "Contain breach, assess damage, close vulnerability"
+    },
+    "data_loss": {
+      "focus": ["backup-recovery", "incident-response", "retrospectives"],
+      "why": "Restore data, understand failure, improve backup strategy"
+    },
+    "performance_degradation": {
+      "focus": ["monitoring-logging", "performance-scalability-design"],
+      "why": "Identify bottleneck, optimize, add capacity"
+    }
+  },
+
+  "next_steps": [
+    "Implement all action items from post-mortem",
+    "Consider Production Ready track for operational maturity",
+    "Consider Security Hardening track if security incident",
+    "Schedule quarterly disaster recovery drills",
+    "Review and update runbooks based on learnings"
+  ],
+
+  "related_paths": [
+    "production-ready",
+    "security-hardening",
+    "yolo-dev"
+  ],
+
+  "emergency_contacts": {
+    "note": "Ensure you have documented:",
+    "checklist": [
+      "On-call rotation and escalation procedures",
+      "Vendor support contacts and SLAs",
+      "Internal stakeholder contact list",
+      "Communication templates for different incident types",
+      "Runbooks for common incident scenarios"
+    ]
+  }
+}

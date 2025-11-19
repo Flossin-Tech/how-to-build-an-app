@@ -21,7 +21,7 @@ This guide covers the patterns that prevent those incidents. Not theoretical bes
 You need to change your API. Maybe you named something poorly, maybe the business requirements shifted, maybe you learned something about the domain. Your existing clients are working fine and you don't want to break them. This is the versioning problem.
 
 <p align="center">
-  <img src="../../../../assets/images/API-Graphic-1.png" alt="API Versioning: Non-Breaking Changes - How to add new features while maintaining backward compatibility" width="100%" style="max-width: 600px;">
+  <img src="/how-to-build-an-app/assets/images/API-Graphic-1.png" alt="API Versioning: Non-Breaking Changes - How to add new features while maintaining backward compatibility" width="100%" style="max-width: 600px;">
   <br>
   <em>Image generated with Google Gemini</em>
 </p>

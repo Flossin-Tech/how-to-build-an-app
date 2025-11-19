@@ -56,6 +56,11 @@ out/
 .cache/
 *.tsbuildinfo
 
+# Tutorial Site
+tutorial-site/dist/
+tutorial-site/.astro/
+tutorial-site/node_modules/
+
 # Logs
 logs/
 *.log

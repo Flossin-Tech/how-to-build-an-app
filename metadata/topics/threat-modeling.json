@@ -1,0 +1,163 @@
+{
+  "id": "threat-modeling",
+  "slug": "threat-modeling",
+  "title": "Threat Modeling",
+  "phase": "01-discovery-planning",
+  "phase_name": "Discovery & Planning",
+  "order_in_phase": 3,
+
+  "description": {
+    "short": "Identify and prioritize security threats before building",
+    "medium": "Systematic approach to identifying, quantifying, and addressing security threats during the planning phase - cheaper to fix in design than production",
+    "full": "Threat modeling is a structured process for identifying potential security threats, understanding their likelihood and impact, and planning mitigations before writing code. Using frameworks like STRIDE, you can systematically think about what could go wrong and design defenses accordingly. This prevents building vulnerable systems and is far cheaper than fixing security issues in production."
+  },
+
+  "why_it_matters": [
+    "Catches security issues before they're built into the system",
+    "Cheaper to fix vulnerabilities in design than production (10-100x cost difference)",
+    "Helps prioritize security work based on actual risk",
+    "Creates shared security understanding across team",
+    "Required by most compliance frameworks (SOC2, HIPAA, etc.)"
+  ],
+
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand what threat modeling is and why it matters",
+        "Identify 3 critical threats to your system",
+        "Know when you absolutely must do this"
+      ],
+      "key_takeaways": [
+        "List 3 things an attacker could do to your system",
+        "For each threat, identify one simple mitigation",
+        "Don't need formal frameworks for MVP - just think it through",
+        "15 minutes of threat modeling can prevent catastrophic vulnerabilities"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Use STRIDE framework for systematic analysis",
+        "Prioritize threats using risk scoring",
+        "Integrate threat modeling into design process",
+        "Document threats for team reference"
+      ],
+      "key_takeaways": [
+        "STRIDE covers 6 threat categories: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege",
+        "Risk = Likelihood × Impact helps prioritization",
+        "Threat modeling is collaborative, not solo work",
+        "Update threat model when system changes"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Apply DREAD scoring for quantitative risk assessment",
+        "Document threat models for compliance",
+        "Integrate with enterprise security programs",
+        "Train teams on threat modeling practices"
+      ],
+      "key_takeaways": [
+        "Quantitative scoring enables business risk decisions",
+        "Compliance frameworks require documented threat models",
+        "Threat models evolve as systems change",
+        "Security champions can facilitate threat modeling sessions"
+      ]
+    }
+  },
+
+  "prerequisites": [],
+
+  "related_topics": [
+    "security-testing",
+    "secure-coding-practices",
+    "architecture-design",
+    "concept-of-operations"
+  ],
+
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding"
+  ],
+
+  "tools": [
+    "Microsoft Threat Modeling Tool",
+    "OWASP Threat Dragon",
+    "IriusRisk",
+    "Whiteboard and sticky notes",
+    "Threat modeling templates"
+  ],
+
+  "frameworks_and_concepts": [
+    "STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, DoS, Elevation of Privilege)",
+    "DREAD (Damage, Reproducibility, Exploitability, Affected Users, Discoverability)",
+    "Attack Trees",
+    "Data Flow Diagrams",
+    "Trust Boundaries"
+  ],
+
+  "compliance_relevance": [
+    "SOC 2 Type II (required for security criteria)",
+    "HIPAA (required as part of security risk assessment)",
+    "PCI-DSS (required for cardholder data systems)",
+    "ISO 27001 (part of information security risk management)",
+    "GDPR (supports privacy by design requirements)"
+  ],
+
+  "estimated_time_to_implement": {
+    "surface": "1-2 hours for initial threat list",
+    "mid_depth": "4-8 hours for comprehensive STRIDE analysis",
+    "deep_water": "2-5 days for enterprise threat modeling program"
+  },
+
+  "common_mistakes": [
+    "Skipping threat modeling for apps handling sensitive data",
+    "Doing threat modeling after code is written",
+    "Threat modeling as solo activity instead of team exercise",
+    "Never revisiting threat model as system evolves",
+    "Getting paralyzed by trying to identify every possible threat",
+    "Not documenting identified threats and mitigations"
+  ],
+
+  "success_metrics": [
+    "Threats identified before implementation",
+    "Security vulnerabilities caught in design review",
+    "Team can articulate top 3-5 system threats",
+    "Mitigations in place for critical threats",
+    "Threat model updated when architecture changes"
+  ],
+
+  "when_to_prioritize": [
+    "Building apps that handle sensitive data",
+    "Before implementing authentication/authorization",
+    "When adding payment processing",
+    "Preparing for compliance audit",
+    "After security incident or vulnerability discovery"
+  ],
+
+  "when_to_deprioritize": [
+    "Proof of concepts without real data",
+    "Internal tools with no sensitive data",
+    "Extremely tight deadlines (but plan to revisit)",
+    "Static websites with no backend"
+  ],
+
+  "domain_variations": {
+    "web-apps": "Focus on OWASP Top 10 threats (SQLi, XSS, CSRF)",
+    "mobile-apps": "Consider platform security models, device security, offline data",
+    "ml-systems": "Include model poisoning, adversarial inputs, data privacy",
+    "iot": "Physical access and hardware tampering threats",
+    "healthcare": "HIPAA-specific threats to PHI (Protected Health Information)",
+    "fintech": "Financial fraud and transaction integrity threats"
+  },
+
+  "examples": [],
+
+  "updated": "2025-11-18"
+}

@@ -1,0 +1,176 @@
+{
+  "id": "code-works-breaks",
+  "name": "Code Works But Keeps Breaking",
+  "category": "journey",
+  "description": "Your app works in development but fails in production - here's how to fix it",
+  "target_personas": ["yolo-dev", "busy-developer"],
+  "estimated_total_time_minutes": 70,
+
+  "user_situation": "My code works but keeps breaking in production",
+
+  "objectives": [
+    "Understand why production differs from development",
+    "Implement basic observability to catch issues",
+    "Add safety nets for deployments",
+    "Build foundation for reliable operations"
+  ],
+
+  "journey_steps": [
+    {
+      "order": 1,
+      "phase": "06-operations",
+      "topic": "monitoring-logging",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "You can't fix what you can't see - add basic monitoring first",
+      "immediate_actions": [
+        "Add health check endpoint",
+        "Set up uptime monitoring (e.g., UptimeRobot, Pingdom)",
+        "Configure basic error alerting"
+      ],
+      "checkpoint": {
+        "question": "Are you getting notified when the app goes down?",
+        "required_for_progress": true
+      }
+    },
+    {
+      "order": 2,
+      "phase": "06-operations",
+      "topic": "monitoring-logging",
+      "depth": "mid-depth",
+      "required": true,
+      "estimated_minutes": 25,
+      "why": "Dig into logs to understand failure patterns",
+      "key_questions": [
+        "What patterns appear in the logs before failures?",
+        "Are errors clustered around deployments?",
+        "What's different between dev and production?"
+      ]
+    },
+    {
+      "order": 3,
+      "phase": "04-testing",
+      "topic": "unit-integration-testing",
+      "depth": "mid-depth",
+      "required": true,
+      "estimated_minutes": 25,
+      "why": "Catch bugs before they reach production",
+      "immediate_actions": [
+        "Write tests for code that broke in production",
+        "Add integration tests for critical user paths",
+        "Run tests in CI before deployment"
+      ],
+      "checkpoint": {
+        "question": "Do you have tests covering the code that broke?",
+        "required_for_progress": true
+      }
+    },
+    {
+      "order": 4,
+      "phase": "05-deployment",
+      "topic": "deployment-strategy",
+      "depth": "mid-depth",
+      "required": true,
+      "estimated_minutes": 25,
+      "why": "Ship safely with ability to rollback quickly",
+      "immediate_actions": [
+        "Implement one-click rollback",
+        "Consider blue-green or canary deployments",
+        "Test rollback procedure"
+      ]
+    },
+    {
+      "order": 5,
+      "phase": "06-operations",
+      "topic": "incident-response",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Have a plan for when things break (they will)",
+      "deliverable": "Simple runbook for common incidents"
+    },
+    {
+      "order": 6,
+      "phase": "07-iteration",
+      "topic": "retrospectives",
+      "depth": "surface",
+      "required": true,
+      "estimated_minutes": 10,
+      "why": "Learn from each incident to prevent the next one",
+      "immediate_actions": [
+        "Document each production incident",
+        "Identify root cause (not just symptoms)",
+        "Create action items to prevent recurrence"
+      ]
+    }
+  ],
+
+  "completion_criteria": [
+    "Monitoring and alerting configured",
+    "Can see production logs easily",
+    "Tests covering previously broken code",
+    "Can rollback deployments quickly",
+    "Incident response procedure documented",
+    "Running post-incident retrospectives"
+  ],
+
+  "common_root_causes": {
+    "environment_differences": {
+      "symptoms": "Works on my machine, fails in production",
+      "fixes": [
+        "Use environment parity (dev/staging/prod similar)",
+        "Container-based deployments for consistency",
+        "Environment-specific configuration management"
+      ],
+      "related_topics": ["infrastructure-as-code", "deployment-strategy"]
+    },
+    "missing_error_handling": {
+      "symptoms": "App crashes on unexpected inputs or edge cases",
+      "fixes": [
+        "Add defensive error handling",
+        "Validate all external inputs",
+        "Implement circuit breakers for external dependencies"
+      ],
+      "related_topics": ["secure-coding-practices", "code-quality"]
+    },
+    "insufficient_testing": {
+      "symptoms": "Bugs only found in production",
+      "fixes": [
+        "Add integration tests for critical paths",
+        "Test with production-like data",
+        "Automated testing in CI/CD"
+      ],
+      "related_topics": ["unit-integration-testing", "security-testing"]
+    },
+    "deployment_issues": {
+      "symptoms": "Breaks immediately after deployment",
+      "fixes": [
+        "Gradual rollouts (canary/blue-green)",
+        "Automated rollback on errors",
+        "Deployment checklist and smoke tests"
+      ],
+      "related_topics": ["deployment-strategy", "cicd-pipeline-security"]
+    }
+  },
+
+  "next_steps_after_journey": [
+    "Follow Production Ready track for comprehensive operational excellence",
+    "Consider Security Hardening if security issues are causing outages",
+    "Set up regular retrospectives to continuously improve"
+  ],
+
+  "red_flags": [
+    "Deploying directly to production without staging",
+    "No monitoring - finding out about outages from users",
+    "No rollback capability",
+    "No tests - relying on manual QA only",
+    "Not learning from incidents - same issues recurring"
+  ],
+
+  "related_paths": [
+    "production-ready",
+    "incident-recovery",
+    "yolo-dev"
+  ]
+}
