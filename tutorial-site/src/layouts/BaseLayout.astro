@@ -47,11 +47,23 @@ const base = getBase();
             <a href={joinPath('/about/')} class="hover:text-primary-400 transition">About</a>
           </nav>
           
-          <button id="mobile-menu-toggle" class="md:hidden">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button id="mobile-menu-toggle" class="md:hidden" aria-label="Toggle menu" aria-expanded="false">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
           </button>
+        </div>
+
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-700">
+          <nav class="flex flex-col py-4">
+            <a href={joinPath('/phases/')} class="px-4 py-3 hover:bg-slate-700 hover:text-primary-400 transition">Browse</a>
+            <a href={joinPath('/paths/')} class="px-4 py-3 hover:bg-slate-700 hover:text-primary-400 transition">Learning Paths</a>
+            <a href={joinPath('/about/')} class="px-4 py-3 hover:bg-slate-700 hover:text-primary-400 transition">About</a>
+          </nav>
         </div>
       </div>
     </header>
@@ -66,5 +78,34 @@ const base = getBase();
         <p class="text-sm">Non-linear guide to software development</p>
       </div>
     </footer>
+
+    <script>
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+
+      mobileMenuToggle?.addEventListener('click', () => {
+        const isHidden = mobileMenu?.classList.toggle('hidden');
+
+        // Toggle icon visibility
+        menuIconOpen?.classList.toggle('hidden');
+        menuIconClose?.classList.toggle('hidden');
+
+        // Update aria-expanded for accessibility
+        mobileMenuToggle.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+      });
+
+      // Close menu when a link is clicked
+      const mobileLinks = mobileMenu?.querySelectorAll('a');
+      mobileLinks?.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu?.classList.add('hidden');
+          menuIconOpen?.classList.remove('hidden');
+          menuIconClose?.classList.add('hidden');
+          mobileMenuToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
   </body>
 </html>
