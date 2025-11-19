@@ -183,20 +183,3 @@ Security isn't free. Budget for:
 - Bug bounty program: Variable cost
 
 Even small projects should budget $100-500/month for basic security tools.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Quick overview of people, tools, and budget
-- **[Deep Water →](../deep-water/index.md)** Build vs buy, capacity planning, compliance tools, and DR costs
-
-### Related Topics
-- [Scope Setting](../../scope-setting/mid-depth/index.md) - Managing project boundaries
-- [Requirements Gathering](../../requirements-gathering/mid-depth/index.md) - Functional and non-functional requirements
-- [Threat Modeling](../../threat-modeling/mid-depth/index.md) - Security resource planning
-
-### Navigate
-- [← Back to Discovery & Planning](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

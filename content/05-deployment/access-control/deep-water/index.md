@@ -1163,20 +1163,3 @@ For a mid-to-large organization (100-500 engineers):
 This is realistic for dedicated platform/security team effort. Smaller teams: double the timeline. Larger teams with more resources: can compress to 2-3 quarters.
 
 The key is progressive enhancement. Each stage provides value independently. You don't need to wait for "full zero-trust" to improve security.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
-
-### Related Topics
-- [Infrastructure as Code](../../infrastructure-as-code/deep-water/index.md) - Related deployment considerations
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/deep-water/index.md) - Related deployment considerations
-- [Deployment Strategy](../../deployment-strategy/deep-water/index.md) - Related deployment considerations
-
-### Navigate
-- [← Back to Deployment Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

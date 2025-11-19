@@ -1,0 +1,155 @@
+---
+import { getCollection } from 'astro:content';
+import { joinPath } from '../../utils/paths';
+
+interface Props {
+  phase: string;
+  topic: string;
+  depth: string;
+  relatedTopics?: string[];
+}
+
+const { phase, topic, depth, relatedTopics = [] } = Astro.props;
+
+// Get all docs to find navigation targets
+const allDocs = await getCollection('docs');
+
+// Find docs for this topic at different depths
+const topicDocs = allDocs.filter(doc =>
+  doc.data.phase === phase && doc.data.topic === topic
+);
+
+const surfaceDoc = topicDocs.find(d => d.data.depth === 'surface');
+const midDepthDoc = topicDocs.find(d => d.data.depth === 'mid-depth');
+const deepWaterDoc = topicDocs.find(d => d.data.depth === 'deep-water');
+
+// Determine navigation links
+const depthNavigation = {
+  'surface': {
+    current: 'Surface',
+    next: midDepthDoc ? { depth: 'mid-depth', label: 'Mid-Depth' } : null,
+  },
+  'mid-depth': {
+    current: 'Mid-Depth',
+    prev: surfaceDoc ? { depth: 'surface', label: 'Surface' } : null,
+    next: deepWaterDoc ? { depth: 'deep-water', label: 'Deep Water' } : null,
+  },
+  'deep-water': {
+    current: 'Deep Water',
+    prev: midDepthDoc ? { depth: 'mid-depth', label: 'Mid-Depth' } : null,
+  },
+};
+
+const currentNav = depthNavigation[depth as keyof typeof depthNavigation];
+
+// Phase display name
+const phaseNames: Record<string, string> = {
+  '01-discovery-planning': 'Discovery & Planning',
+  '02-design': 'Design',
+  '03-development': 'Development',
+  '04-testing': 'Testing',
+  '05-deployment': 'Deployment',
+  '06-operations': 'Operations',
+  '07-iteration': 'Iteration',
+};
+
+const phaseName = phaseNames[phase] || phase;
+---
+
+<div class="mt-12 space-y-6">
+  <!-- Depth Navigation -->
+  {(currentNav.prev || currentNav.next) && (
+    <div class="border-t border-slate-700 pt-8">
+      <h3 class="text-lg font-semibold mb-4">Want to Go Deeper?</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {currentNav.prev && (
+          <a
+            href={joinPath(`/${phase}/${topic}/${currentNav.prev.depth}/`)}
+            class="block p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-primary-500 transition group"
+          >
+            <div class="text-sm text-slate-400 mb-1">← Previous Depth</div>
+            <div class="font-semibold group-hover:text-primary-400 transition">
+              {currentNav.prev.label}
+            </div>
+          </a>
+        )}
+        {currentNav.next && (
+          <a
+            href={joinPath(`/${phase}/${topic}/${currentNav.next.depth}/`)}
+            class="block p-4 bg-slate-800 rounded-lg border border-slate-700 hover:border-primary-500 transition group"
+          >
+            <div class="text-sm text-slate-400 mb-1">Next Depth →</div>
+            <div class="font-semibold group-hover:text-primary-400 transition">
+              {currentNav.next.label}
+            </div>
+          </a>
+        )}
+      </div>
+    </div>
+  )}
+
+  <!-- Related Topics -->
+  {relatedTopics && relatedTopics.length > 0 && (
+    <div class="border-t border-slate-700 pt-8">
+      <h3 class="text-lg font-semibold mb-4">Related Topics</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {relatedTopics.map((relatedTopic: string) => {
+          // Try to find the related topic in the docs
+          const relatedDoc = allDocs.find(doc =>
+            doc.data.topic === relatedTopic && doc.data.depth === 'surface'
+          );
+
+          if (relatedDoc) {
+            const topicTitle = relatedDoc.data.title;
+            return (
+              <a
+                href={joinPath(`/${relatedDoc.data.phase}/${relatedTopic}/surface/`)}
+                class="block p-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-primary-500 transition group"
+              >
+                <div class="font-semibold text-sm group-hover:text-primary-400 transition">
+                  {topicTitle}
+                </div>
+              </a>
+            );
+          } else {
+            // If we can't find the doc, just display the topic name
+            return (
+              <div class="p-3 bg-slate-800 rounded-lg border border-slate-700 opacity-50">
+                <div class="font-semibold text-sm text-slate-400">
+                  {relatedTopic.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
+                  <span class="text-xs ml-2">(Coming Soon)</span>
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
+    </div>
+  )}
+
+  <!-- Back Navigation -->
+  <div class="border-t border-slate-700 pt-8">
+    <div class="flex flex-wrap gap-4">
+      <a
+        href={joinPath('/phases/')}
+        class="text-primary-400 hover:text-primary-300 transition text-sm"
+      >
+        ← Back to All Phases
+      </a>
+      <span class="text-slate-600">|</span>
+      <a
+        href={joinPath('/phases/#' + phase)}
+        class="text-primary-400 hover:text-primary-300 transition text-sm"
+      >
+        {phaseName}
+      </a>
+      <span class="text-slate-600">|</span>
+      <a
+        href={joinPath('/')}
+        class="text-primary-400 hover:text-primary-300 transition text-sm"
+      >
+        Home
+      </a>
+    </div>
+  </div>
+</div>

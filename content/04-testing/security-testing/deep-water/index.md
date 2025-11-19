@@ -1582,9 +1582,9 @@ You can now:
 ## Related Deep-Water Topics
 
 **Within Phase 04-Testing**:
-- [Unit & Integration Testing - Deep Water](../../unit-integration-testing/deep-water/index.md): Contract testing, mutation testing, property-based testing
-- [Accessibility Testing - Deep Water](../../accessibility-testing/deep-water/index.md): WCAG AAA, cognitive accessibility, assistive technology
-- [Compliance Validation - Deep Water](../../compliance-validation/deep-water/index.md): SOC 2 Type II, FedRAMP, ISO 27001 certification
+- [Unit & Integration Testing - Deep Water](../../unit-integration-testing/deep-water/): Contract testing, mutation testing, property-based testing
+- [Accessibility Testing - Deep Water](../../accessibility-testing/deep-water/): WCAG AAA, cognitive accessibility, assistive technology
+- [Compliance Validation - Deep Water](../../compliance-validation/deep-water/): SOC 2 Type II, FedRAMP, ISO 27001 certification
 
 **Future Topics** (not yet available):
 - Zero-Trust Architecture: Implementing "never trust, always verify" at scale
@@ -1599,20 +1599,3 @@ Security at this level isn't about tools or checklists. It's about systematic th
 The techniques here are for teams where security is existential - breaches mean business failure. If that's not you, the mid-depth layer probably serves you better.
 
 But when security determines whether your business survives, these patterns provide the rigor and depth needed to defend against serious adversaries.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Unit & Integration Testing](../../unit-integration-testing/deep-water/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/deep-water/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/deep-water/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

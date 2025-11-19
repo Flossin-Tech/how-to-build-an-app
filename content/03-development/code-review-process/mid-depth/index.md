@@ -884,21 +884,3 @@ Document these in your team README.
 This gives you a systematic approach to code review: what to check, how to give feedback, how to set up automation and process.
 
 For building review culture at scale, handling metrics, specialized reviews (security, performance, accessibility), and advanced techniques, see the deep-water content.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [code-quality](../../code-quality/mid-depth/index.md) - Related development considerations
-- [refactoring](../../refactoring/mid-depth/index.md) - Related development considerations
-- [secure-coding-practices](../../secure-coding-practices/mid-depth/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

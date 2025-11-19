@@ -754,20 +754,3 @@ Can you afford 2× infrastructure?
 ```
 
 The right strategy depends on where you are, what you can afford, and what you're trying to protect.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Infrastructure as Code](../../infrastructure-as-code/mid-depth/index.md) - Related deployment considerations
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/mid-depth/index.md) - Related deployment considerations
-- [Access Control](../../access-control/mid-depth/index.md) - Related deployment considerations
-
-### Navigate
-- [← Back to Deployment Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

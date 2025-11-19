@@ -164,23 +164,6 @@ When ransomware hits your production database, you're annoyed but not panicked. 
 
 3. **Add one offline or immutable copy.** Cloud storage with retention locks or a disconnected external drive. This is your ransomware insurance.
 
-For systematic backup implementation patterns and testing strategies, see **[Mid-Depth →](../mid-depth/index.md)**.
+For systematic backup implementation patterns and testing strategies, see **[Mid-Depth →](../mid-depth/)**.
 
-For advanced topics like point-in-time recovery and chaos testing, see **[Deep Water →](../deep-water/index.md)**.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Monitoring & Logging](../../monitoring-logging/surface/index.md) - Detecting backup failures
-- [Incident Response](../../incident-response/surface/index.md) - Using backups during incidents
-- [Patch Management](../../patch-management/surface/index.md) - Backups before risky updates
-
-### Navigate
-- [← Back to Operations Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)
+For advanced topics like point-in-time recovery and chaos testing, see **[Deep Water →](../deep-water/)**.

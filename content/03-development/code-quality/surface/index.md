@@ -331,21 +331,3 @@ If you answered no to any of these, you have specific work to do.
 This is the bare minimum. If you want to ship code that doesn't embarrass you three months from now, these principles are non-negotiable.
 
 For deeper understanding of how to apply these principles systematically, see **Mid-Depth: Code Quality in Practice**. For advanced considerations in large codebases and team environments, see **Deep Water: Enterprise Code Quality**.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Refactoring](../../refactoring/surface/index.md) - Related development considerations
-- [Code Review Process](../../code-review-process/surface/index.md) - Related development considerations
-- [Secure Coding Practices](../../secure-coding-practices/surface/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

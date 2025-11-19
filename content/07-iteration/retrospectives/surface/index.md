@@ -147,19 +147,3 @@ That's the difference between a team that gets better and a team that just gets 
 **Who:** Everyone who worked on what you're reviewing
 
 **When it's working:** Same problems stop recurring
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Security Posture Reviews](../../security-posture-reviews/surface/index.md) - Related iteration considerations
-- [Feature Planning](../../feature-planning/surface/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

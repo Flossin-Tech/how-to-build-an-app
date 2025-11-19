@@ -391,7 +391,7 @@ Feature planning doesn't exist in isolation.
 ## Next Steps
 
 - **Deep Water**: Product-market fit assessment, outcome-based OKRs, portfolio management, learning systems at scale
-- **Related**: [Job-to-be-Done](../../01-discovery-planning/job-to-be-done/mid-depth/index.md), [Monitoring & Logging](../../06-operations/monitoring-logging/mid-depth/index.md)
+- **Related**: [Job-to-be-Done](../../01-discovery-planning/job-to-be-done/mid-depth/), [Monitoring & Logging](../../06-operations/monitoring-logging/mid-depth/)
 
 ## Framework Quick Reference
 
@@ -415,19 +415,3 @@ Feature planning doesn't exist in isolation.
 | **PR/FAQ** | High for scope | Medium | Medium |
 
 **Choose based on**: Organizational culture and actual uncertainty in your planning.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Retrospectives](../../retrospectives/mid-depth/index.md) - Related iteration considerations
-- [Security Posture Reviews](../../security-posture-reviews/mid-depth/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -70,20 +70,3 @@ Why it fails: Cost of double-booking exceeds hassle of tracking
 - "Help freelancers with a calendar app" ❌ (calendar is the solution, not the job)
 
 **Measurable:** Your job statement contains zero technology/implementation details.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Quick overview and the 5 Whys test
-- **[Deep Water →](../deep-water/index.md)** Jobs-to-be-Done framework, outcome metrics, and B2B considerations
-
-### Related Topics
-- [Concept of Operations](../../concept-of-operations/mid-depth/index.md) - Operational model design
-- [Requirements Gathering](../../requirements-gathering/mid-depth/index.md) - Structured requirements elicitation
-- [Scope Setting](../../scope-setting/mid-depth/index.md) - Managing project boundaries
-
-### Navigate
-- [← Back to Discovery & Planning](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -1808,9 +1808,9 @@ You can now:
 ## Related Deep-Water Topics
 
 **Within Phase 04-Testing**:
-- [Security Testing - Deep Water](../../security-testing/deep-water/index.md): Penetration testing, red team exercises, bug bounty programs
-- [Accessibility Testing - Deep Water](../../accessibility-testing/deep-water/index.md): WCAG AAA, cognitive accessibility, assistive technology
-- [Compliance Validation - Deep Water](../../compliance-validation/deep-water/index.md): SOC 2 Type II, FedRAMP, ISO 27001 certification
+- [Security Testing - Deep Water](../../security-testing/deep-water/): Penetration testing, red team exercises, bug bounty programs
+- [Accessibility Testing - Deep Water](../../accessibility-testing/deep-water/): WCAG AAA, cognitive accessibility, assistive technology
+- [Compliance Validation - Deep Water](../../compliance-validation/deep-water/): SOC 2 Type II, FedRAMP, ISO 27001 certification
 
 **Future Topics** (not yet available):
 - Chaos Engineering: Advanced failure injection, game days, production testing
@@ -1824,20 +1824,3 @@ Testing at this scale isn't about more tests. It's about strategic testing: high
 The techniques here work for teams building systems where testing complexity rivals application complexity. If you're not there yet, that's fine - the mid-depth layer probably serves you better.
 
 But when your test suite becomes the bottleneck, when flaky tests destroy productivity, when integration testing costs more than the features it validates - these patterns solve those problems.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Security Testing](../../security-testing/deep-water/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/deep-water/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/deep-water/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

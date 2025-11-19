@@ -182,20 +182,3 @@ Start simple: Add structured logging with the Four Golden Signals in mind. From 
 The mid-depth guide covers how to choose monitoring tools, set alert thresholds based on data (not guesses), and build a complete monitoring stack. The deep-water guide explores distributed tracing for microservices, high-cardinality observability, and monitoring at scale.
 
 But first: log your requests with context (user, duration, status). You'd be surprised how much visibility that one change gives you.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Incident Response](../../incident-response/surface/index.md) - Related operations considerations
-- [Patch Management](../../patch-management/surface/index.md) - Related operations considerations
-- [Backup & Recovery](../../backup-recovery/surface/index.md) - Related operations considerations
-
-### Navigate
-- [← Back to Operations Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

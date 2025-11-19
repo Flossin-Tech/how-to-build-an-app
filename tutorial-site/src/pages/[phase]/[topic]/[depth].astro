@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
 import DepthSwitcher from '../../../components/content/DepthSwitcher.astro';
+import ContentNavigation from '../../../components/navigation/ContentNavigation.astro';
 
 export async function getStaticPaths() {
   const allDocs = await getCollection('docs');
@@ -41,16 +42,10 @@ const { Content } = await entry.render();
     <Content />
   </article>
 
-  {entry.data.related_topics && entry.data.related_topics.length > 0 && (
-    <div class="mt-12 p-6 bg-slate-800 rounded-lg border border-slate-700">
-      <h3 class="text-lg font-semibold mb-4">Related Topics</h3>
-      <ul class="space-y-2">
-        {entry.data.related_topics.map((topic: string) => (
-          <li>
-            <span class="text-slate-400">{topic}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
+  <ContentNavigation
+    phase={entry.data.phase}
+    topic={entry.data.topic}
+    depth={entry.data.depth}
+    relatedTopics={entry.data.related_topics}
+  />
 </ContentLayout>

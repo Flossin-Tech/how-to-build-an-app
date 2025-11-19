@@ -57,19 +57,3 @@ For each item, ask: "What's the worst thing someone could do here?"
 - **Denial of service:** Attacker floods your system to make it unusable
 
 You don't need to be a security expert. Just think through "what could go wrong" before it does.
-
----
-
-## Navigation
-
-### Want to Go Deeper?
-- **[Mid-Depth →](../mid-depth/index.md)** STRIDE framework, data classification, and mitigation strategies
-- **[Deep Water →](../deep-water/index.md)** Advanced frameworks, privacy modeling, supply chain threats
-
-### Related Topics
-- [Concept of Operations](../../concept-of-operations/surface/index.md) - How your system will be used
-- [Requirements Gathering](../../requirements-gathering/surface/index.md) - Security requirements
-
-### Navigate
-- [← Back to Discovery & Planning](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

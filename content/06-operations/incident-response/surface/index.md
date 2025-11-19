@@ -162,20 +162,3 @@ Start simple. Pick severity levels and document who to page. Next incident, assi
 For systematic implementation of incident command structure, on-call rotations, and runbook development, see the mid-depth guide.
 
 For advanced topics like chaos engineering, error budget policies, and building postmortem culture across organizations, see the deep-water guide.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Monitoring & Logging](../../monitoring-logging/surface/index.md) - Related operations considerations
-- [Patch Management](../../patch-management/surface/index.md) - Related operations considerations
-- [Backup & Recovery](../../backup-recovery/surface/index.md) - Related operations considerations
-
-### Navigate
-- [← Back to Operations Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

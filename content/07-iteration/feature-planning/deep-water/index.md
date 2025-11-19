@@ -549,23 +549,7 @@ The teams that dominate long-term aren't the ones that guessed right about what 
 
 ## Related Topics
 
-- [Job-to-be-Done](../../01-discovery-planning/job-to-be-done/deep-water/index.md)
-- [Retrospectives](../retrospectives/deep-water/index.md)
-- [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/index.md)
-- [A/B Testing](../../04-testing/a-b-testing/deep-water/index.md)
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Retrospectives](../../retrospectives/deep-water/index.md) - Related iteration considerations
-- [Security Posture Reviews](../../security-posture-reviews/deep-water/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)
+- [Job-to-be-Done](../../01-discovery-planning/job-to-be-done/deep-water/)
+- [Retrospectives](../retrospectives/deep-water/)
+- [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/)
+- [A/B Testing](../../04-testing/a-b-testing/deep-water/)

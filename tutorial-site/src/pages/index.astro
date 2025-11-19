@@ -73,26 +73,26 @@ import { joinPath } from '../utils/paths';
       <div class="mb-12">
         <h2 class="text-3xl font-semibold mb-6 text-center">Who This Is For</h2>
         <div class="grid md:grid-cols-2 gap-4">
-          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <h3 class="font-semibold text-primary-400 mb-2">New Developers</h3>
+          <a href={joinPath('/paths/personas/new-developer/')} class="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block">
+            <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">New Developers</h3>
             <p class="text-sm text-slate-400">A map of the entire software development lifecycle without drowning in theory</p>
-          </div>
-          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <h3 class="font-semibold text-primary-400 mb-2">Busy Developers</h3>
+          </a>
+          <a href={joinPath('/paths/personas/busy-developer/')} class="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block">
+            <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">Busy Developers</h3>
             <p class="text-sm text-slate-400">Quick answers right now—not a 300-page book you'll never finish</p>
-          </div>
-          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <h3 class="font-semibold text-primary-400 mb-2">Specialists Expanding</h3>
+          </a>
+          <a href={joinPath('/paths/personas/specialist-expanding/')} class="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block">
+            <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">Specialists Expanding</h3>
             <p class="text-sm text-slate-400">Backend devs learning deployment, web devs learning ML—domain-specific guidance</p>
-          </div>
-          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <h3 class="font-semibold text-primary-400 mb-2">Generalists Leveling Up</h3>
+          </a>
+          <a href={joinPath('/paths/personas/generalist-leveling-up/')} class="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block">
+            <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">Generalists Leveling Up</h3>
             <p class="text-sm text-slate-400">Fill gaps across the full stack of disciplines systematically</p>
-          </div>
-          <div class="bg-slate-800 rounded-lg p-4 border border-slate-700 md:col-span-2">
-            <h3 class="font-semibold text-primary-400 mb-2">YOLO Devs at 2am</h3>
+          </a>
+          <a href={joinPath('/paths/personas/yolo-dev/')} class="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block md:col-span-2">
+            <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">YOLO Devs at 2am</h3>
             <p class="text-sm text-slate-400">Built something that works? Now figure out testing, security, or deployment without starting over</p>
-          </div>
+          </a>
         </div>
       </div>
 

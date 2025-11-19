@@ -1685,19 +1685,3 @@ The developers who built Google Docs didn't start with operational transform. Th
 Start simple. Use local state until you need global state. Use client-side caching until you need real-time sync. Use last-write-wins until you need conflict resolution. Complexity should arrive because you measured actual problems, not because you anticipated theoretical ones.
 
 The best state management is invisible. Users don't think about it. They just notice when their data is there when they need it, updates feel instant, and conflicts resolve gracefully. That's the goal.
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
-
-### Related Topics
-- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
-- [Data Flow Mapping](../../data-flow-mapping/deep-water/index.md) - Related design considerations
-- [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

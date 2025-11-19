@@ -177,19 +177,3 @@ Monthly security review:
 
 **Time required**: 45-60 minutes/month
 **Cost of skipping**: Potentially catastrophic
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Retrospectives](../../retrospectives/surface/index.md) - Related iteration considerations
-- [Feature Planning](../../feature-planning/surface/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

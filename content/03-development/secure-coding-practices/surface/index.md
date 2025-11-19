@@ -245,21 +245,3 @@ If you can check all ten boxes, you've covered the basics.
 **"Validate input like it's malicious, because sometimes it is."**
 
 Security isn't paranoia when the threats are real. Write code that assumes bad input and handles it gracefully.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [code-quality](../../code-quality/surface/index.md) - Related development considerations
-- [secret-management](../../secret-management/surface/index.md) - Related development considerations
-- [supply-chain-security](../../supply-chain-security/surface/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

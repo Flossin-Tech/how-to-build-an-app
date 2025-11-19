@@ -452,19 +452,3 @@ Design error handling before you implement features. Decide upfront:
 Errors aren't exceptional - they're a normal part of running software. Design for them from the start, and you'll build systems that handle failure gracefully instead of catastrophically.
 
 The YOLO dev who built something at 2am and now sees random crashes can start here: categorize your errors, add proper logging, and implement retry logic for external API calls. Those three changes will eliminate most production fire drills.
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [API Design](../../api-design/surface/index.md) - Related design considerations
-- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
-- [Performance & Scalability Design](../../performance-scalability-design/surface/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -70,19 +70,3 @@ Answer these before you start, not when you hit the wall.
 - External contractors if needed
 
 Don't need perfect numbers. Need ballpark figures so you know if you're building a $5K project or a $500K project.
-
----
-
-## Navigation
-
-### Want to Go Deeper?
-- **[Mid-Depth →](../mid-depth/index.md)** Infrastructure planning, third-party dependencies, and security tools
-- **[Deep Water →](../deep-water/index.md)** Capacity planning, compliance costs, disaster recovery, and on-call rotation
-
-### Related Topics
-- [Scope Setting](../../scope-setting/surface/index.md) - Define project boundaries
-- [Requirements Gathering](../../requirements-gathering/surface/index.md) - What you need to build
-
-### Navigate
-- [← Back to Discovery & Planning](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -405,23 +405,7 @@ Teams that master this don't just ship software. They build the capability to co
 
 ## Related Topics
 
-- [Incident Response](../../06-operations/incident-response/deep-water/index.md) - Blameless post-mortems
-- [Feature Planning](../feature-planning/deep-water/index.md) - Continuous discovery
-- [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/index.md) - Observability for learning
-- [Security Posture Reviews](../security-posture-reviews/deep-water/index.md) - Threat landscape evolution
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Security Posture Reviews](../../security-posture-reviews/deep-water/index.md) - Related iteration considerations
-- [Feature Planning](../../feature-planning/deep-water/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)
+- [Incident Response](../../06-operations/incident-response/deep-water/) - Blameless post-mortems
+- [Feature Planning](../feature-planning/deep-water/) - Continuous discovery
+- [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/) - Observability for learning
+- [Security Posture Reviews](../security-posture-reviews/deep-water/) - Threat landscape evolution

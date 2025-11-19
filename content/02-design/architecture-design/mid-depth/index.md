@@ -1222,20 +1222,3 @@ Your architecture should serve your team and your customers. Not the other way a
 See a complete quantitative framework for architecture decisions in action. This case study demonstrates how to use documented scale thresholds, team capability assessment, and financial modeling to make evidence-based choices. **Framework focus: 35-45 minutes** to understand the methodology.
 
 [Browse all architecture case studies →](case-studies/)
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [API Design](../../api-design/mid-depth/index.md) - Related design considerations
-- [Database Design](../../database-design/mid-depth/index.md) - Related design considerations
-- [Performance & Scalability Design](../../performance-scalability-design/mid-depth/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

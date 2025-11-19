@@ -252,7 +252,7 @@ Retrospectives don't exist in isolation. Connect them to:
 ## Next Steps
 
 - **Deep Water**: Building organizational learning systems, cultural transformation, measuring improvement velocity, psychological safety at scale
-- **Related**: [Incident Response](../../06-operations/incident-response/mid-depth/index.md), [Feature Planning](../feature-planning/mid-depth/index.md)
+- **Related**: [Incident Response](../../06-operations/incident-response/mid-depth/), [Feature Planning](../feature-planning/mid-depth/)
 
 ## Framework Summary
 
@@ -265,19 +265,3 @@ Retrospectives don't exist in isolation. Connect them to:
 | Lean Coffee | Democratic topic selection | 45-60 min | Medium |
 
 **When in doubt**: Start with Start/Stop/Continue. It works for 80% of situations.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Security Posture Reviews](../../security-posture-reviews/mid-depth/index.md) - Related iteration considerations
-- [Feature Planning](../../feature-planning/mid-depth/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

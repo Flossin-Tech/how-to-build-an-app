@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { joinPath } from '../../utils/paths';
 ---
 
 <BaseLayout title="About" description="Learn how to use this guide effectively">
@@ -17,6 +18,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <li><strong>Mid-Depth (15-30 min):</strong> Practical guidance for competent practitioners</li>
         <li><strong>Deep Water (30-60+ min):</strong> Advanced topics for specialists</li>
       </ul>
+
+      <img
+        src={joinPath('/assets/images/thermoclines.jpeg')}
+        alt="Thermocline Principle - Ocean depth layers representing content organization"
+        class="rounded-lg my-8"
+      />
+      <p class="text-center italic text-slate-400 -mt-4 mb-8 text-sm">
+        Each section is organized in layers, like ocean depth. Image generated with Google Gemini.
+      </p>
 
       <h2>Inspiration: Mortimer J. Adler's Levels of Reading</h2>
 
@@ -69,13 +79,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <h2>The 7 Development Phases</h2>
 
       <ol>
-        <li>Discovery & Planning</li>
-        <li>Design</li>
-        <li>Development</li>
-        <li>Testing</li>
-        <li>Deployment</li>
-        <li>Operations</li>
-        <li>Iteration</li>
+        <li><a href={joinPath('/phases/#01-discovery-planning')}>Discovery & Planning</a></li>
+        <li><a href={joinPath('/phases/#02-design')}>Design</a></li>
+        <li><a href={joinPath('/phases/#03-development')}>Development</a></li>
+        <li><a href={joinPath('/phases/#04-testing')}>Testing</a></li>
+        <li><a href={joinPath('/phases/#05-deployment')}>Deployment</a></li>
+        <li><a href={joinPath('/phases/#06-operations')}>Operations</a></li>
+        <li><a href={joinPath('/phases/#07-iteration')}>Iteration</a></li>
       </ol>
 
       <p>

@@ -159,20 +159,3 @@ For now: start with a monolith, organize it into components based on functional 
 See how a finance sector team used a quantitative framework to decide between microfrontends and an extended monolith. Shows the complete decision process with scale analysis, team capability assessment, and financial modeling. **Quick read: 7 minutes** for Abstract + Conclusion.
 
 [Browse all architecture case studies →](case-studies/)
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [API Design](../../api-design/surface/index.md) - Related design considerations
-- [Database Design](../../database-design/surface/index.md) - Related design considerations
-- [Performance & Scalability Design](../../performance-scalability-design/surface/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

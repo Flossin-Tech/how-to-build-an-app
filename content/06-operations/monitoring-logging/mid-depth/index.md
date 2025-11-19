@@ -852,23 +852,6 @@ Key takeaways:
 - Set up Prometheus and Grafana (4-8 hours)
 
 **For deeper understanding:**
-- [Deep Water →](../deep-water/index.md) for advanced architectures, sampling strategies, and enterprise patterns
+- [Deep Water →](../deep-water/) for advanced architectures, sampling strategies, and enterprise patterns
 - External: [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
 - External: [Brendan Gregg - USE Method](https://www.brendangregg.com/usemethod.html)
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Incident Response](../../incident-response/mid-depth/index.md) - Related operations considerations
-- [Patch Management](../../patch-management/mid-depth/index.md) - Related operations considerations
-- [Backup & Recovery](../../backup-recovery/mid-depth/index.md) - Related operations considerations
-
-### Navigate
-- [← Back to Operations Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

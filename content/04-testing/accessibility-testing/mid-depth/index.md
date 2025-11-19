@@ -1312,20 +1312,3 @@ When you need more:
 - **Compliance Validation**: Legal and regulatory accessibility requirements
 
 Accessibility testing isn't a one-time checklist. It's part of your development workflow - automated tests in CI/CD, manual testing for new features, user testing for major changes. Build it in from the start and it's straightforward. Retrofit it later and it's painful.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Unit & Integration Testing](../../unit-integration-testing/mid-depth/index.md) - Related testing considerations
-- [Security Testing](../../security-testing/mid-depth/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/mid-depth/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -1114,21 +1114,3 @@ You now have practical frameworks for writing maintainable code: clear naming, s
 For advanced topics including technical debt quantification, code quality frameworks, team standards, and managing quality in large codebases, see **Deep Water: Enterprise Code Quality**.
 
 To apply these principles to existing code, see [Refactoring](/content/03-development/refactoring/). To ensure quality through team processes, see [Code Review Process](/content/03-development/code-review-process/).
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [refactoring](../../refactoring/mid-depth/index.md) - Related development considerations
-- [code-review-process](../../code-review-process/mid-depth/index.md) - Related development considerations
-- [secure-coding-practices](../../secure-coding-practices/mid-depth/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

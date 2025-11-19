@@ -163,20 +163,3 @@ For the rest, build a schedule. Internet-facing systems get monthly patches. Int
 The mid-depth guide covers how to build a complete patch management process: CVSS vs. SSVC frameworks, patch cadence planning, testing strategies, and compensating controls when patches aren't available.
 
 The deep-water guide addresses enterprise-scale challenges: vulnerability scanning automation, container image patching, live patching for high-availability systems, and compliance requirements (PCI-DSS, HIPAA, SOC 2).
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Monitoring and Logging](../../monitoring-logging/surface/index.md) - Detecting exploitation attempts
-- [Incident Response](../../incident-response/surface/index.md) - Handling zero-day emergencies
-- [Backup and Recovery](../../backup-recovery/surface/index.md) - Rollback procedures for bad patches
-
-### Navigate
-- [← Back to Operations Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

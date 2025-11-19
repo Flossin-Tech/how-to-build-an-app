@@ -355,7 +355,7 @@ You need professional security assessment when:
 ## Next Steps
 
 - **Deep Water**: Continuous security monitoring, adversarial simulation, threat intelligence integration, security culture at scale
-- **Related**: [Threat Modeling](../../02-design/threat-modeling/mid-depth/index.md), [Incident Response](../../06-operations/incident-response/mid-depth/index.md)
+- **Related**: [Threat Modeling](../../02-design/threat-modeling/mid-depth/), [Incident Response](../../06-operations/incident-response/mid-depth/)
 
 ## Review Framework Quick Reference
 
@@ -367,19 +367,3 @@ You need professional security assessment when:
 | **NIST CSF** | Governance, risk management | Strategic | Annually |
 
 **Start simple**: OWASP Top 10 + dependency scanning. Expand as you mature.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Retrospectives](../../retrospectives/mid-depth/index.md) - Related iteration considerations
-- [Feature Planning](../../feature-planning/mid-depth/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

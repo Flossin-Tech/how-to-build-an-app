@@ -1819,9 +1819,9 @@ You can now:
 ## Related Deep-Water Topics
 
 **Within Phase 04-Testing**:
-- [Unit & Integration Testing - Deep Water](../../unit-integration-testing/deep-water/index.md): Contract testing, mutation testing, property-based testing
-- [Security Testing - Deep Water](../../security-testing/deep-water/index.md): Penetration testing, red team exercises, bug bounty programs
-- [Accessibility Testing - Deep Water](../../accessibility-testing/deep-water/index.md): WCAG AAA, cognitive accessibility, assistive technology
+- [Unit & Integration Testing - Deep Water](../../unit-integration-testing/deep-water/): Contract testing, mutation testing, property-based testing
+- [Security Testing - Deep Water](../../security-testing/deep-water/): Penetration testing, red team exercises, bug bounty programs
+- [Accessibility Testing - Deep Water](../../accessibility-testing/deep-water/): WCAG AAA, cognitive accessibility, assistive technology
 
 **Future Topics** (not yet available):
 - Privacy Engineering: Building privacy into systems from the start
@@ -1836,20 +1836,3 @@ Compliance at this level isn't about passing audits. It's about building systems
 The techniques here are for organizations where compliance is existential - regulated industries, government contractors, global enterprises where compliance failures end the business.
 
 If you're just starting compliance work, the surface and mid-depth layers serve you better. But when compliance is continuous, multi-framework, and critical to survival, these patterns provide the rigor needed.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Unit & Integration Testing](../../unit-integration-testing/deep-water/index.md) - Related testing considerations
-- [Security Testing](../../security-testing/deep-water/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/deep-water/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

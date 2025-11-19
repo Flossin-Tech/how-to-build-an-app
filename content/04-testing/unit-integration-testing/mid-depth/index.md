@@ -1641,9 +1641,9 @@ You can now build test suites that are fast, reliable, and catch real bugs.
 - Test organization for monorepos and large teams
 
 **Related topics:**
-- [Security Testing](../../security-testing/mid-depth/index.md) - Test for vulnerabilities (SAST, DAST, penetration testing)
-- [CI/CD Pipelines](../../../05-deployment/ci-cd-pipelines/mid-depth/index.md) - Automate testing in deployment pipeline
-- [Refactoring](../../../03-development/refactoring/mid-depth/index.md) - Tests enable confident refactoring
+- [Security Testing](../../security-testing/mid-depth/) - Test for vulnerabilities (SAST, DAST, penetration testing)
+- [CI/CD Pipelines](../../../05-deployment/ci-cd-pipelines/mid-depth/) - Automate testing in deployment pipeline
+- [Refactoring](../../../03-development/refactoring/mid-depth/) - Tests enable confident refactoring
 
 ---
 
@@ -1656,20 +1656,3 @@ Mock at architectural boundaries. Test behavior, not implementation. Use propert
 Focus on test effectiveness (do they catch bugs?) not test coverage (what lines ran?).
 
 Tests are production code. Treat them with the same care.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Security Testing](../../security-testing/mid-depth/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/mid-depth/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/mid-depth/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

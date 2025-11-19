@@ -1543,21 +1543,3 @@ Code quality at scale requires:
 Quality isn't about writing perfect code. It's about writing code that serves the business, is maintainable over time, and enables your team to move fast sustainably.
 
 The best code quality strategy is the one your team actually follows. Start with automation, measure what matters, and improve incrementally.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [refactoring](../../refactoring/deep-water/index.md) - Related development considerations
-- [code-review-process](../../code-review-process/deep-water/index.md) - Related development considerations
-- [secure-coding-practices](../../secure-coding-practices/deep-water/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

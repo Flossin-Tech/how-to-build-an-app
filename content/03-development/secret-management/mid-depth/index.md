@@ -1185,21 +1185,3 @@ Signs it's time for a real secret management service:
 8. **Compliance requirements** - PCI-DSS, HIPAA, SOC 2, etc.
 
 Environment variables are fine for startups and small projects. Production systems handling sensitive data need more.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [secure-coding-practices](../../secure-coding-practices/mid-depth/index.md) - Related development considerations
-- [supply-chain-security](../../supply-chain-security/mid-depth/index.md) - Related development considerations
-- [refactoring](../../refactoring/mid-depth/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

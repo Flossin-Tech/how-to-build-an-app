@@ -256,19 +256,3 @@ You write one ADR for "Redis vs SQS" and another for "At-least-once vs exactly-o
 A good design doc takes 30 minutes to 2 hours to write and saves days or weeks of rework. That's a trade worth making.
 
 Start simple. Write down your thinking. Ship the thing. Come back and write more detailed design docs when you're tackling genuinely complex problems that justify the overhead.
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
-- [Dependency Review](../../dependency-review/surface/index.md) - Related design considerations
-- [Data Flow Mapping](../../data-flow-mapping/surface/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

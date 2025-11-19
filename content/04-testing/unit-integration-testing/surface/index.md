@@ -485,8 +485,8 @@ When you're ready for more depth:
 
 **Related Topics:**
 
-- [Security Testing](../../security-testing/surface/index.md) - Test for vulnerabilities before attackers find them
-- [CI/CD Pipelines](../../../05-deployment/ci-cd-pipelines/surface/index.md) - Run tests automatically on every commit
+- [Security Testing](../../security-testing/surface/) - Test for vulnerabilities before attackers find them
+- [CI/CD Pipelines](../../../05-deployment/ci-cd-pipelines/surface/) - Run tests automatically on every commit
 
 ---
 
@@ -499,20 +499,3 @@ You don't need perfect tests. You need enough tests that you can ship with confi
 Start with one test for your critical path. Add tests when you fix bugs. Test security boundaries and edge cases. Run tests before deploying.
 
 That's enough to prevent most of the pain.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Security Testing](../../security-testing/surface/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/surface/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/surface/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

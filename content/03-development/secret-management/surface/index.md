@@ -223,21 +223,3 @@ Don't let perfect be the enemy of good. Environment variables are infinitely bet
 ## One-Sentence Maxim
 
 **If it's a secret, it doesn't belong in git.**
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [secure-coding-practices](../../secure-coding-practices/surface/index.md) - Related development considerations
-- [supply-chain-security](../../supply-chain-security/surface/index.md) - Related development considerations
-- [refactoring](../../refactoring/surface/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

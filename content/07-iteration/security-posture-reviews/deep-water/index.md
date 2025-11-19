@@ -569,23 +569,7 @@ Organizations mature through phases. Don't expect to jump from ad-hoc to optimiz
 
 ## Related Topics
 
-- [Threat Modeling](../../02-design/threat-modeling/deep-water/index.md)
-- [Incident Response](../../06-operations/incident-response/deep-water/index.md)
-- [Retrospectives](../retrospectives/deep-water/index.md)
-- [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/index.md)
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Retrospectives](../../retrospectives/deep-water/index.md) - Related iteration considerations
-- [Feature Planning](../../feature-planning/deep-water/index.md) - Related iteration considerations
-
-### Navigate
-- [← Back to Iteration Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)
+- [Threat Modeling](../../02-design/threat-modeling/deep-water/)
+- [Incident Response](../../06-operations/incident-response/deep-water/)
+- [Retrospectives](../retrospectives/deep-water/)
+- [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/)

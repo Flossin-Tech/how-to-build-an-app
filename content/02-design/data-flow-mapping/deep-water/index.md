@@ -1739,19 +1739,3 @@ Deep-water data flow mapping is about proving you have control over data in regu
 The difference between surface and deep-water data flow mapping: Surface shows what happens when everything works. Deep-water shows what happens when regulators audit you, systems fail, or users exercise their rights. Build for the deep-water scenarios from the start—retrofitting compliance is expensive and sometimes impossible.
 
 When you can demonstrate complete data lineage, cryptographic audit trails, and tenant isolation to an auditor, you've mastered deep-water data flow mapping. Until then, keep tracing those arrows.
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
-
-### Related Topics
-- [Architecture Design](../../architecture-design/deep-water/index.md) - Related design considerations
-- [Database Design](../../database-design/deep-water/index.md) - Related design considerations
-- [State Management Design](../../state-management-design/deep-water/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

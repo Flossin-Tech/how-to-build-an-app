@@ -184,21 +184,3 @@ Everything else goes through review. "I'm in a hurry" isn't an emergency.
 This gives you enough to start doing code review without creating more problems than you solve. Keep it simple: small PRs, kind feedback, focus on correctness and clarity.
 
 For systematic review practices and what specifically to look for, see the mid-depth content. For building review culture at scale and advanced techniques, see deep-water content.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [code-quality](../../code-quality/surface/index.md) - Related development considerations
-- [refactoring](../../refactoring/surface/index.md) - Related development considerations
-- [secure-coding-practices](../../secure-coding-practices/surface/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

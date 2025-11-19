@@ -1218,18 +1218,3 @@ This takes an hour a week. Skipping it means spending days on incident response 
 - Define your build-vs-buy criteria (before next vendor evaluation)
 
 The dependencies you choose today shape what you can build tomorrow. Choose carefully.
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
-- [Software Design Document](../../software-design-document/mid-depth/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

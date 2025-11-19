@@ -84,21 +84,3 @@ Your ConOps makes assumptions. State them explicitly:
 - Access: Users have company email, can receive 2FA codes
 
 When assumptions are explicit, you can validate them early instead of discovering incompatibilities at launch.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Quick overview and scenario writing basics
-- **[Deep Water →](../deep-water/index.md)** Operational context diagrams, mission threads, and compliance
-
-### Related Topics
-- [Job to Be Done](../../job-to-be-done/mid-depth/index.md) - User research and switching moments
-- [Requirements Gathering](../../requirements-gathering/mid-depth/index.md) - Structured requirements elicitation
-- [Threat Modeling](../../threat-modeling/mid-depth/index.md) - Security analysis frameworks
-- [Scope Setting](../../scope-setting/mid-depth/index.md) - Managing project boundaries
-
-### Navigate
-- [← Back to Discovery & Planning](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

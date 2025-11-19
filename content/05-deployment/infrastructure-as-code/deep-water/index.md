@@ -1274,20 +1274,3 @@ Each commit shows:
 | **Vault dynamic secrets** | High-security requirements | Static credentials acceptable |
 
 The goal isn't using every advanced pattern. It's using the right patterns for your scale, security requirements, and team maturity. Start simple, add complexity only when you feel the pain it solves.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
-
-### Related Topics
-- [Deployment Strategy](../../deployment-strategy/deep-water/index.md) - Related deployment considerations
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/deep-water/index.md) - Related deployment considerations
-- [Access Control](../../access-control/deep-water/index.md) - Related deployment considerations
-
-### Navigate
-- [← Back to Deployment Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

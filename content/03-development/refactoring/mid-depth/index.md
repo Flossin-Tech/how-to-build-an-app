@@ -759,21 +759,3 @@ When you're about to start work in a file:
 5. Did you leave it cleaner than you found it? Even a little bit counts.
 
 Every improvement compounds. Six months of small refactorings transforms a codebase. Six months of ignoring smells creates a swamp.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [code-quality](../../code-quality/mid-depth/index.md) - Related development considerations
-- [code-review-process](../../code-review-process/mid-depth/index.md) - Related development considerations
-- [secret-management](../../secret-management/mid-depth/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

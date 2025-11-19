@@ -2259,21 +2259,3 @@ Secure coding is not a destination - it's a continuous journey. The threat lands
 - Measure and improve security metrics
 
 The difference between a secure application and a breached one often comes down to consistent application of fundamental principles. Master the basics, apply them relentlessly, and build security into your development culture.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [code-quality](../../code-quality/deep-water/index.md) - Related development considerations
-- [secret-management](../../secret-management/deep-water/index.md) - Related development considerations
-- [supply-chain-security](../../supply-chain-security/deep-water/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

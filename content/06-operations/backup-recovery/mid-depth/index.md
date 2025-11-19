@@ -1025,21 +1025,4 @@ Key takeaways:
 - Perform your first test restore this week
 
 **For deeper understanding:**
-- [Deep Water](../deep-water/index.md) covers advanced PITR implementation, chaos engineering for backup validation, and multi-region disaster recovery architectures
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Monitoring & Logging](../../monitoring-logging/mid-depth/index.md) - Related operations considerations
-- [Incident Response](../../incident-response/mid-depth/index.md) - Related operations considerations
-- [Patch Management](../../patch-management/mid-depth/index.md) - Related operations considerations
-
-### Navigate
-- [← Back to Operations Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)
+- [Deep Water](../deep-water/) covers advanced PITR implementation, chaos engineering for backup validation, and multi-region disaster recovery architectures

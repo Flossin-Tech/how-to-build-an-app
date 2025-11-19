@@ -174,20 +174,3 @@ Not all requirements are equally important. Categorize them:
 - "AI recommendations (future consideration)"
 
 This helps make trade-off decisions: "We're running behind. Drop the Could haves, deliver all Must haves and most Should haves."
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Quick overview and testability basics
-- **[Deep Water →](../deep-water/index.md)** Enterprise requirements, compliance, and internationalization
-
-### Related Topics
-- [Job to Be Done](../../job-to-be-done/mid-depth/index.md) - User research and switching moments
-- [Concept of Operations](../../concept-of-operations/mid-depth/index.md) - Operational model design
-- [Scope Setting](../../scope-setting/mid-depth/index.md) - Managing project boundaries
-
-### Navigate
-- [← Back to Discovery & Planning](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

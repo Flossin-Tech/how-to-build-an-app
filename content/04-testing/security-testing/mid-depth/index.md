@@ -1411,19 +1411,3 @@ The difference between surface and mid-depth security testing is the difference 
 SAST catches vulnerabilities during code review. DAST validates your deployed security. Both integrated into CI/CD mean security testing happens automatically, not as an afterthought before launch.
 
 Start with the testing pipeline in this guide. Run it on every commit. Review findings weekly. Fix high/critical issues before they reach production. That's production-ready security testing.
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Unit & Integration Testing](../../unit-integration-testing/mid-depth/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/mid-depth/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/mid-depth/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

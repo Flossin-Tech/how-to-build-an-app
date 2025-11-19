@@ -587,20 +587,3 @@ When you're ready for more depth:
 Security testing isn't about being paranoid. It's about not giving attackers easy wins. Test for the common stuff, catch the obvious vulnerabilities, and you'll be ahead of most applications out there.
 
 Start with the 30-minute checklist. Run OWASP ZAP. Fix what it finds. That's the baseline.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Unit & Integration Testing](../../unit-integration-testing/surface/index.md) - Related testing considerations
-- [Accessibility Testing](../../accessibility-testing/surface/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/surface/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

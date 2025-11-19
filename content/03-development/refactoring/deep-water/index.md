@@ -919,21 +919,3 @@ But the payoff is real. Teams working in clean codebases ship faster, have fewer
 The code will never be perfect. That's not the goal. The goal is continuous improvement. Every sprint slightly better than the last. Every file slightly cleaner than you found it.
 
 Six months of that transforms a codebase. Two years of that transforms an organization.
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [code-quality](../../code-quality/deep-water/index.md) - Related development considerations
-- [code-review-process](../../code-review-process/deep-water/index.md) - Related development considerations
-- [secret-management](../../secret-management/deep-water/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

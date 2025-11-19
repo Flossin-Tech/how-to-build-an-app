@@ -1402,9 +1402,9 @@ You can now:
 ## Related Deep-Water Topics
 
 **Within Phase 04-Testing**:
-- [Unit & Integration Testing - Deep Water](../../unit-integration-testing/deep-water/index.md): Contract testing, mutation testing, property-based testing
-- [Security Testing - Deep Water](../../security-testing/deep-water/index.md): Penetration testing, red team exercises, bug bounty programs
-- [Compliance Validation - Deep Water](../../compliance-validation/deep-water/index.md): SOC 2 Type II, FedRAMP, ISO 27001 certification
+- [Unit & Integration Testing - Deep Water](../../unit-integration-testing/deep-water/): Contract testing, mutation testing, property-based testing
+- [Security Testing - Deep Water](../../security-testing/deep-water/): Penetration testing, red team exercises, bug bounty programs
+- [Compliance Validation - Deep Water](../../compliance-validation/deep-water/): SOC 2 Type II, FedRAMP, ISO 27001 certification
 
 **Future Topics** (not yet available):
 - Inclusive Design Methodology: Designing with people with disabilities from the start
@@ -1419,20 +1419,3 @@ Accessibility at this level isn't about compliance checkboxes. It's about genuin
 The techniques here are for teams committed to accessibility excellence - going beyond legal minimums to create truly inclusive digital experiences.
 
 If you're just starting accessibility work, the surface and mid-depth layers will serve you better. But when accessibility is part of your mission, these patterns provide the depth needed to serve all users well.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [Unit & Integration Testing](../../unit-integration-testing/deep-water/index.md) - Related testing considerations
-- [Security Testing](../../security-testing/deep-water/index.md) - Related testing considerations
-- [Compliance Validation](../../compliance-validation/deep-water/index.md) - Related testing considerations
-
-### Navigate
-- [← Back to Testing Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

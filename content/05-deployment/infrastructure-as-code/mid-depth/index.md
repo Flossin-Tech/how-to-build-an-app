@@ -733,20 +733,3 @@ Can't create either because each needs the other to exist first.
 7. **GitOps workflow prevents cowboy changes** - All infrastructure changes via PR, reviewed and automated
 
 Infrastructure as Code is about reliability and repeatability, not perfection. Start with the basics, add complexity as you need it, and always have a rollback plan.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Deployment Strategy](../../deployment-strategy/mid-depth/index.md) - Related deployment considerations
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/mid-depth/index.md) - Related deployment considerations
-- [Access Control](../../access-control/mid-depth/index.md) - Related deployment considerations
-
-### Navigate
-- [← Back to Deployment Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

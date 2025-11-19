@@ -1829,19 +1829,3 @@ Data flow mapping at mid-depth is about:
 The goal isn't perfect data flow. It's data flow you can understand, debug, and modify when requirements change. Which they will.
 
 Next level: Deep-water covers event sourcing, CQRS, distributed tracing, complex compliance scenarios, and data mesh architectures.
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Architecture Design](../../architecture-design/mid-depth/index.md) - Related design considerations
-- [Database Design](../../database-design/mid-depth/index.md) - Related design considerations
-- [State Management Design](../../state-management-design/mid-depth/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -1304,20 +1304,3 @@ Start simple. Measure constantly. Add complexity only when you have specific evi
 Deep dive into a comprehensive architecture decision methodology with full academic rigor. Includes literature review of documented industry thresholds, quantitative scoring framework, risk assessment matrices, and honest discussion of trade-offs and limitations. **Full analysis: 60-90 minutes** for complete understanding.
 
 [Browse all architecture case studies →](case-studies/)
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick start
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation
-
-### Related Topics
-- [API Design](../../api-design/deep-water/index.md) - Related design considerations
-- [Database Design](../../database-design/deep-water/index.md) - Related design considerations
-- [Performance & Scalability Design](../../performance-scalability-design/deep-water/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

@@ -3054,21 +3054,3 @@ Patterns that fail at enterprise scale.
 | **Compliance (PCI-DSS Level 1)** | Cloud HSM-backed secret service | HSM required for compliance |
 | **GitOps workflow** | Sealed Secrets or SOPS | Encrypted secrets in git |
 | **High-security, zero-trust** | Vault with dynamic secrets + short-lived tokens | Minimal credential lifetime |
-
-
----
-
-## Navigation
-
-### Depth Levels
-- **[← Surface](../surface/index.md)** Essential concepts and quick wins
-- **[← Mid-Depth](../mid-depth/index.md)** Practical patterns and implementation details
-
-### Related Topics
-- [secure-coding-practices](../../secure-coding-practices/deep-water/index.md) - Related development considerations
-- [supply-chain-security](../../supply-chain-security/deep-water/index.md) - Related development considerations
-- [refactoring](../../refactoring/deep-water/index.md) - Related development considerations
-
-### Navigate
-- [← Back to Development Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

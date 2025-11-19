@@ -273,18 +273,3 @@ Get this done early. Replacing a dependency deep in your architecture is expensi
 The dependencies you choose today shape what your app can do and how much pain you'll experience maintaining it. Spend an hour now reviewing them carefully. It beats spending a week later frantically replacing a critical dependency that turned out to be abandoned, vulnerable, or incompatible with your business model.
 
 Most dependency problems are preventable with basic due diligence. Do the due diligence.
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Architecture Design](../../architecture-design/surface/index.md) - Related design considerations
-- [Software Design Document](../../software-design-document/surface/index.md) - Related design considerations
-
-### Navigate
-- [← Back to Design Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

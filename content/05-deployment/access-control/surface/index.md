@@ -194,20 +194,3 @@ If you're thinking "this sounds like a lot of work," start small:
 The perfect access control system doesn't exist. The one you can actually implement and maintain is better than the perfect system you'll never finish.
 
 For more depth on implementing these patterns, see the mid-depth content on RBAC implementation and just-in-time access strategies.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Infrastructure as Code](../../infrastructure-as-code/surface/index.md) - Related deployment considerations
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/surface/index.md) - Related deployment considerations
-- [Deployment Strategy](../../deployment-strategy/surface/index.md) - Related deployment considerations
-
-### Navigate
-- [← Back to Deployment Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)

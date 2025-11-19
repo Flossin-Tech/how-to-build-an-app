@@ -188,20 +188,3 @@ terraform {
 Infrastructure as Code isn't about being clever with automation. It's about having a reliable, repeatable way to build and change infrastructure without drowning in clicking, documentation debt, and "how did we configure that server again?"
 
 Start small. Automate one piece. Learn the tool. Expand gradually. Don't try to boil the ocean.
-
----
-
-## Navigation
-
-### Depth Levels
-- **[Mid-Depth →](../mid-depth/index.md)** Practical patterns and implementation details
-- **[Deep Water →](../deep-water/index.md)** Advanced architectures and enterprise patterns
-
-### Related Topics
-- [Deployment Strategy](../../deployment-strategy/surface/index.md) - Related deployment considerations
-- [CI/CD Pipeline Security](../../cicd-pipeline-security/surface/index.md) - Related deployment considerations
-- [Access Control](../../access-control/surface/index.md) - Related deployment considerations
-
-### Navigate
-- [← Back to Deployment Phase](../../index.md)
-- [↑ Back to Main Guide](../../../../README.md)
