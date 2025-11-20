@@ -2125,7 +2125,7 @@ The difference between a system that falls over at the first sign of trouble and
 
 ## Next Steps
 
-- Read [Monitoring & Observability](../../06-operations/monitoring-observability/surface/) for visibility into these patterns
+- Read [Monitoring & Logging](../../06-operations/monitoring-logging/surface/) for visibility into these patterns
 - See [API Design](../api-design/mid-depth/) for resilient API contracts
 - Study [Architecture Design](../architecture-design/mid-depth/) for system-level resilience
 - Check [Incident Response](../../06-operations/incident-response/mid-depth/) for handling failures when they do occur

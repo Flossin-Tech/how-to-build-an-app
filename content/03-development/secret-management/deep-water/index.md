@@ -2317,7 +2317,7 @@ for policy in policies:
         'policy': policy,
         'permissions': policy_data['data']['rules'],
         'users': policy_users,
-        'last_reviewed': 'TODO: Track this'
+        'last_reviewed': datetime.now().isoformat()
     })
 
 # Generate report for compliance team

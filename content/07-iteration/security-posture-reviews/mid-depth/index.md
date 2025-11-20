@@ -355,7 +355,7 @@ You need professional security assessment when:
 ## Next Steps
 
 - **Deep Water**: Continuous security monitoring, adversarial simulation, threat intelligence integration, security culture at scale
-- **Related**: [Threat Modeling](../../02-design/threat-modeling/mid-depth/), [Incident Response](../../06-operations/incident-response/mid-depth/)
+- **Related**: [Threat Modeling](../../01-discovery-planning/threat-modeling/mid-depth/), [Incident Response](../../06-operations/incident-response/mid-depth/)
 
 ## Review Framework Quick Reference
 

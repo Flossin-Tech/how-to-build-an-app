@@ -569,7 +569,7 @@ Organizations mature through phases. Don't expect to jump from ad-hoc to optimiz
 
 ## Related Topics
 
-- [Threat Modeling](../../02-design/threat-modeling/deep-water/)
+- [Threat Modeling](../../01-discovery-planning/threat-modeling/deep-water/)
 - [Incident Response](../../06-operations/incident-response/deep-water/)
 - [Retrospectives](../retrospectives/deep-water/)
 - [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/)

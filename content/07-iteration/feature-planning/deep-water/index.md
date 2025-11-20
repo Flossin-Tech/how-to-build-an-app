@@ -552,4 +552,3 @@ The teams that dominate long-term aren't the ones that guessed right about what 
 - [Job-to-be-Done](../../01-discovery-planning/job-to-be-done/deep-water/)
 - [Retrospectives](../retrospectives/deep-water/)
 - [Monitoring & Logging](../../06-operations/monitoring-logging/deep-water/)
-- [A/B Testing](../../04-testing/a-b-testing/deep-water/)
