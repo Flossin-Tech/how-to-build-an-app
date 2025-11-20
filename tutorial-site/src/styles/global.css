@@ -55,3 +55,60 @@
     text-wrap: balance;
   }
 }
+
+/* YOLO Dev card shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.yolo-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.yolo-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(251, 191, 36, 0.1) 25%,
+    rgba(236, 72, 153, 0.15) 50%,
+    rgba(139, 92, 246, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.yolo-shimmer:hover::before {
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .transition-all,
+  .transition-opacity,
+  .transition-colors,
+  .transition {
+    transition: none !important;
+  }
+
+  .group:hover > .group-hover\:opacity-30,
+  .group:hover > .group-hover\:opacity-35 {
+    opacity: inherit !important;
+  }
+
+  .yolo-shimmer:hover::before {
+    animation: none;
+    opacity: 0.5;
+  }
+}

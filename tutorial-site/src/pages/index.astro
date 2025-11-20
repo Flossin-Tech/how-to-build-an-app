@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { joinPath } from '../utils/paths';
+import { Icon } from 'astro-icon/components';
 ---
 
 <BaseLayout title="Home" description="Non-linear guide to software development - Learn what you need, when you need it">
@@ -42,26 +43,61 @@ import { joinPath } from '../utils/paths';
           Each section is organized in layers, like ocean depth:
         </p>
         <div class="grid md:grid-cols-3 gap-6 mb-6">
-          <div class="bg-slate-900 rounded-lg p-6 border border-slate-600">
-            <div class="text-3xl mb-3 text-center">🏊</div>
-            <h3 class="font-semibold mb-2 text-primary-400 text-center">Surface Layer</h3>
-            <p class="text-sm text-slate-400">
-              Essential information everyone needs. What this step is and why it matters. If you only read this, you won't sink.
-            </p>
+          <!-- Surface Layer -->
+          <div class="relative overflow-hidden bg-slate-900 rounded-lg p-6 border border-sky-500/30 transition-all duration-200 hover:border-sky-500/50 group">
+            <div
+              class="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-200 group-hover:opacity-50"
+              style={`background-image: url(${joinPath('/assets/images/surface.png')});`}
+              aria-hidden="true"
+            ></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-slate-900/50" aria-hidden="true"></div>
+            <div class="relative z-10">
+              <div class="flex justify-center mb-3">
+                <Icon name="lucide:waves" class="w-8 h-8 text-sky-400" aria-hidden="true" />
+              </div>
+              <h3 class="font-semibold mb-2 text-sky-400 text-center">Surface Layer</h3>
+              <p class="text-sm text-slate-300">
+                Essential information everyone needs. What this step is and why it matters. If you only read this, you won't sink.
+              </p>
+            </div>
           </div>
-          <div class="bg-slate-900 rounded-lg p-6 border border-slate-600">
-            <div class="text-3xl mb-3 text-center">🤿</div>
-            <h3 class="font-semibold mb-2 text-primary-400 text-center">Mid-Depth</h3>
-            <p class="text-sm text-slate-400">
-              Practical guidance for competent practitioners. Common pitfalls, tool recommendations, and real-world trade-offs.
-            </p>
+
+          <!-- Mid-Depth -->
+          <div class="relative overflow-hidden bg-slate-900 rounded-lg p-6 border border-teal-500/30 transition-all duration-200 hover:border-teal-500/50 group">
+            <div
+              class="absolute inset-0 bg-cover bg-center opacity-20 transition-opacity duration-200 group-hover:opacity-30"
+              style={`background-image: url(${joinPath('/assets/images/middle-depth.png')});`}
+              aria-hidden="true"
+            ></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/65" aria-hidden="true"></div>
+            <div class="relative z-10">
+              <div class="flex justify-center mb-3">
+                <Icon name="lucide:anchor" class="w-8 h-8 text-teal-400" aria-hidden="true" />
+              </div>
+              <h3 class="font-semibold mb-2 text-teal-400 text-center">Mid-Depth</h3>
+              <p class="text-sm text-slate-300">
+                Practical guidance for competent practitioners. Common pitfalls, tool recommendations, and real-world trade-offs.
+              </p>
+            </div>
           </div>
-          <div class="bg-slate-900 rounded-lg p-6 border border-slate-600">
-            <div class="text-3xl mb-3 text-center">🐋</div>
-            <h3 class="font-semibold mb-2 text-primary-400 text-center">Deep Water</h3>
-            <p class="text-sm text-slate-400">
-              Advanced topics for specialists. Edge cases, compliance, regulatory considerations, and enterprise patterns.
-            </p>
+
+          <!-- Deep Water -->
+          <div class="relative overflow-hidden bg-slate-900 rounded-lg p-6 border border-indigo-500/30 transition-all duration-200 hover:border-indigo-500/50 group">
+            <div
+              class="absolute inset-0 bg-cover bg-center opacity-35 transition-opacity duration-200 group-hover:opacity-45"
+              style={`background-image: url(${joinPath('/assets/images/deep-water.png')});`}
+              aria-hidden="true"
+            ></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/60 to-slate-900/40" aria-hidden="true"></div>
+            <div class="relative z-10">
+              <div class="flex justify-center mb-3">
+                <Icon name="lucide:fish" class="w-8 h-8 text-indigo-400" aria-hidden="true" />
+              </div>
+              <h3 class="font-semibold mb-2 text-indigo-400 text-center">Deep Water</h3>
+              <p class="text-sm text-slate-300">
+                Advanced topics for specialists. Edge cases, compliance, regulatory considerations, and enterprise patterns.
+              </p>
+            </div>
           </div>
         </div>
         <p class="text-center text-primary-400 font-medium">
@@ -89,7 +125,7 @@ import { joinPath } from '../utils/paths';
             <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">Generalists Leveling Up</h3>
             <p class="text-sm text-slate-400">Fill gaps across the full stack of disciplines systematically</p>
           </a>
-          <a href={joinPath('/paths/personas/yolo-dev/')} class="bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block md:col-span-2">
+          <a href={joinPath('/paths/personas/yolo-dev/')} class="yolo-shimmer bg-slate-800 rounded-lg p-4 border border-slate-700 hover:border-primary-500 transition group block md:col-span-2">
             <h3 class="font-semibold text-primary-400 mb-2 group-hover:text-primary-300 transition">YOLO Devs at 2am</h3>
             <p class="text-sm text-slate-400">Built something that works? Now figure out testing, security, or deployment without starting over</p>
           </a>
@@ -98,7 +134,7 @@ import { joinPath } from '../utils/paths';
 
       <div class="grid md:grid-cols-3 gap-6 mb-16">
         <a href={joinPath('/phases/')} class="card hover:border-primary-500 transition group">
-          <div class="text-4xl mb-4">📚</div>
+          <Icon name="lucide:library" class="w-10 h-10 mb-4 text-primary-400 group-hover:text-primary-300 transition" aria-hidden="true" />
           <h2 class="text-xl font-semibold mb-2 group-hover:text-primary-400 transition">
             Browse by Phase
           </h2>
@@ -108,7 +144,7 @@ import { joinPath } from '../utils/paths';
         </a>
 
         <a href={joinPath('/paths/')} class="card hover:border-primary-500 transition group">
-          <div class="text-4xl mb-4">🎯</div>
+          <Icon name="lucide:compass" class="w-10 h-10 mb-4 text-primary-400 group-hover:text-primary-300 transition" aria-hidden="true" />
           <h2 class="text-xl font-semibold mb-2 group-hover:text-primary-400 transition">
             Learning Paths
           </h2>
@@ -118,7 +154,7 @@ import { joinPath } from '../utils/paths';
         </a>
 
         <a href={joinPath('/about/')} class="card hover:border-primary-500 transition group">
-          <div class="text-4xl mb-4">💡</div>
+          <Icon name="lucide:info" class="w-10 h-10 mb-4 text-primary-400 group-hover:text-primary-300 transition" aria-hidden="true" />
           <h2 class="text-xl font-semibold mb-2 group-hover:text-primary-400 transition">
             About
           </h2>
@@ -132,7 +168,7 @@ import { joinPath } from '../utils/paths';
         <h2 class="text-2xl font-semibold mb-6">Quick Start</h2>
         <div class="space-y-4 text-left">
           <div class="flex items-start gap-4">
-            <span class="text-2xl">👋</span>
+            <Icon name="lucide:sparkles" class="w-6 h-6 text-primary-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
               <h3 class="font-semibold mb-1">New to Development?</h3>
               <p class="text-slate-400 text-sm mb-2">Start with our New Developer path for a comprehensive overview</p>
@@ -143,7 +179,7 @@ import { joinPath } from '../utils/paths';
           </div>
 
           <div class="flex items-start gap-4">
-            <span class="text-2xl">🚀</span>
+            <Icon name="lucide:zap" class="w-6 h-6 text-primary-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
               <h3 class="font-semibold mb-1">Built Something at 2am?</h3>
               <p class="text-slate-400 text-sm mb-2">Focus on critical gaps with our YOLO Dev path</p>
@@ -154,7 +190,7 @@ import { joinPath } from '../utils/paths';
           </div>
 
           <div class="flex items-start gap-4">
-            <span class="text-2xl">🔍</span>
+            <Icon name="lucide:search" class="w-6 h-6 text-primary-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
               <h3 class="font-semibold mb-1">Need Something Specific?</h3>
               <p class="text-slate-400 text-sm mb-2">Jump directly to any topic you need</p>

@@ -11,8 +11,10 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.11",
     "@astrojs/tailwind": "^6.0.2",
+    "@iconify-json/lucide": "^1.2.73",
     "@tailwindcss/typography": "^0.5.19",
     "astro": "^5.15.9",
+    "astro-icon": "^1.1.5",
     "flexsearch": "^0.8.212",
     "gray-matter": "^4.0.3",
     "playwright": "^1.56.1",
