@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 import rehypeMermaid from 'rehype-mermaid';
 import icon from 'astro-icon';
 
@@ -13,6 +14,7 @@ export default defineConfig({
   integrations: [
     mdx(),
     tailwind(),
+    sitemap(),
     icon({
       include: {
         lucide: ['waves', 'anchor', 'fish', 'library', 'compass', 'info', 'sparkles', 'zap', 'search', 'user', 'target', 'bolt'],
