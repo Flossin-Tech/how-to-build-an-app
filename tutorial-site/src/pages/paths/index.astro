@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { joinPath } from '../../utils/paths';
+import { Icon } from 'astro-icon/components';
 
 const personas = [
   { id: 'new-developer', name: 'New Developer', desc: 'Comprehensive overview of the lifecycle' },
@@ -37,7 +38,10 @@ const journeys = [
     <div class="space-y-12">
       <!-- Personas -->
       <div>
-        <h2 class="text-2xl font-semibold mb-6">👤 Persona-Based Paths</h2>
+        <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+          <Icon name="lucide:user" class="w-7 h-7 text-primary-400" aria-hidden="true" />
+          Persona-Based Paths
+        </h2>
         <p class="text-slate-400 mb-6">Learning paths designed for different developer profiles</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {personas.map(persona => (
@@ -51,7 +55,10 @@ const journeys = [
 
       <!-- Tracks -->
       <div>
-        <h2 class="text-2xl font-semibold mb-6">🎯 Goal-Based Tracks</h2>
+        <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+          <Icon name="lucide:target" class="w-7 h-7 text-primary-400" aria-hidden="true" />
+          Goal-Based Tracks
+        </h2>
         <p class="text-slate-400 mb-6">Comprehensive paths focused on specific outcomes</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {tracks.map(track => (
@@ -65,7 +72,10 @@ const journeys = [
 
       <!-- Journeys -->
       <div>
-        <h2 class="text-2xl font-semibold mb-6">⚡ Quick Journeys</h2>
+        <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+          <Icon name="lucide:bolt" class="w-7 h-7 text-primary-400" aria-hidden="true" />
+          Quick Journeys
+        </h2>
         <p class="text-slate-400 mb-6">Targeted solutions for immediate problems</p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {journeys.map(journey => (
