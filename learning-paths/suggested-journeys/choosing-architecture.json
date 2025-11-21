@@ -15,8 +15,9 @@
 
   "context": "You're facing an architecture decision and want to choose based on evidence, not trends. This journey teaches you to evaluate options systematically using quantitative criteria.",
 
-  "steps": [
+  "journey_steps": [
     {
+      "order": 1,
       "phase": "02-design",
       "topic": "architecture-design",
       "depth": "surface",
@@ -25,25 +26,7 @@
       "why": "Understand fundamental architecture patterns and their trade-offs"
     },
     {
-      "phase": "examples",
-      "topic": "microfrontend-vs-monolith-case-study",
-      "depth": "mid-depth",
-      "file": "decision-framework-generalist.md",
-      "required": false,
-      "estimated_minutes": 20,
-      "why": "Learn a systematic framework for evaluating architecture options with real-world example",
-      "note": "Example content coming soon - decision framework principles are covered in architecture-design",
-      "checkpoint": {
-        "question": "Can you identify quantitative thresholds for your architecture decision?",
-        "required_for_progress": false,
-        "reflection": [
-          "What's your actual user scale vs. the pattern's designed scale?",
-          "What's your team's capability gap for each option?",
-          "What's the cost difference in time and complexity?"
-        ]
-      }
-    },
-    {
+      "order": 2,
       "phase": "01-discovery-planning",
       "topic": "requirements-gathering",
       "depth": "surface",
@@ -52,6 +35,7 @@
       "why": "Gather actual requirements before choosing architecture"
     },
     {
+      "order": 3,
       "phase": "02-design",
       "topic": "performance-scalability-design",
       "depth": "surface",
@@ -60,6 +44,7 @@
       "why": "Design for your actual scale needs, not imagined future scale"
     },
     {
+      "order": 4,
       "phase": "02-design",
       "topic": "architecture-design",
       "depth": "mid-depth",
