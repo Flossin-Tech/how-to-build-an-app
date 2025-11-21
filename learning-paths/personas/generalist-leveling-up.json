@@ -72,13 +72,12 @@
         },
         {
           "phase": "examples",
-          "topic": "microfrontend-vs-monolith-case-study",
-          "depth": "mid-depth",
+          "topic": "domain-specific/web-apps/architecture-decisions/microfrontend-vs-monolith",
+          "depth": null,
           "file": "decision-framework-generalist.md",
           "required": false,
           "estimated_minutes": 20,
           "why": "Learn systematic decision-making for architecture choices using real-world case study",
-          "note": "Example content coming soon - these concepts are covered in architecture-design",
           "checkpoint": {
             "question": "Can you apply the decision framework to evaluate architecture options?",
             "required_for_progress": false,

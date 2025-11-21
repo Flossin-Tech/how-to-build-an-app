@@ -1,0 +1,125 @@
+{
+  "id": "performance-scalability-design",
+  "slug": "performance-scalability-design",
+  "title": "Performance and Scalability Design",
+  "phase": "02-design",
+  "phase_name": "Design",
+  "order_in_phase": 4,
+  "description": {
+    "short": "Design systems that perform well and scale with growth",
+    "medium": "Design systems that handle current load efficiently and scale gracefully as demand increases, covering caching strategies, database optimization, and architectural patterns",
+    "full": "Performance and scalability design covers the principles and patterns for building systems that are fast, efficient, and capable of handling growth. Learn about identifying bottlenecks, caching strategies, database optimization, horizontal and vertical scaling, load balancing, and architectural patterns like sharding and microservices that enable your system to grow with your users."
+  },
+  "why_it_matters": [
+    "Poor performance drives users away",
+    "Scaling bottlenecks can halt business growth",
+    "Performance issues are expensive to fix after launch",
+    "Good design prevents costly re-architecture"
+  ],
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 10,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand performance vs scalability",
+        "Identify common bottlenecks",
+        "Know when to optimize"
+      ],
+      "key_takeaways": [
+        "Don't optimize prematurely",
+        "Measure before optimizing",
+        "Common performance pitfalls"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 30,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Implement caching strategies",
+        "Optimize database queries and indexes",
+        "Design for horizontal scaling"
+      ],
+      "key_takeaways": [
+        "Cache invalidation strategies",
+        "Database indexing and query optimization",
+        "Load balancing patterns"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 55,
+      "difficulty": "advanced",
+      "objectives": [
+        "Architect globally distributed systems",
+        "Implement database sharding",
+        "Handle extreme scale scenarios"
+      ],
+      "key_takeaways": [
+        "CAP theorem trade-offs",
+        "Sharding strategies",
+        "Performance at scale patterns"
+      ]
+    }
+  },
+  "prerequisites": [
+    "database-design",
+    "api-design"
+  ],
+  "related_topics": [
+    "database-design",
+    "api-design",
+    "architecture-design",
+    "monitoring-logging",
+    "caching-strategies"
+  ],
+  "personas": [
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+  "tools": [
+    "Redis",
+    "Memcached",
+    "CDN",
+    "Load Balancers",
+    "APM tools",
+    "Database profilers"
+  ],
+  "frameworks_and_concepts": [
+    "CAP Theorem",
+    "CQRS",
+    "Event Sourcing",
+    "Horizontal Scaling",
+    "Vertical Scaling",
+    "Sharding",
+    "Caching Patterns"
+  ],
+  "compliance_relevance": [],
+  "estimated_time_to_implement": {
+    "surface": "2-4 hours",
+    "mid_depth": "1-2 weeks",
+    "deep_water": "1-3 months"
+  },
+  "common_mistakes": [
+    "Premature optimization",
+    "Not measuring before optimizing",
+    "Over-caching causing stale data",
+    "Ignoring database query patterns"
+  ],
+  "success_metrics": [
+    "Response time percentiles (p50, p95, p99)",
+    "Throughput under load",
+    "Cost per request"
+  ],
+  "when_to_prioritize": [
+    "Experiencing performance issues",
+    "Planning for significant growth",
+    "High-traffic applications"
+  ],
+  "when_to_deprioritize": [
+    "Early-stage prototypes",
+    "Low-traffic internal tools",
+    "When you haven't measured the problem yet"
+  ],
+  "examples": [],
+  "updated": "2025-11-20"
+}

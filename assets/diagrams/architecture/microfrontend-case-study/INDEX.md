@@ -14,13 +14,13 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 | **README.md** | Documentation | Complete overview with insights | Second |
 | **DIAGRAM_SUMMARY.md** | Guide | Quick visual reference for each diagram | Reference |
 | **RENDERING_GUIDE.md** | Instructions | How to export diagrams to SVG/PNG/PDF | As needed |
-| **current-architecture.mmd** | Diagram | Existing React SPA + Flask setup | Study 1 |
-| **extended-monolith-lazy.mmd** | Diagram | Recommended solution (code splitting) | Study 2 |
-| **microfrontend-shell.mmd** | Diagram | Shell pattern approach (highest complexity) | Study 3 |
-| **vite-module-federation.mmd** | Diagram | Modern modular approach | Study 4 |
-| **decision-flowchart.mmd** | Diagram | Logic tree for architecture selection | Study 5 |
-| **scale-thresholds.mmd** | Diagram | When each architecture becomes appropriate | Study 6 |
-| **architecture-comparison.mmd** | Diagram | Side-by-side trade-offs matrix | Study 7 |
+| **current-architecture.svg** | Diagram | Existing React SPA + Flask setup | Study 1 |
+| **extended-monolith-lazy.svg** | Diagram | Recommended solution (code splitting) | Study 2 |
+| **microfrontend-shell.svg** | Diagram | Shell pattern approach (highest complexity) | Study 3 |
+| **vite-module-federation.svg** | Diagram | Modern modular approach | Study 4 |
+| **decision-flowchart.svg** | Diagram | Logic tree for architecture selection | Study 5 |
+| **scale-thresholds.svg** | Diagram | When each architecture becomes appropriate | Study 6 |
+| **architecture-comparison.svg** | Diagram | Side-by-side trade-offs matrix | Study 7 |
 
 ---
 
@@ -28,41 +28,41 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 
 ### For Quick Understanding (15 minutes)
 1. Read this file (INDEX.md) - you're reading it now
-2. View diagram: **extended-monolith-lazy.mmd** - recommended solution
-3. View diagram: **current-architecture.mmd** - what you have today
+2. View diagram: **extended-monolith-lazy.svg** - recommended solution
+3. View diagram: **current-architecture.svg** - what you have today
 4. Skim **DIAGRAM_SUMMARY.md** for key insights
 
 ### For Complete Understanding (45 minutes)
 1. Read **README.md** - comprehensive overview
 2. Study all 7 diagrams in order:
-   - current-architecture.mmd
-   - microfrontend-shell.mmd
-   - vite-module-federation.mmd
-   - extended-monolith-lazy.mmd
-   - decision-flowchart.mmd
-   - scale-thresholds.mmd
-   - architecture-comparison.mmd
+   - current-architecture.svg
+   - microfrontend-shell.svg
+   - vite-module-federation.svg
+   - extended-monolith-lazy.svg
+   - decision-flowchart.svg
+   - scale-thresholds.svg
+   - architecture-comparison.svg
 3. Review **DIAGRAM_SUMMARY.md** - reinforce learning
 
 ### For Technical Implementation (60+ minutes)
 1. Read **README.md** thoroughly
-2. Study **extended-monolith-lazy.mmd** in detail
-3. Review **decision-flowchart.mmd** to understand reasoning
+2. Study **extended-monolith-lazy.svg** in detail
+3. Review **decision-flowchart.svg** to understand reasoning
 4. Check **RENDERING_GUIDE.md** for export instructions
 5. Implement code organization from Extended Monolith diagram
 
 ### For Presentation / Stakeholder Communication
-1. Prepare **current-architecture.mmd** + **extended-monolith-lazy.mmd** side-by-side
-2. Use **decision-flowchart.mmd** to explain the reasoning
-3. Show **architecture-comparison.mmd** for trade-offs
-4. Reference **scale-thresholds.mmd** for growth planning
+1. Prepare **current-architecture.svg** + **extended-monolith-lazy.svg** side-by-side
+2. Use **decision-flowchart.svg** to explain the reasoning
+3. Show **architecture-comparison.svg** for trade-offs
+4. Reference **scale-thresholds.svg** for growth planning
 
 ---
 
 ## The 7 Diagrams Explained
 
 ### Diagram 1: Current Architecture
-**File:** `current-architecture.mmd` (996 bytes, 29 lines)
+**File:** `current-architecture.svg`
 
 **Shows your existing setup:**
 - Single React SPA (Vite)
@@ -77,7 +77,7 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 ---
 
 ### Diagram 2: Microfrontend Shell Pattern
-**File:** `microfrontend-shell.mmd` (1.9 KB, 54 lines)
+**File:** `microfrontend-shell.svg`
 
 **Shows shell orchestration approach:**
 - Central shell application coordinates loading
@@ -92,7 +92,7 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 ---
 
 ### Diagram 3: Vite Module Federation
-**File:** `vite-module-federation.mmd` (2.2 KB, 60 lines)
+**File:** `vite-module-federation.svg`
 
 **Shows Vite-native modular approach:**
 - Host application + three remote modules
@@ -107,7 +107,7 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 ---
 
 ### Diagram 4: Extended Monolith with Lazy Loading (RECOMMENDED)
-**File:** `extended-monolith-lazy.mmd` (1.9 KB, 62 lines)
+**File:** `extended-monolith-lazy.svg`
 
 **Shows recommended solution:**
 - Single React application
@@ -124,7 +124,7 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 ---
 
 ### Diagram 5: Decision Flowchart
-**File:** `decision-flowchart.mmd` (1.6 KB, 34 lines)
+**File:** `decision-flowchart.svg`
 
 **Decision tree:**
 - Users > 5,000? (primary factor)
@@ -138,7 +138,7 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 ---
 
 ### Diagram 6: Scale Thresholds
-**File:** `scale-thresholds.mmd` (1.7 KB, 42 lines)
+**File:** `scale-thresholds.svg`
 
 **Shows three zones:**
 - Zone 1: Monolith (0-5K users, 1-2 teams) - Best
@@ -152,7 +152,7 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 ---
 
 ### Diagram 7: Architecture Comparison Matrix
-**File:** `architecture-comparison.mmd` (2.5 KB, 43 lines)
+**File:** `architecture-comparison.svg`
 
 **Compares all approaches on:**
 - Complexity level
@@ -196,21 +196,21 @@ This directory contains a complete educational case study with 7 Mermaid diagram
 
 ## File Sizes & Portability
 
-| File | Size | Type | Git |
-|------|------|------|-----|
-| current-architecture.mmd | 996B | Text | Commit |
-| microfrontend-shell.mmd | 1.9K | Text | Commit |
-| vite-module-federation.mmd | 2.2K | Text | Commit |
-| extended-monolith-lazy.mmd | 1.9K | Text | Commit |
-| decision-flowchart.mmd | 1.6K | Text | Commit |
-| scale-thresholds.mmd | 1.7K | Text | Commit |
-| architecture-comparison.mmd | 2.5K | Text | Commit |
-| README.md | 8.5K | Markdown | Commit |
-| DIAGRAM_SUMMARY.md | 12K | Markdown | Commit |
-| RENDERING_GUIDE.md | 9K | Markdown | Commit |
-| INDEX.md | This file | Markdown | Commit |
+| File | Type | Git |
+|------|------|-----|
+| current-architecture.svg | SVG Diagram | Commit |
+| microfrontend-shell.svg | SVG Diagram | Commit |
+| vite-module-federation.svg | SVG Diagram | Commit |
+| extended-monolith-lazy.svg | SVG Diagram | Commit |
+| decision-flowchart.svg | SVG Diagram | Commit |
+| scale-thresholds.svg | SVG Diagram | Commit |
+| architecture-comparison.svg | SVG Diagram | Commit |
+| README.md | Markdown | Commit |
+| DIAGRAM_SUMMARY.md | Markdown | Commit |
+| RENDERING_GUIDE.md | Markdown | Commit |
+| INDEX.md | Markdown | Commit |
 
-**Total:** ~43 KB | All text-based, version-control friendly
+**Note:** Source `.mmd` files are also available for editing and re-rendering.
 
 ---
 
@@ -244,22 +244,22 @@ See **RENDERING_GUIDE.md** for detailed export instructions.
 ### Software Engineers (Individual Contributors)
 **Read in order:**
 1. README.md - understand the full landscape
-2. current-architecture.mmd - what exists
-3. extended-monolith-lazy.mmd - what we're building
+2. current-architecture.svg - what exists
+3. extended-monolith-lazy.svg - what we're building
 4. DIAGRAM_SUMMARY.md - reinforce concepts
 
-**Then:** Implement feature module organization as shown in extended-monolith-lazy.mmd
+**Then:** Implement feature module organization as shown in extended-monolith-lazy.svg
 
 ---
 
 ### Team Leads / Tech Leads
 **Read in order:**
 1. README.md - complete overview
-2. decision-flowchart.mmd - reasoning process
+2. decision-flowchart.svg - reasoning process
 3. All 7 diagrams - understand options
-4. scale-thresholds.mmd - growth strategy
+4. scale-thresholds.svg - growth strategy
 
-**Then:** Use decision-flowchart.mmd to communicate with stakeholders
+**Then:** Use decision-flowchart.svg to communicate with stakeholders
 
 ---
 
@@ -270,16 +270,16 @@ See **RENDERING_GUIDE.md** for detailed export instructions.
 3. DIAGRAM_SUMMARY.md - synthesis
 4. RENDERING_GUIDE.md - integration with docs
 
-**Key focus:** scale-thresholds.mmd for long-term planning
+**Key focus:** scale-thresholds.svg for long-term planning
 
 ---
 
 ### Product Managers / Stakeholders
 **Read in order:**
 1. This INDEX.md - overview
-2. current-architecture.mmd - what we have
-3. extended-monolith-lazy.mmd - what we'll build
-4. scale-thresholds.mmd - long-term implications
+2. current-architecture.svg - what we have
+3. extended-monolith-lazy.svg - what we'll build
+4. scale-thresholds.svg - long-term implications
 
 **Key insight:** We chose simplicity now, can upgrade when scale justifies it
 
@@ -287,8 +287,8 @@ See **RENDERING_GUIDE.md** for detailed export instructions.
 
 ### New Team Members / Onboarding
 **Read in order:**
-1. current-architecture.mmd - existing system
-2. extended-monolith-lazy.mmd - codebase organization
+1. current-architecture.svg - existing system
+2. extended-monolith-lazy.svg - codebase organization
 3. DIAGRAM_SUMMARY.md - concepts overview
 4. README.md - deep dive when curious
 
@@ -303,13 +303,13 @@ These diagrams support ADRs that document:
 - WHEN to revisit this decision (scale thresholds)
 - HOW to migrate if needed
 
-**Reference:** Use extended-monolith-lazy.mmd + decision-flowchart.mmd
+**Reference:** Use extended-monolith-lazy.svg + decision-flowchart.svg
 
 ### Technical Onboarding
 New developers need to understand:
-- Current architecture (current-architecture.mmd)
-- Code organization (extended-monolith-lazy.mmd)
-- Why we chose this approach (decision-flowchart.mmd)
+- Current architecture (current-architecture.svg)
+- Code organization (extended-monolith-lazy.svg)
+- Why we chose this approach (decision-flowchart.svg)
 
 **Reference:** Add diagrams to onboarding checklist
 
@@ -323,38 +323,34 @@ These diagrams form a complete case study on:
 
 ### RFCs / Design Discussions
 When proposing architectural changes:
-- Reference current-architecture.mmd (what we have)
+- Reference current-architecture.svg (what we have)
 - Show new option diagram
-- Compare using architecture-comparison.mmd
-- Validate against decision-flowchart.mmd
+- Compare using architecture-comparison.svg
+- Validate against decision-flowchart.svg
 
 ---
 
 ## Maintenance & Updates
 
 ### When to Review
-- Every 6 months: Check scale against scale-thresholds.mmd
+- Every 6 months: Check scale against scale-thresholds.svg
 - When hiring: Verify team size vs. architecture assumptions
 - At 2,500 users: Start planning migration path
 - At 5,000 users: Seriously evaluate microfrontends
 
 ### How to Update
-1. Edit relevant `.mmd` file (text editor)
+1. Edit relevant `.mmd` source file (text editor)
 2. Update diagrams (Mermaid syntax)
-3. Regenerate exports (use RENDERING_GUIDE.md)
+3. Regenerate SVG exports (use RENDERING_GUIDE.md)
 4. Update README.md with new insights
 5. Commit all changes
 
 ### Version Control
 ```bash
-# Commit source diagrams
+# Commit source diagrams and exports
 git add *.mmd
+git add *.svg
 git add *.md
-
-# Don't commit generated files (use .gitignore)
-*.svg
-*.png
-*.pdf
 ```
 
 ---
@@ -417,19 +413,19 @@ git add *.md
 ## Questions Answered
 
 **Q: Why not use microfrontends now?**
-A: 500 users don't justify the complexity. See decision-flowchart.mmd.
+A: 500 users don't justify the complexity. See decision-flowchart.svg.
 
 **Q: Will extended monolith scale?**
-A: Yes, to ~10K users. See scale-thresholds.mmd.
+A: Yes, to ~10K users. See scale-thresholds.svg.
 
 **Q: When should we migrate to microfrontends?**
-A: When users > 5K AND team size > 3. See scale-thresholds.mmd.
+A: When users > 5K AND team size > 3. See scale-thresholds.svg.
 
 **Q: How do I organize code in extended monolith?**
-A: By feature. See extended-monolith-lazy.mmd and DIAGRAM_SUMMARY.md.
+A: By feature. See extended-monolith-lazy.svg and DIAGRAM_SUMMARY.md.
 
 **Q: What are the actual trade-offs?**
-A: See architecture-comparison.mmd for side-by-side comparison.
+A: See architecture-comparison.svg for side-by-side comparison.
 
 ---
 
@@ -437,8 +433,8 @@ A: See architecture-comparison.mmd for side-by-side comparison.
 
 ### Immediate (This Sprint)
 - [ ] Review README.md
-- [ ] Study extended-monolith-lazy.mmd
-- [ ] Understand current-architecture.mmd
+- [ ] Study extended-monolith-lazy.svg
+- [ ] Understand current-architecture.svg
 - [ ] Share with team
 
 ### Short-term (This Month)
@@ -448,13 +444,12 @@ A: See architecture-comparison.mmd for side-by-side comparison.
 - [ ] Document code structure
 
 ### Medium-term (This Quarter)
-- [ ] Export diagrams to SVG/PNG for documentation
 - [ ] Create Architecture Decision Record (ADR)
 - [ ] Add diagrams to onboarding docs
 - [ ] Set up monitoring for bundle sizes
 
 ### Long-term (Every 6 Months)
-- [ ] Review against scale-thresholds.mmd
+- [ ] Review against scale-thresholds.svg
 - [ ] Evaluate if conditions have changed
 - [ ] Plan migration path if needed
 - [ ] Update diagrams based on learnings

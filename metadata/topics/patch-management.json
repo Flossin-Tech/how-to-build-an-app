@@ -1,0 +1,129 @@
+{
+  "id": "patch-management",
+  "slug": "patch-management",
+  "title": "Patch Management",
+  "phase": "06-operations",
+  "phase_name": "Operations",
+  "order_in_phase": 4,
+  "description": {
+    "short": "Keep systems secure by managing vulnerability patches effectively",
+    "medium": "Systematic approach to applying security patches and updates to protect against vulnerabilities, balancing security urgency with operational stability",
+    "full": "Patch management is how you close security holes before attackers walk through them. With 130+ vulnerabilities published daily but only 4% actively exploited, the challenge is knowing what to patch when. Learn risk-based prioritization using CISA KEV catalog and SSVC framework, patch testing strategies that balance speed with stability, and compensating controls for when patches aren't immediately available."
+  },
+  "why_it_matters": [
+    "Ransomware groups exploit known unpatched vulnerabilities",
+    "Average ransomware recovery costs $2.73 million",
+    "Exploit timelines have compressed to 5 days from disclosure",
+    "Compliance frameworks mandate timely patching"
+  ],
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand why patch management matters",
+        "Know the difference between severity and risk",
+        "Implement basic prioritization"
+      ],
+      "key_takeaways": [
+        "Only 4% of vulnerabilities are exploited",
+        "Use CISA KEV catalog for prioritization",
+        "Three-tier prioritization approach"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Implement SSVC decision framework",
+        "Design risk-tiered testing strategies",
+        "Build compensating controls for zero-days"
+      ],
+      "key_takeaways": [
+        "CVSS limitations and alternatives",
+        "Patch cadence planning",
+        "Emergency vs standard patch tracks"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 55,
+      "difficulty": "advanced",
+      "objectives": [
+        "Architect enterprise-scale patch orchestration",
+        "Implement live patching for high-availability systems",
+        "Build compliance automation for PCI-DSS/HIPAA"
+      ],
+      "key_takeaways": [
+        "Linux kernel live patching",
+        "SBOM-driven supply chain tracking",
+        "Multi-region patch orchestration"
+      ]
+    }
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "monitoring-logging",
+    "incident-response",
+    "backup-recovery",
+    "security-architecture"
+  ],
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding",
+    "busy-developer"
+  ],
+  "tools": [
+    "WSUS",
+    "Red Hat Satellite",
+    "Qualys VMDR",
+    "Tenable",
+    "CISA KEV Catalog",
+    "kpatch",
+    "Ubuntu Livepatch"
+  ],
+  "frameworks_and_concepts": [
+    "CVSS",
+    "SSVC",
+    "EPSS",
+    "CISA KEV",
+    "Patch Tuesday",
+    "Live Patching",
+    "Compensating Controls"
+  ],
+  "compliance_relevance": [
+    "PCI-DSS",
+    "HIPAA",
+    "SOC 2",
+    "BOD 22-01",
+    "FedRAMP"
+  ],
+  "estimated_time_to_implement": {
+    "surface": "2-4 hours",
+    "mid_depth": "1-2 weeks",
+    "deep_water": "1-2 months"
+  },
+  "common_mistakes": [
+    "Patching by CVSS score alone",
+    "No testing before production",
+    "Ignoring end-of-life systems",
+    "No compensating controls for unpatched systems"
+  ],
+  "success_metrics": [
+    "Mean Time to Remediate (MTTR)",
+    "Patch coverage percentage",
+    "KEV vulnerabilities patched within 7 days"
+  ],
+  "when_to_prioritize": [
+    "Running production systems",
+    "Internet-facing applications",
+    "Systems handling sensitive data"
+  ],
+  "when_to_deprioritize": [
+    "Ephemeral development environments",
+    "Fully managed services where provider patches"
+  ],
+  "examples": [],
+  "updated": "2025-11-20"
+}

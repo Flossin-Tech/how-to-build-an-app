@@ -37,7 +37,9 @@ examples/
 
 These are generic patterns applicable across domains, organized by topic area.
 
-### Example: `shared/authentication/`
+> **Note**: The shared examples directory structure is planned but not yet populated. The following shows the intended organization for future examples.
+
+### Planned Structure: `shared/authentication/` (Coming Soon)
 
 ```
 shared/authentication/
@@ -61,7 +63,7 @@ shared/authentication/
     └── ux-considerations.md
 ```
 
-Each shared example includes:
+When populated, each shared example will include:
 - Working code (multiple languages where helpful)
 - Security considerations
 - Common mistakes and how to avoid them
@@ -293,11 +295,11 @@ Example reference format in content:
 
 Never store passwords in plain text. Use a slow hashing algorithm like bcrypt.
 
-📌 **See Example**: [Secure Password Authentication](/examples/shared/authentication/basic-password-auth/)
+📌 **See Example**: [Secure Password Authentication](/examples/shared/authentication/basic-password-auth/) *(coming soon)*
 
 For more advanced scenarios, see:
-- [OAuth2 Implementation](/examples/shared/authentication/oauth2-flow/)
-- [Multi-Factor Authentication](/examples/shared/authentication/mfa-implementation/)
+- [OAuth2 Implementation](/examples/shared/authentication/oauth2-flow/) *(coming soon)*
+- [Multi-Factor Authentication](/examples/shared/authentication/mfa-implementation/) *(coming soon)*
 ```
 
 ## Community Contributions

@@ -1217,8 +1217,6 @@ Your architecture should serve your team and your customers. Not the other way a
 
 ## Real-World Case Study
 
-**[Microfrontend vs. Monolith Decision](case-studies/microfrontend-vs-monolith.md)**
+**[Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)**
 
 See a complete quantitative framework for architecture decisions in action. This case study demonstrates how to use documented scale thresholds, team capability assessment, and financial modeling to make evidence-based choices. **Framework focus: 35-45 minutes** to understand the methodology.
-
-[Browse all architecture case studies →](case-studies/)

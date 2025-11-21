@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import ContentLayout from '../../../../layouts/ContentLayout.astro';
+import Breadcrumbs from '../../../../components/navigation/Breadcrumbs.astro';
+import ContentNavigation from '../../../../components/navigation/ContentNavigation.astro';
+
+export async function getStaticPaths() {
+  const allDocs = await getCollection('docs');
+
+  // Filter to only include case studies (entries with type: "case-study")
+  return allDocs
+    .filter(entry => entry.data.type === 'case-study')
+    .map(entry => {
+      // Extract slug from the file path (e.g., "02-design/architecture-design/case-studies/microfrontend-vs-monolith")
+      const pathParts = entry.id.split('/');
+      const slug = pathParts[pathParts.length - 1].replace('.md', '');
+
+      return {
+        params: {
+          phase: entry.data.phase,
+          topic: entry.data.topic,
+          slug: slug,
+        },
+        props: { entry },
+      };
+    });
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<ContentLayout title={entry.data.title} description={`Case Study: ${entry.data.title}`}>
+  <Breadcrumbs
+    phase={entry.data.phase}
+    topic={entry.data.topic}
+    depth="case-study"
+  />
+
+  <div class="mb-6">
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-500/20 text-amber-300 border border-amber-500/30">
+      Case Study
+    </span>
+    {entry.data.industry && (
+      <span class="ml-2 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-500/20 text-blue-300 border border-blue-500/30">
+        {entry.data.industry}
+      </span>
+    )}
+    {entry.data.reading_time && (
+      <span class="ml-2 text-sm text-slate-400">
+        {entry.data.reading_time} min read
+      </span>
+    )}
+  </div>
+
+  <article class="prose prose-invert prose-lg max-w-none">
+    <Content />
+  </article>
+
+  <ContentNavigation
+    phase={entry.data.phase}
+    topic={entry.data.topic}
+    depth="surface"
+    relatedTopics={entry.data.related_topics}
+  />
+</ContentLayout>

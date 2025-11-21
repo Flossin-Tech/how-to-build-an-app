@@ -1,0 +1,126 @@
+{
+  "id": "backup-recovery",
+  "slug": "backup-recovery",
+  "title": "Backup and Recovery",
+  "phase": "06-operations",
+  "phase_name": "Operations",
+  "order_in_phase": 3,
+  "description": {
+    "short": "Protect data and recover from disasters effectively",
+    "medium": "Comprehensive approach to data backup strategies, disaster recovery planning, and business continuity to protect against data loss and system failures",
+    "full": "Backup and recovery covers the essential practices for protecting your data and systems from loss, corruption, and disasters. Learn about backup strategies (full, incremental, differential), recovery point objectives (RPO), recovery time objectives (RTO), disaster recovery planning, and testing procedures to ensure business continuity."
+  },
+  "why_it_matters": [
+    "Data loss can be catastrophic for businesses",
+    "Ransomware and cyberattacks require reliable recovery options",
+    "Compliance regulations often mandate backup and retention policies",
+    "System failures and human errors are inevitable"
+  ],
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand the importance of backups",
+        "Know the difference between RPO and RTO",
+        "Implement basic backup strategies"
+      ],
+      "key_takeaways": [
+        "The 3-2-1 backup rule",
+        "Types of backups and when to use them",
+        "Common backup mistakes to avoid"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Design comprehensive backup strategies",
+        "Implement disaster recovery plans",
+        "Test and validate recovery procedures"
+      ],
+      "key_takeaways": [
+        "Backup scheduling and automation",
+        "Geographic redundancy strategies",
+        "Recovery testing procedures"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 50,
+      "difficulty": "advanced",
+      "objectives": [
+        "Architect enterprise-scale backup systems",
+        "Handle complex multi-region recovery",
+        "Optimize backup costs and performance"
+      ],
+      "key_takeaways": [
+        "Cross-region replication strategies",
+        "Compliance-driven retention policies",
+        "Zero-downtime recovery techniques"
+      ]
+    }
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "incident-response",
+    "monitoring-logging",
+    "patch-management",
+    "database-design"
+  ],
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "busy-developer"
+  ],
+  "tools": [
+    "AWS Backup",
+    "Azure Backup",
+    "Velero",
+    "pg_dump",
+    "mysqldump",
+    "rsync",
+    "Restic",
+    "Veeam"
+  ],
+  "frameworks_and_concepts": [
+    "3-2-1 Backup Rule",
+    "RPO (Recovery Point Objective)",
+    "RTO (Recovery Time Objective)",
+    "Business Continuity Planning",
+    "Disaster Recovery"
+  ],
+  "compliance_relevance": [
+    "GDPR",
+    "HIPAA",
+    "SOC 2",
+    "PCI-DSS"
+  ],
+  "estimated_time_to_implement": {
+    "surface": "2-4 hours",
+    "mid_depth": "1-2 days",
+    "deep_water": "1-2 weeks"
+  },
+  "common_mistakes": [
+    "Not testing backups regularly",
+    "Storing backups in the same location as primary data",
+    "Not encrypting backup data",
+    "Ignoring backup retention policies"
+  ],
+  "success_metrics": [
+    "Successful recovery within RTO",
+    "Data loss within acceptable RPO",
+    "Regular backup test success rate"
+  ],
+  "when_to_prioritize": [
+    "Handling sensitive or critical data",
+    "Compliance requirements mandate it",
+    "Moving to production environment"
+  ],
+  "when_to_deprioritize": [
+    "Early prototyping with throwaway data",
+    "Development environments with reproducible data"
+  ],
+  "examples": [],
+  "updated": "2025-11-20"
+}

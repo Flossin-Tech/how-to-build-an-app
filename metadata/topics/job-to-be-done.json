@@ -1,0 +1,117 @@
+{
+  "id": "job-to-be-done",
+  "slug": "job-to-be-done",
+  "title": "Jobs to Be Done",
+  "phase": "01-discovery-planning",
+  "phase_name": "Discovery & Planning",
+  "order_in_phase": 1,
+  "description": {
+    "short": "Understand the real problems your users are trying to solve",
+    "medium": "Jobs to Be Done (JTBD) framework helps you understand what users actually need to accomplish, not just what features they request, leading to better product decisions",
+    "full": "Jobs to Be Done is a framework for understanding customer needs by focusing on what they're trying to accomplish rather than who they are or what they say they want. This approach helps you build products that solve real problems, avoid feature bloat, and create genuine value. Learn how to conduct JTBD interviews, identify the functional, emotional, and social dimensions of user needs, and translate insights into product decisions."
+  },
+  "why_it_matters": [
+    "Building the wrong thing perfectly is still failure",
+    "Feature requests often mask the real underlying need",
+    "Better problem understanding leads to better solutions",
+    "Reduces wasted development effort on unused features"
+  ],
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand the JTBD framework",
+        "Distinguish between jobs, solutions, and features",
+        "Recognize when to apply JTBD thinking"
+      ],
+      "key_takeaways": [
+        "Jobs are about progress, not products",
+        "Focus on the why behind user requests",
+        "The real job might not need your solution"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Conduct effective JTBD interviews",
+        "Identify functional, emotional, and social dimensions",
+        "Translate JTBD insights into product requirements"
+      ],
+      "key_takeaways": [
+        "Interview techniques for uncovering jobs",
+        "Job story format for requirements",
+        "Prioritizing based on job importance and satisfaction"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 45,
+      "difficulty": "advanced",
+      "objectives": [
+        "Build organizational JTBD capability",
+        "Integrate JTBD with product strategy",
+        "Measure and validate job satisfaction"
+      ],
+      "key_takeaways": [
+        "Opportunity scoring frameworks",
+        "Jobs-based market segmentation",
+        "Continuous job discovery processes"
+      ]
+    }
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "user-research",
+    "requirements-gathering",
+    "stakeholder-mapping",
+    "scope-definition"
+  ],
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "busy-developer"
+  ],
+  "tools": [
+    "Interview frameworks",
+    "Opportunity scoring templates",
+    "Job mapping canvases"
+  ],
+  "frameworks_and_concepts": [
+    "Jobs to Be Done",
+    "Outcome-Driven Innovation",
+    "Job Stories",
+    "Switch Interviews",
+    "Forces of Progress"
+  ],
+  "compliance_relevance": [],
+  "estimated_time_to_implement": {
+    "surface": "1-2 hours",
+    "mid_depth": "2-5 days",
+    "deep_water": "2-4 weeks"
+  },
+  "common_mistakes": [
+    "Confusing features with jobs",
+    "Not digging deep enough in interviews",
+    "Focusing only on functional needs",
+    "Assuming you know the job without research"
+  ],
+  "success_metrics": [
+    "Reduced feature waste",
+    "Higher user adoption rates",
+    "Better product-market fit"
+  ],
+  "when_to_prioritize": [
+    "Starting a new product or feature",
+    "Low user adoption despite good execution",
+    "Conflicting stakeholder opinions on direction"
+  ],
+  "when_to_deprioritize": [
+    "Clear problem with known solution",
+    "Maintenance or bug fix work",
+    "Technical debt remediation"
+  ],
+  "examples": [],
+  "updated": "2025-11-20"
+}
