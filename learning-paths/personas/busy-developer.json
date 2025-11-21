@@ -5,8 +5,9 @@
   "description": "Just-in-time learning for immediate problems - get answers fast and get back to work",
   "target_personas": ["busy-developer"],
   "estimated_total_time_minutes": 0,
+  "hidden": true,
 
-  "note": "This is a dynamic path based on user's current needs. Estimated time varies by problem.",
+  "note": "This is a dynamic path based on user's current needs. Estimated time varies by problem. Hidden from UI until dynamic path functionality is implemented.",
 
   "objectives": [
     "Solve immediate blocking problem",

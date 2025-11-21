@@ -15,7 +15,7 @@ updated: "2025-11-15"
 Your API is a promise to other developers. It's how your system talks to the world - whether that's a mobile app, another service, or a third-party integration. A well-designed API feels obvious to use. A poorly designed one generates support tickets and angry Slack messages.
 
 <p align="center">
-  <img src="/how-to-build-an-app/assets/images/API-Graphic-3.png" alt="The Vending Machine API Analogy - Understanding how software components communicate through APIs" width="100%" style="max-width: 600px;">
+  <img src="/assets/images/API-Graphic-3.png" alt="The Vending Machine API Analogy - Understanding how software components communicate through APIs" width="100%" style="max-width: 600px;">
   <br>
   <em>Image generated with Google Gemini</em>
 </p>
@@ -39,7 +39,7 @@ Everything else is refinement.
 You have three practical choices: REST-ish, GraphQL, or RPC. Each solves different problems.
 
 <p align="center">
-  <img src="/how-to-build-an-app/assets/images/API-Graphic-2.png" alt="Why APIs Are Awesome: The Swappable Backend - How APIs enable backend changes without breaking the frontend" width="100%" style="max-width: 600px;">
+  <img src="/assets/images/API-Graphic-2.png" alt="Why APIs Are Awesome: The Swappable Backend - How APIs enable backend changes without breaking the frontend" width="100%" style="max-width: 600px;">
   <br>
   <em>Image generated with Google Gemini</em>
 </p>
@@ -191,7 +191,7 @@ Stripe's error format is solid: `type`, `code`, `message`, `param` (which field 
 Your API will change. Requirements change, you learn better patterns, third parties request new features. The question isn't whether to version - it's how.
 
 <p align="center">
-  <img src="/how-to-build-an-app/assets/images/API-Graphic-1.png" alt="API Versioning: Non-Breaking Changes - How to add new features while maintaining backward compatibility" width="100%" style="max-width: 600px;">
+  <img src="/assets/images/API-Graphic-1.png" alt="API Versioning: Non-Breaking Changes - How to add new features while maintaining backward compatibility" width="100%" style="max-width: 600px;">
   <br>
   <em>Image generated with Google Gemini</em>
 </p>
