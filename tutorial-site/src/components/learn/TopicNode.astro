@@ -1,0 +1,457 @@
+---
+// TopicNode Component - Individual topic node on the island map
+// Shows completion progress and allows navigation to content
+
+export interface Props {
+  phaseId: string;
+  topicSlug: string;
+  title: string;
+  readingTime: {
+    surface: number;
+    midDepth: number;
+    deepWater: number;
+  };
+  description?: string;
+  isHighlighted?: boolean;
+  index?: number;
+  class?: string;
+}
+
+const {
+  phaseId,
+  topicSlug,
+  title,
+  readingTime,
+  description = '',
+  isHighlighted = false,
+  index,
+  class: className = '',
+} = Astro.props;
+
+const totalTime = readingTime.surface + readingTime.midDepth + readingTime.deepWater;
+---
+
+<div
+  class={`topic-node ${isHighlighted ? 'topic-highlighted' : ''} ${className}`}
+  data-phase-id={phaseId}
+  data-topic-slug={topicSlug}
+>
+  <!-- Progress ring showing 3 depths -->
+  <div class="node-progress-ring">
+    <svg viewBox="0 0 44 44">
+      <!-- Background ring -->
+      <circle class="ring-bg" cx="22" cy="22" r="18" />
+      <!-- Surface progress (outer) -->
+      <circle
+        class="ring-surface"
+        cx="22"
+        cy="22"
+        r="20"
+        data-depth="surface"
+      />
+      <!-- Mid-depth progress (middle) -->
+      <circle
+        class="ring-mid"
+        cx="22"
+        cy="22"
+        r="16"
+        data-depth="mid-depth"
+      />
+      <!-- Deep water progress (inner) -->
+      <circle
+        class="ring-deep"
+        cx="22"
+        cy="22"
+        r="12"
+        data-depth="deep-water"
+      />
+    </svg>
+  </div>
+
+  <!-- Main node button -->
+  <button
+    class="node-button"
+    aria-label={`${title}: ${description || 'Topic in ' + phaseId}`}
+    data-topic={topicSlug}
+  >
+    {index && <span class="node-index">{index}</span>}
+    <span class="node-checkmark" aria-hidden="true">✓</span>
+  </button>
+
+  <!-- Tooltip on hover -->
+  <div class="node-tooltip">
+    <div class="tooltip-header">
+      <span class="tooltip-title">{title}</span>
+      <span class="tooltip-time">{totalTime} min</span>
+    </div>
+    {description && <p class="tooltip-description">{description}</p>}
+    <div class="tooltip-depths">
+      <span class="depth-indicator depth-surface" data-completed="false">
+        <span class="depth-dot"></span>
+        <span class="depth-label">Surface</span>
+        <span class="depth-time">{readingTime.surface}m</span>
+      </span>
+      <span class="depth-indicator depth-mid" data-completed="false">
+        <span class="depth-dot"></span>
+        <span class="depth-label">Mid</span>
+        <span class="depth-time">{readingTime.midDepth}m</span>
+      </span>
+      <span class="depth-indicator depth-deep" data-completed="false">
+        <span class="depth-dot"></span>
+        <span class="depth-label">Deep</span>
+        <span class="depth-time">{readingTime.deepWater}m</span>
+      </span>
+    </div>
+    <div class="tooltip-action">Click to start learning</div>
+  </div>
+</div>
+
+<script>
+  import {
+    loadProgress,
+    isTopicCompleted,
+    getTopicDepthCompletion,
+  } from '../../utils/progressStore';
+
+  function initTopicNodes() {
+    const nodes = document.querySelectorAll('.topic-node');
+    const progress = loadProgress();
+
+    nodes.forEach((node) => {
+      const phaseId = node.getAttribute('data-phase-id');
+      const topicSlug = node.getAttribute('data-topic-slug');
+      if (!phaseId || !topicSlug) return;
+
+      const completion = getTopicDepthCompletion(progress, phaseId, topicSlug);
+      const completedCount = [completion.surface, completion.midDepth, completion.deepWater].filter(Boolean).length;
+
+      // Update node state
+      if (completedCount === 3) {
+        node.classList.add('node-completed');
+      } else if (completedCount > 0) {
+        node.classList.add('node-in-progress');
+      }
+
+      // Update progress rings
+      const circumference = {
+        surface: 2 * Math.PI * 20,
+        mid: 2 * Math.PI * 16,
+        deep: 2 * Math.PI * 12,
+      };
+
+      const surfaceRing = node.querySelector('.ring-surface') as SVGCircleElement;
+      const midRing = node.querySelector('.ring-mid') as SVGCircleElement;
+      const deepRing = node.querySelector('.ring-deep') as SVGCircleElement;
+
+      if (surfaceRing) {
+        surfaceRing.style.strokeDasharray = `${circumference.surface}`;
+        surfaceRing.style.strokeDashoffset = completion.surface ? '0' : `${circumference.surface}`;
+      }
+      if (midRing) {
+        midRing.style.strokeDasharray = `${circumference.mid}`;
+        midRing.style.strokeDashoffset = completion.midDepth ? '0' : `${circumference.mid}`;
+      }
+      if (deepRing) {
+        deepRing.style.strokeDasharray = `${circumference.deep}`;
+        deepRing.style.strokeDashoffset = completion.deepWater ? '0' : `${circumference.deep}`;
+      }
+
+      // Update tooltip depth indicators
+      const surfaceIndicator = node.querySelector('.depth-surface');
+      const midIndicator = node.querySelector('.depth-mid');
+      const deepIndicator = node.querySelector('.depth-deep');
+
+      if (surfaceIndicator && completion.surface) {
+        surfaceIndicator.setAttribute('data-completed', 'true');
+      }
+      if (midIndicator && completion.midDepth) {
+        midIndicator.setAttribute('data-completed', 'true');
+      }
+      if (deepIndicator && completion.deepWater) {
+        deepIndicator.setAttribute('data-completed', 'true');
+      }
+
+      // Click handler
+      const button = node.querySelector('.node-button');
+      button?.addEventListener('click', () => {
+        // Determine which depth to navigate to
+        let targetDepth = 'surface';
+        if (completion.surface && !completion.midDepth) {
+          targetDepth = 'mid-depth';
+        } else if (completion.midDepth && !completion.deepWater) {
+          targetDepth = 'deep-water';
+        }
+
+        window.location.href = `/${phaseId}/${topicSlug}/${targetDepth}/`;
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTopicNodes);
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'htbaa_learning_progress') {
+      initTopicNodes();
+    }
+  });
+</script>
+
+<style>
+  .topic-node {
+    position: relative;
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Progress ring container */
+  .node-progress-ring {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .node-progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring-bg {
+    fill: none;
+    stroke: rgba(51, 65, 85, 0.5);
+    stroke-width: 2;
+  }
+
+  .ring-surface,
+  .ring-mid,
+  .ring-deep {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+
+  .ring-surface {
+    stroke: rgb(52, 211, 153); /* Emerald - surface */
+  }
+
+  .ring-mid {
+    stroke: rgb(251, 191, 36); /* Amber - mid */
+  }
+
+  .ring-deep {
+    stroke: rgb(239, 68, 68); /* Red - deep */
+  }
+
+  /* Main button */
+  .node-button {
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: rgb(30, 41, 59);
+    border: 2px solid rgb(71, 85, 105);
+    color: rgb(148, 163, 184);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .node-button:hover {
+    border-color: rgb(100, 116, 139);
+    background: rgb(51, 65, 85);
+    transform: scale(1.05);
+  }
+
+  .node-button:focus {
+    outline: 2px solid rgb(56, 189, 248);
+    outline-offset: 2px;
+  }
+
+  .node-index {
+    font-size: 0.75rem;
+  }
+
+  .node-checkmark {
+    display: none;
+    font-size: 1rem;
+    color: rgb(52, 211, 153);
+  }
+
+  /* State: in progress */
+  .topic-node.node-in-progress .node-button {
+    border-color: rgb(148, 163, 184);
+    animation: pulse-node 2s infinite;
+  }
+
+  @keyframes pulse-node {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(148, 163, 184, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(148, 163, 184, 0); }
+  }
+
+  /* State: completed */
+  .topic-node.node-completed .node-button {
+    border-color: rgb(52, 211, 153);
+    background: rgba(52, 211, 153, 0.1);
+  }
+
+  .topic-node.node-completed .node-index {
+    display: none;
+  }
+
+  .topic-node.node-completed .node-checkmark {
+    display: block;
+  }
+
+  /* State: highlighted (in current path) */
+  .topic-node.topic-highlighted .node-button {
+    border-color: rgb(250, 204, 21);
+    box-shadow: 0 0 12px rgba(250, 204, 21, 0.4);
+  }
+
+  /* Tooltip */
+  .node-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    padding: 0.75rem;
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .topic-node:hover .node-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Tooltip arrow */
+  .node-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgb(30, 41, 59);
+  }
+
+  .tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tooltip-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgb(241, 245, 249);
+    line-height: 1.3;
+  }
+
+  .tooltip-time {
+    font-size: 0.6875rem;
+    color: rgb(100, 116, 139);
+    white-space: nowrap;
+  }
+
+  .tooltip-description {
+    font-size: 0.6875rem;
+    color: rgb(148, 163, 184);
+    line-height: 1.4;
+    margin: 0 0 0.5rem;
+  }
+
+  .tooltip-depths {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .depth-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.625rem;
+    color: rgb(100, 116, 139);
+  }
+
+  .depth-indicator[data-completed="true"] {
+    color: rgb(148, 163, 184);
+  }
+
+  .depth-indicator[data-completed="true"] .depth-dot {
+    background: currentColor;
+  }
+
+  .depth-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+  }
+
+  .depth-surface .depth-dot { border-color: rgb(52, 211, 153); }
+  .depth-surface[data-completed="true"] .depth-dot { background: rgb(52, 211, 153); }
+
+  .depth-mid .depth-dot { border-color: rgb(251, 191, 36); }
+  .depth-mid[data-completed="true"] .depth-dot { background: rgb(251, 191, 36); }
+
+  .depth-deep .depth-dot { border-color: rgb(239, 68, 68); }
+  .depth-deep[data-completed="true"] .depth-dot { background: rgb(239, 68, 68); }
+
+  .depth-label {
+    flex: 1;
+  }
+
+  .depth-time {
+    opacity: 0.7;
+  }
+
+  .tooltip-action {
+    font-size: 0.625rem;
+    color: rgb(56, 189, 248);
+    text-align: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgb(51, 65, 85);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .topic-node {
+      width: 50px;
+      height: 50px;
+    }
+
+    .node-tooltip {
+      width: 180px;
+      font-size: 0.75rem;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .node-button,
+    .ring-surface,
+    .ring-mid,
+    .ring-deep,
+    .node-tooltip {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

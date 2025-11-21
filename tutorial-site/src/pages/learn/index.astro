@@ -1,0 +1,595 @@
+---
+// Learn Hub - Main entry point for the gamified learning course
+// Shows path selection or world map based on user's progress state
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProgressHeader from '../../components/learn/ProgressHeader.astro';
+import WorldMap from '../../components/learn/WorldMap.astro';
+import StreakDisplay from '../../components/learn/StreakDisplay.astro';
+import PathCard from '../../components/learn/PathCard.astro';
+import fs from 'fs';
+import path from 'path';
+
+// Load learning paths data
+const learningPathsDir = path.join(process.cwd(), '../learning-paths');
+
+function loadPaths(category: string) {
+  const categoryDir = path.join(learningPathsDir, category);
+  const files = fs.readdirSync(categoryDir).filter(f => f.endsWith('.json'));
+
+  return files
+    .map(file => {
+      const content = fs.readFileSync(path.join(categoryDir, file), 'utf-8');
+      return JSON.parse(content);
+    })
+    .filter(pathData => !pathData.hidden); // Filter out hidden paths
+}
+
+const personas = loadPaths('personas');
+const tracks = loadPaths('tracks');
+const journeys = loadPaths('suggested-journeys');
+
+// Calculate total steps for each path
+function getPathStats(pathData: any) {
+  let topicCount = 0;
+
+  if (pathData.milestones) {
+    pathData.milestones.forEach((m: any) => {
+      topicCount += m.steps?.length || 0;
+    });
+  } else if (pathData.journey_steps) {
+    topicCount = pathData.journey_steps.length;
+  }
+
+  return {
+    topicCount,
+    estimatedMinutes: pathData.estimated_total_time_minutes || 60,
+    objectives: pathData.objectives || [],
+  };
+}
+
+// Get featured paths (one from each category)
+const featuredPaths = [
+  { ...personas[0], category: 'personas' as const },
+  { ...tracks[0], category: 'tracks' as const },
+  { ...journeys[0], category: 'journeys' as const },
+];
+
+// Create a map of all paths for client-side lookup
+const allPathsMap: Record<string, { name: string; category: string }> = {};
+personas.forEach(p => { allPathsMap[p.id] = { name: p.name, category: 'personas' }; });
+tracks.forEach(t => { allPathsMap[t.id] = { name: t.name, category: 'tracks' }; });
+journeys.forEach(j => { allPathsMap[j.id] = { name: j.name, category: 'journeys' }; });
+---
+
+<BaseLayout title="Learn | How to Build an App">
+  <main class="learn-hub">
+    <!-- Hero section -->
+    <section class="learn-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Your Learning Journey</h1>
+        <p class="hero-description">
+          Navigate through the development lifecycle with guided paths designed for your goals.
+          Track your progress, maintain streaks, and master the art of building great software.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main content area - switches based on state -->
+    <div class="learn-content">
+      <!-- Left column: World map or path selection -->
+      <div class="main-column">
+        <!-- State: No active path - show path selection -->
+        <section class="path-selection" id="path-selection">
+          <div class="section-header">
+            <h2>Choose Your Journey</h2>
+            <p>Select a learning path that matches your goals and experience level.</p>
+          </div>
+
+          <!-- Featured paths -->
+          <div class="featured-paths">
+            <h3 class="subsection-title">Featured Paths</h3>
+            <div class="path-grid featured">
+              {featuredPaths.map((pathData) => {
+                const stats = getPathStats(pathData);
+                return (
+                  <PathCard
+                    id={pathData.id}
+                    name={pathData.name}
+                    category={pathData.category}
+                    description={pathData.description}
+                    estimatedMinutes={stats.estimatedMinutes}
+                    topicCount={stats.topicCount}
+                    objectives={stats.objectives}
+                  />
+                );
+              })}
+            </div>
+          </div>
+
+          <!-- All paths by category -->
+          <div class="all-paths">
+            <a href="/learn/paths/" class="view-all-link">
+              View all {personas.length + tracks.length + journeys.length} learning paths →
+            </a>
+          </div>
+        </section>
+
+        <!-- State: Active path - show world map -->
+        <section class="active-journey" id="active-journey" style="display: none;">
+          <div class="journey-header">
+            <h2 data-current-path-name>Current Journey</h2>
+            <button class="change-path-btn" id="change-path-btn">
+              Change Path
+            </button>
+          </div>
+
+          <WorldMap />
+
+          <div class="journey-actions">
+            <a href="#" class="btn btn-primary" id="continue-learning-btn">
+              Continue Learning
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column: Streak and stats -->
+      <aside class="sidebar">
+        <StreakDisplay showCalendar={true} calendarDays={30} />
+
+        <!-- Quick stats -->
+        <div class="quick-stats">
+          <h3 class="stats-title">Your Progress</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-value" data-total-topics>0</span>
+              <span class="stat-label">Topics Completed</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" data-total-time>0h</span>
+              <span class="stat-label">Time Spent</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value" data-paths-started>0</span>
+              <span class="stat-label">Paths Started</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help section -->
+        <div class="help-section">
+          <h4>Not sure where to start?</h4>
+          <p>Take our quick quiz to find the perfect learning path for your goals.</p>
+          <a href="/learn/paths/" class="btn btn-secondary">
+            Browse All Paths
+          </a>
+        </div>
+
+        <!-- Reset progress -->
+        <div class="reset-section">
+          <button class="reset-btn" id="reset-progress-btn">
+            Reset All Progress
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Pass paths data to client -->
+  <script define:vars={{ allPathsMap }}>
+    window.__PATHS_MAP__ = allPathsMap;
+  </script>
+</BaseLayout>
+
+<script>
+  import { loadProgress, clearCurrentPath, saveProgress, resetAllProgress } from '../../utils/progressStore';
+
+  function initLearnHub() {
+    const progress = loadProgress();
+    const pathsMap = (window as any).__PATHS_MAP__ || {};
+
+    // Check if user has an active path
+    const hasActivePath = progress.currentPathId !== null;
+
+    // Toggle sections based on state
+    const pathSelection = document.getElementById('path-selection');
+    const activeJourney = document.getElementById('active-journey');
+
+    if (hasActivePath && activeJourney && pathSelection) {
+      pathSelection.style.display = 'none';
+      activeJourney.style.display = 'block';
+
+      // Update path name from paths map
+      const pathNameEl = document.querySelector('[data-current-path-name]');
+      if (pathNameEl && progress.currentPathId) {
+        const pathInfo = pathsMap[progress.currentPathId];
+        pathNameEl.textContent = pathInfo?.name || progress.currentPathId;
+      }
+    } else if (pathSelection && activeJourney) {
+      pathSelection.style.display = 'block';
+      activeJourney.style.display = 'none';
+    }
+
+    // Update stats
+    const totalTopicsEl = document.querySelector('[data-total-topics]');
+    const totalTimeEl = document.querySelector('[data-total-time]');
+    const pathsStartedEl = document.querySelector('[data-paths-started]');
+
+    if (totalTopicsEl) {
+      totalTopicsEl.textContent = progress.stats.totalTopicsCompleted.toString();
+    }
+
+    if (totalTimeEl) {
+      const hours = Math.floor(progress.stats.totalTimeSpentMinutes / 60);
+      const mins = progress.stats.totalTimeSpentMinutes % 60;
+      totalTimeEl.textContent = hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+    }
+
+    if (pathsStartedEl) {
+      pathsStartedEl.textContent = Object.keys(progress.pathProgress).length.toString();
+    }
+
+    // Change path button
+    const changePathBtn = document.getElementById('change-path-btn');
+    changePathBtn?.addEventListener('click', () => {
+      const confirmChange = window.confirm(
+        'Switching paths will not delete your progress. You can always come back to this path later. Continue?'
+      );
+      if (confirmChange && pathSelection && activeJourney) {
+        // Clear current path in progress store
+        let currentProgress = loadProgress();
+        currentProgress = clearCurrentPath(currentProgress);
+
+        // Update UI
+        activeJourney.style.display = 'none';
+        pathSelection.style.display = 'block';
+      }
+    });
+
+    // Continue learning button
+    const continueBtn = document.getElementById('continue-learning-btn');
+    if (continueBtn && progress.currentPathId) {
+      const pathProgress = progress.pathProgress[progress.currentPathId];
+      if (pathProgress) {
+        // Navigate to the current step's topic
+        continueBtn.setAttribute('href', '/learn/journey/');
+      }
+    }
+
+    // Reset progress button
+    const resetBtn = document.getElementById('reset-progress-btn');
+    resetBtn?.addEventListener('click', () => {
+      const confirmReset = window.confirm(
+        'Are you sure you want to reset all your progress? This will delete all completed topics, streaks, and path progress. This action cannot be undone.'
+      );
+      if (confirmReset) {
+        resetAllProgress();
+        // Refresh the page to show reset state
+        window.location.reload();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initLearnHub);
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'htbaa_learning_progress') {
+      initLearnHub();
+    }
+  });
+</script>
+
+<style>
+  .learn-hub {
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .learn-hero {
+    padding: 3rem 1.5rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.05), transparent);
+  }
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgb(241, 245, 249);
+    margin: 0 0 1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    color: rgb(148, 163, 184);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Main content layout */
+  .learn-content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+
+  /* Main column */
+  .main-column {
+    min-width: 0;
+  }
+
+  /* Section styling */
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(241, 245, 249);
+    margin: 0 0 0.5rem;
+  }
+
+  .section-header p {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    margin: 0;
+  }
+
+  .subsection-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgb(100, 116, 139);
+    margin: 0 0 1rem;
+  }
+
+  /* Path grid */
+  .path-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .path-grid.featured {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .featured-paths {
+    margin-bottom: 2rem;
+  }
+
+  /* View all link */
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(56, 189, 248);
+    text-decoration: none;
+  }
+
+  .view-all-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Active journey section */
+  .journey-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .journey-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(241, 245, 249);
+    margin: 0;
+  }
+
+  .change-path-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(148, 163, 184);
+    background: transparent;
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .change-path-btn:hover {
+    color: rgb(226, 232, 240);
+    border-color: rgb(100, 116, 139);
+  }
+
+  .journey-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Quick stats */
+  .quick-stats {
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .stats-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(226, 232, 240);
+    margin: 0 0 1rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    background: rgba(51, 65, 85, 0.5);
+    border-radius: 0.5rem;
+  }
+
+  .stat-card .stat-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgb(226, 232, 240);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgb(100, 116, 139);
+  }
+
+  /* Help section */
+  .help-section {
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .help-section h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(226, 232, 240);
+    margin: 0 0 0.5rem;
+  }
+
+  .help-section p {
+    font-size: 0.75rem;
+    color: rgb(148, 163, 184);
+    margin: 0 0 1rem;
+    line-height: 1.5;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: rgb(56, 189, 248);
+    color: rgb(15, 23, 42);
+  }
+
+  .btn-primary:hover {
+    background: rgb(14, 165, 233);
+  }
+
+  .btn-secondary {
+    background: rgb(51, 65, 85);
+    color: rgb(226, 232, 240);
+    border: 1px solid rgb(71, 85, 105);
+  }
+
+  .btn-secondary:hover {
+    background: rgb(71, 85, 105);
+  }
+
+  /* Reset section */
+  .reset-section {
+    text-align: center;
+  }
+
+  .reset-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(148, 163, 184);
+    background: transparent;
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .reset-btn:hover {
+    color: rgb(239, 68, 68);
+    border-color: rgb(239, 68, 68);
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .learn-content {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .sidebar > :first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .learn-hero {
+      padding: 2rem 1rem 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 1.75rem;
+    }
+
+    .hero-description {
+      font-size: 0.875rem;
+    }
+
+    .learn-content {
+      padding: 0 1rem 2rem;
+    }
+
+    .sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

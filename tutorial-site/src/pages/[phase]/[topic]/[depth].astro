@@ -4,6 +4,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
 import DepthSwitcher from '../../../components/content/DepthSwitcher.astro';
 import ContentNavigation from '../../../components/navigation/ContentNavigation.astro';
+import CompleteButton from '../../../components/learn/CompleteButton.astro';
 
 export async function getStaticPaths() {
   const allDocs = await getCollection('docs');
@@ -41,6 +42,13 @@ const { Content } = await entry.render();
   <article class="prose prose-invert prose-lg max-w-none">
     <Content />
   </article>
+
+  <CompleteButton
+    phaseId={entry.data.phase}
+    topicSlug={entry.data.topic}
+    depth={entry.data.depth}
+    estimatedMinutes={entry.data.reading_time || 10}
+  />
 
   <ContentNavigation
     phase={entry.data.phase}

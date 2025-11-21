@@ -1,0 +1,347 @@
+---
+// CompleteButton Component - Marks a topic as completed
+// Placed at the end of content pages to track progress
+
+export interface Props {
+  phaseId: string;
+  topicSlug: string;
+  depth: 'surface' | 'mid-depth' | 'deep-water';
+  estimatedMinutes?: number;
+  class?: string;
+}
+
+const {
+  phaseId,
+  topicSlug,
+  depth,
+  estimatedMinutes = 10,
+  class: className = '',
+} = Astro.props;
+
+// Determine next depth
+const nextDepth = depth === 'surface' ? 'mid-depth' : depth === 'mid-depth' ? 'deep-water' : null;
+const nextDepthUrl = nextDepth ? `/${phaseId}/${topicSlug}/${nextDepth}/` : null;
+---
+
+<div
+  class={`complete-button-container ${className}`}
+  data-phase={phaseId}
+  data-topic={topicSlug}
+  data-depth={depth}
+  data-minutes={estimatedMinutes}
+>
+  <!-- Completion state indicator -->
+  <div class="completion-state" data-state="pending">
+    <!-- Pending state (default) -->
+    <div class="state-pending">
+      <button class="complete-btn" id="complete-topic-btn">
+        <span class="btn-icon">✓</span>
+        <span class="btn-text">Mark as Complete</span>
+      </button>
+      <p class="complete-hint">You've finished reading this {depth} level content</p>
+    </div>
+
+    <!-- Completed state -->
+    <div class="state-completed" style="display: none;">
+      <div class="completed-message">
+        <span class="completed-icon">✓</span>
+        <span class="completed-text">Completed!</span>
+      </div>
+
+      {nextDepthUrl ? (
+        <div class="next-action">
+          <p>Ready to go deeper?</p>
+          <a href={nextDepthUrl} class="next-btn">
+            Continue to {nextDepth === 'mid-depth' ? 'Mid-Depth' : 'Deep Water'}
+            <span class="next-arrow">→</span>
+          </a>
+        </div>
+      ) : (
+        <div class="next-action">
+          <p>You've completed all depths for this topic!</p>
+          <a href="/learn/journey/" class="next-btn">
+            Back to Journey
+            <span class="next-arrow">→</span>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <!-- Streak notification area -->
+  <div class="streak-update" id="streak-update" style="display: none;"></div>
+</div>
+
+<script>
+  import {
+    loadProgress,
+    completeTopic,
+    isTopicCompleted,
+    updatePathStep,
+  } from '../../utils/progressStore';
+  import { getStreakStatus, checkNewMilestone } from '../../utils/streaks';
+
+  function initCompleteButton() {
+    const container = document.querySelector('.complete-button-container');
+    if (!container) return;
+
+    const phaseId = container.getAttribute('data-phase');
+    const topicSlug = container.getAttribute('data-topic');
+    const depth = container.getAttribute('data-depth') as 'surface' | 'mid-depth' | 'deep-water';
+    const minutes = parseInt(container.getAttribute('data-minutes') || '10', 10);
+
+    if (!phaseId || !topicSlug || !depth) return;
+
+    const completeBtn = document.getElementById('complete-topic-btn');
+    const completionState = container.querySelector('.completion-state');
+    const pendingState = container.querySelector('.state-pending') as HTMLElement;
+    const completedState = container.querySelector('.state-completed') as HTMLElement;
+    const streakUpdate = document.getElementById('streak-update');
+
+    // Check if already completed
+    let progress = loadProgress();
+    if (isTopicCompleted(progress, phaseId, topicSlug, depth)) {
+      completionState?.setAttribute('data-state', 'completed');
+      pendingState.style.display = 'none';
+      completedState.style.display = 'block';
+      return;
+    }
+
+    // Handle completion
+    completeBtn?.addEventListener('click', () => {
+      const oldProgress = loadProgress();
+      const oldStreak = oldProgress.streaks.current;
+
+      // Mark topic as completed
+      const updatedProgress = completeTopic(oldProgress, phaseId, topicSlug, depth, minutes);
+
+      // Check for streak milestone
+      const milestone = checkNewMilestone(oldStreak, updatedProgress.streaks.current);
+
+      // Update UI
+      completionState?.setAttribute('data-state', 'completed');
+      pendingState.style.display = 'none';
+      completedState.style.display = 'block';
+
+      // Show streak update
+      if (streakUpdate) {
+        const streakStatus = getStreakStatus(updatedProgress);
+        let message = '';
+
+        if (milestone) {
+          message = `🎉 ${milestone.milestone}! ${streakStatus.currentStreak} day streak!`;
+          streakUpdate.className = 'streak-update milestone';
+        } else if (updatedProgress.streaks.current > oldStreak) {
+          message = `🔥 ${streakStatus.currentStreak} day streak!`;
+          streakUpdate.className = 'streak-update streak-up';
+        } else if (updatedProgress.streaks.current === 1 && oldStreak === 0) {
+          message = `🔥 Streak started! Keep it going tomorrow!`;
+          streakUpdate.className = 'streak-update streak-new';
+        }
+
+        if (message) {
+          streakUpdate.textContent = message;
+          streakUpdate.style.display = 'block';
+        }
+      }
+
+      // Update path progress if on a learning path
+      if (updatedProgress.currentPathId) {
+        // Find the step index for this topic in the current path
+        // This is a simplified version - in production you'd match against actual path data
+        const pathProgress = updatedProgress.pathProgress[updatedProgress.currentPathId];
+        if (pathProgress) {
+          const nextStep = pathProgress.currentStep + 1;
+          updatePathStep(updatedProgress, updatedProgress.currentPathId, nextStep, true);
+        }
+      }
+
+      // Dispatch custom event for other components
+      window.dispatchEvent(new CustomEvent('topic-completed', {
+        detail: { phaseId, topicSlug, depth }
+      }));
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCompleteButton);
+</script>
+
+<style>
+  .complete-button-container {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(51, 65, 85);
+  }
+
+  /* Pending state */
+  .state-pending {
+    text-align: center;
+  }
+
+  .complete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(15, 23, 42);
+    background: rgb(52, 211, 153);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .complete-btn:hover {
+    background: rgb(16, 185, 129);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+  }
+
+  .complete-btn:active {
+    transform: translateY(0);
+  }
+
+  .btn-icon {
+    font-size: 1.125rem;
+  }
+
+  .complete-hint {
+    font-size: 0.75rem;
+    color: rgb(100, 116, 139);
+    margin: 0.75rem 0 0;
+  }
+
+  /* Completed state */
+  .state-completed {
+    text-align: center;
+  }
+
+  .completed-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(52, 211, 153, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .completed-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: rgb(52, 211, 153);
+    color: rgb(15, 23, 42);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .completed-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(52, 211, 153);
+  }
+
+  .next-action p {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    margin: 0 0 0.75rem;
+  }
+
+  .next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(15, 23, 42);
+    background: rgb(56, 189, 248);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .next-btn:hover {
+    background: rgb(14, 165, 233);
+  }
+
+  .next-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .next-btn:hover .next-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Streak update notification */
+  .streak-update {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    animation: slideUp 0.3s ease;
+  }
+
+  .streak-update.streak-new,
+  .streak-update.streak-up {
+    background: rgba(251, 146, 60, 0.1);
+    color: rgb(251, 146, 60);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+  }
+
+  .streak-update.milestone {
+    background: rgba(250, 204, 21, 0.1);
+    color: rgb(250, 204, 21);
+    border: 1px solid rgba(250, 204, 21, 0.3);
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .complete-button-container {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+
+    .complete-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .next-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .complete-btn,
+    .next-btn,
+    .streak-update {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>
