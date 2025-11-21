@@ -1,0 +1,437 @@
+---
+// PathCard Component - Card for displaying a learning path in selection view
+// Shows path info, estimated time, and quick stats
+
+export interface Props {
+  id: string;
+  name: string;
+  category: 'personas' | 'tracks' | 'journeys';
+  description: string;
+  estimatedMinutes: number;
+  topicCount: number;
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
+  objectives?: string[];
+  class?: string;
+}
+
+const {
+  id,
+  name,
+  category,
+  description,
+  estimatedMinutes,
+  topicCount,
+  difficulty = 'intermediate',
+  objectives = [],
+  class: className = '',
+} = Astro.props;
+
+// Format time display
+function formatTime(minutes: number): string {
+  if (minutes < 60) {
+    return `${minutes} min`;
+  }
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+}
+
+// Category icons and colors
+const categoryConfig = {
+  personas: {
+    icon: '👤',
+    label: 'Persona',
+    color: 'sky',
+  },
+  tracks: {
+    icon: '🎯',
+    label: 'Track',
+    color: 'violet',
+  },
+  journeys: {
+    icon: '🗺️',
+    label: 'Journey',
+    color: 'amber',
+  },
+};
+
+const config = categoryConfig[category];
+const pathUrl = `/learn/paths/${category}/${id}/`;
+---
+
+<a
+  href={pathUrl}
+  class={`path-card path-${config.color} ${className}`}
+  data-path-id={id}
+  data-category={category}
+>
+  <!-- Category badge -->
+  <div class="card-badge">
+    <span class="badge-icon">{config.icon}</span>
+    <span class="badge-label">{config.label}</span>
+  </div>
+
+  <!-- Card header -->
+  <div class="card-header">
+    <h3 class="card-title">{name}</h3>
+    <p class="card-description">{description}</p>
+  </div>
+
+  <!-- Stats row -->
+  <div class="card-stats">
+    <div class="stat">
+      <span class="stat-value">{formatTime(estimatedMinutes)}</span>
+      <span class="stat-label">Total time</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">{topicCount}</span>
+      <span class="stat-label">Topics</span>
+    </div>
+    <div class="stat">
+      <span class={`stat-value difficulty-${difficulty}`}>{difficulty}</span>
+      <span class="stat-label">Level</span>
+    </div>
+  </div>
+
+  <!-- Objectives preview -->
+  {objectives.length > 0 && (
+    <div class="card-objectives">
+      <span class="objectives-label">You'll learn:</span>
+      <ul class="objectives-list">
+        {objectives.slice(0, 3).map((obj) => (
+          <li>{obj}</li>
+        ))}
+        {objectives.length > 3 && (
+          <li class="more-objectives">+{objectives.length - 3} more</li>
+        )}
+      </ul>
+    </div>
+  )}
+
+  <!-- Progress indicator (shown via JS) -->
+  <div class="card-progress" data-progress-container>
+    <div class="progress-bar">
+      <div class="progress-fill" data-progress-fill></div>
+    </div>
+    <span class="progress-text" data-progress-text></span>
+  </div>
+
+  <!-- CTA -->
+  <div class="card-cta">
+    <span class="cta-text" data-cta-text>Start Journey</span>
+    <span class="cta-arrow">→</span>
+  </div>
+</a>
+
+<script>
+  import { loadProgress, getPathCompletionPercent } from '../../utils/progressStore';
+
+  function initPathCards() {
+    const cards = document.querySelectorAll('.path-card');
+    const progress = loadProgress();
+
+    cards.forEach((card) => {
+      const pathId = card.getAttribute('data-path-id');
+      if (!pathId) return;
+
+      const pathProgress = progress.pathProgress[pathId];
+
+      if (pathProgress) {
+        // Path has been started
+        const progressContainer = card.querySelector('[data-progress-container]') as HTMLElement;
+        const progressFill = card.querySelector('[data-progress-fill]') as HTMLElement;
+        const progressText = card.querySelector('[data-progress-text]');
+        const ctaText = card.querySelector('[data-cta-text]');
+
+        // Calculate completion (we need totalSteps, approximate with completedSteps)
+        const completedSteps = pathProgress.completedSteps.length;
+
+        if (progressContainer) {
+          progressContainer.style.display = 'flex';
+        }
+
+        if (completedSteps > 0 && progressFill) {
+          // Show visual progress even without total
+          card.classList.add('path-started');
+          progressFill.style.width = '25%'; // Placeholder
+
+          if (progressText) {
+            progressText.textContent = `${completedSteps} steps done`;
+          }
+
+          if (ctaText) {
+            ctaText.textContent = 'Continue';
+          }
+        }
+
+        // Check if this is the current active path
+        if (progress.currentPathId === pathId) {
+          card.classList.add('path-active');
+          if (ctaText) {
+            ctaText.textContent = 'Resume';
+          }
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initPathCards);
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'htbaa_learning_progress') {
+      initPathCards();
+    }
+  });
+</script>
+
+<style>
+  .path-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .path-card:hover {
+    border-color: rgb(100, 116, 139);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .path-card:focus {
+    outline: 2px solid rgb(56, 189, 248);
+    outline-offset: 2px;
+  }
+
+  /* Color variants */
+  .path-card.path-sky:hover { border-color: rgb(56, 189, 248); }
+  .path-card.path-violet:hover { border-color: rgb(167, 139, 250); }
+  .path-card.path-amber:hover { border-color: rgb(251, 191, 36); }
+
+  /* Category badge */
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(51, 65, 85, 0.8);
+    border-radius: 0.375rem;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    width: fit-content;
+  }
+
+  .badge-icon {
+    font-size: 0.75rem;
+  }
+
+  .badge-label {
+    color: rgb(148, 163, 184);
+  }
+
+  .path-sky .badge-label { color: rgb(56, 189, 248); }
+  .path-violet .badge-label { color: rgb(167, 139, 250); }
+  .path-amber .badge-label { color: rgb(251, 191, 36); }
+
+  /* Header */
+  .card-header {
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgb(241, 245, 249);
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+
+  .card-description {
+    font-size: 0.8125rem;
+    color: rgb(148, 163, 184);
+    margin: 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Stats */
+  .card-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(226, 232, 240);
+  }
+
+  .stat-label {
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgb(100, 116, 139);
+  }
+
+  .difficulty-beginner { color: rgb(52, 211, 153); }
+  .difficulty-intermediate { color: rgb(251, 191, 36); }
+  .difficulty-advanced { color: rgb(239, 68, 68); }
+
+  /* Objectives */
+  .card-objectives {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .objectives-label {
+    font-size: 0.6875rem;
+    color: rgb(100, 116, 139);
+    margin-bottom: 0.375rem;
+    display: block;
+  }
+
+  .objectives-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.75rem;
+    color: rgb(148, 163, 184);
+  }
+
+  .objectives-list li {
+    position: relative;
+    padding-left: 0.75rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .objectives-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: rgb(100, 116, 139);
+  }
+
+  .more-objectives {
+    color: rgb(100, 116, 139);
+    font-style: italic;
+  }
+
+  /* Progress (hidden by default, shown via JS) */
+  .card-progress {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background: rgba(51, 65, 85, 0.5);
+    border-radius: 0.375rem;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgb(51, 65, 85);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: rgb(52, 211, 153);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  .progress-text {
+    font-size: 0.625rem;
+    color: rgb(148, 163, 184);
+    white-space: nowrap;
+  }
+
+  /* CTA */
+  .card-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(51, 65, 85);
+    margin-top: auto;
+  }
+
+  .cta-text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: rgb(56, 189, 248);
+  }
+
+  .path-violet .cta-text { color: rgb(167, 139, 250); }
+  .path-amber .cta-text { color: rgb(251, 191, 36); }
+
+  .cta-arrow {
+    font-size: 1rem;
+    color: rgb(100, 116, 139);
+    transition: transform 0.2s ease;
+  }
+
+  .path-card:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* State modifiers */
+  .path-card.path-started {
+    background: linear-gradient(135deg, rgb(30, 41, 59), rgba(51, 65, 85, 0.5));
+  }
+
+  .path-card.path-active {
+    border-color: rgb(52, 211, 153);
+    box-shadow: 0 0 0 1px rgb(52, 211, 153);
+  }
+
+  .path-card.path-active::before {
+    content: 'Active';
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgb(52, 211, 153);
+    color: rgb(15, 23, 42);
+    border-radius: 0.25rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .path-card {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 1rem;
+    }
+
+    .card-stats {
+      gap: 0.75rem;
+    }
+  }
+</style>

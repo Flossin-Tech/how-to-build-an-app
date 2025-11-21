@@ -1,0 +1,424 @@
+---
+// Path Selection Page - Browse all available learning paths
+// Organized by category: Personas, Tracks, Journeys
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PathCard from '../../../components/learn/PathCard.astro';
+import { Icon } from 'astro-icon/components';
+import fs from 'fs';
+import path from 'path';
+
+// Load learning paths data
+const learningPathsDir = path.join(process.cwd(), '../learning-paths');
+
+function loadPaths(category: string) {
+  const categoryDir = path.join(learningPathsDir, category);
+  const files = fs.readdirSync(categoryDir).filter(f => f.endsWith('.json'));
+
+  return files
+    .map(file => {
+      const content = fs.readFileSync(path.join(categoryDir, file), 'utf-8');
+      return JSON.parse(content);
+    })
+    .filter(pathData => !pathData.hidden); // Filter out hidden paths
+}
+
+const personas = loadPaths('personas');
+const tracks = loadPaths('tracks');
+const journeys = loadPaths('suggested-journeys');
+
+// Calculate stats for each path
+function getPathStats(pathData: any) {
+  let topicCount = 0;
+
+  if (pathData.milestones) {
+    pathData.milestones.forEach((m: any) => {
+      topicCount += m.steps?.length || 0;
+    });
+  } else if (pathData.journey_steps) {
+    topicCount = pathData.journey_steps.length;
+  }
+
+  return {
+    topicCount,
+    estimatedMinutes: pathData.estimated_total_time_minutes || 60,
+    objectives: pathData.objectives || [],
+  };
+}
+
+// Category descriptions
+const categories = [
+  {
+    id: 'personas',
+    name: 'Persona Paths',
+    icon: 'lucide:user',
+    description: 'Learning paths tailored to your role and experience level. Perfect for getting started with content that matches where you are.',
+    paths: personas,
+  },
+  {
+    id: 'tracks',
+    name: 'Goal Tracks',
+    icon: 'lucide:target',
+    description: 'Focused tracks for specific objectives like launching an MVP, production hardening, or security compliance.',
+    paths: tracks,
+  },
+  {
+    id: 'journeys',
+    name: 'Quick Journeys',
+    icon: 'lucide:bolt',
+    description: 'Short, contextual journeys for immediate needs. Start here when you have a specific problem to solve.',
+    paths: journeys,
+  },
+];
+
+const totalPaths = personas.length + tracks.length + journeys.length;
+---
+
+<BaseLayout title="Learning Paths | How to Build an App">
+  <main class="paths-page">
+    <!-- Page header -->
+    <section class="page-header">
+      <a href="/learn/" class="back-link">← Back to Learn</a>
+      <h1>Learning Paths</h1>
+      <p>
+        Choose from {totalPaths} guided learning paths designed to help you achieve your goals.
+        Each path is curated to take you from start to finish with practical, actionable content.
+      </p>
+    </section>
+
+    <!-- Filter tabs -->
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all">
+        All Paths
+        <span class="count">{totalPaths}</span>
+      </button>
+      <button class="tab" data-filter="personas">
+        <Icon name="lucide:user" class="tab-icon" aria-hidden="true" />
+        Personas
+        <span class="count">{personas.length}</span>
+      </button>
+      <button class="tab" data-filter="tracks">
+        <Icon name="lucide:target" class="tab-icon" aria-hidden="true" />
+        Tracks
+        <span class="count">{tracks.length}</span>
+      </button>
+      <button class="tab" data-filter="journeys">
+        <Icon name="lucide:bolt" class="tab-icon" aria-hidden="true" />
+        Journeys
+        <span class="count">{journeys.length}</span>
+      </button>
+    </div>
+
+    <!-- Path categories -->
+    <div class="categories-container">
+      {categories.map((category) => (
+        <section class="category-section" data-category={category.id}>
+          <div class="category-header">
+            <div class="category-title">
+              <Icon name={category.icon} class="category-icon" aria-hidden="true" />
+              <h2>{category.name}</h2>
+            </div>
+            <p class="category-description">{category.description}</p>
+          </div>
+
+          <div class="path-grid">
+            {category.paths.map((pathData) => {
+              const stats = getPathStats(pathData);
+              return (
+                <PathCard
+                  id={pathData.id}
+                  name={pathData.name}
+                  category={category.id as 'personas' | 'tracks' | 'journeys'}
+                  description={pathData.description}
+                  estimatedMinutes={stats.estimatedMinutes}
+                  topicCount={stats.topicCount}
+                  objectives={stats.objectives}
+                />
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Help finding the right path -->
+    <section class="help-section">
+      <div class="help-content">
+        <h3>Not sure which path to choose?</h3>
+        <p>
+          Each path is designed for different goals and experience levels.
+          Here's a quick guide:
+        </p>
+        <ul class="help-list">
+          <li>
+            <strong>New to development?</strong>
+            Start with the <em>New Developer</em> persona path for a complete overview.
+          </li>
+          <li>
+            <strong>Launching something soon?</strong>
+            The <em>MVP Launch</em> track covers everything you need to ship.
+          </li>
+          <li>
+            <strong>Have a specific problem?</strong>
+            Quick journeys address common scenarios in under an hour.
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  // Filter functionality
+  function initFilters() {
+    const tabs = document.querySelectorAll('.tab');
+    const sections = document.querySelectorAll('.category-section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter');
+
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Filter sections
+        sections.forEach(section => {
+          const category = section.getAttribute('data-category');
+
+          if (filter === 'all' || category === filter) {
+            (section as HTMLElement).style.display = 'block';
+          } else {
+            (section as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initFilters);
+</script>
+
+<style>
+  .paths-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  /* Page header */
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+
+  .back-link:hover {
+    color: rgb(56, 189, 248);
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(241, 245, 249);
+    margin: 0 0 0.75rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+    color: rgb(148, 163, 184);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Filter tabs */
+  .filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(148, 163, 184);
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tab:hover {
+    border-color: rgb(100, 116, 139);
+    color: rgb(226, 232, 240);
+  }
+
+  .tab.active {
+    background: rgb(56, 189, 248);
+    border-color: rgb(56, 189, 248);
+    color: rgb(15, 23, 42);
+  }
+
+  .tab-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .count {
+    font-size: 0.75rem;
+    padding: 0.125rem 0.375rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+  }
+
+  .tab.active .count {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Category sections */
+  .categories-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .category-section {
+    scroll-margin-top: 2rem;
+  }
+
+  .category-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: rgb(56, 189, 248);
+  }
+
+  .category-title h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(241, 245, 249);
+    margin: 0;
+  }
+
+  .category-description {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Path grid */
+  .path-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Help section */
+  .help-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.75rem;
+  }
+
+  .help-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .help-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgb(241, 245, 249);
+    margin: 0 0 0.75rem;
+  }
+
+  .help-content > p {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    margin: 0 0 1rem;
+  }
+
+  .help-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .help-list li {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgb(51, 65, 85);
+  }
+
+  .help-list li:last-child {
+    border-bottom: none;
+  }
+
+  .help-list strong {
+    color: rgb(226, 232, 240);
+  }
+
+  .help-list em {
+    color: rgb(56, 189, 248);
+    font-style: normal;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .paths-page {
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .filter-tabs {
+      gap: 0.375rem;
+    }
+
+    .tab {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .path-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .help-section {
+      padding: 1.5rem;
+    }
+  }
+</style>

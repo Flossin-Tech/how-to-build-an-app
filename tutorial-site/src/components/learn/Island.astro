@@ -1,0 +1,408 @@
+---
+// Island Component - Detailed view of a single phase with all topics
+// Shows topic nodes arranged in an engaging layout with progress states
+
+import TopicNode from './TopicNode.astro';
+
+export interface TopicInfo {
+  slug: string;
+  title: string;
+  readingTime: {
+    surface: number;
+    midDepth: number;
+    deepWater: number;
+  };
+  description?: string;
+}
+
+export interface Props {
+  phaseId: string;
+  phaseName: string;
+  phaseDescription: string;
+  topics: TopicInfo[];
+  color: string;
+  highlightedTopics?: string[];
+  class?: string;
+}
+
+const {
+  phaseId,
+  phaseName,
+  phaseDescription,
+  topics,
+  color,
+  highlightedTopics = [],
+  class: className = '',
+} = Astro.props;
+
+// Arrange topics in a visually interesting pattern
+// Creates a winding path through the island
+function getTopicPosition(index: number, total: number): { x: number; y: number } {
+  const positions = [
+    { x: 20, y: 30 },
+    { x: 45, y: 20 },
+    { x: 70, y: 25 },
+    { x: 80, y: 50 },
+    { x: 60, y: 65 },
+    { x: 35, y: 70 },
+    { x: 15, y: 55 },
+    { x: 50, y: 45 },
+  ];
+
+  // Use predefined positions or generate based on index
+  if (index < positions.length) {
+    return positions[index];
+  }
+
+  // Fallback: arrange in a grid pattern
+  const cols = 3;
+  const row = Math.floor(index / cols);
+  const col = index % cols;
+  return {
+    x: 20 + (col * 30),
+    y: 25 + (row * 25),
+  };
+}
+
+// Generate connection paths between topics
+function getConnectionPath(
+  from: { x: number; y: number },
+  to: { x: number; y: number }
+): string {
+  const midX = (from.x + to.x) / 2;
+  const midY = (from.y + to.y) / 2;
+  const controlOffset = 5;
+
+  return `M ${from.x} ${from.y} Q ${midX} ${midY - controlOffset} ${to.x} ${to.y}`;
+}
+---
+
+<div class={`island-detail island-${color} ${className}`} data-phase-id={phaseId}>
+  <!-- Island background -->
+  <div class="island-terrain">
+    <div class="terrain-base"></div>
+    <div class="terrain-accent"></div>
+  </div>
+
+  <!-- Phase header -->
+  <div class="island-header">
+    <h2 class="island-title">{phaseName}</h2>
+    <p class="island-description">{phaseDescription}</p>
+    <div class="island-stats">
+      <span class="stat">
+        <span class="stat-value">{topics.length}</span>
+        <span class="stat-label">Topics</span>
+      </span>
+      <span class="stat">
+        <span class="stat-value" data-completed-count>0</span>
+        <span class="stat-label">Completed</span>
+      </span>
+      <span class="stat">
+        <span class="stat-value" data-progress-percent>0%</span>
+        <span class="stat-label">Progress</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Topic map area -->
+  <div class="topic-map">
+    <!-- Connection paths between topics -->
+    <svg class="topic-connections" viewBox="0 0 100 80" preserveAspectRatio="none">
+      {topics.map((topic, index) => {
+        if (index === topics.length - 1) return null;
+        const fromPos = getTopicPosition(index, topics.length);
+        const toPos = getTopicPosition(index + 1, topics.length);
+        return (
+          <path
+            class="topic-connection"
+            d={getConnectionPath(fromPos, toPos)}
+            data-from={topic.slug}
+            data-to={topics[index + 1].slug}
+          />
+        );
+      })}
+    </svg>
+
+    <!-- Topic nodes -->
+    {topics.map((topic, index) => {
+      const position = getTopicPosition(index, topics.length);
+      const isHighlighted = highlightedTopics.includes(topic.slug);
+
+      return (
+        <div
+          class="topic-node-wrapper"
+          style={`left: ${position.x}%; top: ${position.y}%`}
+        >
+          <TopicNode
+            phaseId={phaseId}
+            topicSlug={topic.slug}
+            title={topic.title}
+            readingTime={topic.readingTime}
+            description={topic.description}
+            isHighlighted={isHighlighted}
+            index={index + 1}
+          />
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Back to map button -->
+  <a href="/learn/" class="back-to-map">
+    <span class="back-icon">←</span>
+    <span>Back to World Map</span>
+  </a>
+</div>
+
+<script>
+  import { loadProgress, getTopicCompletionCount } from '../../utils/progressStore';
+
+  function initIslandDetail() {
+    const island = document.querySelector('.island-detail');
+    if (!island) return;
+
+    const phaseId = island.getAttribute('data-phase-id');
+    if (!phaseId) return;
+
+    const progress = loadProgress();
+    const topicNodes = island.querySelectorAll('.topic-node');
+
+    let completedDepths = 0;
+    let totalDepths = 0;
+
+    topicNodes.forEach((node) => {
+      const topicSlug = node.getAttribute('data-topic-slug');
+      if (!topicSlug) return;
+
+      const completed = getTopicCompletionCount(progress, phaseId, topicSlug);
+      completedDepths += completed;
+      totalDepths += 3; // 3 depths per topic
+    });
+
+    // Update stats
+    const completedCountEl = island.querySelector('[data-completed-count]');
+    const progressPercentEl = island.querySelector('[data-progress-percent]');
+
+    if (completedCountEl) {
+      const completedTopics = Math.floor(completedDepths / 3);
+      completedCountEl.textContent = completedTopics.toString();
+    }
+
+    if (progressPercentEl) {
+      const percent = totalDepths > 0 ? Math.round((completedDepths / totalDepths) * 100) : 0;
+      progressPercentEl.textContent = `${percent}%`;
+    }
+
+    // Update connection paths
+    const connections = island.querySelectorAll('.topic-connection');
+    connections.forEach((conn) => {
+      const fromSlug = conn.getAttribute('data-from');
+      if (!fromSlug) return;
+
+      const fromCompleted = getTopicCompletionCount(progress, phaseId, fromSlug);
+      if (fromCompleted === 3) {
+        conn.classList.add('connection-completed');
+      } else if (fromCompleted > 0) {
+        conn.classList.add('connection-started');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initIslandDetail);
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'htbaa_learning_progress') {
+      initIslandDetail();
+    }
+  });
+</script>
+
+<style>
+  .island-detail {
+    position: relative;
+    min-height: 600px;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: rgb(15, 23, 42);
+  }
+
+  /* Terrain background */
+  .island-terrain {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .terrain-base {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(51, 65, 85, 0.5) 0%,
+      rgba(30, 41, 59, 0.8) 50%,
+      rgb(15, 23, 42) 100%
+    );
+  }
+
+  .terrain-accent {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+  }
+
+  /* Color variants for terrain */
+  .island-emerald .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(52, 211, 153, 0.3), transparent 60%);
+  }
+  .island-sky .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(56, 189, 248, 0.3), transparent 60%);
+  }
+  .island-violet .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(167, 139, 250, 0.3), transparent 60%);
+  }
+  .island-amber .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(251, 191, 36, 0.3), transparent 60%);
+  }
+  .island-orange .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(251, 146, 60, 0.3), transparent 60%);
+  }
+  .island-rose .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(251, 113, 133, 0.3), transparent 60%);
+  }
+  .island-teal .terrain-accent {
+    background: radial-gradient(circle at 30% 40%, rgba(45, 212, 191, 0.3), transparent 60%);
+  }
+
+  /* Header */
+  .island-header {
+    position: relative;
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgb(51, 65, 85);
+    background: rgba(15, 23, 42, 0.8);
+  }
+
+  .island-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(241, 245, 249);
+    margin: 0 0 0.5rem;
+  }
+
+  .island-description {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    margin: 0 0 1rem;
+  }
+
+  .island-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgb(226, 232, 240);
+  }
+
+  .stat-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgb(100, 116, 139);
+  }
+
+  /* Topic map */
+  .topic-map {
+    position: relative;
+    height: 450px;
+    padding: 1rem;
+  }
+
+  .topic-connections {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .topic-connection {
+    fill: none;
+    stroke: rgba(100, 116, 139, 0.3);
+    stroke-width: 0.3;
+    stroke-dasharray: 2 1;
+    transition: all 0.3s ease;
+  }
+
+  .topic-connection.connection-started {
+    stroke: rgba(148, 163, 184, 0.5);
+  }
+
+  .topic-connection.connection-completed {
+    stroke: rgba(52, 211, 153, 0.6);
+    stroke-dasharray: none;
+  }
+
+  .topic-node-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Back button */
+  .back-to-map {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .back-to-map:hover {
+    color: rgb(226, 232, 240);
+    border-color: rgb(100, 116, 139);
+    background: rgba(51, 65, 85, 0.8);
+  }
+
+  .back-icon {
+    font-size: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .island-detail {
+      min-height: 500px;
+    }
+
+    .island-header {
+      padding: 1rem;
+    }
+
+    .island-title {
+      font-size: 1.25rem;
+    }
+
+    .island-stats {
+      gap: 1.5rem;
+    }
+
+    .topic-map {
+      height: 350px;
+    }
+  }
+</style>

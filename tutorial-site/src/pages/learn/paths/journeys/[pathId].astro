@@ -1,0 +1,210 @@
+---
+// Path Detail Page for Journeys
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import fs from 'fs';
+import path from 'path';
+
+export async function getStaticPaths() {
+  const pathsDir = path.join(process.cwd(), '../learning-paths/suggested-journeys');
+  const files = fs.readdirSync(pathsDir).filter(f => f.endsWith('.json'));
+
+  return files.map(file => {
+    const content = fs.readFileSync(path.join(pathsDir, file), 'utf-8');
+    const data = JSON.parse(content);
+    return {
+      params: { pathId: data.id },
+      props: { pathData: data, category: 'journeys' },
+    };
+  });
+}
+
+const { pathData, category } = Astro.props;
+const steps = pathData.journey_steps || [];
+
+// Build a mapping of path IDs to their categories for related paths
+const pathsDir = path.join(process.cwd(), '../learning-paths');
+const pathCategories: Record<string, string> = {};
+
+// Load all paths to build the mapping
+['personas', 'tracks', 'suggested-journeys'].forEach(cat => {
+  const catDir = path.join(pathsDir, cat);
+  const files = fs.readdirSync(catDir).filter(f => f.endsWith('.json'));
+  files.forEach(file => {
+    const content = fs.readFileSync(path.join(catDir, file), 'utf-8');
+    const data = JSON.parse(content);
+    // Map category name to URL path (suggested-journeys -> journeys)
+    const urlCategory = cat === 'suggested-journeys' ? 'journeys' : cat;
+    pathCategories[data.id] = urlCategory;
+  });
+});
+
+// Helper to get path URL
+function getPathUrl(pathId: string): string {
+  const cat = pathCategories[pathId] || 'journeys';
+  return `/learn/paths/${cat}/${pathId}/`;
+}
+
+// Helper to format path name for display
+function formatPathName(pathId: string): string {
+  return pathId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
+function formatTime(minutes: number): string {
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+}
+---
+
+<BaseLayout title={`${pathData.name} | Learning Paths`}>
+  <main class="path-detail">
+    <a href="/learn/paths/" class="back-link">← Back to all paths</a>
+
+    <header class="path-header">
+      <div class="path-badge journey-badge">
+        <span class="badge-icon">🗺️</span>
+        <span>Quick Journey</span>
+      </div>
+      <h1>{pathData.name}</h1>
+      <p class="path-description">{pathData.description}</p>
+
+      <div class="path-stats">
+        <div class="stat">
+          <span class="stat-value">{formatTime(pathData.estimated_total_time_minutes)}</span>
+          <span class="stat-label">Total Time</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">{steps.length}</span>
+          <span class="stat-label">Steps</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="cta-section">
+      <button class="start-path-btn" data-path-id={pathData.id} data-category={category}>
+        Start Journey
+      </button>
+      <p class="cta-note">Quick journeys typically take under an hour</p>
+    </div>
+
+    {pathData.objectives && pathData.objectives.length > 0 && (
+      <section class="section">
+        <h2>What You'll Learn</h2>
+        <ul class="objectives-list">
+          {pathData.objectives.map((obj: string) => <li>{obj}</li>)}
+        </ul>
+      </section>
+    )}
+
+    <section class="section">
+      <h2>Journey Steps</h2>
+      <div class="steps-list">
+        {steps.map((step: any) => (
+          <div class="journey-step">
+            <div class="step-header">
+              <span class="step-order">{step.order}</span>
+              <div class="step-main">
+                <span class="step-topic">{(step.topic || 'Unknown').replace(/-/g, ' ')}</span>
+                <span class={`step-depth depth-${step.depth || 'surface'}`}>{step.depth || 'surface'}</span>
+              </div>
+              <span class="step-time">{step.estimated_minutes || 10}m</span>
+            </div>
+            {step.why && <p class="step-why">{step.why}</p>}
+            {step.key_questions && step.key_questions.length > 0 && (
+              <div class="step-questions">
+                <span class="questions-label">Key questions:</span>
+                <ul>
+                  {step.key_questions.map((q: string) => <li>{q}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {pathData.related_paths && pathData.related_paths.length > 0 && (
+      <section class="section">
+        <h2>Related Paths</h2>
+        <div class="related-links">
+          {pathData.related_paths.map((relatedId: string) => (
+            <a href={getPathUrl(relatedId)} class="related-tag">{formatPathName(relatedId)}</a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</BaseLayout>
+
+<script>
+  import { loadProgress, startPath } from '../../../../utils/progressStore';
+
+  function initPathDetail() {
+    const startBtn = document.querySelector('.start-path-btn');
+    if (!startBtn) return;
+
+    const pathId = startBtn.getAttribute('data-path-id');
+    const category = startBtn.getAttribute('data-category') as 'journeys';
+
+    if (!pathId) return;
+
+    const progress = loadProgress();
+    if (progress.pathProgress[pathId]) {
+      startBtn.textContent = progress.currentPathId === pathId ? 'Continue Journey' : 'Resume Journey';
+    }
+
+    startBtn.addEventListener('click', () => {
+      let currentProgress = loadProgress();
+      currentProgress = startPath(currentProgress, pathId, category);
+      window.location.href = '/learn/journey/';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initPathDetail);
+</script>
+
+<style>
+  .path-detail { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+  .back-link { display: inline-block; font-size: 0.875rem; color: rgb(148, 163, 184); text-decoration: none; margin-bottom: 1.5rem; }
+  .back-link:hover { color: rgb(251, 191, 36); }
+  .path-header { text-align: center; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgb(51, 65, 85); }
+  .path-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; margin-bottom: 1rem; }
+  .journey-badge { background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3); color: rgb(251, 191, 36); }
+  .badge-icon { font-size: 0.875rem; }
+  .path-header h1 { font-size: 2rem; font-weight: 700; color: rgb(241, 245, 249); margin: 0 0 1rem; }
+  .path-description { font-size: 1rem; color: rgb(148, 163, 184); line-height: 1.6; margin: 0 0 1.5rem; }
+  .path-stats { display: flex; justify-content: center; gap: 2rem; }
+  .stat { display: flex; flex-direction: column; align-items: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: rgb(226, 232, 240); }
+  .stat-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgb(100, 116, 139); }
+  .cta-section { text-align: center; margin-bottom: 2rem; }
+  .start-path-btn { padding: 1rem 2rem; font-size: 1rem; font-weight: 600; color: rgb(15, 23, 42); background: rgb(251, 191, 36); border: none; border-radius: 0.5rem; cursor: pointer; transition: all 0.2s ease; }
+  .start-path-btn:hover { background: rgb(245, 158, 11); transform: translateY(-1px); }
+  .cta-note { font-size: 0.75rem; color: rgb(100, 116, 139); margin: 0.5rem 0 0; }
+  .section { margin-bottom: 2rem; }
+  .section h2 { font-size: 1.25rem; font-weight: 600; color: rgb(241, 245, 249); margin: 0 0 1rem; }
+  .objectives-list { list-style: none; padding: 0; margin: 0; }
+  .objectives-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; font-size: 0.875rem; color: rgb(148, 163, 184); line-height: 1.5; }
+  .objectives-list li::before { content: '✓'; position: absolute; left: 0; color: rgb(251, 191, 36); }
+  .steps-list { display: flex; flex-direction: column; gap: 1rem; }
+  .journey-step { background: rgb(30, 41, 59); border: 1px solid rgb(51, 65, 85); border-radius: 0.75rem; padding: 1rem; }
+  .step-header { display: flex; align-items: center; gap: 0.75rem; }
+  .step-order { display: flex; align-items: center; justify-content: center; width: 1.75rem; height: 1.75rem; background: rgb(251, 191, 36); color: rgb(15, 23, 42); font-size: 0.75rem; font-weight: 700; border-radius: 50%; flex-shrink: 0; }
+  .step-main { flex: 1; display: flex; align-items: center; gap: 0.5rem; }
+  .step-topic { font-size: 0.875rem; font-weight: 600; color: rgb(226, 232, 240); text-transform: capitalize; }
+  .step-depth { font-size: 0.625rem; padding: 0.125rem 0.375rem; border-radius: 0.25rem; text-transform: capitalize; }
+  .step-depth.depth-surface { background: rgba(52, 211, 153, 0.2); color: rgb(52, 211, 153); }
+  .step-depth.depth-mid-depth { background: rgba(251, 191, 36, 0.2); color: rgb(251, 191, 36); }
+  .step-depth.depth-deep-water { background: rgba(239, 68, 68, 0.2); color: rgb(239, 68, 68); }
+  .step-time { font-size: 0.75rem; color: rgb(100, 116, 139); }
+  .step-why { font-size: 0.8125rem; color: rgb(148, 163, 184); margin: 0.75rem 0 0; line-height: 1.5; }
+  .step-questions { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgb(51, 65, 85); }
+  .questions-label { font-size: 0.6875rem; color: rgb(100, 116, 139); text-transform: uppercase; letter-spacing: 0.05em; }
+  .step-questions ul { list-style: none; padding: 0; margin: 0.5rem 0 0; }
+  .step-questions li { font-size: 0.75rem; color: rgb(148, 163, 184); padding: 0.25rem 0; }
+  .related-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .related-tag { padding: 0.375rem 0.75rem; background: rgba(51, 65, 85, 0.5); border-radius: 0.375rem; font-size: 0.75rem; color: rgb(148, 163, 184); text-decoration: none; transition: all 0.2s ease; }
+  .related-tag:hover { background: rgba(251, 191, 36, 0.2); color: rgb(251, 191, 36); }
+  @media (max-width: 768px) { .path-detail { padding: 1.5rem 1rem 2rem; } .path-header h1 { font-size: 1.5rem; } }
+</style>

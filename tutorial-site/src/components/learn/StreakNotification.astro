@@ -1,0 +1,233 @@
+---
+// StreakNotification Component - Toast notifications for streak updates
+// Shows alerts for streak warnings, achievements, and milestones
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`streak-notification-container ${className}`} id="streak-notifications">
+  <!-- Notifications will be added here dynamically -->
+</div>
+
+<script>
+  import { loadProgress } from '../../utils/progressStore';
+  import { getStreakStatus } from '../../utils/streaks';
+
+  interface NotificationOptions {
+    type: 'warning' | 'danger' | 'success' | 'milestone';
+    message: string;
+    duration?: number;
+  }
+
+  function showNotification(options: NotificationOptions) {
+    const container = document.getElementById('streak-notifications');
+    if (!container) return;
+
+    const notification = document.createElement('div');
+    notification.className = `streak-notification notification-${options.type}`;
+
+    const iconMap = {
+      warning: '⚠️',
+      danger: '🚨',
+      success: '🔥',
+      milestone: '🎉',
+    };
+
+    notification.innerHTML = `
+      <span class="notification-icon">${iconMap[options.type]}</span>
+      <span class="notification-message">${options.message}</span>
+      <button class="notification-close" aria-label="Dismiss">×</button>
+    `;
+
+    // Close button handler
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn?.addEventListener('click', () => {
+      notification.classList.add('notification-exit');
+      setTimeout(() => notification.remove(), 300);
+    });
+
+    // Auto-dismiss
+    const duration = options.duration || 5000;
+    setTimeout(() => {
+      if (notification.parentElement) {
+        notification.classList.add('notification-exit');
+        setTimeout(() => notification.remove(), 300);
+      }
+    }, duration);
+
+    container.appendChild(notification);
+  }
+
+  function checkStreakStatus() {
+    const progress = loadProgress();
+    const status = getStreakStatus(progress);
+
+    // Show warning if streak is at risk
+    if (status.urgency === 'warning' && status.currentStreak > 0) {
+      // Only show once per session
+      const warningKey = `streak_warning_${new Date().toDateString()}`;
+      if (!sessionStorage.getItem(warningKey)) {
+        showNotification({
+          type: 'warning',
+          message: status.message,
+          duration: 7000,
+        });
+        sessionStorage.setItem(warningKey, 'true');
+      }
+    }
+
+    // Show danger if streak is about to be lost
+    if (status.urgency === 'danger') {
+      const dangerKey = `streak_danger_${new Date().toDateString()}`;
+      if (!sessionStorage.getItem(dangerKey)) {
+        showNotification({
+          type: 'danger',
+          message: status.message,
+          duration: 10000,
+        });
+        sessionStorage.setItem(dangerKey, 'true');
+      }
+    }
+  }
+
+  // Check streak status on page load (with delay to not be intrusive)
+  setTimeout(checkStreakStatus, 2000);
+
+  // Note: topic-completed streak celebration is handled by CompleteButton component
+  // to avoid duplicate notifications
+
+  // Export for external use
+  (window as any).showStreakNotification = showNotification;
+</script>
+
+<style is:global>
+  .streak-notification-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+
+  .streak-notification {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: rgb(30, 41, 59);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    animation: slideIn 0.3s ease;
+    max-width: 320px;
+  }
+
+  .streak-notification.notification-exit {
+    animation: slideOut 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  .notification-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .notification-message {
+    flex: 1;
+    font-size: 0.8125rem;
+    color: rgb(226, 232, 240);
+    line-height: 1.4;
+  }
+
+  .notification-close {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: rgb(100, 116, 139);
+    font-size: 1.25rem;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .notification-close:hover {
+    color: rgb(226, 232, 240);
+    background: rgba(100, 116, 139, 0.2);
+  }
+
+  /* Notification types */
+  .notification-warning {
+    border-left: 3px solid rgb(251, 191, 36);
+  }
+
+  .notification-danger {
+    border-left: 3px solid rgb(239, 68, 68);
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .notification-success {
+    border-left: 3px solid rgb(52, 211, 153);
+  }
+
+  .notification-milestone {
+    border-left: 3px solid rgb(250, 204, 21);
+    background: rgba(250, 204, 21, 0.05);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .streak-notification-container {
+      left: 1rem;
+      right: 1rem;
+    }
+
+    .streak-notification {
+      max-width: none;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .streak-notification {
+      animation: none;
+    }
+
+    .streak-notification.notification-exit {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>

@@ -1,0 +1,431 @@
+---
+// StreakDisplay Component - Detailed streak info with calendar heatmap
+// Shows streak progress, milestones, and activity history
+
+export interface Props {
+  showCalendar?: boolean;
+  calendarDays?: number;
+  class?: string;
+}
+
+const {
+  showCalendar = true,
+  calendarDays = 30,
+  class: className = '',
+} = Astro.props;
+---
+
+<div class={`streak-display ${className}`} data-calendar-days={calendarDays}>
+  <!-- Main streak info -->
+  <div class="streak-main">
+    <div class="streak-flame-container">
+      <span class="streak-flame" data-intensity="none">🔥</span>
+    </div>
+    <div class="streak-info">
+      <div class="streak-count">
+        <span data-current-streak>0</span>
+        <span class="streak-unit">day streak</span>
+      </div>
+      <div class="streak-record">
+        Best: <span data-longest-streak>0</span> days
+      </div>
+    </div>
+  </div>
+
+  <!-- Next milestone -->
+  <div class="next-milestone" data-has-milestone="false">
+    <span class="milestone-label">Next milestone:</span>
+    <span class="milestone-target" data-milestone-name>-</span>
+    <span class="milestone-days">
+      (<span data-days-remaining>0</span> days away)
+    </span>
+  </div>
+
+  <!-- Activity calendar heatmap -->
+  {showCalendar && (
+    <div class="activity-calendar">
+      <div class="calendar-header">
+        <span class="calendar-title">Activity</span>
+        <span class="calendar-range" data-calendar-range></span>
+      </div>
+      <div class="calendar-grid" data-calendar-grid>
+        <!-- Days will be populated by JS -->
+      </div>
+      <div class="calendar-legend">
+        <span class="legend-item">
+          <span class="legend-dot inactive"></span>
+          <span>No activity</span>
+        </span>
+        <span class="legend-item">
+          <span class="legend-dot active"></span>
+          <span>Active</span>
+        </span>
+      </div>
+    </div>
+  )}
+
+  <!-- Weekly summary -->
+  <div class="weekly-summary">
+    <div class="summary-stat">
+      <span class="summary-value" data-weekly-topics>0</span>
+      <span class="summary-label">topics this week</span>
+    </div>
+    <div class="summary-stat">
+      <span class="summary-value" data-weekly-minutes>0</span>
+      <span class="summary-label">min this week</span>
+    </div>
+    <div class="summary-stat">
+      <span class="summary-value" data-weekly-days>0</span>
+      <span class="summary-label">days active</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { loadProgress } from '../../utils/progressStore';
+  import {
+    getStreakStatus,
+    getStreakIntensity,
+    getNextMilestone,
+    getActivityCalendar,
+    getWeeklySummary,
+  } from '../../utils/streaks';
+
+  function initStreakDisplay() {
+    const display = document.querySelector('.streak-display');
+    if (!display) return;
+
+    const calendarDays = parseInt(display.getAttribute('data-calendar-days') || '30', 10);
+    const progress = loadProgress();
+    const streakStatus = getStreakStatus(progress);
+    const intensity = getStreakIntensity(streakStatus.currentStreak);
+    const nextMilestone = getNextMilestone(streakStatus.currentStreak);
+    const weeklySummary = getWeeklySummary(progress);
+
+    // Update current streak
+    const currentStreakEl = display.querySelector('[data-current-streak]');
+    if (currentStreakEl) {
+      currentStreakEl.textContent = streakStatus.currentStreak.toString();
+    }
+
+    // Update longest streak
+    const longestStreakEl = display.querySelector('[data-longest-streak]');
+    if (longestStreakEl) {
+      longestStreakEl.textContent = streakStatus.longestStreak.toString();
+    }
+
+    // Update flame intensity
+    const flameEl = display.querySelector('.streak-flame');
+    if (flameEl) {
+      flameEl.setAttribute('data-intensity', intensity);
+    }
+
+    // Update next milestone
+    const milestoneContainer = display.querySelector('.next-milestone');
+    const milestoneNameEl = display.querySelector('[data-milestone-name]');
+    const daysRemainingEl = display.querySelector('[data-days-remaining]');
+
+    if (nextMilestone && milestoneContainer && milestoneNameEl && daysRemainingEl) {
+      milestoneContainer.setAttribute('data-has-milestone', 'true');
+      milestoneNameEl.textContent = nextMilestone.name;
+      daysRemainingEl.textContent = (nextMilestone.days - streakStatus.currentStreak).toString();
+    }
+
+    // Populate calendar
+    const calendarGrid = display.querySelector('[data-calendar-grid]');
+    const calendarRange = display.querySelector('[data-calendar-range]');
+
+    if (calendarGrid) {
+      const calendar = getActivityCalendar(progress, calendarDays);
+      calendarGrid.innerHTML = '';
+
+      calendar.forEach((day) => {
+        const dayEl = document.createElement('div');
+        dayEl.className = `calendar-day ${day.hasActivity ? 'active' : ''} ${day.isToday ? 'today' : ''}`;
+        dayEl.setAttribute('data-date', day.date);
+        dayEl.setAttribute('title', `${day.date}${day.hasActivity ? ' - Active' : ''}`);
+        calendarGrid.appendChild(dayEl);
+      });
+
+      // Update range text
+      if (calendarRange && calendar.length > 0) {
+        const startDate = new Date(calendar[0].date);
+        const endDate = new Date(calendar[calendar.length - 1].date);
+        const formatDate = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        calendarRange.textContent = `${formatDate(startDate)} - ${formatDate(endDate)}`;
+      }
+    }
+
+    // Update weekly summary
+    const weeklyTopicsEl = display.querySelector('[data-weekly-topics]');
+    const weeklyMinutesEl = display.querySelector('[data-weekly-minutes]');
+    const weeklyDaysEl = display.querySelector('[data-weekly-days]');
+
+    if (weeklyTopicsEl) {
+      weeklyTopicsEl.textContent = weeklySummary.topicsCompleted.toString();
+    }
+    if (weeklyMinutesEl) {
+      weeklyMinutesEl.textContent = weeklySummary.minutesSpent.toString();
+    }
+    if (weeklyDaysEl) {
+      weeklyDaysEl.textContent = weeklySummary.daysActive.toString();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initStreakDisplay);
+
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'htbaa_learning_progress') {
+      initStreakDisplay();
+    }
+  });
+</script>
+
+<style>
+  .streak-display {
+    background: rgb(30, 41, 59);
+    border: 1px solid rgb(51, 65, 85);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  /* Main streak info */
+  .streak-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .streak-flame-container {
+    flex-shrink: 0;
+  }
+
+  .streak-flame {
+    font-size: 2.5rem;
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .streak-flame[data-intensity="none"] {
+    opacity: 0.3;
+    filter: grayscale(1);
+  }
+
+  .streak-flame[data-intensity="low"] {
+    opacity: 0.6;
+  }
+
+  .streak-flame[data-intensity="medium"] {
+    opacity: 0.8;
+  }
+
+  .streak-flame[data-intensity="high"] {
+    opacity: 1;
+    animation: flame-glow 1.5s ease-in-out infinite;
+  }
+
+  .streak-flame[data-intensity="max"] {
+    opacity: 1;
+    animation: flame-burst 0.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(251, 146, 60, 0.6));
+  }
+
+  @keyframes flame-glow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  @keyframes flame-burst {
+    0%, 100% { transform: scale(1) rotate(-5deg); }
+    50% { transform: scale(1.2) rotate(5deg); }
+  }
+
+  .streak-info {
+    flex: 1;
+  }
+
+  .streak-count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .streak-count span:first-child {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgb(241, 245, 249);
+    line-height: 1;
+  }
+
+  .streak-unit {
+    font-size: 0.875rem;
+    color: rgb(148, 163, 184);
+  }
+
+  .streak-record {
+    font-size: 0.75rem;
+    color: rgb(100, 116, 139);
+    margin-top: 0.25rem;
+  }
+
+  /* Next milestone */
+  .next-milestone {
+    display: none;
+    padding: 0.75rem;
+    background: rgba(251, 191, 36, 0.1);
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .next-milestone[data-has-milestone="true"] {
+    display: block;
+  }
+
+  .milestone-label {
+    color: rgb(148, 163, 184);
+  }
+
+  .milestone-target {
+    color: rgb(251, 191, 36);
+    font-weight: 600;
+    margin: 0 0.25rem;
+  }
+
+  .milestone-days {
+    color: rgb(100, 116, 139);
+  }
+
+  /* Activity calendar */
+  .activity-calendar {
+    margin-bottom: 1rem;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .calendar-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgb(148, 163, 184);
+  }
+
+  .calendar-range {
+    font-size: 0.625rem;
+    color: rgb(100, 116, 139);
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+  }
+
+  .calendar-day {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    background: rgb(51, 65, 85);
+  }
+
+  .calendar-day.active {
+    background: rgb(52, 211, 153);
+  }
+
+  .calendar-day.today {
+    outline: 1px solid rgb(56, 189, 248);
+    outline-offset: 1px;
+  }
+
+  .calendar-legend {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.5625rem;
+    color: rgb(100, 116, 139);
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+
+  .legend-dot.inactive {
+    background: rgb(51, 65, 85);
+  }
+
+  .legend-dot.active {
+    background: rgb(52, 211, 153);
+  }
+
+  /* Weekly summary */
+  .weekly-summary {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(51, 65, 85);
+  }
+
+  .summary-stat {
+    text-align: center;
+  }
+
+  .summary-value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: rgb(226, 232, 240);
+    line-height: 1;
+  }
+
+  .summary-label {
+    font-size: 0.5625rem;
+    color: rgb(100, 116, 139);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .streak-display {
+      padding: 1rem;
+    }
+
+    .streak-flame {
+      font-size: 2rem;
+    }
+
+    .streak-count span:first-child {
+      font-size: 1.5rem;
+    }
+
+    .calendar-grid {
+      gap: 2px;
+    }
+
+    .summary-value {
+      font-size: 1rem;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .streak-flame {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

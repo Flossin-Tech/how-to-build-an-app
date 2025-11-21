@@ -1,0 +1,631 @@
+---
+// WorldMap Component - Visual island-based journey map for gamified learning
+// Displays 7 themed islands representing development lifecycle phases
+
+export interface Props {
+  currentPathId?: string;
+  highlightedTopics?: string[]; // Topics in current learning path
+  class?: string;
+}
+
+const { currentPathId, highlightedTopics = [], class: className = '' } = Astro.props;
+
+// Phase islands with their themes and positions
+const islands = [
+  {
+    id: '01-discovery-planning',
+    name: 'Discovery Cove',
+    shortName: 'Discovery',
+    description: 'Understanding what to build and why',
+    icon: 'compass',
+    position: { x: 10, y: 20 },
+    color: 'emerald',
+    topics: [
+      'job-to-be-done',
+      'concept-of-operations',
+      'threat-modeling',
+      'requirements-gathering',
+      'scope-setting',
+      'resource-identification',
+    ],
+  },
+  {
+    id: '02-design',
+    name: 'Design Archipelago',
+    shortName: 'Design',
+    description: 'Architecture and planning before implementation',
+    icon: 'pencil',
+    position: { x: 30, y: 10 },
+    color: 'sky',
+    topics: [
+      'architecture-decisions',
+      'data-modeling',
+      'api-design',
+      'ui-ux-design',
+      'security-design',
+      'performance-planning',
+      'integration-design',
+      'documentation-strategy',
+    ],
+  },
+  {
+    id: '03-development',
+    name: 'Dev Mountain',
+    shortName: 'Development',
+    description: 'Writing code that works and is maintainable',
+    icon: 'code',
+    position: { x: 50, y: 25 },
+    color: 'violet',
+    topics: [
+      'environment-setup',
+      'coding-standards',
+      'version-control',
+      'secure-coding-practices',
+      'dependency-management',
+      'code-review',
+    ],
+  },
+  {
+    id: '04-testing',
+    name: 'Testing Reef',
+    shortName: 'Testing',
+    description: 'Verification, security, accessibility, compliance',
+    icon: 'check-circle',
+    position: { x: 70, y: 15 },
+    color: 'amber',
+    topics: [
+      'testing-strategy',
+      'security-testing',
+      'accessibility-testing',
+      'performance-testing',
+    ],
+  },
+  {
+    id: '05-deployment',
+    name: 'Deploy Harbor',
+    shortName: 'Deployment',
+    description: 'Getting code running reliably in production',
+    icon: 'rocket',
+    position: { x: 85, y: 30 },
+    color: 'orange',
+    topics: [
+      'deployment-strategy',
+      'infrastructure-setup',
+      'ci-cd-pipelines',
+      'release-management',
+    ],
+  },
+  {
+    id: '06-operations',
+    name: 'Ops Lighthouse',
+    shortName: 'Operations',
+    description: 'Keeping systems running and handling incidents',
+    icon: 'activity',
+    position: { x: 75, y: 50 },
+    color: 'rose',
+    topics: [
+      'monitoring-observability',
+      'incident-response',
+      'backup-recovery',
+      'scaling-optimization',
+    ],
+  },
+  {
+    id: '07-iteration',
+    name: 'Iteration Atoll',
+    shortName: 'Iteration',
+    description: 'Learning from outcomes and improving',
+    icon: 'refresh-cw',
+    position: { x: 50, y: 60 },
+    color: 'teal',
+    topics: [
+      'metrics-analytics',
+      'user-feedback',
+      'continuous-improvement',
+    ],
+  },
+];
+
+// Connection paths between islands (visual journey lines)
+const connections = [
+  { from: '01-discovery-planning', to: '02-design' },
+  { from: '02-design', to: '03-development' },
+  { from: '03-development', to: '04-testing' },
+  { from: '04-testing', to: '05-deployment' },
+  { from: '05-deployment', to: '06-operations' },
+  { from: '06-operations', to: '07-iteration' },
+  { from: '07-iteration', to: '01-discovery-planning' }, // Cycle back
+];
+---
+
+<div class={`world-map-container ${className}`} data-current-path={currentPathId}>
+  <div class="world-map">
+    <!-- Water background with depth gradient -->
+    <div class="ocean-background">
+      <div class="water-surface"></div>
+      <div class="water-mid"></div>
+      <div class="water-deep"></div>
+    </div>
+
+    <!-- Connection paths between islands -->
+    <svg class="connection-paths" viewBox="0 0 100 70" preserveAspectRatio="none">
+      {connections.map((conn) => {
+        const fromIsland = islands.find(i => i.id === conn.from);
+        const toIsland = islands.find(i => i.id === conn.to);
+        if (!fromIsland || !toIsland) return null;
+
+        return (
+          <path
+            class="island-connection"
+            d={`M ${fromIsland.position.x} ${fromIsland.position.y}
+                Q ${(fromIsland.position.x + toIsland.position.x) / 2} ${(fromIsland.position.y + toIsland.position.y) / 2 - 5}
+                  ${toIsland.position.x} ${toIsland.position.y}`}
+            data-from={conn.from}
+            data-to={conn.to}
+          />
+        );
+      })}
+    </svg>
+
+    <!-- Islands -->
+    {islands.map((island) => {
+      const hasHighlightedTopics = island.topics.some(t => highlightedTopics.includes(t));
+      const topicCount = island.topics.length;
+
+      return (
+        <button
+          class={`island island-${island.color} ${hasHighlightedTopics ? 'island-highlighted' : ''}`}
+          style={`left: ${island.position.x}%; top: ${island.position.y}%`}
+          data-island-id={island.id}
+          data-topics={JSON.stringify(island.topics)}
+          aria-label={`${island.name}: ${island.description}. ${topicCount} topics.`}
+        >
+          <div class="island-glow"></div>
+          <div class="island-body">
+            <div class="island-icon">
+              <span class="icon-placeholder" data-icon={island.icon}></span>
+            </div>
+            <div class="island-info">
+              <span class="island-name">{island.shortName}</span>
+              <span class="island-topic-count">{topicCount} topics</span>
+            </div>
+          </div>
+          <div class="island-progress-ring">
+            <svg viewBox="0 0 36 36">
+              <circle class="progress-bg" cx="18" cy="18" r="16" />
+              <circle
+                class="progress-fill"
+                cx="18"
+                cy="18"
+                r="16"
+                data-phase={island.id}
+              />
+            </svg>
+          </div>
+        </button>
+      );
+    })}
+
+    <!-- Current location marker (shown via JS) -->
+    <div class="current-location-marker" style="display: none;">
+      <div class="marker-pulse"></div>
+      <div class="marker-dot"></div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="map-legend">
+    <div class="legend-item">
+      <span class="legend-dot legend-available"></span>
+      <span>Available</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot legend-in-progress"></span>
+      <span>In Progress</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot legend-completed"></span>
+      <span>Completed</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { loadProgress, getTopicCompletionCount } from '../../utils/progressStore';
+
+  function initWorldMap() {
+    const mapContainer = document.querySelector('.world-map-container');
+    if (!mapContainer) return;
+
+    const progress = loadProgress();
+    const islands = mapContainer.querySelectorAll('.island');
+
+    islands.forEach((island) => {
+      const phaseId = island.getAttribute('data-island-id');
+      const topicsJson = island.getAttribute('data-topics');
+      if (!phaseId || !topicsJson) return;
+
+      const topics = JSON.parse(topicsJson) as string[];
+      let totalCompleted = 0;
+      let totalPossible = topics.length * 3; // 3 depths per topic
+
+      topics.forEach((topic) => {
+        totalCompleted += getTopicCompletionCount(progress, phaseId, topic);
+      });
+
+      // Update progress ring
+      const progressFill = island.querySelector('.progress-fill') as SVGCircleElement;
+      if (progressFill) {
+        const percent = totalPossible > 0 ? (totalCompleted / totalPossible) * 100 : 0;
+        const circumference = 2 * Math.PI * 16;
+        const offset = circumference - (percent / 100) * circumference;
+        progressFill.style.strokeDasharray = `${circumference}`;
+        progressFill.style.strokeDashoffset = `${offset}`;
+      }
+
+      // Add completion state class
+      if (totalCompleted === totalPossible && totalPossible > 0) {
+        island.classList.add('island-completed');
+      } else if (totalCompleted > 0) {
+        island.classList.add('island-in-progress');
+      }
+
+      // Click handler to navigate to phase page
+      island.addEventListener('click', () => {
+        window.location.href = `/phases/${phaseId}/`;
+      });
+    });
+
+    // Update connection paths based on completion
+    const connections = mapContainer.querySelectorAll('.island-connection');
+    connections.forEach((conn) => {
+      const fromId = conn.getAttribute('data-from');
+      const fromIsland = mapContainer.querySelector(`[data-island-id="${fromId}"]`);
+      if (fromIsland?.classList.contains('island-completed')) {
+        conn.classList.add('connection-completed');
+      }
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initWorldMap);
+
+  // Re-initialize when storage changes (for live updates)
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'htbaa_learning_progress') {
+      initWorldMap();
+    }
+  });
+</script>
+
+<style>
+  .world-map-container {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .world-map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+  }
+
+  /* Ocean background layers */
+  .ocean-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .water-surface {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(56, 189, 248, 0.2) 0%,
+      rgba(14, 165, 233, 0.3) 100%
+    );
+  }
+
+  .water-mid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(3, 105, 161, 0.2) 100%
+    );
+  }
+
+  .water-deep {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(12, 74, 110, 0.3) 100%
+    );
+  }
+
+  /* Connection paths */
+  .connection-paths {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .island-connection {
+    fill: none;
+    stroke: rgba(148, 163, 184, 0.3);
+    stroke-width: 0.3;
+    stroke-dasharray: 2 1;
+  }
+
+  .island-connection.connection-completed {
+    stroke: rgba(52, 211, 153, 0.5);
+    stroke-dasharray: none;
+  }
+
+  /* Island styling */
+  .island {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .island:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .island:focus {
+    outline: 2px solid rgb(56, 189, 248);
+    outline-offset: 4px;
+    border-radius: 50%;
+  }
+
+  .island-glow {
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .island:hover .island-glow,
+  .island.island-highlighted .island-glow {
+    opacity: 1;
+  }
+
+  .island-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(30, 41, 59);
+    border: 2px solid rgb(51, 65, 85);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .island:hover .island-body {
+    border-color: rgb(100, 116, 139);
+  }
+
+  .island-icon {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .island-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .island-name {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: rgb(226, 232, 240);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .island-topic-count {
+    font-size: 0.5rem;
+    color: rgb(148, 163, 184);
+  }
+
+  /* Progress ring */
+  .island-progress-ring {
+    position: absolute;
+    inset: -4px;
+    pointer-events: none;
+  }
+
+  .island-progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .progress-bg {
+    fill: none;
+    stroke: rgba(51, 65, 85, 0.5);
+    stroke-width: 2;
+  }
+
+  .progress-fill {
+    fill: none;
+    stroke: rgb(52, 211, 153);
+    stroke-width: 2;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+
+  /* Island color themes */
+  .island-emerald .island-glow { background: radial-gradient(circle, rgba(52, 211, 153, 0.3), transparent 70%); }
+  .island-emerald .progress-fill { stroke: rgb(52, 211, 153); }
+
+  .island-sky .island-glow { background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%); }
+  .island-sky .progress-fill { stroke: rgb(56, 189, 248); }
+
+  .island-violet .island-glow { background: radial-gradient(circle, rgba(167, 139, 250, 0.3), transparent 70%); }
+  .island-violet .progress-fill { stroke: rgb(167, 139, 250); }
+
+  .island-amber .island-glow { background: radial-gradient(circle, rgba(251, 191, 36, 0.3), transparent 70%); }
+  .island-amber .progress-fill { stroke: rgb(251, 191, 36); }
+
+  .island-orange .island-glow { background: radial-gradient(circle, rgba(251, 146, 60, 0.3), transparent 70%); }
+  .island-orange .progress-fill { stroke: rgb(251, 146, 60); }
+
+  .island-rose .island-glow { background: radial-gradient(circle, rgba(251, 113, 133, 0.3), transparent 70%); }
+  .island-rose .progress-fill { stroke: rgb(251, 113, 133); }
+
+  .island-teal .island-glow { background: radial-gradient(circle, rgba(45, 212, 191, 0.3), transparent 70%); }
+  .island-teal .progress-fill { stroke: rgb(45, 212, 191); }
+
+  /* State modifiers */
+  .island.island-completed .island-body {
+    border-color: rgb(52, 211, 153);
+  }
+
+  .island.island-in-progress .island-body {
+    animation: pulse-border 2s infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { border-color: rgb(51, 65, 85); }
+    50% { border-color: rgb(100, 116, 139); }
+  }
+
+  .island.island-highlighted .island-body {
+    border-color: rgb(250, 204, 21);
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+  }
+
+  /* Current location marker */
+  .current-location-marker {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .marker-pulse {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(250, 204, 21, 0.3);
+    animation: pulse-expand 2s infinite;
+    transform: translate(-50%, -50%);
+  }
+
+  .marker-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgb(250, 204, 21);
+    border: 2px solid white;
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes pulse-expand {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+  }
+
+  /* Legend */
+  .map-legend {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.8);
+    border-top: 1px solid rgb(51, 65, 85);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: rgb(148, 163, 184);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .legend-available {
+    background: rgb(51, 65, 85);
+    border: 1px solid rgb(100, 116, 139);
+  }
+
+  .legend-in-progress {
+    background: rgb(51, 65, 85);
+    border: 1px solid rgb(148, 163, 184);
+    animation: pulse-border 2s infinite;
+  }
+
+  .legend-completed {
+    background: rgb(52, 211, 153);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .world-map-container {
+      min-height: 400px;
+    }
+
+    .world-map {
+      height: 400px;
+    }
+
+    .island {
+      width: 60px;
+      height: 60px;
+    }
+
+    .island-name {
+      font-size: 0.5rem;
+    }
+
+    .island-topic-count {
+      display: none;
+    }
+
+    .map-legend {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .island,
+    .progress-fill,
+    .marker-pulse {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>
