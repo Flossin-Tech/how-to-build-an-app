@@ -267,12 +267,20 @@ These diagrams support several documentation use cases:
 
 All diagrams located in: `/assets/diagrams/architecture/microfrontend-case-study/`
 
-- current-architecture.mmd (996 bytes)
-- microfrontend-shell.mmd (1.9 KB)
-- vite-module-federation.mmd (2.2 KB)
-- extended-monolith-lazy.mmd (1.9 KB)
-- decision-flowchart.mmd (1.6 KB)
-- scale-thresholds.mmd (1.7 KB)
-- architecture-comparison.mmd (2.5 KB)
+**SVG Exports (for viewing):**
+- current-architecture.svg
+- microfrontend-shell.svg
+- vite-module-federation.svg
+- extended-monolith-lazy.svg
+- decision-flowchart.svg
+- scale-thresholds.svg
+- architecture-comparison.svg
 
-Total: ~13.4 KB (all text-based, highly compressible)
+**Source Files (for editing):**
+- current-architecture.mmd
+- microfrontend-shell.mmd
+- vite-module-federation.mmd
+- extended-monolith-lazy.mmd
+- decision-flowchart.mmd
+- scale-thresholds.mmd
+- architecture-comparison.mmd

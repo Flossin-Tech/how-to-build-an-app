@@ -69,13 +69,12 @@
         },
         {
           "phase": "examples",
-          "topic": "microfrontend-vs-monolith-case-study",
-          "depth": "surface",
+          "topic": "domain-specific/web-apps/architecture-decisions/microfrontend-vs-monolith",
+          "depth": null,
           "file": "quick-take-yolo-dev.md",
           "required": false,
           "estimated_minutes": 5,
           "why": "Learn when NOT to use complex architectures - avoid over-engineering",
-          "note": "Example content coming soon - key principle: choose simplest architecture that could work",
           "checkpoint": {
             "question": "Do you understand the quantitative thresholds for architecture decisions?",
             "required_for_progress": false,

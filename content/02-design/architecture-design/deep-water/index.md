@@ -1299,8 +1299,6 @@ Start simple. Measure constantly. Add complexity only when you have specific evi
 
 ## Real-World Case Study
 
-**[Microfrontend vs. Monolith Decision](case-studies/microfrontend-vs-monolith.md)**
+**[Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)**
 
 Deep dive into a comprehensive architecture decision methodology with full academic rigor. Includes literature review of documented industry thresholds, quantitative scoring framework, risk assessment matrices, and honest discussion of trade-offs and limitations. **Full analysis: 60-90 minutes** for complete understanding.
-
-[Browse all architecture case studies →](case-studies/)

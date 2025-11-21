@@ -1,0 +1,128 @@
+{
+  "id": "data-flow-mapping",
+  "slug": "data-flow-mapping",
+  "title": "Data Flow Mapping",
+  "phase": "02-design",
+  "phase_name": "Design",
+  "order_in_phase": 3,
+  "description": {
+    "short": "Understand where data comes from, what happens to it, and where it goes",
+    "medium": "Map how data flows through your system to understand entry points, transformations, storage locations, and exit points - essential for security, compliance, and debugging",
+    "full": "Data flow mapping visualizes the journey of data through your application - from user input to database to third-party services to backups. This understanding is critical for security (identifying attack surfaces), compliance (GDPR deletion requests, HIPAA audits), debugging (tracing data bugs), and architecture decisions. Learn to map trust boundaries, identify sensitive data flows, and create documentation that serves both technical and compliance needs."
+  },
+  "why_it_matters": [
+    "You can't secure what you can't see",
+    "GDPR and other regulations require knowing where data lives",
+    "Data bugs are often transformation bugs",
+    "Security breaches often exploit unmapped data flows"
+  ],
+  "depth_levels": {
+    "surface": {
+      "reading_time_minutes": 8,
+      "difficulty": "beginner",
+      "objectives": [
+        "Understand why data flow mapping matters",
+        "Map critical user journeys",
+        "Identify entry and exit points"
+      ],
+      "key_takeaways": [
+        "Map before you build",
+        "Trust boundaries need validation",
+        "Red flags to watch for"
+      ]
+    },
+    "mid-depth": {
+      "reading_time_minutes": 25,
+      "difficulty": "intermediate",
+      "objectives": [
+        "Map transformations and validations",
+        "Design for idempotency",
+        "Implement data lineage and audit trails"
+      ],
+      "key_takeaways": [
+        "Sync vs async flow decisions",
+        "Data retention and deletion flows",
+        "Cross-service choreography"
+      ]
+    },
+    "deep-water": {
+      "reading_time_minutes": 50,
+      "difficulty": "advanced",
+      "objectives": [
+        "Build compliance-driven data flow maps",
+        "Implement event sourcing and CQRS",
+        "Design multi-tenant data isolation"
+      ],
+      "key_takeaways": [
+        "GDPR/HIPAA/PCI compliance mapping",
+        "Zero-trust data flow architecture",
+        "Cryptographic audit trails"
+      ]
+    }
+  },
+  "prerequisites": [],
+  "related_topics": [
+    "database-design",
+    "api-design",
+    "security-architecture",
+    "architecture-design",
+    "threat-modeling"
+  ],
+  "personas": [
+    "new-developer",
+    "yolo-dev",
+    "generalist-leveling-up",
+    "specialist-expanding"
+  ],
+  "tools": [
+    "Mermaid",
+    "PlantUML",
+    "Draw.io",
+    "Excalidraw",
+    "C4 Model tooling"
+  ],
+  "frameworks_and_concepts": [
+    "Trust Boundaries",
+    "Data Classification",
+    "Event Sourcing",
+    "CQRS",
+    "Saga Pattern",
+    "Data Lineage",
+    "Multi-tenancy Patterns"
+  ],
+  "compliance_relevance": [
+    "GDPR",
+    "HIPAA",
+    "PCI-DSS",
+    "SOC 2",
+    "CCPA"
+  ],
+  "estimated_time_to_implement": {
+    "surface": "1-2 hours",
+    "mid_depth": "4-8 hours",
+    "deep_water": "2-5 days"
+  },
+  "common_mistakes": [
+    "Not mapping error paths",
+    "Missing third-party data flows",
+    "Forgetting about backups and logs",
+    "Not updating maps when flows change"
+  ],
+  "success_metrics": [
+    "All data locations documented",
+    "Successful compliance audits",
+    "Faster incident root cause analysis"
+  ],
+  "when_to_prioritize": [
+    "Handling PII or sensitive data",
+    "Preparing for compliance audits",
+    "Security review of new features"
+  ],
+  "when_to_deprioritize": [
+    "Simple CRUD applications",
+    "Internal tools with no sensitive data",
+    "Early prototyping"
+  ],
+  "examples": [],
+  "updated": "2025-11-20"
+}

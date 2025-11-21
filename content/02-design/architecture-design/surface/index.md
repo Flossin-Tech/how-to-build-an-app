@@ -154,8 +154,6 @@ For now: start with a monolith, organize it into components based on functional 
 
 ## Real-World Case Study
 
-**[Microfrontend vs. Monolith Decision](case-studies/microfrontend-vs-monolith.md)**
+**[Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)**
 
 See how a finance sector team used a quantitative framework to decide between microfrontends and an extended monolith. Shows the complete decision process with scale analysis, team capability assessment, and financial modeling. **Quick read: 7 minutes** for Abstract + Conclusion.
-
-[Browse all architecture case studies →](case-studies/)
