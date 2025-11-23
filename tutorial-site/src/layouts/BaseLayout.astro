@@ -6,11 +6,197 @@ import StreakNotification from '../components/learn/StreakNotification.astro';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string[];
+  updated?: string;
+  // Schema data - optional, used for Article, LearningResource, Course, etc.
+  schema?: {
+    type: 'WebSite' | 'Article' | 'LearningResource' | 'Course' | 'BreadcrumbList';
+    headline?: string;
+    datePublished?: string;
+    dateModified?: string;
+    author?: string;
+    educationalLevel?: 'Beginner' | 'Intermediate' | 'Advanced';
+    timeRequired?: string;
+    image?: string;
+    breadcrumbs?: Array<{ name: string; url: string }>;
+    courseSteps?: Array<{ name: string; url: string; duration?: string }>;
+    learningOutcomes?: string[];
+    prerequisites?: string[];
+    estimatedTime?: number;
+  };
 }
 
-const { title, description = "Non-linear guide to software development" } = Astro.props;
+const {
+  title,
+  description = "Non-linear guide to software development",
+  keywords = [],
+  updated,
+  schema,
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const base = getBase();
+
+// Trim description to optimal meta description length (150-160 chars)
+const trimmedDescription = description.length > 160
+  ? description.substring(0, 157) + '...'
+  : description;
+
+// Format keywords for meta tag (comma-separated, max 3-5 for optimal SEO)
+const keywordsMeta = keywords.slice(0, 5).join(', ');
+
+// Generate WebSite schema (always present)
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "How to Build an App",
+  "description": "Non-linear guide to software development organized by lifecycle phases",
+  "url": Astro.site?.toString().replace(/\/$/, ''),
+  "sameAs": [
+    "https://github.com/Flossin-Tech/how-to-build-an-app"
+  ],
+  "creator": {
+    "@type": "Organization",
+    "name": "Flossin Tech",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL(joinPath('/assets/images/flossin-tech.png'), Astro.site).toString()
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": Astro.site?.toString() + "search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// Generate additional schema if provided
+let additionalSchema = null;
+
+if (schema) {
+  if (schema.type === 'Article' || schema.type === 'LearningResource') {
+    // Article/LearningResource schema for topic content pages
+    const articleSchema: any = {
+      "@context": "https://schema.org",
+      "@type": schema.type === 'LearningResource' ? "LearningResource" : "Article",
+      "headline": schema.headline || title,
+      "description": description,
+      "url": canonicalURL.toString(),
+      "mainEntity": {
+        "@type": schema.type === 'LearningResource' ? "LearningResource" : "Article"
+      }
+    };
+
+    // Add author (organization)
+    if (schema.author) {
+      articleSchema["author"] = {
+        "@type": "Organization",
+        "name": schema.author
+      };
+    } else {
+      articleSchema["author"] = {
+        "@type": "Organization",
+        "name": "How to Build an App"
+      };
+    }
+
+    // Add dates
+    if (schema.datePublished) {
+      articleSchema["datePublished"] = schema.datePublished;
+    }
+    if (schema.dateModified) {
+      articleSchema["dateModified"] = schema.dateModified;
+    }
+
+    // Add image if provided
+    if (schema.image) {
+      articleSchema["image"] = {
+        "@type": "ImageObject",
+        "url": schema.image,
+        "width": 1200,
+        "height": 630
+      };
+    }
+
+    // Add educational metadata
+    if (schema.type === 'LearningResource') {
+      if (schema.educationalLevel) {
+        articleSchema["educationalLevel"] = schema.educationalLevel;
+      }
+      if (schema.timeRequired) {
+        articleSchema["timeRequired"] = schema.timeRequired;
+      }
+      if (schema.learningOutcomes && schema.learningOutcomes.length > 0) {
+        articleSchema["learningOutcome"] = schema.learningOutcomes;
+      }
+      if (schema.prerequisites && schema.prerequisites.length > 0) {
+        articleSchema["prerequisites"] = schema.prerequisites;
+      }
+    }
+
+    additionalSchema = articleSchema;
+  }
+  else if (schema.type === 'Course') {
+    // Course schema for learning paths
+    const courseSchema: any = {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": schema.headline || title,
+      "description": description,
+      "url": canonicalURL.toString(),
+      "provider": {
+        "@type": "Organization",
+        "name": "How to Build an App",
+        "sameAs": "https://howtobuildanapp.dev"
+      }
+    };
+
+    // Add aggregateRating if applicable
+    if (schema.estimatedTime) {
+      courseSchema["timeRequired"] = `PT${schema.estimatedTime}M`;
+    }
+
+    if (schema.learningOutcomes && schema.learningOutcomes.length > 0) {
+      courseSchema["learningOutcome"] = schema.learningOutcomes;
+    }
+
+    if (schema.prerequisites && schema.prerequisites.length > 0) {
+      courseSchema["coursePrerequisites"] = schema.prerequisites;
+    }
+
+    // Add course steps
+    if (schema.courseSteps && schema.courseSteps.length > 0) {
+      courseSchema["hasCourseInstance"] = {
+        "@type": "CourseInstance",
+        "url": courseSchema.url,
+        "hasPart": schema.courseSteps.map((step, index) => ({
+          "@type": "LearningResource",
+          "name": step.name,
+          "url": step.url,
+          "position": index + 1,
+          ...(step.duration && { "timeRequired": step.duration })
+        }))
+      };
+    }
+
+    additionalSchema = courseSchema;
+  }
+  else if (schema.type === 'BreadcrumbList') {
+    // BreadcrumbList schema
+    additionalSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": (schema.breadcrumbs || []).map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": crumb.name,
+        "item": new URL(crumb.url, Astro.site).toString()
+      }))
+    };
+  }
+}
 ---
 
 <!DOCTYPE html>
@@ -19,19 +205,68 @@ const base = getBase();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title} | How to Build an App</title>
-    <meta name="description" content={description}>
+    <meta name="description" content={trimmedDescription}>
     <link rel="canonical" href={canonicalURL}>
-    
+
+    <!-- SEO Meta Tags -->
+    {keywordsMeta && (
+      <meta name="keywords" content={keywordsMeta} />
+    )}
+    {updated && (
+      <meta name="last-modified" content={updated} />
+    )}
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:type" content={updated ? 'article' : 'website'} />
+    <meta property="og:title" content={`${title} | How to Build an App`} />
+    <meta property="og:description" content={trimmedDescription} />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:site_name" content="How to Build an App" />
+    <meta property="og:image" content={new URL(joinPath('/assets/images/flossin-tech.png'), Astro.site).toString()} />
+    <meta property="og:image:alt" content="How to Build an App - Non-linear guide to software development" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@FlosstinTech" />
+    <meta name="twitter:creator" content="@FlosstinTech" />
+    <meta name="twitter:title" content={`${title} | How to Build an App`} />
+    <meta name="twitter:description" content={trimmedDescription} />
+    <meta name="twitter:image" content={new URL(joinPath('/assets/images/flossin-tech.png'), Astro.site).toString()} />
+    <meta name="twitter:image:alt" content="How to Build an App Logo" />
+
+    <!-- Article-Specific Meta Tags (when content is published/updated) -->
+    {updated && (
+      <>
+        <meta property="article:published_time" content={updated} />
+        <meta property="article:modified_time" content={updated} />
+        {keywordsMeta && (
+          <meta property="article:tag" content={keywordsMeta} />
+        )}
+      </>
+    )}
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <meta name="generator" content={Astro.generator}>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
+
+    <!-- JSON-LD Structured Data -->
+    <!-- WebSite Schema (always present) -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    <!-- Conditional Additional Schema -->
+    {additionalSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(additionalSchema)} />
+    )}
   </head>
   <body class="bg-slate-900 text-slate-100 font-sans">
     <StreakNotification />

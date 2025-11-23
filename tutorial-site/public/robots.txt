@@ -1,0 +1,26 @@
+# robots.txt for How to Build an App
+# Educational content site - allow all crawlers full access
+
+# Default rule for all user agents
+User-agent: *
+Allow: /
+
+# Explicitly allow crawling of content and learning paths
+Allow: /content/
+Allow: /learning-paths/
+Allow: /examples/
+
+# Disallow temporary and non-public directories (if applicable)
+# Disallow: /temp/
+# Disallow: /draft/
+# Disallow: /admin/
+
+# Sitemap reference
+Sitemap: https://howtobuildanapp.dev/sitemap-index.xml
+
+# Crawl delay (optional - helps prevent server overload)
+# Set to 0 for aggressive crawling, or a number of seconds between requests
+# Uncomment if needed: Crawl-delay: 1
+
+# Request timeout (optional)
+# Uncomment if needed: Request-timeout: 30

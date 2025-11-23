@@ -26,6 +26,26 @@ milestones.forEach((m: any) => {
   totalSteps += m.steps?.length || 0;
 });
 
+// Build Course schema for learning path
+const courseSteps = milestones
+  .flatMap((milestone: any) =>
+    milestone.steps?.map((step: any) => ({
+      name: `${(step.topic || 'Unknown').replace(/-/g, ' ')} - ${step.depth}`,
+      url: Astro.url.origin + `/${step.phase}/${step.topic}/${step.depth}/`,
+      duration: step.estimated_minutes ? `PT${step.estimated_minutes}M` : undefined
+    })) || []
+  );
+
+const courseSchema = {
+  type: 'Course' as const,
+  headline: pathData.name,
+  description: pathData.description,
+  estimatedTime: pathData.estimated_total_time_minutes,
+  learningOutcomes: pathData.objectives || [],
+  prerequisites: pathData.prerequisites || [],
+  courseSteps: courseSteps
+};
+
 function formatTime(minutes: number): string {
   if (minutes < 60) return `${minutes} min`;
   const hours = Math.floor(minutes / 60);
@@ -34,7 +54,7 @@ function formatTime(minutes: number): string {
 }
 ---
 
-<BaseLayout title={`${pathData.name} | Learning Paths`}>
+<BaseLayout title={`${pathData.name} | Learning Paths`} schema={courseSchema} description={pathData.description}>
   <main class="path-detail">
     <a href="/learn/paths/" class="back-link">← Back to all paths</a>
 

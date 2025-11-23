@@ -4,12 +4,29 @@ import BaseLayout from './BaseLayout.astro';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string[];
+  updated?: string;
+  schema?: {
+    type: 'WebSite' | 'Article' | 'LearningResource' | 'Course' | 'BreadcrumbList';
+    headline?: string;
+    datePublished?: string;
+    dateModified?: string;
+    author?: string;
+    educationalLevel?: 'Beginner' | 'Intermediate' | 'Advanced';
+    timeRequired?: string;
+    image?: string;
+    breadcrumbs?: Array<{ name: string; url: string }>;
+    courseSteps?: Array<{ name: string; url: string; duration?: string }>;
+    learningOutcomes?: string[];
+    prerequisites?: string[];
+    estimatedTime?: number;
+  };
 }
 
-const { title, description } = Astro.props;
+const { title, description, keywords, updated, schema } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} keywords={keywords} updated={updated} schema={schema}>
   <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
       <slot />

@@ -5,6 +5,11 @@ import Breadcrumbs from '../../../components/navigation/Breadcrumbs.astro';
 import DepthSwitcher from '../../../components/content/DepthSwitcher.astro';
 import ContentNavigation from '../../../components/navigation/ContentNavigation.astro';
 import CompleteButton from '../../../components/learn/CompleteButton.astro';
+import {
+  selectOptimalDescription,
+  generateKeywords,
+  mapDepthToEducationalLevel,
+} from '../../../utils/seo';
 
 export async function getStaticPaths() {
   const allDocs = await getCollection('docs');
@@ -24,9 +29,76 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Use rich metadata descriptions if available, fallback to default format
+const metaDescription = selectOptimalDescription({
+  title: entry.data.title,
+  description: entry.data.description,
+  depth: entry.data.depth,
+});
+
+// Generate SEO keywords from frontmatter + depth + topic
+const seoKeywords = generateKeywords(
+  entry.data.keywords,
+  entry.data.depth,
+  entry.data.topic
+);
+
+// Determine educational level from depth
+const educationalLevel = mapDepthToEducationalLevel(entry.data.depth);
+
+// Convert reading_time to ISO 8601 duration format (PT prefix means Period Time)
+const timeRequired = entry.data.reading_time
+  ? `PT${entry.data.reading_time}M`
+  : undefined;
+
+// Build phase name mapping for display
+const phaseNames: Record<string, string> = {
+  '01-discovery-planning': 'Discovery & Planning',
+  '02-design': 'Design',
+  '03-development': 'Development',
+  '04-testing': 'Testing',
+  '05-deployment': 'Deployment',
+  '06-operations': 'Operations',
+  '07-iteration': 'Iteration',
+};
+
+const depthNames: Record<string, string> = {
+  'surface': 'Surface',
+  'mid-depth': 'Mid-Depth',
+  'deep-water': 'Deep Water',
+};
+
+// Build breadcrumb trail
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: phaseNames[entry.data.phase] || entry.data.phase, url: `/phases/${entry.data.phase}/` },
+  { name: entry.data.title, url: Astro.url.pathname }
+];
+
+// Schema for this learning resource
+const schema = {
+  type: 'LearningResource' as const,
+  headline: entry.data.title,
+  description: metaDescription,
+  datePublished: entry.data.updated || '2025-01-01',
+  dateModified: entry.data.updated || new Date().toISOString().split('T')[0],
+  author: 'How to Build an App',
+  educationalLevel: educationalLevel,
+  timeRequired: timeRequired,
+  breadcrumbs: breadcrumbs,
+  learningOutcomes: entry.data.personas || [],
+  prerequisites: entry.data.prerequisites || []
+};
 ---
 
-<ContentLayout title={entry.data.title} description={`${entry.data.title} - ${entry.data.depth} level`}>
+<ContentLayout
+  title={entry.data.title}
+  description={metaDescription}
+  keywords={seoKeywords}
+  updated={entry.data.updated}
+  schema={schema}
+>
   <Breadcrumbs
     phase={entry.data.phase}
     topic={entry.data.topic}

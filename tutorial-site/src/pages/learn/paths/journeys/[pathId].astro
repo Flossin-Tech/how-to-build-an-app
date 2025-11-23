@@ -21,6 +21,31 @@ export async function getStaticPaths() {
 const { pathData, category } = Astro.props;
 const steps = pathData.journey_steps || [];
 
+// Calculate total estimated time
+let totalEstimatedTime = 0;
+if (pathData.journey_steps && pathData.journey_steps.length > 0) {
+  totalEstimatedTime = pathData.journey_steps.reduce((sum: number, step: any) => {
+    return sum + (step.estimated_minutes || 0);
+  }, 0);
+}
+
+// Build Course schema for learning path
+const courseSteps = (pathData.journey_steps || []).map((step: any) => ({
+  name: `${(step.topic || 'Unknown').replace(/-/g, ' ')} - ${step.depth}`,
+  url: Astro.url.origin + `/${step.phase}/${step.topic}/${step.depth}/`,
+  duration: step.estimated_minutes ? `PT${step.estimated_minutes}M` : undefined
+}));
+
+const courseSchema = {
+  type: 'Course' as const,
+  headline: pathData.name,
+  description: pathData.description,
+  estimatedTime: totalEstimatedTime,
+  learningOutcomes: pathData.objectives || [],
+  prerequisites: pathData.prerequisites || [],
+  courseSteps: courseSteps
+};
+
 // Build a mapping of path IDs to their categories for related paths
 const pathsDir = path.join(process.cwd(), '../learning-paths');
 const pathCategories: Record<string, string> = {};
@@ -57,7 +82,7 @@ function formatTime(minutes: number): string {
 }
 ---
 
-<BaseLayout title={`${pathData.name} | Learning Paths`}>
+<BaseLayout title={`${pathData.name} | Learning Paths`} schema={courseSchema} description={pathData.description}>
   <main class="path-detail">
     <a href="/learn/paths/" class="back-link">← Back to all paths</a>
 

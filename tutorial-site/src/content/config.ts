@@ -11,6 +11,7 @@ const docsCollection = defineCollection({
     domain: z.string().optional(),
     industry: z.string().optional(),
     keywords: z.array(z.string()).optional(),
+    description: z.string().optional(),
     reading_time: z.number().optional(),
     prerequisites: z.array(z.string()).default([]),
     related_topics: z.array(z.string()).default([]),
