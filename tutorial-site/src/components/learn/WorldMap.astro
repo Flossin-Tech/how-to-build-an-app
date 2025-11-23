@@ -4,11 +4,12 @@
 
 export interface Props {
   currentPathId?: string;
+  currentPhase?: string; // Current phase the user is viewing (e.g., '06-operations')
   highlightedTopics?: string[]; // Topics in current learning path
   class?: string;
 }
 
-const { currentPathId, highlightedTopics = [], class: className = '' } = Astro.props;
+const { currentPathId, currentPhase, highlightedTopics = [], class: className = '' } = Astro.props;
 
 // Phase islands with their themes and positions
 // Positions use a 100x70 coordinate system matching the SVG viewBox
@@ -148,6 +149,39 @@ const connections = [
       <div class="water-deep"></div>
     </div>
 
+    <!-- Compass rose - Mariners-inspired design -->
+    <div class="compass-rose" aria-hidden="true" data-compass>
+      <svg viewBox="0 0 100 100" fill="none">
+        <!-- Outer circle -->
+        <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+        <!-- Inner circle -->
+        <circle cx="50" cy="50" r="8" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+
+        <!-- Cardinal points - trident style like Mariners -->
+        <!-- North - red for emphasis -->
+        <path class="compass-north" d="M50 5 L54 20 L50 12 L46 20 Z" fill="rgb(239, 68, 68)" opacity="0.9"/>
+        <!-- South -->
+        <path d="M50 95 L54 80 L50 88 L46 80 Z" fill="currentColor" opacity="0.5"/>
+        <!-- East -->
+        <path d="M95 50 L80 54 L88 50 L80 46 Z" fill="currentColor" opacity="0.5"/>
+        <!-- West -->
+        <path d="M5 50 L20 54 L12 50 L20 46 Z" fill="currentColor" opacity="0.5"/>
+
+        <!-- Intercardinal points - smaller -->
+        <!-- NE -->
+        <path d="M81.82 18.18 L71 25 L75 21 L71 17 Z" fill="currentColor" opacity="0.3"/>
+        <!-- SE -->
+        <path d="M81.82 81.82 L71 75 L75 79 L71 83 Z" fill="currentColor" opacity="0.3"/>
+        <!-- SW -->
+        <path d="M18.18 81.82 L29 75 L25 79 L29 83 Z" fill="currentColor" opacity="0.3"/>
+        <!-- NW -->
+        <path d="M18.18 18.18 L29 25 L25 21 L29 17 Z" fill="currentColor" opacity="0.3"/>
+
+        <!-- Direction letter - N -->
+        <text x="50" y="38" text-anchor="middle" font-size="8" font-weight="600" fill="currentColor" opacity="0.7">N</text>
+      </svg>
+    </div>
+
     <!-- Connection paths between islands -->
     <svg class="connection-paths" viewBox="0 0 100 70" preserveAspectRatio="none">
       {connections.map((conn) => {
@@ -172,17 +206,24 @@ const connections = [
     {islands.map((island) => {
       const hasHighlightedTopics = island.topics.some(t => highlightedTopics.includes(t));
       const topicCount = island.topics.length;
+      const isCurrent = currentPhase === island.id;
 
       // Convert y from 0-70 coordinate system to 0-100% for CSS positioning
       const yPercent = (island.position.y / 70) * 100;
 
+      // Calculate glow intensity based on topic count (3-8 topics range)
+      // Normalized to 0-1 scale for CSS calculations
+      const minTopics = 3;
+      const maxTopics = 8;
+      const glowIntensity = (topicCount - minTopics) / (maxTopics - minTopics);
+
       return (
         <button
-          class={`island island-${island.color} ${hasHighlightedTopics ? 'island-highlighted' : ''}`}
-          style={`left: ${island.position.x}%; top: ${yPercent}%`}
+          class={`island island-${island.color} ${hasHighlightedTopics ? 'island-highlighted' : ''} ${isCurrent ? 'island-current' : ''}`}
+          style={`left: ${island.position.x}%; top: ${yPercent}%; --topic-count: ${topicCount}; --glow-intensity: ${glowIntensity}`}
           data-island-id={island.id}
           data-topics={JSON.stringify(island.topics)}
-          aria-label={`${island.name}: ${island.description}. ${topicCount} topics.`}
+          aria-label={`${island.name}: ${island.description}. ${topicCount} topics.${isCurrent ? ' You are here.' : ''}`}
         >
           <div class="island-glow"></div>
           <div class="island-body">
@@ -206,6 +247,14 @@ const connections = [
               />
             </svg>
           </div>
+          {/* Ship marker for current location */}
+          {isCurrent && (
+            <div class="ship-marker" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.89-6.68c.08-.26.06-.54-.06-.78s-.34-.42-.6-.5L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.29.42c-.26.08-.48.26-.6.5s-.15.52-.06.78L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"/>
+              </svg>
+            </div>
+          )}
         </button>
       );
     })}
@@ -300,6 +349,71 @@ const connections = [
       initWorldMap();
     }
   });
+
+  // Compass rose hover animation with smooth ease in/out
+  function initCompassAnimation() {
+    const compass = document.querySelector('[data-compass]');
+    if (!compass) return;
+
+    const svg = compass.querySelector('svg');
+    if (!svg) return;
+
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let isHovering = false;
+    let currentRotation = 0;
+    let targetSpeed = 0; // degrees per frame
+    let currentSpeed = 0;
+    let animationId: number | null = null;
+
+    const maxSpeed = 2; // degrees per frame (~20 RPM at 60fps)
+    const acceleration = 0.05; // ease in rate
+    const deceleration = 0.03; // ease out rate (slower for natural feel)
+
+    function animate() {
+      // Smoothly adjust speed toward target
+      if (isHovering) {
+        currentSpeed += (maxSpeed - currentSpeed) * acceleration;
+      } else {
+        currentSpeed *= (1 - deceleration);
+      }
+
+      // Update rotation
+      currentRotation += currentSpeed;
+
+      // When slowing down, ease toward nearest 360° multiple (north up)
+      if (!isHovering && currentSpeed < 0.1) {
+        const targetRotation = Math.round(currentRotation / 360) * 360;
+        currentRotation += (targetRotation - currentRotation) * 0.08;
+
+        // Stop animation when close enough to north
+        if (Math.abs(currentRotation - targetRotation) < 0.5 && currentSpeed < 0.01) {
+          currentRotation = targetRotation % 360;
+          svg.style.transform = `rotate(${currentRotation}deg)`;
+          animationId = null;
+          return;
+        }
+      }
+
+      svg.style.transform = `rotate(${currentRotation}deg)`;
+      animationId = requestAnimationFrame(animate);
+    }
+
+    compass.addEventListener('mouseenter', () => {
+      isHovering = true;
+      if (!animationId) {
+        animationId = requestAnimationFrame(animate);
+      }
+    });
+
+    compass.addEventListener('mouseleave', () => {
+      isHovering = false;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initCompassAnimation);
 </script>
 
 <style>
@@ -356,6 +470,24 @@ const connections = [
     );
   }
 
+  /* Compass rose */
+  .compass-rose {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    width: 60px;
+    height: 60px;
+    color: rgb(148, 163, 184);
+    pointer-events: auto;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  .compass-rose svg {
+    width: 100%;
+    height: 100%;
+  }
+
   /* Connection paths */
   .connection-paths {
     position: absolute;
@@ -398,17 +530,40 @@ const connections = [
     border-radius: 50%;
   }
 
+  /* Maldives-style lagoon glow - size and intensity based on topic count */
   .island-glow {
     position: absolute;
-    inset: -10px;
+    /* Base size: 20px, scales up to 45px based on topic count */
+    /* calc: -20px - (intensity * 25px) where intensity is 0-1 */
+    inset: calc(-20px - (var(--glow-intensity, 0.5) * 25px));
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    /* Base opacity 0.25, scales to 0.5 based on intensity */
+    background: radial-gradient(
+      ellipse at center,
+      rgba(34, 211, 238, calc(0.25 + var(--glow-intensity, 0.5) * 0.25)) 0%,
+      rgba(34, 211, 238, calc(0.15 + var(--glow-intensity, 0.5) * 0.15)) 30%,
+      rgba(6, 182, 212, calc(0.1 + var(--glow-intensity, 0.5) * 0.1)) 50%,
+      rgba(8, 145, 178, calc(0.05 + var(--glow-intensity, 0.5) * 0.05)) 70%,
+      transparent 100%
+    );
+    opacity: 1;
+    transition: all 0.3s ease;
+    /* Blur also scales: 3px base, up to 6px */
+    filter: blur(calc(3px + var(--glow-intensity, 0.5) * 3px));
   }
 
   .island:hover .island-glow,
   .island.island-highlighted .island-glow {
-    opacity: 1;
+    /* Expand by 5px on hover */
+    inset: calc(-25px - (var(--glow-intensity, 0.5) * 25px));
+    background: radial-gradient(
+      ellipse at center,
+      rgba(34, 211, 238, calc(0.35 + var(--glow-intensity, 0.5) * 0.25)) 0%,
+      rgba(34, 211, 238, calc(0.2 + var(--glow-intensity, 0.5) * 0.15)) 30%,
+      rgba(6, 182, 212, calc(0.15 + var(--glow-intensity, 0.5) * 0.1)) 50%,
+      rgba(8, 145, 178, calc(0.08 + var(--glow-intensity, 0.5) * 0.05)) 70%,
+      transparent 100%
+    );
   }
 
   .island-body {
@@ -482,26 +637,13 @@ const connections = [
     transition: stroke-dashoffset 0.5s ease;
   }
 
-  /* Island color themes */
-  .island-emerald .island-glow { background: radial-gradient(circle, rgba(52, 211, 153, 0.3), transparent 70%); }
+  /* Island color themes - progress ring colors */
   .island-emerald .progress-fill { stroke: rgb(52, 211, 153); }
-
-  .island-sky .island-glow { background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%); }
   .island-sky .progress-fill { stroke: rgb(56, 189, 248); }
-
-  .island-violet .island-glow { background: radial-gradient(circle, rgba(167, 139, 250, 0.3), transparent 70%); }
   .island-violet .progress-fill { stroke: rgb(167, 139, 250); }
-
-  .island-amber .island-glow { background: radial-gradient(circle, rgba(251, 191, 36, 0.3), transparent 70%); }
   .island-amber .progress-fill { stroke: rgb(251, 191, 36); }
-
-  .island-orange .island-glow { background: radial-gradient(circle, rgba(251, 146, 60, 0.3), transparent 70%); }
   .island-orange .progress-fill { stroke: rgb(251, 146, 60); }
-
-  .island-rose .island-glow { background: radial-gradient(circle, rgba(251, 113, 133, 0.3), transparent 70%); }
   .island-rose .progress-fill { stroke: rgb(251, 113, 133); }
-
-  .island-teal .island-glow { background: radial-gradient(circle, rgba(45, 212, 191, 0.3), transparent 70%); }
   .island-teal .progress-fill { stroke: rgb(45, 212, 191); }
 
   /* State modifiers */
@@ -523,7 +665,40 @@ const connections = [
     box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
   }
 
-  /* Current location marker */
+  /* Current island indicator */
+  .island.island-current .island-body {
+    border-color: rgb(250, 204, 21);
+  }
+
+  /* Ship marker for current location */
+  .ship-marker {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    color: rgb(250, 204, 21);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    animation: ship-bob 3s ease-in-out infinite;
+    z-index: 10;
+  }
+
+  .ship-marker svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes ship-bob {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateX(-50%) translateY(-3px) rotate(2deg);
+    }
+  }
+
+  /* Legacy current location marker (kept for compatibility) */
   .current-location-marker {
     position: absolute;
     pointer-events: none;
@@ -608,6 +783,19 @@ const connections = [
       display: none;
     }
 
+    .ship-marker {
+      width: 18px;
+      height: 18px;
+      top: -22px;
+    }
+
+    .compass-rose {
+      width: 45px;
+      height: 45px;
+      bottom: 8px;
+      left: 8px;
+    }
+
     .map-legend {
       gap: 1rem;
       flex-wrap: wrap;
@@ -618,7 +806,8 @@ const connections = [
   @media (prefers-reduced-motion: reduce) {
     .island,
     .progress-fill,
-    .marker-pulse {
+    .marker-pulse,
+    .ship-marker {
       animation: none;
       transition: none;
     }
