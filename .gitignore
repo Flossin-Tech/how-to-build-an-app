@@ -2,6 +2,7 @@
 # Research & Planning Files (Internal Use Only)
 research/
 to-implement/
+.dev-notes/
 
 # Internal Documentation & Templates
 CONTENT_MODULE_TEMPLATES.md
