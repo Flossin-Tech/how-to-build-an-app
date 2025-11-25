@@ -4,7 +4,7 @@
   "category": "persona",
   "description": "Complete lifecycle overview at surface level - understand the full development map without drowning in details",
   "target_personas": ["new-developer"],
-  "estimated_total_time_minutes": 140,
+  "estimated_total_time_minutes": 125,
 
   "objectives": [
     "Understand the complete software development lifecycle",

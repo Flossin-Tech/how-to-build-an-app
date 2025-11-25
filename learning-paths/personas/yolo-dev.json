@@ -4,7 +4,7 @@
   "category": "persona",
   "description": "Tactical fixes for critical gaps - shore up what you skipped when shipping fast",
   "target_personas": ["yolo-dev"],
-  "estimated_total_time_minutes": 95,
+  "estimated_total_time_minutes": 83,
 
   "objectives": [
     "Identify and fix critical security vulnerabilities",

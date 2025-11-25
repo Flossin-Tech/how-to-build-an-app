@@ -4,7 +4,7 @@
   "category": "persona",
   "description": "Systematic mid-depth coverage to fill gaps across the full stack",
   "target_personas": ["generalist-leveling-up"],
-  "estimated_total_time_minutes": 320,
+  "estimated_total_time_minutes": 285,
 
   "objectives": [
     "Fill knowledge gaps systematically across all development phases",
@@ -68,24 +68,6 @@
           "checkpoint": {
             "question": "Do you understand the trade-offs between different frontend architectures?",
             "required_for_progress": false
-          }
-        },
-        {
-          "phase": "examples",
-          "topic": "domain-specific/web-apps/architecture-decisions/microfrontend-vs-monolith",
-          "depth": null,
-          "file": "decision-framework-generalist.md",
-          "required": false,
-          "estimated_minutes": 20,
-          "why": "Learn systematic decision-making for architecture choices using real-world case study",
-          "checkpoint": {
-            "question": "Can you apply the decision framework to evaluate architecture options?",
-            "required_for_progress": false,
-            "reflection": [
-              "What quantitative thresholds help you decide between architectures?",
-              "How do you assess team capability gaps?",
-              "When should you choose simplicity over sophistication?"
-            ]
           }
         },
         {

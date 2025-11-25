@@ -4,7 +4,7 @@
   "category": "persona",
   "description": "Apply your existing expertise to a new domain - skip basics, focus on domain-specific differences",
   "target_personas": ["specialist-expanding"],
-  "estimated_total_time_minutes": 180,
+  "estimated_total_time_minutes": 145,
 
   "objectives": [
     "Transfer existing process knowledge to new domain",
