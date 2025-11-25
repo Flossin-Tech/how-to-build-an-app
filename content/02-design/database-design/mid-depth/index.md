@@ -561,6 +561,112 @@ const orders = await db.query('SELECT * FROM orders');
 
 **When to use:** Mid-size SaaS with dozens of tenants, where isolation justifies complexity.
 
+## Real-World Example: Schema-Per-Tenant Implementation
+
+A dispatch management SaaS uses schema-per-tenant at the Mid-Depth level for strong data isolation without the operational complexity of separate databases.
+
+**The Pattern**:
+
+Each tenant (organization) gets an isolated PostgreSQL schema with identical table structure:
+
+```sql
+-- Tenant management schema (shared)
+CREATE SCHEMA tenant_management;
+
+CREATE TABLE tenant_management.tenants (
+    tenant_id UUID PRIMARY KEY,
+    tenant_name VARCHAR(255) NOT NULL,
+    subdomain VARCHAR(63) UNIQUE NOT NULL,
+    schema_name VARCHAR(63) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Function to create new tenant schema
+CREATE OR REPLACE FUNCTION create_tenant_schema(p_tenant_id UUID, p_schema_name VARCHAR)
+RETURNS VOID AS $$
+BEGIN
+    -- Create schema
+    EXECUTE format('CREATE SCHEMA %I', p_schema_name);
+
+    -- Create tables (same structure for every tenant)
+    EXECUTE format('
+        CREATE TABLE %I.users (
+            user_id UUID PRIMARY KEY,
+            username VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL
+        );
+
+        CREATE TABLE %I.equipment (
+            equipment_id UUID PRIMARY KEY,
+            equipment_type VARCHAR(100) NOT NULL,
+            status VARCHAR(50) NOT NULL
+        );
+
+        CREATE TABLE %I.dispatches (
+            dispatch_id UUID PRIMARY KEY,
+            equipment_id UUID REFERENCES %I.equipment(equipment_id),
+            created_at TIMESTAMP DEFAULT NOW()
+        );
+    ', p_schema_name, p_schema_name, p_schema_name, p_schema_name);
+END;
+$$ LANGUAGE plpgsql;
+```
+
+**Connection Resolution Middleware** (Python/Flask example):
+
+```python
+from flask import g, request
+import psycopg2
+
+def resolve_tenant_schema():
+    """Resolve tenant from subdomain and set schema"""
+    subdomain = request.host.split('.')[0]
+
+    # Look up tenant schema from subdomain
+    tenant = db.query(
+        "SELECT schema_name FROM tenant_management.tenants WHERE subdomain = %s",
+        (subdomain,)
+    ).fetchone()
+
+    if not tenant:
+        abort(404, "Tenant not found")
+
+    # Set search_path for this connection
+    db.execute(f"SET search_path TO {tenant['schema_name']}, public")
+    g.tenant_schema = tenant['schema_name']
+
+@app.before_request
+def before_request():
+    resolve_tenant_schema()
+```
+
+**Decision Framework for Multi-Tenancy Patterns**:
+
+| Aspect | Schema-Per-Tenant | Row-Level (tenant_id) | Database-Per-Tenant |
+|--------|-------------------|----------------------|---------------------|
+| **Isolation** | Strong (PostgreSQL enforced) | Weak (application enforced) | Perfect (separate databases) |
+| **Operational Overhead** | Medium (manage schemas) | Low (single schema) | High (manage databases) |
+| **Cost** | Single database instance | Single database instance | N × database cost |
+| **Tenant Scale** | 10-1,000 tenants | 1,000-10,000+ tenants | 1-100 enterprise tenants |
+| **Backup/Restore** | Per-schema possible | Complex selective restore | Per-database, straightforward |
+| **Schema Migrations** | Apply to all schemas | Single migration | Apply N times |
+| **Cross-Tenant Analytics** | Difficult (schema boundaries) | Easy (JOIN across tenants) | Very difficult |
+
+**When Schema-Per-Tenant Is Appropriate**:
+- 10-1,000 tenants (Mid-Depth scale)
+- Strong data isolation required (compliance, security)
+- Shared infrastructure acceptable (cost-effective)
+- Schema-level permissions sufficient
+- Don't need frequent cross-tenant analytics
+
+**When NOT to Use**:
+- Single-tenant applications (unnecessary complexity)
+- Thousands of tenants (schema proliferation issues)
+- Need for cross-tenant analytics (schema boundaries prevent JOINs)
+- Extreme performance isolation needed (use database-per-tenant)
+
+📌 **See Complete Implementation**: [Dispatch Management - Mid-Depth Level (see Database Architecture section)](/02-design/architecture-design/case-studies/dispatch-management-mid-depth/)
+
 ### Pattern 3: Shared Database, Shared Schema (Row-Level Security)
 
 All tenants share the same tables. Every table has a `tenant_id` column.
@@ -1129,3 +1235,15 @@ The database isn't just storage. It's your data's last line of defense against b
 These patterns matter when you're supporting real users who notice when queries take 5 seconds instead of 50ms. The surface-level stuff gets you started. This mid-depth content keeps you running when the database hits 100 million rows.
 
 For deeper topics like database replication, sharding, or advanced query optimization, see the deep-water content. For understanding how these database decisions connect to your overall system design, check out the related topics on API design and performance/scalability planning.
+
+---
+
+## Real Life Case Studies
+
+### [Dispatch Management: Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
+A B2B SaaS application demonstrating multi-tenancy evolution. At Mid-Depth level (100-1,000 users), implemented schema-per-tenant PostgreSQL architecture for strong data isolation without the operational complexity of separate databases.
+
+**Topics covered:** Schema-per-tenant implementation, Connection resolution middleware, Multi-tenancy pattern decision framework, PostgreSQL schema management, Tenant isolation patterns
+
+**Database Focus:** See [Mid-Depth Level database architecture section](/02-design/architecture-design/case-studies/dispatch-management-mid-depth/) for complete schema-per-tenant implementation with decision criteria.

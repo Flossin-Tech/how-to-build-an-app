@@ -220,6 +220,129 @@ Environment variables work fine for small projects and development. Move to a de
 
 Don't let perfect be the enemy of good. Environment variables are infinitely better than hardcoded secrets.
 
+## Example: Progressive Secret Management
+
+Secret management should evolve with your application's maturity. Starting with HashiCorp Vault on day one is over-engineering. Starting with hardcoded secrets is negligence. The key is knowing when to evolve.
+
+A dispatch management application evolved its secret management across three maturity levels:
+
+### Surface Level: Docker Secrets (0-100 users)
+
+**Approach**: Store secrets in files, mount them as Docker secrets
+
+```yaml
+# docker-compose.yml
+services:
+  flask-app:
+    secrets:
+      - db_password
+      - keycloak_client_secret
+      - flask_secret_key
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  keycloak_client_secret:
+    file: ./secrets/keycloak_client_secret.txt
+  flask_secret_key:
+    file: ./secrets/flask_secret_key.txt
+```
+
+**Why This Is Acceptable at Surface Level**:
+- Simple, built into Docker Compose
+- Secrets not in git (files in `.gitignore`)
+- Sufficient for <100 users with known team
+- Zero operational overhead
+- Zero monthly cost
+
+**Limitations Accepted**:
+- Manual secret rotation (no automation)
+- No audit trail of who accessed what secret
+- Limited to single-server deployment
+- Team shares secrets via password manager
+
+### Mid-Depth Level: HashiCorp Vault (100-1,000 users)
+
+**Approach**: Migrate to Vault for dynamic secrets with automated rotation
+
+```python
+import hvac
+import os
+
+# Initialize Vault client
+vault_client = hvac.Client(url='https://vault.example.com')
+vault_client.auth.approle.login(
+    role_id=os.environ['VAULT_ROLE_ID'],
+    secret_id=os.environ['VAULT_SECRET_ID']
+)
+
+# Read database credentials (dynamically generated)
+db_creds = vault_client.secrets.database.generate_credentials(
+    name='dispatch-db-role'
+)
+
+# Credentials are temporary (expire after lease_duration)
+db_url = f"postgresql://{db_creds['username']}:{db_creds['password']}@db:5432/dispatch"
+```
+
+**Why We Evolved**:
+- Multiple team members needed access to secrets
+- Compliance required secret rotation and audit trail
+- Kubernetes deployment needed centralized secret management
+- Manual rotation consuming too much time
+
+**Benefits Gained**:
+- Dynamic credentials (rotate automatically)
+- Audit trail (who accessed what secret when)
+- Fine-grained access control
+- Secret versioning and rollback
+
+**Cost**: ~$100-200/month for managed Vault or operational overhead for self-hosted
+
+### Deep-Water Level: Vault + HSM (10,000+ users)
+
+**Approach**: Hardware Security Module for master key protection
+
+**Why We Evolved**:
+- ISO 27001 and SOC 2 Type II audits required HSM
+- Compliance auditors demanded hardware-backed key protection
+- Zero-trust architecture required cryptographic root of trust
+- Enterprise contracts made this mandatory
+
+**Implementation**:
+- Vault stores secrets, but master key protected by HSM
+- FIPS 140-2 Level 3 compliance
+- Multi-party key ceremony for disaster recovery
+
+**Cost Trade-Off**:
+- HSM hardware: $10,000-50,000 upfront
+- Managed HSM (AWS CloudHSM): $1,500/month minimum
+- Only justified when compliance or contracts demand it
+
+### Decision Framework
+
+| Scale | Team Size | Compliance | Recommended Solution | Monthly Cost |
+|-------|-----------|------------|---------------------|--------------|
+| 0-100 users | 1-2 developers | None | Docker secrets | $0 |
+| 100-1,000 users | 3-5 engineers | SOC 2 Type I | HashiCorp Vault | $100-200 |
+| 10,000+ users | 10+ engineers | SOC 2 Type II / ISO 27001 | Vault + HSM | $1,500+ |
+
+**Key Insight**: The team moved to Vault not because "Vault is better" but because manual secret rotation and lack of audit trails became pain points. They moved to HSM not because "HSM is more secure" but because compliance audits required it.
+
+📌 **See Complete Security Evolution**: [Dispatch Management Case Study (security covered at each maturity level)](/02-design/architecture-design/case-studies/dispatch-management/)
+
 ## One-Sentence Maxim
 
 **If it's a secret, it doesn't belong in git.**
+
+---
+
+## Real Life Case Studies
+
+### [Dispatch Management: Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
+A B2B SaaS application demonstrating progressive secret management evolution: Docker secrets (Surface) → HashiCorp Vault (Mid-Depth) → Vault + HSM (Deep-Water). Shows when to evolve based on team size, compliance requirements, and operational overhead.
+
+**Topics covered:** Docker secrets for single-server deployment, HashiCorp Vault for dynamic credentials, HSM for compliance requirements, Secret rotation automation, Decision framework for secret management tools
+
+**Secret Management Focus:** Includes cost-benefit analysis and specific triggers that justified each evolution (manual rotation overhead, audit trail requirements, SOC 2 compliance).

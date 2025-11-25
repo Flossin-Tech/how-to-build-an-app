@@ -110,6 +110,85 @@ pip-audit
 # Or use automated tools like Dependabot
 ```
 
+## Example: OAuth2/OIDC Integration from Day One
+
+Many teams say "we'll add SSO later" and then face massive refactoring when enterprise customers demand it. Starting with proper authentication from the beginning avoids this technical debt.
+
+A dispatch management application integrated Keycloak (open-source identity provider) at launch. This wasn't over-engineering - it was recognizing that enterprise customers expect OAuth2/OIDC as table stakes.
+
+**JWT Validation in Python/Flask**:
+
+```python
+from functools import wraps
+from flask import request, jsonify
+import jwt
+
+def require_auth(f):
+    """Decorator to require valid JWT token"""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        auth_header = request.headers.get('Authorization')
+
+        if not auth_header or not auth_header.startswith('Bearer '):
+            return jsonify({'error': 'Missing or invalid authorization header'}), 401
+
+        token = auth_header.split(' ')[1]
+
+        try:
+            # Validate JWT signature with Keycloak public key
+            decoded = jwt.decode(
+                token,
+                get_keycloak_public_key(),
+                algorithms=['RS256'],
+                audience='dispatch-backend'
+            )
+
+            # Attach user info to request context
+            request.user_id = decoded['sub']
+            request.user_roles = decoded.get('realm_access', {}).get('roles', [])
+
+            return f(*args, **kwargs)
+
+        except jwt.ExpiredSignatureError:
+            return jsonify({'error': 'Token expired'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'error': 'Invalid token'}), 401
+
+    return decorated_function
+
+def require_role(role):
+    """Decorator to require specific Keycloak role"""
+    def decorator(f):
+        @wraps(f)
+        @require_auth  # First validate token
+        def decorated_function(*args, **kwargs):
+            if role not in request.user_roles:
+                return jsonify({'error': f'Requires role: {role}'}), 403
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
+
+# Usage in routes
+@app.route('/api/dispatch', methods=['POST'])
+@require_role('dispatcher')  # Only users with 'dispatcher' role can access
+def create_dispatch():
+    # Dispatch logic here - user is authenticated and authorized
+    pass
+```
+
+**Why This Approach Works**:
+- OAuth2/OIDC is the industry standard - no custom auth to debug
+- Enterprise customers expect SSO integration, not username/password
+- Adding authentication later requires massive refactoring across the codebase
+- Role-based access control built in from day one
+
+**Progressive Enhancement Path**:
+- **Surface Level**: Keycloak + self-signed certs + basic role-based access control (RBAC)
+- **Mid-Depth**: Let's Encrypt certificates + multi-factor authentication (MFA) + attribute-based access control (ABAC)
+- **Deep-Water**: Hardware security modules (HSM) + zero-trust architecture + compliance certifications
+
+📌 **See Complete Security Architecture**: [Dispatch Management Case Study (security integrated throughout all maturity levels)](/02-design/architecture-design/case-studies/dispatch-management/)
+
 ## Real Red Flags: What to Look For
 
 ### ❌ Hardcoded Secrets
@@ -245,3 +324,15 @@ If you can check all ten boxes, you've covered the basics.
 **"Validate input like it's malicious, because sometimes it is."**
 
 Security isn't paranoia when the threats are real. Write code that assumes bad input and handles it gracefully.
+
+---
+
+## Real Life Case Studies
+
+### [Dispatch Management: Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
+A B2B SaaS application that integrated OAuth2/OIDC authentication (Keycloak) from day one, demonstrating how security can be built progressively without over-engineering. Shows JWT validation, role-based access control, and security evolution across three maturity levels.
+
+**Topics covered:** OAuth2/OIDC integration from Surface Level, JWT token validation, Role-based access control (RBAC), Progressive security enhancement (self-signed certs → Let's Encrypt → HSM), Security integrated throughout development lifecycle
+
+**Security Focus:** Each maturity level includes "Non-Negotiable Security" requirements, showing what security is mandatory vs optional at each scale.

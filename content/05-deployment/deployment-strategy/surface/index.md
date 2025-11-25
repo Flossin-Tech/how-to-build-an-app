@@ -76,6 +76,115 @@ There are seven main approaches. Each trades off cost, speed, and safety differe
 
 **Real scenario:** Nightly data processing job. Stop it at 2am, deploy new version, restart. Users aren't using it anyway.
 
+## Real-World Example: Single-Server Docker Compose Pattern
+
+Not every application needs Kubernetes on day one. A single-server Docker Compose deployment can handle 100+ concurrent users and is appropriate when validating product-market fit.
+
+A dispatch management application used this pattern at launch:
+
+**Deployment Architecture**:
+- Single EC2 t3.medium (2 vCPU, 4GB RAM)
+- Docker Compose with 4 containers
+- Cost: ~$50/month
+
+**docker-compose.yml**:
+```yaml
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ./static:/usr/share/nginx/html:ro
+    depends_on:
+      - flask-app
+
+  flask-app:
+    build: ./backend
+    environment:
+      - DATABASE_URL=postgresql://dispatch:${DB_PASSWORD}@postgres:5432/dispatch
+      - KEYCLOAK_URL=https://keycloak:8443
+    secrets:
+      - db_password
+      - keycloak_client_secret
+    depends_on:
+      - postgres
+      - keycloak
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres:5432/keycloak
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=${KEYCLOAK_DB_PASSWORD}
+    secrets:
+      - keycloak_db_password
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    secrets:
+      - postgres_password
+
+volumes:
+  postgres_data:
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  keycloak_client_secret:
+    file: ./secrets/keycloak_client_secret.txt
+  keycloak_db_password:
+    file: ./secrets/keycloak_db_password.txt
+  postgres_password:
+    file: ./secrets/postgres_password.txt
+```
+
+**Deployment Process**:
+```bash
+# Deploy new version
+git pull origin main
+docker-compose build
+docker-compose up -d
+
+# Verify deployment
+docker-compose ps
+curl -k https://localhost/health
+
+# Rollback if needed
+git checkout previous-tag
+docker-compose build
+docker-compose up -d
+```
+
+**When This Pattern Is Appropriate**:
+- Product-market fit validation (0-100 users)
+- Known user base who understands it's not enterprise-grade
+- Downtime of 2-5 minutes during deployment is acceptable
+- Recovery time of 4 hours from backup is acceptable
+- Cost optimization is important (saves $400-900/month vs Kubernetes)
+
+**Evolution Triggers** (when to move beyond this):
+- Customer contracts require 99%+ uptime SLAs
+- Traffic consistently exceeds single-server capacity (response times >5 seconds)
+- Deployments become daily (current approach causes too much downtime)
+- Need geographic distribution for global users
+- Team size grows beyond 5 engineers
+
+**Key Insight**: This isn't a stopgap solution. It's the right architecture for the stage. The team ran this for 6 months, acquired 50+ customers, and validated product-market fit before adding complexity. The $50/month savings went toward customer development instead of infrastructure.
+
+📌 **See Complete Architecture**: [Dispatch Management - Surface Level](/02-design/architecture-design/case-studies/dispatch-management-surface/)
+
 ### 5. Shadow Deployment (Dark Launch)
 
 **How it works:** Deploy new version, send it a copy of production traffic, but don't return its responses to users. Stable version continues serving real responses.
@@ -252,3 +361,15 @@ Pick the strategy that matches your tolerance for things going wrong and your in
 4. **Practice rollback:** Test your rollback procedure in staging before you need it in production.
 
 The goal isn't perfection. The goal is knowing what will happen when deployment fails, and having a plan to recover quickly.
+
+---
+
+## Real Life Case Studies
+
+### [Dispatch Management: Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
+A B2B SaaS application showing deployment strategy evolution: Single-server Docker Compose (Surface) → Multi-instance Kubernetes (Mid-Depth) → Multi-region with geographic distribution (Deep-Water). Demonstrates when simple is sufficient and when to add complexity.
+
+**Topics covered:** Docker Compose single-server pattern, Recreate deployment for PMF validation, Evolution triggers for Kubernetes adoption, Cost analysis at each deployment stage, Acceptable downtime at different scales
+
+**Deployment Focus:** See [Surface Level architecture](/02-design/architecture-design/case-studies/dispatch-management-surface/) for complete Docker Compose deployment pattern handling 100+ users for ~$50/month.

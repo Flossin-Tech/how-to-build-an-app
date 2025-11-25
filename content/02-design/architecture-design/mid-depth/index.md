@@ -222,6 +222,34 @@ module com.example.orders {
 
 Simon Brown calls this "modular first, microservices when necessary." Get the boundaries right in a monolith. Splitting later is easier when the boundaries are clean.
 
+## Evolution Triggers: Surface to Mid-Depth
+
+One of the hardest architecture decisions is knowing when to evolve. Theoretical concerns ("microservices are best practice") lead to premature complexity. Real metrics drive smart evolution.
+
+The dispatch management case study evolved from Surface to Mid-Depth based on quantitative triggers:
+
+| Metric | Surface Level Target | Actual Value That Triggered Evolution |
+|--------|---------------------|--------------------------------------|
+| Response Time | <5 seconds | Consistently exceeding 5 seconds under load |
+| Queue Losses | Acceptable occasionally | >2 incidents per month causing customer complaints |
+| Concurrent Users | 0-100 | Approaching 100, growth trajectory clear |
+| Manual Operations | Manageable | Consuming >4 hours per week |
+| Customer Demands | Internal tool expectations | Enterprise customers requiring SLAs and publicly-trusted certificates |
+
+**Key Insight**: They didn't evolve because "microservices are best practice" or "Redis is better than in-memory queues." They evolved when specific, measurable pain points exceeded acceptable thresholds.
+
+**What Changed at Mid-Depth**:
+- In-memory queue → Redis (persistent across deployments)
+- 30-second polling → WebSocket real-time updates
+- Self-signed certificates → Let's Encrypt
+- Single-instance deployment → Multi-instance with load balancer
+- Basic file logging → Centralized logging (ELK stack)
+- Single database → Schema-per-tenant for data isolation
+
+**What Stayed the Same**: Still a modular monolith. The Users, Equipment, and Dispatch modules remained in one application with a shared database because ACID transactions were valuable and distributed transactions would add complexity without benefit.
+
+📌 **See Full Framework**: [Maturity Levels Overview](/02-design/architecture-design/case-studies/dispatch-management-maturity-levels/)
+
 ## 3. Communication Patterns: Synchronous vs Asynchronous
 
 Once you have multiple modules (whether in a monolith or separate services), they need to communicate. The synchronous vs asynchronous choice has bigger implications than most people realize.
@@ -1215,8 +1243,16 @@ Your architecture should serve your team and your customers. Not the other way a
 
 ---
 
-## Real-World Case Study
+## Real Life Case Studies
 
-**[Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)**
+### [Dispatch Management: Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
+A B2B SaaS application that evolved from product-market fit validation (100 users) to enterprise scale (10,000+ users). Shows when and how to evolve from Surface Level to Mid-Depth based on quantitative triggers (response times, user scale, manual operation overhead).
+
+**Topics covered:** Evolution framework, Schema-per-tenant multi-tenancy, Redis queue migration, WebSocket implementation, Let's Encrypt automation, ELK stack integration
+
+**Focus on Mid-Depth:** See [Maturity Levels Overview](/02-design/architecture-design/case-studies/dispatch-management-maturity-levels/) for the specific triggers that justified each evolution step.
+
+### [Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)
 
 See a complete quantitative framework for architecture decisions in action. This case study demonstrates how to use documented scale thresholds, team capability assessment, and financial modeling to make evidence-based choices. **Framework focus: 35-45 minutes** to understand the methodology.

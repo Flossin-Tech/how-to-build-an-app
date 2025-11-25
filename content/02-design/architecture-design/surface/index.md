@@ -50,6 +50,34 @@ Start with a monolith. Learn from it. Split it later if you need to.
 
 **When to start with microservices anyway**: You have a team experienced in distributed systems. You know exactly what you're building because you've built it before. You have strong operational capabilities for monitoring, deployment, and debugging across services. If you don't check all three boxes, stick with a monolith.
 
+## Real-World Example: The Monolith-First Strategy
+
+A dispatch management system for equipment and drivers started as a modular monolith and scaled to 1,000 concurrent users before extracting any microservices. The results were striking:
+
+**Cost Comparison**:
+- Single-server monolith: $50-300/month
+- Equivalent microservices architecture: $500-1,000/month
+- Savings enabled hiring a second engineer sooner
+
+**Development Speed**:
+- 3x faster development compared to microservices
+- No network latency between modules
+- Debugging in one codebase instead of tracking requests across services
+- Single deployment simplified testing
+
+**The Key Decision**: They deliberately used an in-memory queue at launch, knowing it would be lost on restart. This wasn't a failure to fix later - it was an intentional trade-off. Queue losses were annoying but not catastrophic at 10-100 users, and avoiding Redis saved $50/month plus operational complexity. When deployments became daily and queue losses exceeded 2 per month, they migrated to Redis.
+
+**When They Finally Split**: At 10,000+ users, they extracted only 3 services:
+- Auth Service (high request volume - every API call validates tokens)
+- Notification Service (CPU-intensive, failure-tolerant)
+- Reporting Service (heavy S3 interactions)
+
+**What Stayed Together**: Users, Equipment, and Dispatch modules remained in the monolith because they needed ACID transactions across all three. Trying to coordinate dispatch operations across separate services would have added distributed transaction complexity for no benefit.
+
+The lesson: Monolith-first isn't a compromise. It's the optimal strategy for finding product-market fit. Complexity should be added based on real pain points, not theoretical concerns.
+
+📌 **See Full Case Study**: [Dispatch Management - Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
 ## Finding Components (Even in a Monolith)
 
 A monolith doesn't mean throwing all your code in one folder. Even in a single application, you need to organize code into logical components. The question is: what makes a good component?
@@ -152,8 +180,14 @@ For now: start with a monolith, organize it into components based on functional 
 
 ---
 
-## Real-World Case Study
+## Real Life Case Studies
 
-**[Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)**
+### [Dispatch Management: Progressive Architecture](/02-design/architecture-design/case-studies/dispatch-management/)
+
+A B2B SaaS application that evolved from product-market fit validation (100 users) to enterprise scale (10,000+ users). Shows monolith-first strategy with selective microservices extraction only when bottlenecks justified it. Includes complete cost analysis and evolution triggers.
+
+**Topics covered:** Modular monolith, Docker Compose → Kubernetes → Multi-region, Schema-per-tenant multi-tenancy, Progressive security (Docker secrets → Vault → HSM)
+
+### [Microfrontend vs. Monolith Decision](/02-design/architecture-design/case-studies/microfrontend-vs-monolith/)
 
 See how a finance sector team used a quantitative framework to decide between microfrontends and an extended monolith. Shows the complete decision process with scale analysis, team capability assessment, and financial modeling. **Quick read: 7 minutes** for Abstract + Conclusion.
