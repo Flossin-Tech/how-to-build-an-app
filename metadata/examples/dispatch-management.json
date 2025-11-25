@@ -1,0 +1,274 @@
+{
+  "id": "dispatch-management",
+  "slug": "dispatch-management",
+  "title": "Dispatch Management Application - Progressive Architecture Case Study",
+  "domain": "saas-applications",
+  "category": "case-study",
+  "difficulty": "intermediate",
+
+  "description": {
+    "short": "Real-world B2B SaaS evolution from monolith to microservices",
+    "medium": "Equipment dispatch management application demonstrating progressive architecture maturity from MVP to enterprise scale, with explicit decision triggers and cost analysis",
+    "full": "This comprehensive case study tracks the evolution of a B2B SaaS dispatch management application across three maturity levels (Surface/Mid-Depth/Deep-Water), illustrating when and why to add architectural complexity. Shows real business drivers for architectural decisions, infrastructure costs at each scale, and explicit migration triggers based on metrics rather than guesswork. Demonstrates the Thermocline Principle applied to architecture: start simple, evolve based on actual need."
+  },
+
+  "learning_objectives": [
+    "Understand why monolith-first is optimal for product-market fit validation",
+    "Learn metric-driven evolution triggers (when to add complexity)",
+    "See real infrastructure costs at different scales",
+    "Apply progressive security enhancement across maturity levels",
+    "Recognize when NOT to extract microservices"
+  ],
+
+  "key_features": [
+    "Three maturity levels with explicit evolution triggers",
+    "Real infrastructure cost breakdowns ($50/month to $50,000/month)",
+    "Modular monolith pattern implementation in Flask",
+    "Progressive security: self-signed certs → Let's Encrypt → HSM",
+    "Multi-tenancy evolution: single schema → schema-per-tenant → Citus sharding",
+    "Complete module organization (frontend and backend)",
+    "Queue management patterns across all scales"
+  ],
+
+  "business_domain": {
+    "problem": "Organizations need to efficiently dispatch equipment with qualified drivers to work sites, with automated queuing when resources unavailable",
+    "industries": [
+      "Logistics",
+      "Healthcare (medical equipment dispatch)",
+      "Construction",
+      "Utilities",
+      "Government services"
+    ],
+    "scale_progression": {
+      "surface": "100 concurrent users, 50 concurrent dispatchers",
+      "mid_depth": "1,000 concurrent users, multiple organizations",
+      "deep_water": "10,000+ concurrent users, worldwide deployment"
+    }
+  },
+
+  "technology_stack": {
+    "frontend": "React 18+ with Vite",
+    "backend": "Flask (Python) - modular monolith",
+    "authentication": "Keycloak (OAuth2/OIDC) from day one",
+    "database": "PostgreSQL with progressive enhancement",
+    "deployment": "Docker Compose → Kubernetes → Multi-region",
+    "security": "SSL/TLS throughout, progressive certificate management"
+  },
+
+  "maturity_levels": {
+    "surface": {
+      "goal": "Product-market fit validation",
+      "timeline": "3-6 months to launch",
+      "infrastructure_cost": "$50-300/month",
+      "deployment": "Single-server Docker Compose",
+      "database": "Single PostgreSQL, public schema",
+      "success_criteria": [
+        "5-10 active dispatcher users for 30+ days",
+        "500+ dispatch cycles completed successfully",
+        "<5 second response times under normal load",
+        "Qualitative: 'We can't go back to the old way'"
+      ]
+    },
+    "mid_depth": {
+      "goal": "Reliable multi-tenant SaaS for paying customers",
+      "timeline": "6-12 months post-Surface Level",
+      "infrastructure_cost": "$500-600/month",
+      "deployment": "Kubernetes or managed containers with load balancing",
+      "database": "Schema-per-tenant with pgBouncer pooling",
+      "success_criteria": [
+        "50+ paying organizations using the system",
+        "99% uptime over 90-day periods",
+        "<2 second average API response time",
+        "Zero data loss incidents",
+        "SOC 2 Type I audit passed (if pursuing compliance)"
+      ]
+    },
+    "deep_water": {
+      "goal": "Enterprise scale with global multi-region deployment",
+      "timeline": "12-18 months post-Mid-Depth",
+      "infrastructure_cost": "$10,000-50,000/month",
+      "deployment": "Microservices with multi-region failover",
+      "database": "Citus sharding with geographic distribution",
+      "success_criteria": [
+        "500+ organizations across multiple regions",
+        "99.9% uptime with <1 hour RTO",
+        "Support for 10,000+ concurrent users",
+        "ISO 27001 certified",
+        "Multi-region failover tested quarterly"
+      ]
+    }
+  },
+
+  "topics": [
+    {
+      "phase": "02-design",
+      "topic": "architecture-design",
+      "depths": ["surface", "mid-depth", "deep-water"],
+      "relevance": "Core demonstration of monolith-first strategy and selective service extraction"
+    },
+    {
+      "phase": "02-design",
+      "topic": "database-design",
+      "depths": ["mid-depth", "deep-water"],
+      "relevance": "Multi-tenancy patterns: schema-per-tenant and Citus sharding"
+    },
+    {
+      "phase": "03-development",
+      "topic": "secure-coding-practices",
+      "depths": ["surface", "mid-depth", "deep-water"],
+      "relevance": "Progressive security implementation from MVP to enterprise"
+    },
+    {
+      "phase": "05-deployment",
+      "topic": "deployment-strategy",
+      "depths": ["surface", "mid-depth", "deep-water"],
+      "relevance": "Evolution from Docker Compose to Kubernetes to multi-region"
+    }
+  ],
+
+  "personas": {
+    "highly_relevant": [
+      "new-developer",
+      "yolo-dev"
+    ],
+    "relevant": [
+      "specialist-expanding",
+      "generalist-leveling-up"
+    ],
+    "optional": [
+      "busy-developer"
+    ]
+  },
+
+  "use_cases": [
+    "B2B SaaS applications requiring multi-tenancy",
+    "Systems with progressive scale requirements",
+    "Teams validating product-market fit before scaling",
+    "Applications with compliance requirements (SOC 2, ISO 27001)",
+    "Geographic distribution requirements"
+  ],
+
+  "when_to_use_this_pattern": [
+    "B2B SaaS applications with multi-tenant needs",
+    "Small team (< 10 engineers at start)",
+    "Need for compliance certifications eventually",
+    "Geographic distribution will be needed later",
+    "Want to validate PMF before overbuilding"
+  ],
+
+  "when_not_to_use": [
+    "Consumer-facing apps with unpredictable viral growth",
+    "Real-time requirements from day one (gaming, trading)",
+    "Team with deep microservices expertise and funding",
+    "Single-tenant enterprise software",
+    "Existing monolith already proven at scale"
+  ],
+
+  "alternative_approaches": [
+    {
+      "pattern": "Microservices First",
+      "when": "Funding secured, experienced team, confirmed enterprise customers"
+    },
+    {
+      "pattern": "Serverless First",
+      "when": "Event-driven workloads with unpredictable traffic patterns"
+    },
+    {
+      "pattern": "Static Site + API",
+      "when": "Content-heavy applications with minimal state"
+    }
+  ],
+
+  "content_structure": [
+    {
+      "directory": "00-overview",
+      "description": "Business problem, requirements, architecture philosophy"
+    },
+    {
+      "directory": "01-surface-level",
+      "description": "MVP implementation with Docker Compose, single-server deployment"
+    },
+    {
+      "directory": "02-mid-depth-level",
+      "description": "Multi-tenant SaaS with Kubernetes, schema-per-tenant database"
+    },
+    {
+      "directory": "03-deep-water-level",
+      "description": "Selective microservices extraction, multi-region deployment"
+    },
+    {
+      "directory": "cross-cutting",
+      "description": "Security evolution, modular monolith patterns, queue management, multi-tenancy"
+    }
+  ],
+
+  "key_architectural_decisions": [
+    {
+      "decision": "Monolith First Strategy",
+      "rationale": "3x development velocity, simpler debugging, $50/month vs $500/month cost",
+      "evolution": "Extracted only high-volume services at Deep-Water level (Auth, Notifications)"
+    },
+    {
+      "decision": "Security From Day One",
+      "rationale": "Enterprise customers expect OAuth2/OIDC; 'later' becomes 'never'",
+      "progression": "Self-signed certs → Let's Encrypt → HSM + Zero-trust"
+    },
+    {
+      "decision": "Progressive Database Strategy",
+      "rationale": "Match database complexity to actual scale needs",
+      "progression": "Public schema → Schema-per-tenant → Citus sharding"
+    }
+  ],
+
+  "languages": ["python", "javascript"],
+  "frameworks": ["Flask", "React", "PostgreSQL", "Keycloak", "Docker", "Kubernetes"],
+
+  "anti_patterns_shown": true,
+  "working_code": false,
+  "tested": false,
+  "includes_diagrams": true,
+  "includes_cost_analysis": true,
+  "includes_migration_guides": true,
+
+  "related_examples": [
+    "/examples/shared/backend-patterns/modular-monolith-flask/",
+    "/examples/shared/authentication/keycloak-integration/",
+    "/examples/shared/database-patterns/schema-per-tenant/"
+  ],
+
+  "external_references": [
+    {
+      "title": "Martin Fowler: Monolith First",
+      "url": "https://martinfowler.com/bliki/MonolithFirst.html"
+    },
+    {
+      "title": "Shopify: Deconstructing the Monolith",
+      "url": "https://shopify.engineering/deconstructing-monolith-designing-software-maximizes-developer-productivity"
+    }
+  ],
+
+  "common_questions": [
+    "Should I start with microservices if I know I'll need them eventually?",
+    "How do I know when to extract a service from the monolith?",
+    "What's the minimum viable security for an MVP?",
+    "How much should I spend on infrastructure at each stage?",
+    "When is multi-tenancy worth the complexity?"
+  ],
+
+  "red_flags_addressed": [
+    "Premature microservices for small teams",
+    "Building for imagined scale instead of actual scale",
+    "Deferring security 'until later'",
+    "Over-engineering before product-market fit",
+    "Missing explicit evolution triggers"
+  ],
+
+  "estimated_reading_time": {
+    "quick_overview": "15 minutes",
+    "single_level_deep_dive": "45-60 minutes",
+    "complete_case_study": "3-4 hours"
+  },
+
+  "last_updated": "2025-11-24",
+  "version": "1.0.0"
+}

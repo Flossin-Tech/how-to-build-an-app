@@ -1,0 +1,266 @@
+{
+  "id": "modular-monolith-flask",
+  "slug": "modular-monolith-flask",
+  "title": "Modular Monolith Pattern in Flask",
+  "domain": "shared",
+  "category": "backend-patterns",
+  "difficulty": "intermediate",
+
+  "description": {
+    "short": "Single deployment with clear module boundaries and service layer abstraction",
+    "medium": "Flask implementation of modular monolith pattern showing module organization, service layer communication, and evolution path to microservices when scale demands it",
+    "full": "A modular monolith combines the operational simplicity of a monolith (single deployment, shared database, ACID transactions) with the organizational clarity of microservices (clear module boundaries, explicit interfaces). This pattern is ideal for product-market fit validation (0-100 users), B2B SaaS applications (100-1,000 users), and teams of 1-5 engineers. Shows complete Flask implementation with app factory pattern, auth decorators, service layer abstraction, and anti-patterns to avoid."
+  },
+
+  "learning_objectives": [
+    "Understand what makes a monolith 'modular' vs a 'big ball of mud'",
+    "Implement clear module boundaries with service layer patterns",
+    "Use Flask blueprints for module organization",
+    "Communicate between modules through well-defined interfaces",
+    "Recognize when to stay monolithic vs extract microservices"
+  ],
+
+  "key_characteristics": {
+    "modular_aspects": [
+      "Each module owns its domain (Auth, Users, Equipment, Dispatch)",
+      "Modules communicate through service layer interfaces",
+      "No direct database access between modules",
+      "Public interfaces defined, internal implementation hidden",
+      "Organized by business domain, not technical layers"
+    ],
+    "monolithic_aspects": [
+      "All modules in one Flask application",
+      "Shared database enables ACID transactions",
+      "Single deployment unit",
+      "One codebase, one release cycle",
+      "Simple debugging with unified logs"
+    ]
+  },
+
+  "when_to_use": {
+    "scale": "0-1,000 concurrent users (monoliths scale this far easily)",
+    "team_size": "1-5 engineers (small teams benefit from single codebase)",
+    "business_logic": "Tightly coupled domains requiring ACID transactions",
+    "development_phase": "Product-market fit validation (rapid iteration priority)"
+  },
+
+  "when_to_consider_microservices": {
+    "scale_triggers": [
+      "Specific module becomes bottleneck (e.g., auth at 80% CPU while core at 20%)",
+      "Need for independent scaling of high-volume components",
+      "Geographic distribution required (multi-region)"
+    ],
+    "team_triggers": [
+      "Team grows beyond 10 engineers",
+      "Clear ownership boundaries (team per service)",
+      "Microservices expertise available"
+    ],
+    "technical_triggers": [
+      "Polyglot persistence needed (different databases per module)",
+      "Different deployment cadences (auth daily, core weekly)",
+      "Compliance requires service isolation"
+    ]
+  },
+
+  "code_examples": [
+    {
+      "name": "App Factory Pattern",
+      "description": "Flask application factory with blueprint registration",
+      "file": "app/__init__.py",
+      "demonstrates": "Module initialization and configuration"
+    },
+    {
+      "name": "Auth Decorator Pattern",
+      "description": "JWT validation with Keycloak integration",
+      "file": "auth_module/decorators.py",
+      "demonstrates": "Cross-cutting authentication concerns"
+    },
+    {
+      "name": "Service Layer Communication",
+      "description": "Inter-module communication through service interfaces",
+      "file": "dispatch_module/service.py",
+      "demonstrates": "Proper module boundaries and ACID transactions"
+    },
+    {
+      "name": "Module Routes",
+      "description": "Flask blueprint with route handlers",
+      "file": "dispatch_module/routes.py",
+      "demonstrates": "API endpoint organization and authorization"
+    }
+  ],
+
+  "anti_patterns": [
+    {
+      "name": "God Service Object",
+      "problem": "Single service class doing everything",
+      "solution": "Module-specific services with clear responsibilities"
+    },
+    {
+      "name": "Circular Imports",
+      "problem": "Modules depending on each other cyclically",
+      "solution": "Define clear dependency hierarchy (shared → domain → service → coordination)"
+    },
+    {
+      "name": "Tight Database Coupling",
+      "problem": "Direct model access across modules",
+      "solution": "Service layer abstraction for all cross-module interactions"
+    }
+  ],
+
+  "directory_structure": {
+    "app": "Flask application root",
+    "modules": [
+      "auth_module: Authentication with Keycloak",
+      "users_module: User management and profiles",
+      "equipment_module: Equipment tracking and availability",
+      "dispatch_module: Dispatch assignment and queue management",
+      "reporting_module: Analytics and status reports"
+    ],
+    "shared": "Database, exceptions, utilities, middleware"
+  },
+
+  "topics": [
+    {
+      "phase": "02-design",
+      "topic": "architecture-design",
+      "depths": ["surface", "mid-depth"],
+      "relevance": "Monolith vs microservices trade-offs, evolution strategies"
+    },
+    {
+      "phase": "03-development",
+      "topic": "code-quality",
+      "depths": ["surface", "mid-depth"],
+      "relevance": "Module boundaries, service layer patterns, dependency management"
+    }
+  ],
+
+  "personas": {
+    "highly_relevant": [
+      "new-developer",
+      "busy-developer"
+    ],
+    "relevant": [
+      "generalist-leveling-up",
+      "specialist-expanding"
+    ],
+    "optional": [
+      "yolo-dev"
+    ]
+  },
+
+  "use_cases": [
+    "B2B SaaS applications",
+    "Internal tools and admin panels",
+    "Systems requiring ACID transactions across entities",
+    "MVPs and product-market fit validation",
+    "Small team development (1-5 engineers)"
+  ],
+
+  "trade_offs": {
+    "modular_monolith": {
+      "development_velocity": "Fast (no network calls)",
+      "debugging": "Easy (single process)",
+      "deployment": "Simple (single unit)",
+      "scaling": "Vertical + horizontal (entire app)",
+      "transactions": "ACID guaranteed",
+      "team_coordination": "Shared codebase (merge conflicts possible)",
+      "operational_complexity": "Low (single deployment)",
+      "infrastructure_cost": "$50-300/month (Surface level)"
+    },
+    "microservices": {
+      "development_velocity": "Slower (network overhead)",
+      "debugging": "Complex (distributed tracing needed)",
+      "deployment": "Complex (orchestration required)",
+      "scaling": "Horizontal (per service)",
+      "transactions": "Distributed transactions complex",
+      "team_coordination": "Independent services (API versioning)",
+      "operational_complexity": "High (multiple services, service mesh)",
+      "infrastructure_cost": "$500-1,000/month minimum"
+    }
+  },
+
+  "evolution_path": {
+    "surface_level": {
+      "description": "All modules in single Flask app",
+      "deployment": "Docker Compose",
+      "database": "Shared PostgreSQL",
+      "cost": "$50-300/month"
+    },
+    "mid_depth_level": {
+      "description": "Same architecture, better infrastructure",
+      "deployment": "Kubernetes or managed containers",
+      "database": "Shared PostgreSQL with connection pooling",
+      "cost": "$500-600/month"
+    },
+    "deep_water_level": {
+      "description": "Selective service extraction",
+      "deployment": "Core monolith + extracted services (Auth, Notifications)",
+      "database": "Shared core + service-specific databases",
+      "cost": "$10,000-50,000/month"
+    }
+  },
+
+  "key_insight": "Evolution is selective, not all-or-nothing. Extract services when scale justifies the complexity, not because 'microservices are best practice.'",
+
+  "languages": ["python"],
+  "frameworks": ["Flask", "SQLAlchemy", "Keycloak"],
+
+  "anti_patterns_shown": true,
+  "working_code": true,
+  "tested": false,
+  "includes_diagrams": false,
+
+  "related_examples": [
+    "/examples/domain-specific/saas-applications/dispatch-management/",
+    "/examples/shared/authentication/keycloak-integration/",
+    "/examples/shared/database-patterns/service-layer-abstraction/"
+  ],
+
+  "external_references": [
+    {
+      "title": "Martin Fowler: Monolith First",
+      "url": "https://martinfowler.com/bliki/MonolithFirst.html"
+    },
+    {
+      "title": "Shopify: Deconstructing the Monolith",
+      "url": "https://shopify.engineering/deconstructing-monolith-designing-software-maximizes-developer-productivity"
+    },
+    {
+      "title": "Basecamp: The Majestic Monolith",
+      "url": "https://m.signalvnoise.com/the-majestic-monolith/"
+    }
+  ],
+
+  "common_questions": [
+    "How is a modular monolith different from a 'big ball of mud'?",
+    "When should I extract a module to a microservice?",
+    "How do I prevent circular dependencies between modules?",
+    "Can I use different databases for different modules in a monolith?",
+    "How do I test module boundaries?"
+  ],
+
+  "success_patterns": [
+    "Clear module boundaries enforced through service layer",
+    "Dependencies flow in one direction (no circular imports)",
+    "Each module could theoretically be extracted to microservice",
+    "ACID transactions used for business-critical operations",
+    "Modules organized by domain, not technical layers"
+  ],
+
+  "failure_patterns": [
+    "Direct model access between modules",
+    "God service object handling all business logic",
+    "Circular dependencies between modules",
+    "Premature extraction to microservices",
+    "Organization by technical layers (controllers/models/views)"
+  ],
+
+  "estimated_reading_time": {
+    "quick_overview": "10 minutes",
+    "complete_implementation": "30-45 minutes",
+    "with_anti_patterns": "60 minutes"
+  },
+
+  "last_updated": "2025-11-24",
+  "version": "1.0.0"
+}
