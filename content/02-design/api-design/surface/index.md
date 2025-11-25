@@ -273,7 +273,7 @@ Everything else you can learn as you go. Start simple, stay consistent, and list
 ---
 
 **Related Topics:**
-- [System Architecture](../../system-architecture/surface/) - How APIs fit into overall system design
-- [Data Modeling](../../data-modeling/surface/) - Designing the resources your API exposes
-- [Error Handling](../../../03-development/error-handling/surface/) - Implementation patterns for robust error handling
-- [Versioning Strategy](../../versioning-strategy/surface/) - Deep dive on managing API evolution
+- [Architecture Design](../../architecture-design/surface/) - How APIs fit into overall system design
+- [Database Design](../../database-design/surface/) - Designing the resources your API exposes
+- [Error Handling & Resilience](../../error-handling-resilience/surface/) - Implementation patterns for robust error handling
+- [Software Design Document](../../software-design-document/surface/) - Documenting API decisions and evolution

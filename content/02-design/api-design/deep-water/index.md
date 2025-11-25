@@ -8,11 +8,11 @@ prerequisites:
   - "api-design-surface"
   - "api-design-mid-depth"
 related_topics:
-  - "architecture-patterns"
-  - "security-implementation"
-  - "monitoring-observability"
-  - "deployment-strategies"
+  - "architecture-design"
+  - "secure-coding-practices"
+  - "monitoring-logging"
   - "database-design"
+  - "performance-scalability-design"
 personas:
   - "specialist-expanding"
   - "generalist-leveling-up"
@@ -570,6 +570,6 @@ Your API never touches raw card data. Stripe is PCI-certified and handles the se
 **Related Topics:**
 - [API Design - Surface](../surface/) - REST fundamentals, basic versioning
 - [API Design - Mid-Depth](../mid-depth/) - Pagination, rate limiting, idempotency
-- [Architecture Patterns - Deep Water](../../architecture-patterns/deep-water/) - Microservices, event-driven architecture
-- [Security Implementation - Deep Water](../../../03-development/security-implementation/deep-water/) - OAuth2, JWT, encryption
-- [Monitoring & Observability - Deep Water](../../../06-operations/monitoring-observability/deep-water/) - Distributed tracing, SLOs
+- [Architecture Design - Deep Water](../../architecture-design/deep-water/) - Microservices, event-driven architecture
+- [Secure Coding Practices - Deep Water](../../../03-development/secure-coding-practices/deep-water/) - OAuth2, JWT, encryption
+- [Monitoring & Logging - Deep Water](../../../06-operations/monitoring-logging/deep-water/) - Distributed tracing, observability

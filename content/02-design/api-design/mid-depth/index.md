@@ -5,7 +5,7 @@ topic: "api-design"
 depth: "mid-depth"
 reading_time: 25
 prerequisites: ["api-design-surface"]
-related_topics: ["data-modeling", "security-architecture", "performance-optimization", "error-handling"]
+related_topics: ["database-design", "architecture-design", "performance-scalability-design", "error-handling-resilience"]
 personas: ["generalist-leveling-up", "specialist-expanding", "busy-developer"]
 updated: "2025-11-15"
 ---
@@ -1660,8 +1660,8 @@ The patterns here aren't theoretical. They're battle-tested approaches from high
 
 ## Related Topics
 
-- **[Data Modeling](/content/02-design/data-modeling/)** - Database design affects API performance
-- **[Security Architecture](/content/02-design/security-architecture/)** - Authentication, authorization, and API security
-- **[Performance Optimization](/content/03-development/performance-optimization/)** - Query optimization and caching strategies
-- **[Error Handling](/content/03-development/error-handling/)** - Implementing robust error handling in your application
-- **[Monitoring & Observability](/content/06-operations/monitoring-observability/)** - Tracking API usage and debugging issues
+- **[Database Design](../../database-design/mid-depth/)** - Database design affects API performance
+- **[Architecture Design](../../architecture-design/mid-depth/)** - How APIs fit into overall system architecture
+- **[Performance & Scalability Design](../../performance-scalability-design/mid-depth/)** - Query optimization and caching strategies
+- **[Error Handling & Resilience](../../error-handling-resilience/mid-depth/)** - Implementing robust error handling in your application
+- **[Monitoring & Logging](../../../06-operations/monitoring-logging/mid-depth/)** - Tracking API usage and debugging issues
